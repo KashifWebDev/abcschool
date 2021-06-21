@@ -3,7 +3,7 @@
 <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
     <!-- Sidebar - Brand -->
-    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html" style="height: 100px;">
+    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="admin_dashboard.php" style="height: 100px;">
 <!--        <div class="sidebar-brand-icon">-->
 <!--            <i class="fas fa-school"></i>-->
 <!--        </div>-->
@@ -14,7 +14,7 @@
 
     <!-- Nav Item - Dashboard -->
     <li class="nav-item">
-        <a class="nav-link" href="index.html">
+        <a class="nav-link" href="admin_dashboard.php">
             <i class="fas fa-fw fa-tachometer-alt"></i>
             <span>Dashboard</span></a>
     </li>
@@ -37,8 +37,7 @@
             <i class="fas fa-fw fa-list"></i>
             <span>Global List</span>
         </a>
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
-           aria-expanded="true" aria-controls="collapseTwo">
+        <a class="nav-link collapsed" href="admin_student_card.php">
             <i class="fas fa-fw fa-id-card"></i>
             <span>Student Card</span>
         </a>

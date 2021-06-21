@@ -101,7 +101,7 @@ require 'parts/head.php';
                                 <div class="row">
                                     <div class="col-md-10 mx-auto">
                                         <button class="btn btn-primary bg-appColor w-100" type="submit" name="add_student">
-                                            Register
+                                            <span class="fas fa-save"></span> Register
                                         </button>
                                     </div>
                                 </div>

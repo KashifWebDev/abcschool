@@ -25,10 +25,16 @@ require 'parts/head.php';
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
 
+                    <div class="card mb-4 py-3 border-left-success">
+                        <div class="card-body text-success">
+                            <strong>Note </strong> Please search the student and then click <b>Prepare Card</b>
+                        </div>
+                    </div>
+
                     <!-- Page Heading -->
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">Registered Students Record</h6>
+                            <h6 class="m-0 font-weight-bold text-primary">Student Cards Management</h6>
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
@@ -38,28 +44,19 @@ require 'parts/head.php';
                                         <th>#</th>
                                         <th>Student ID</th>
                                         <th>Name</th>
-                                        <th>Registration Date</th>
-                                        <th>Country</th>
                                         <th>Passport #</th>
                                         <th>DOB</th>
-                                        <th>Email</th>
-                                        <th>Invoice #</th>
-                                        <th>Facebook</th>
-                                        <th>Insta</th>
+                                        <th>Action</th>
                                     </tr>
                                     </thead>
                                     <tfoot>
                                     <tr>
+                                        <th>#</th>
                                         <th>Student ID</th>
                                         <th>Name</th>
-                                        <th>Registration Date</th>
-                                        <th>Country</th>
                                         <th>Passport #</th>
                                         <th>DOB</th>
-                                        <th>Email</th>
-                                        <th>Invoice #</th>
-                                        <th>Facebook</th>
-                                        <th>Insta</th>
+                                        <th>Action</th>
                                     </tr>
                                     </tfoot>
                                     <tbody>
@@ -73,14 +70,16 @@ require 'parts/head.php';
                                                 <td><?php echo $row["id"]; ?></td>
                                                 <td><?php echo $row["student_id"]; ?></td>
                                                 <td><?php echo $row["student_name"]; ?></td>
-                                                <td><?php echo $row["registration_date"]; ?></td>
-                                                <td><?php echo $row["country"]; ?></td>
                                                 <td><?php echo $row["passport_no"]; ?></td>
                                                 <td><?php echo $row["dob"]; ?></td>
-                                                <td><?php echo $row["email"]; ?></td>
-                                                <td><?php echo $row["registration_invoice_no"]; ?></td>
-                                                <td><?php echo $row["facebook"]; ?></td>
-                                                <td><?php echo $row["insta"]; ?></td>
+                                                <td>
+                                                    <a href="admin_show_card.php" class="btn btn-primary btn-icon-split">
+                                                        <span class="icon text-white-50">
+                                                            <i class="fas fa-id-card"></i>
+                                                        </span>
+                                                        <span class="text">Prepare Card</span>
+                                                    </a>
+                                                </td>
                                             </tr>
                                     <?php
                                         }
