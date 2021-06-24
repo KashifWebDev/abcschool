@@ -1,3 +1,10 @@
+<?php
+require 'parts/app.php';
+$id = $_GET["id"];
+$s = "SELECT * FROM master_registration_list WHERE id=$id";
+$r = mysqli_query($con, $s);
+$row = mysqli_fetch_array($r);
+?>
 <html>
 <head><meta http-equiv=Content-Type content="text/html; charset=UTF-8">
 <style type="text/css">
@@ -34,7 +41,7 @@ div.cls_014{font-family:"Calibri Bold",serif;font-size:10.1px;color:rgb(17,84,20
 <img src="img/permit_bg.jpg" width=612 height=792></div>
 <div style="position:absolute;left:149.25px;top:27.00px" class="cls_002"><span class="cls_002">ABC International - South Africa</span></div>
 <div style="position:absolute;left:51.15px;top:101.60px" class="cls_003"><span class="cls_003">KBW House, 122 De Korte Street,</span></div>
-<div style="position:absolute;left:498.90px;top:101.60px" class="cls_004"><span class="cls_004">March 5, 2021</span></div>
+<div style="position:absolute;left:498.90px;top:101.60px" class="cls_004"><span class="cls_004"><?php echo date("M d, Y"); ?></span></div>
 <div style="position:absolute;left:51.15px;top:115.10px" class="cls_003"><span class="cls_003">Braamfontein, Johannesburg</span></div>
 <div style="position:absolute;left:51.15px;top:128.60px" class="cls_003"><span class="cls_003">South Africa</span></div>
 <div style="position:absolute;left:51.15px;top:142.10px" class="cls_003"><span class="cls_003">Telephone: +27 11 403 2171  |</span></div>
@@ -44,10 +51,10 @@ div.cls_014{font-family:"Calibri Bold",serif;font-size:10.1px;color:rgb(17,84,20
 <div style="position:absolute;left:49.65px;top:198.85px" class="cls_005"><span class="cls_005">To whom it may concern</span></div>
 <div style="position:absolute;left:49.65px;top:217.10px" class="cls_006"><span class="cls_006">Dear Sir or Madam,</span></div>
 <div style="position:absolute;left:51.90px;top:247.06px" class="cls_012"><span class="cls_012">Study permit application for the following student</span></div>
-<div style="position:absolute;left:51.90px;top:265.10px" class="cls_008"><span class="cls_008">Student Name :</span><span class="cls_004">   Wigenss Kibika Kakund</span></div>
+<div style="position:absolute;left:51.90px;top:265.10px" class="cls_008"><span class="cls_008">Student Name :</span><span class="cls_004">   <?php echo $row["student_name"]; ?></span></div>
 <div style="position:absolute;left:51.90px;top:281.60px" class="cls_008"><span class="cls_008">Date of Birth :</span></div>
-<div style="position:absolute;left:127.65px;top:281.60px" class="cls_004"><span class="cls_004">2/3/2002</span></div>
-<div style="position:absolute;left:226.65px;top:281.60px" class="cls_008"><span class="cls_008">Passport Number :</span><span class="cls_004">  OP0735642</span></div>
+<div style="position:absolute;left:127.65px;top:281.60px" class="cls_004"><span class="cls_004"><?php echo $row["dob"]; ?></span></div>
+<div style="position:absolute;left:226.65px;top:281.60px" class="cls_008"><span class="cls_008">Passport Number :</span><span class="cls_004">  <?php echo $row["passport_no"]; ?></span></div>
 <div style="position:absolute;left:49.65px;top:315.85px" class="cls_004"><span class="cls_004">This is to certify that the student above has been accepted to study at the above Academy</span></div>
 <div style="position:absolute;left:49.65px;top:329.60px" class="cls_004"><span class="cls_004">and </span><span class="cls_013">has paid the required deposit to study for 12 months</span><span class="cls_004"> ( Invoice number: 44278OP073564237290 ).</span></div>
 <div style="position:absolute;left:49.65px;top:356.60px" class="cls_006"><span class="cls_006">The student will complete the following courses:</span></div>

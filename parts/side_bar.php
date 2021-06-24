@@ -33,18 +33,21 @@
             <i class="fas fa-fw fa-plus"></i>
             <span>Student Registration</span>
         </a>
+        <a class="nav-link collapsed" href="admin_add_instructor.php">
+            <i class="fas fa-fw fa-chalkboard-teacher"></i>
+            <span>Instructor Registration</span>
+        </a>
         <a class="nav-link collapsed" href="admin_global_list.php">
             <i class="fas fa-fw fa-list"></i>
             <span>Global List</span>
         </a>
+        <a class="nav-link collapsed" href="admin_instructor_list.php">
+            <i class="fas fa-fw fa-list-ol"></i>
+            <span>Registered Instructors</span>
+        </a>
         <a class="nav-link collapsed" href="admin_student_card.php">
             <i class="fas fa-fw fa-id-card"></i>
             <span>Student Card & Permit</span>
-        </a>
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
-           aria-expanded="true" aria-controls="collapseTwo">
-            <i class="fas fa-fw fa-envelope"></i>
-            <span>Student Permit</span>
         </a>
     </li>
 

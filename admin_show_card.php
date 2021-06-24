@@ -1,11 +1,15 @@
 <?php
 require 'parts/app.php';
+$id = $_GET["id"];
+$s = "SELECT * FROM master_registration_list WHERE id=$id";
+$r = mysqli_query($con, $s);
+$row = mysqli_fetch_array($r);
 ?>
 <!DOCTYPE html>
 <html lang="en">
 
 <?php
-$title = "Login";
+$title = "Student card";
 require 'parts/head.php';
 ?>
 
@@ -44,18 +48,18 @@ require 'parts/head.php';
                                         <img src="img/user.jpg" alt="" class="w-100">
                                     </div>
                                     <div class="col-md-7 text-dark d-flex flex-column justify-content-center align-items-center">
-                                        <h3 class="font-weight-bold">Mr Mahbobur Rahman</h3>
+                                        <h3 class="font-weight-bold" style="text-align: center;"><?php echo $row["student_name"]; ?></h3>
                                         <div style="font-size: large;">
                                             <span>Date Of Birth: </span>
-                                            <span>19 February 1989</span>
+                                            <span><?php echo $row["dob"]; ?></span>
                                         </div>
                                         <div style="font-size: large;">
                                             <span>Passport No. : </span>
-                                            <span>BW0317588</span>
+                                            <span><?php echo $row["passport_no"]; ?></span>
                                         </div>
                                         <div style="font-size: large;">
                                             <span>Student ID: </span>
-                                            <span>adfasdfsdf</span>
+                                            <span><?php echo $row["student_id"]; ?></span>
                                         </div>
                                     </div>
                                 </div>

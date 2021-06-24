@@ -5,7 +5,7 @@ require 'parts/app.php';
 <html lang="en">
 
 <?php
-$title = "Login";
+$title = "Instructors";
 require 'parts/head.php';
 ?>
 
@@ -25,16 +25,10 @@ require 'parts/head.php';
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
 
-                    <div class="card mb-4 py-3 border-left-success">
-                        <div class="card-body text-success">
-                            <strong>Note </strong> Please search the student and then click <b>Prepare Card</b>
-                        </div>
-                    </div>
-
                     <!-- Page Heading -->
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">Student Cards Management</h6>
+                            <h6 class="m-0 font-weight-bold text-primary">Registered Instructors Record</h6>
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
@@ -42,50 +36,37 @@ require 'parts/head.php';
                                     <thead>
                                     <tr>
                                         <th>#</th>
-                                        <th>Student ID</th>
+                                        <th>Instructors ID</th>
                                         <th>Name</th>
-                                        <th>Passport #</th>
-                                        <th>DOB</th>
-                                        <th>Action</th>
+                                        <th>Registration Date</th>
+                                        <th>Phone</th>
+                                        <th>Email</th>
                                     </tr>
                                     </thead>
                                     <tfoot>
                                     <tr>
                                         <th>#</th>
-                                        <th>Student ID</th>
+                                        <th>Instructors ID</th>
                                         <th>Name</th>
-                                        <th>Passport #</th>
-                                        <th>DOB</th>
-                                        <th>Action</th>
+                                        <th>Registration Date</th>
+                                        <th>Phone</th>
+                                        <th>Email</th>
                                     </tr>
                                     </tfoot>
                                     <tbody>
                                     <?php
-                                    $sql = "SELECT * FROM master_registration_list";
+                                    $sql = "SELECT * FROM instructors";
                                     $res = mysqli_query($con, $sql);
                                     if(mysqli_num_rows($res)){
                                         while($row = mysqli_fetch_array($res)){
                                             ?>
                                             <tr>
                                                 <td><?php echo $row["id"]; ?></td>
-                                                <td><?php echo $row["student_id"]; ?></td>
-                                                <td><?php echo $row["student_name"]; ?></td>
-                                                <td><?php echo $row["passport_no"]; ?></td>
-                                                <td><?php echo $row["dob"]; ?></td>
-                                                <td>
-                                                    <a href="admin_show_card.php?id=<?php echo $row["id"]; ?>" class="btn btn-primary btn-icon-split">
-                                                        <span class="icon text-white-50">
-                                                            <i class="fas fa-id-card"></i>
-                                                        </span>
-                                                        <span class="text">Prepare Card</span>
-                                                    </a>
-                                                    <a href="permit.php?id=<?php echo $row["id"]; ?>" target="_blank" class="btn btn-primary btn-icon-split">
-                                                        <span class="icon text-white-50">
-                                                            <i class="fas fa-envelope-open"></i>
-                                                        </span>
-                                                        <span class="text">Student Permit</span>
-                                                    </a>
-                                                </td>
+                                                <td><?php echo $row["instructor_id"]; ?></td>
+                                                <td><?php echo $row["name"]; ?></td>
+                                                <td><?php echo $row["hire_date"]; ?></td>
+                                                <td><?php echo $row["phone"]; ?></td>
+                                                <td><?php echo $row["email"]; ?></td>
                                             </tr>
                                     <?php
                                         }
