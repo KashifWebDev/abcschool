@@ -5,7 +5,7 @@ require 'parts/app.php';
 <html lang="en">
 
 <?php
-$title = "Login";
+$title = "Student Registration";
 require 'parts/head.php';
 ?>
 

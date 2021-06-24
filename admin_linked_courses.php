@@ -5,7 +5,7 @@ require 'parts/app.php';
 <html lang="en">
 
 <?php
-$title = "Student Card";
+$title = "Linked Courses";
 require 'parts/head.php';
 ?>
 
@@ -24,70 +24,86 @@ require 'parts/head.php';
 
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
-
-                    <div class="card mb-4 py-3 border-left-success">
-                        <div class="card-body text-success">
-                            <strong>Note </strong> Please search the student and then click <b>Prepare Card</b>
+                    <?php
+                    if(isset($_GET["success"]) && $_GET["success"]){
+                        ?>
+                        <div class="card mb-4 py-3 border-left-success">
+                            <div class="card-body text-success">
+                                <strong>Success! </strong> Instructor linked successfully!
+                            </div>
                         </div>
-                    </div>
+                        <?php
+                    }
+                    ?>
 
                     <!-- Page Heading -->
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">Student Cards Management</h6>
+                            <h6 class="m-0 font-weight-bold text-primary">Linked Courses</h6>
                         </div>
                         <div class="card-body">
+
                             <div class="table-responsive">
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
                                     <tr>
                                         <th>#</th>
-                                        <th>Student ID</th>
-                                        <th>Name</th>
-                                        <th>Passport #</th>
-                                        <th>DOB</th>
-                                        <th>Action</th>
+                                        <th>Course Name</th>
+                                        <th>Instructor Name</th>
+                                        <th>Actions</th>
                                     </tr>
                                     </thead>
                                     <tfoot>
                                     <tr>
                                         <th>#</th>
-                                        <th>Student ID</th>
-                                        <th>Name</th>
-                                        <th>Passport #</th>
-                                        <th>DOB</th>
-                                        <th>Action</th>
+                                        <th>Course Name</th>
+                                        <th>Instructor Name</th>
+                                        <th>Actions</th>
                                     </tr>
                                     </tfoot>
                                     <tbody>
                                     <?php
-                                    $sql = "SELECT * FROM master_registration_list";
+                                    $sql = "SELECT * FROM courses_and_instructors";
                                     $res = mysqli_query($con, $sql);
                                     if(mysqli_num_rows($res)){
                                         while($row = mysqli_fetch_array($res)){
+                                            $cID = $row["course"];
+                                            $iID = $row["instructor"];
+                                            $s = "SELECT * FROM courses WHERE id=$cID";
+                                            $r = mysqli_query($con, $s);
+                                            $ro = mysqli_fetch_array($r);
+                                            $course_name = $ro["course_name"];
+                                            $s = "SELECT * FROM instructors WHERE id=$iID";
+                                            $r = mysqli_query($con, $s);
+                                            $ro = mysqli_fetch_array($r);
+                                            $instructor_name = $ro["name"];
                                             ?>
                                             <tr>
                                                 <td><?php echo $row["id"]; ?></td>
-                                                <td><?php echo $row["student_id"]; ?></td>
-                                                <td><?php echo $row["student_name"]; ?></td>
-                                                <td><?php echo $row["passport_no"]; ?></td>
-                                                <td><?php echo $row["dob"]; ?></td>
+                                                <td><?php echo $course_name; ?></td>
+                                                <td><?php echo $instructor_name; ?></td>
                                                 <td>
-                                                    <a href="admin_show_card.php?id=<?php echo $row["id"]; ?>" class="btn btn-primary btn-icon-split">
+                                                    <a href="admin_linked_courses.php?unlink=<?php echo $row["id"]; ?>" class="btn btn-danger btn-icon-split">
                                                         <span class="icon text-white-50">
-                                                            <i class="fas fa-id-card"></i>
+                                                            <i class="fas fa-trash"></i>
                                                         </span>
-                                                        <span class="text">Prepare Card</span>
-                                                    </a>
-                                                    <a href="permit.php?id=<?php echo $row["id"]; ?>" target="_blank" class="btn btn-primary btn-icon-split">
-                                                        <span class="icon text-white-50">
-                                                            <i class="fas fa-envelope-open"></i>
-                                                        </span>
-                                                        <span class="text">Student Permit</span>
+                                                        <span class="text">Un Link</span>
                                                     </a>
                                                 </td>
                                             </tr>
                                     <?php
+                                        }
+                                    }
+                                    if(isset($_GET["unlink"])){
+                                        require 'parts/db.php';
+                                        $id = $_GET["unlink"];
+
+                                        $sql = "DELETE FROM  courses_and_instructors WHERE id = $id";
+
+                                        if(phpRunSingleQuery($sql)){
+                                            js_redirect("admin_linked_courses.php");
+                                        }else{
+                                            echo mysqli_error($con);
                                         }
                                     }
                                     ?>

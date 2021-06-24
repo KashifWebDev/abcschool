@@ -49,6 +49,14 @@
             <i class="fas fa-fw fa-id-card"></i>
             <span>Student Card & Permit</span>
         </a>
+        <a class="nav-link collapsed" href="admin_courses.php">
+            <i class="fas fa-fw fa-book-open"></i>
+            <span>Courses Management</span>
+        </a>
+        <a class="nav-link collapsed" href="admin_linked_courses.php">
+            <i class="fas fa-fw fa-address-book"></i>
+            <span>Linked Courses</span>
+        </a>
     </li>
 
     <!-- Divider -->

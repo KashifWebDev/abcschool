@@ -5,7 +5,7 @@ require 'parts/app.php';
 <html lang="en">
 
 <?php
-$title = "Login";
+$title = "Global List";
 require 'parts/head.php';
 ?>
 
