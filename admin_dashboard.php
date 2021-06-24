@@ -1,5 +1,11 @@
 <?php
 require 'parts/app.php';
+
+function calculate_rows($table){
+    $s = "SELECT * FROM $table";
+    $b = mysqli_query($GLOBALS["con"], $s);
+    return mysqli_num_rows($b);
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -53,7 +59,7 @@ require 'parts/head.php';
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
                                                 Students</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">157</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo calculate_rows("master_registration_list"); ?></div>
                                         </div>
                                         <div class="col-auto">
                                             <i class="fas fa-user-graduate fa-2x text-gray-300"></i>
@@ -73,7 +79,7 @@ require 'parts/head.php';
                                             </div>
                                             <div class="row no-gutters align-items-center">
                                                 <div class="col-auto">
-                                                    <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">34</div>
+                                                    <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800"><?php echo calculate_rows("instructors"); ?></div>
                                                 </div>
                                             </div>
                                         </div>
@@ -93,7 +99,7 @@ require 'parts/head.php';
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
                                                 Courses</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">9</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo calculate_rows("courses"); ?></div>
                                         </div>
                                         <div class="col-auto">
                                             <i class="fas fa-book-reader fa-2x text-gray-300"></i>
