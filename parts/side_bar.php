@@ -39,7 +39,7 @@
         </a>
         <a class="nav-link collapsed" href="admin_student_card.php">
             <i class="fas fa-fw fa-id-card"></i>
-            <span>Student Card</span>
+            <span>Student Card & Permit</span>
         </a>
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
            aria-expanded="true" aria-controls="collapseTwo">

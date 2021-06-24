@@ -79,6 +79,12 @@ require 'parts/head.php';
                                                         </span>
                                                         <span class="text">Prepare Card</span>
                                                     </a>
+                                                    <a href="permit.php" target="_blank" class="btn btn-primary btn-icon-split">
+                                                        <span class="icon text-white-50">
+                                                            <i class="fas fa-envelope-open"></i>
+                                                        </span>
+                                                        <span class="text">Student Permit</span>
+                                                    </a>
                                                 </td>
                                             </tr>
                                     <?php
