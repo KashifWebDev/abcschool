@@ -48,7 +48,7 @@ require 'parts/head.php';
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="email">Registration Date</label>
-                                            <input type="text" name="registration_date" class="form-control" placeholder="Registration Date" id="email">
+                                            <input type="date" name="registration_date" class="form-control" placeholder="Registration Date" id="email">
                                         </div>
                                         <div class="form-group">
                                             <label for="pwd">Student ID:</label>
