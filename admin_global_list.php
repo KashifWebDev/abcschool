@@ -35,11 +35,11 @@ require 'parts/head.php';
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
                                     <tr>
-                                        <th>#</th>
                                         <th>Student ID</th>
                                         <th>Name</th>
                                         <th>Registration Date</th>
                                         <th>Country</th>
+                                        <th>Flag</th>
                                         <th>Passport #</th>
                                         <th>DOB</th>
                                         <th>Email</th>
@@ -54,6 +54,7 @@ require 'parts/head.php';
                                         <th>Name</th>
                                         <th>Registration Date</th>
                                         <th>Country</th>
+                                        <th>Flag</th>
                                         <th>Passport #</th>
                                         <th>DOB</th>
                                         <th>Email</th>
@@ -68,13 +69,27 @@ require 'parts/head.php';
                                     $res = mysqli_query($con, $sql);
                                     if(mysqli_num_rows($res)){
                                         while($row = mysqli_fetch_array($res)){
+                                            $cntry_flag = null;
+                                            $cntry = $row["country"];
+                                            if($cntry == "Democratic Republic of Congo") $cntry_flag = '<img style="height: 35px;" src="img/flag_drc.png">';
+                                            if($cntry == "Republic of Congo") $cntry_flag = '<img style="height: 35px;" src="img/flag_rcf.png">';
+                                            if($cntry == "Libya") $cntry_flag = '<img style="height: 35px; width: 48px;" src="img/flag_libya.png">';
+                                            $s1 = "SELECT * FROM countries WHERE country_name='$cntry'";
+                                            $se = mysqli_query($con, $s1);
+                                            if(mysqli_num_rows($se)){
+                                                $cn = mysqli_fetch_array($se);
+                                                $f = $cn["country_code"];
+                                                $cntry_flag = '<img src="https://www.countryflags.io/'.$f.'/shiny/48.png">';
+                                            }else{
+//                                                echo $s1;
+                                            }
                                             ?>
                                             <tr>
-                                                <td><?php echo $row["id"]; ?></td>
                                                 <td><?php echo $row["student_id"]; ?></td>
                                                 <td><?php echo $row["student_name"]; ?></td>
                                                 <td><?php echo $row["registration_date"]; ?></td>
                                                 <td><?php echo $row["country"]; ?></td>
+                                                <td><?php echo isset($cntry_flag) ? $cntry_flag : '--'; ?></td>
                                                 <td><?php echo $row["passport_no"]; ?></td>
                                                 <td><?php echo $row["dob"]; ?></td>
                                                 <td><?php echo $row["email"]; ?></td>

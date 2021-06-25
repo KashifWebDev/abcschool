@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 24, 2021 at 02:33 PM
+-- Generation Time: Jun 25, 2021 at 03:44 PM
 -- Server version: 10.4.18-MariaDB
 -- PHP Version: 8.0.3
 
@@ -20,6 +20,298 @@ SET time_zone = "+00:00";
 --
 -- Database: `project_abcschool`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `admin_users`
+--
+
+CREATE TABLE `admin_users` (
+  `id` int(11) NOT NULL,
+  `name` varchar(1000) NOT NULL,
+  `email` varchar(1000) NOT NULL,
+  `pass` varchar(1000) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `admin_users`
+--
+
+INSERT INTO `admin_users` (`id`, `name`, `email`, `pass`) VALUES
+(1, 'Administrator', 'admin@admin.com', 'admin@123'),
+(4, 'test Admin', 'test@admin.com', 'test');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `countries`
+--
+
+CREATE TABLE `countries` (
+  `id` int(11) NOT NULL,
+  `phone_code` int(5) NOT NULL,
+  `country_code` char(2) NOT NULL,
+  `country_name` varchar(80) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `countries`
+--
+
+INSERT INTO `countries` (`id`, `phone_code`, `country_code`, `country_name`) VALUES
+(1, 93, 'AF', 'Afghanistan'),
+(2, 358, 'AX', 'Aland Islands'),
+(3, 355, 'AL', 'Albania'),
+(4, 213, 'DZ', 'Algeria'),
+(5, 1684, 'AS', 'American Samoa'),
+(6, 376, 'AD', 'Andorra'),
+(7, 244, 'AO', 'Angola'),
+(8, 1264, 'AI', 'Anguilla'),
+(9, 672, 'AQ', 'Antarctica'),
+(10, 1268, 'AG', 'Antigua and Barbuda'),
+(11, 54, 'AR', 'Argentina'),
+(12, 374, 'AM', 'Armenia'),
+(13, 297, 'AW', 'Aruba'),
+(14, 61, 'AU', 'Australia'),
+(15, 43, 'AT', 'Austria'),
+(16, 994, 'AZ', 'Azerbaijan'),
+(17, 1242, 'BS', 'Bahamas'),
+(18, 973, 'BH', 'Bahrain'),
+(19, 880, 'BD', 'Bangladesh'),
+(20, 1246, 'BB', 'Barbados'),
+(21, 375, 'BY', 'Belarus'),
+(22, 32, 'BE', 'Belgium'),
+(23, 501, 'BZ', 'Belize'),
+(24, 229, 'BJ', 'Benin'),
+(25, 1441, 'BM', 'Bermuda'),
+(26, 975, 'BT', 'Bhutan'),
+(27, 591, 'BO', 'Bolivia'),
+(28, 599, 'BQ', 'Bonaire, Sint Eustatius and Saba'),
+(29, 387, 'BA', 'Bosnia and Herzegovina'),
+(30, 267, 'BW', 'Botswana'),
+(31, 55, 'BV', 'Bouvet Island'),
+(32, 55, 'BR', 'Brazil'),
+(33, 246, 'IO', 'British Indian Ocean Territory'),
+(34, 673, 'BN', 'Brunei Darussalam'),
+(35, 359, 'BG', 'Bulgaria'),
+(36, 226, 'BF', 'Burkina Faso'),
+(37, 257, 'BI', 'Burundi'),
+(38, 855, 'KH', 'Cambodia'),
+(39, 237, 'CM', 'Cameroon'),
+(40, 1, 'CA', 'Canada'),
+(41, 238, 'CV', 'Cape Verde'),
+(42, 1345, 'KY', 'Cayman Islands'),
+(43, 236, 'CF', 'Central African Republic'),
+(44, 235, 'TD', 'Chad'),
+(45, 56, 'CL', 'Chile'),
+(46, 86, 'CN', 'China'),
+(47, 61, 'CX', 'Christmas Island'),
+(48, 672, 'CC', 'Cocos (Keeling) Islands'),
+(49, 57, 'CO', 'Colombia'),
+(50, 269, 'KM', 'Comoros'),
+(51, 242, 'CG', 'Congo'),
+(52, 242, 'CD', 'Congo, Democratic Republic of the Congo'),
+(53, 682, 'CK', 'Cook Islands'),
+(54, 506, 'CR', 'Costa Rica'),
+(55, 225, 'CI', 'Cote D\'Ivoire'),
+(56, 385, 'HR', 'Croatia'),
+(57, 53, 'CU', 'Cuba'),
+(58, 599, 'CW', 'Curacao'),
+(59, 357, 'CY', 'Cyprus'),
+(60, 420, 'CZ', 'Czech Republic'),
+(61, 45, 'DK', 'Denmark'),
+(62, 253, 'DJ', 'Djibouti'),
+(63, 1767, 'DM', 'Dominica'),
+(64, 1809, 'DO', 'Dominican Republic'),
+(65, 593, 'EC', 'Ecuador'),
+(66, 20, 'EG', 'Egypt'),
+(67, 503, 'SV', 'El Salvador'),
+(68, 240, 'GQ', 'Equatorial Guinea'),
+(69, 291, 'ER', 'Eritrea'),
+(70, 372, 'EE', 'Estonia'),
+(71, 251, 'ET', 'Ethiopia'),
+(72, 500, 'FK', 'Falkland Islands (Malvinas)'),
+(73, 298, 'FO', 'Faroe Islands'),
+(74, 679, 'FJ', 'Fiji'),
+(75, 358, 'FI', 'Finland'),
+(76, 33, 'FR', 'France'),
+(77, 594, 'GF', 'French Guiana'),
+(78, 689, 'PF', 'French Polynesia'),
+(79, 262, 'TF', 'French Southern Territories'),
+(80, 241, 'GA', 'Gabon'),
+(81, 220, 'GM', 'Gambia'),
+(82, 995, 'GE', 'Georgia'),
+(83, 49, 'DE', 'Germany'),
+(84, 233, 'GH', 'Ghana'),
+(85, 350, 'GI', 'Gibraltar'),
+(86, 30, 'GR', 'Greece'),
+(87, 299, 'GL', 'Greenland'),
+(88, 1473, 'GD', 'Grenada'),
+(89, 590, 'GP', 'Guadeloupe'),
+(90, 1671, 'GU', 'Guam'),
+(91, 502, 'GT', 'Guatemala'),
+(92, 44, 'GG', 'Guernsey'),
+(93, 224, 'GN', 'Guinea'),
+(94, 245, 'GW', 'Guinea-Bissau'),
+(95, 592, 'GY', 'Guyana'),
+(96, 509, 'HT', 'Haiti'),
+(97, 0, 'HM', 'Heard Island and Mcdonald Islands'),
+(98, 39, 'VA', 'Holy See (Vatican City State)'),
+(99, 504, 'HN', 'Honduras'),
+(100, 852, 'HK', 'Hong Kong'),
+(101, 36, 'HU', 'Hungary'),
+(102, 354, 'IS', 'Iceland'),
+(103, 91, 'IN', 'India'),
+(104, 62, 'ID', 'Indonesia'),
+(105, 98, 'IR', 'Iran, Islamic Republic of'),
+(106, 964, 'IQ', 'Iraq'),
+(107, 353, 'IE', 'Ireland'),
+(108, 44, 'IM', 'Isle of Man'),
+(109, 972, 'IL', 'Israel'),
+(110, 39, 'IT', 'Italy'),
+(111, 1876, 'JM', 'Jamaica'),
+(112, 81, 'JP', 'Japan'),
+(113, 44, 'JE', 'Jersey'),
+(114, 962, 'JO', 'Jordan'),
+(115, 7, 'KZ', 'Kazakhstan'),
+(116, 254, 'KE', 'Kenya'),
+(117, 686, 'KI', 'Kiribati'),
+(118, 850, 'KP', 'Korea, Democratic People\'s Republic of'),
+(119, 82, 'KR', 'Korea, Republic of'),
+(120, 381, 'XK', 'Kosovo'),
+(121, 965, 'KW', 'Kuwait'),
+(122, 996, 'KG', 'Kyrgyzstan'),
+(123, 856, 'LA', 'Lao People\'s Democratic Republic'),
+(124, 371, 'LV', 'Latvia'),
+(125, 961, 'LB', 'Lebanon'),
+(126, 266, 'LS', 'Lesotho'),
+(127, 231, 'LR', 'Liberia'),
+(128, 218, 'LY', 'Libyan Arab Jamahiriya'),
+(129, 423, 'LI', 'Liechtenstein'),
+(130, 370, 'LT', 'Lithuania'),
+(131, 352, 'LU', 'Luxembourg'),
+(132, 853, 'MO', 'Macao'),
+(133, 389, 'MK', 'Macedonia, the Former Yugoslav Republic of'),
+(134, 261, 'MG', 'Madagascar'),
+(135, 265, 'MW', 'Malawi'),
+(136, 60, 'MY', 'Malaysia'),
+(137, 960, 'MV', 'Maldives'),
+(138, 223, 'ML', 'Mali'),
+(139, 356, 'MT', 'Malta'),
+(140, 692, 'MH', 'Marshall Islands'),
+(141, 596, 'MQ', 'Martinique'),
+(142, 222, 'MR', 'Mauritania'),
+(143, 230, 'MU', 'Mauritius'),
+(144, 269, 'YT', 'Mayotte'),
+(145, 52, 'MX', 'Mexico'),
+(146, 691, 'FM', 'Micronesia, Federated States of'),
+(147, 373, 'MD', 'Moldova, Republic of'),
+(148, 377, 'MC', 'Monaco'),
+(149, 976, 'MN', 'Mongolia'),
+(150, 382, 'ME', 'Montenegro'),
+(151, 1664, 'MS', 'Montserrat'),
+(152, 212, 'MA', 'Morocco'),
+(153, 258, 'MZ', 'Mozambique'),
+(154, 95, 'MM', 'Myanmar'),
+(155, 264, 'NA', 'Namibia'),
+(156, 674, 'NR', 'Nauru'),
+(157, 977, 'NP', 'Nepal'),
+(158, 31, 'NL', 'Netherlands'),
+(159, 599, 'AN', 'Netherlands Antilles'),
+(160, 687, 'NC', 'New Caledonia'),
+(161, 64, 'NZ', 'New Zealand'),
+(162, 505, 'NI', 'Nicaragua'),
+(163, 227, 'NE', 'Niger'),
+(164, 234, 'NG', 'Nigeria'),
+(165, 683, 'NU', 'Niue'),
+(166, 672, 'NF', 'Norfolk Island'),
+(167, 1670, 'MP', 'Northern Mariana Islands'),
+(168, 47, 'NO', 'Norway'),
+(169, 968, 'OM', 'Oman'),
+(170, 92, 'PK', 'Pakistan'),
+(171, 680, 'PW', 'Palau'),
+(172, 970, 'PS', 'Palestinian Territory, Occupied'),
+(173, 507, 'PA', 'Panama'),
+(174, 675, 'PG', 'Papua New Guinea'),
+(175, 595, 'PY', 'Paraguay'),
+(176, 51, 'PE', 'Peru'),
+(177, 63, 'PH', 'Philippines'),
+(178, 64, 'PN', 'Pitcairn'),
+(179, 48, 'PL', 'Poland'),
+(180, 351, 'PT', 'Portugal'),
+(181, 1787, 'PR', 'Puerto Rico'),
+(182, 974, 'QA', 'Qatar'),
+(183, 262, 'RE', 'Reunion'),
+(184, 40, 'RO', 'Romania'),
+(185, 70, 'RU', 'Russian Federation'),
+(186, 250, 'RW', 'Rwanda'),
+(187, 590, 'BL', 'Saint Barthelemy'),
+(188, 290, 'SH', 'Saint Helena'),
+(189, 1869, 'KN', 'Saint Kitts and Nevis'),
+(190, 1758, 'LC', 'Saint Lucia'),
+(191, 590, 'MF', 'Saint Martin'),
+(192, 508, 'PM', 'Saint Pierre and Miquelon'),
+(193, 1784, 'VC', 'Saint Vincent and the Grenadines'),
+(194, 684, 'WS', 'Samoa'),
+(195, 378, 'SM', 'San Marino'),
+(196, 239, 'ST', 'Sao Tome and Principe'),
+(197, 966, 'SA', 'Saudi Arabia'),
+(198, 221, 'SN', 'Senegal'),
+(199, 381, 'RS', 'Serbia'),
+(200, 381, 'CS', 'Serbia and Montenegro'),
+(201, 248, 'SC', 'Seychelles'),
+(202, 232, 'SL', 'Sierra Leone'),
+(203, 65, 'SG', 'Singapore'),
+(204, 1, 'SX', 'Sint Maarten'),
+(205, 421, 'SK', 'Slovakia'),
+(206, 386, 'SI', 'Slovenia'),
+(207, 677, 'SB', 'Solomon Islands'),
+(208, 252, 'SO', 'Somalia'),
+(209, 27, 'ZA', 'South Africa'),
+(210, 500, 'GS', 'South Georgia and the South Sandwich Islands'),
+(211, 211, 'SS', 'South Sudan'),
+(212, 34, 'ES', 'Spain'),
+(213, 94, 'LK', 'Sri Lanka'),
+(214, 249, 'SD', 'Sudan'),
+(215, 597, 'SR', 'Suriname'),
+(216, 47, 'SJ', 'Svalbard and Jan Mayen'),
+(217, 268, 'SZ', 'Swaziland'),
+(218, 46, 'SE', 'Sweden'),
+(219, 41, 'CH', 'Switzerland'),
+(220, 963, 'SY', 'Syrian Arab Republic'),
+(221, 886, 'TW', 'Taiwan, Province of China'),
+(222, 992, 'TJ', 'Tajikistan'),
+(223, 255, 'TZ', 'Tanzania, United Republic of'),
+(224, 66, 'TH', 'Thailand'),
+(225, 670, 'TL', 'Timor-Leste'),
+(226, 228, 'TG', 'Togo'),
+(227, 690, 'TK', 'Tokelau'),
+(228, 676, 'TO', 'Tonga'),
+(229, 1868, 'TT', 'Trinidad and Tobago'),
+(230, 216, 'TN', 'Tunisia'),
+(231, 90, 'TR', 'Turkey'),
+(232, 7370, 'TM', 'Turkmenistan'),
+(233, 1649, 'TC', 'Turks and Caicos Islands'),
+(234, 688, 'TV', 'Tuvalu'),
+(235, 256, 'UG', 'Uganda'),
+(236, 380, 'UA', 'Ukraine'),
+(237, 971, 'AE', 'United Arab Emirates'),
+(238, 44, 'GB', 'United Kingdom'),
+(239, 1, 'US', 'United States'),
+(240, 1, 'UM', 'United States Minor Outlying Islands'),
+(241, 598, 'UY', 'Uruguay'),
+(242, 998, 'UZ', 'Uzbekistan'),
+(243, 678, 'VU', 'Vanuatu'),
+(244, 58, 'VE', 'Venezuela'),
+(245, 84, 'VN', 'Viet Nam'),
+(246, 1284, 'VG', 'Virgin Islands, British'),
+(247, 1340, 'VI', 'Virgin Islands, U.s.'),
+(248, 681, 'WF', 'Wallis and Futuna'),
+(249, 212, 'EH', 'Western Sahara'),
+(250, 967, 'YE', 'Yemen'),
+(251, 260, 'ZM', 'Zambia'),
+(252, 263, 'ZW', 'Zimbabwe');
 
 -- --------------------------------------------------------
 
@@ -45,7 +337,8 @@ INSERT INTO `courses` (`id`, `course_name`) VALUES
 (8, 'Intermediate 2'),
 (9, 'Advanced 1'),
 (11, 'Advanced 2'),
-(12, 'IELTS Preparation');
+(12, 'IELTS Preparation'),
+(13, 'Kim Course');
 
 -- --------------------------------------------------------
 
@@ -64,7 +357,7 @@ CREATE TABLE `courses_and_instructors` (
 --
 
 INSERT INTO `courses_and_instructors` (`id`, `instructor`, `course`) VALUES
-(2, 12, 3);
+(3, 15, 3);
 
 -- --------------------------------------------------------
 
@@ -449,7 +742,7 @@ INSERT INTO `master_registration_list` (`id`, `student_id`, `student_name`, `reg
 (313, '210118-GA0325-16', 'Michka Riana Mbou Tembo', '18-Jan-21', 'Gabon', '19GA47006', '25-Mar-98', '083 727 5048', 'michkariana6@gmail.com', '', '', '', '22761', '', '', '', ''),
 (314, '201113-CD0925-60', 'Mika Kabeya Ntambwe', '13-Nov-20', 'Democratic Republic of Congo', 'OP0632140', '25-Sep-96', '065 635 5679', 'mikantambwe5@gmail.com', '', '', '', 'NO REG INVOICE', '', '', '', ''),
 (315, '210127-GA0911-81', 'Mirys Raissa Angue Minko', '27-Jan-21', 'Gabon', '19GA27246', '11-Sep-78', '072 645 4753', '', '', '', '', 'NO REG INVOICE', '', '', '', ''),
-(316, '201214-CI0920-78', 'Mohamammed Boubacar', '14-Dec-20', 'C?te d\'Ivoire', '17AL14376', '20-Sep-93', '078 861 0102', '', '', '', '', 'NO REG INVOICE', '', '', '', ''),
+(316, '201214-CI0920-78', 'Mohamammed Boubacar', '14-Dec-20', 'Democratic Republic of Congo', '17AL14376', '20-Sep-93', '078 861 0102', '', '', '', '', 'NO REG INVOICE', '', '', '', ''),
 (317, '210331-CD0427-32', 'Mohamed Charles Wa Banza Ntambwe', '31-Mar-21', 'Democratic Republic of Congo', 'OP0721014', '27-Apr-07', '083 964 6856', 'samandeos@gmail.com', '', '', '', '20210003', '', '', '', ''),
 (318, '201026-SO0503-99', 'Mohamed Zakariye', '26-Oct-20', 'Somalia', 'PTASOM000121117', '3-May-88', '061 873 2010', '', '', '', '', 'NO REG INVOICE', '', '', '', ''),
 (319, '201014-BF1231-36', 'Mohamed Zougmore', '14-Oct-20', 'Burkina Faso', 'A3100491', '31-Dec-91', '062 074 2614', '', '', '', '', 'NO REG INVOICE', '', '', '', ''),
@@ -547,7 +840,7 @@ INSERT INTO `master_registration_list` (`id`, `student_id`, `student_name`, `reg
 (411, '210323-CD0528-90', 'Tendresse Wa Masangu Mulini', '23-Mar-21', 'Democratic Republic of Congo', 'OPO735863', '28-May-89', '072 698 2697', 'nsengasconat@gmail.com', '', '', '', '27977', '', '', '', ''),
 (412, '210111-CD0602-38', 'Tharcisse Kongba Ndima', '11-Jan-21', 'Democratic Republic of Congo', 'OP0721998', '2-Jun-02', '074 502 2407', 'ndimatnk10@gmail.com', '', '', '', 'NO REG INVOICE', '', '', '', ''),
 (413, '210610-CD1016-52', 'Tharcisse Mukendi Mpoyi', '10-Jun-21', 'Democratic Republic of Congo', 'OP0742683', '16-Oct-00', '081 536 5339', 'kerensamba11@gmail.com', '', '', '', '20210806', '', '', '', ''),
-(414, '210422-CI0404-35', 'Thecle Amandine Adjoua N Guessan', '22-Apr-21', 'C?te d\'Ivoire', '19AA87002', '4-Apr-95', '061 589 2769', 'yominr@aol.com', '', '', '', '20210184', '', '', '', ''),
+(414, '210422-CI0404-35', 'Thecle Amandine Adjoua N Guessan', '22-Apr-21', 'Democratic Republic of Congo', '19AA87002', '4-Apr-95', '061 589 2769', 'yominr@aol.com', '', '', '', '20210184', '', '', '', ''),
 (415, '201211-GA0306-97', 'Theresa Flora Ondounda Ngouoni', '11-Dec-20', 'Gabon', '19GA26213', '6-Mar-98', '064 381 0506', 'ngouonitheresaflora@gmail.com', '', '', '', 'NO REG INVOICE', '', '', '', ''),
 (416, '210105-CD0812-18', 'Thesy Banshima Mulumba', '5-Jan-21', 'Democratic Republic of Congo', 'OP0718074', '12-Aug-96', '078 861 0102', '', '', '', '', 'NO REG INVOICE', '', '', '', ''),
 (417, '210406-CD0226-88', 'Thomas Mbabu Manzenge', '6-Apr-21', 'Democratic Republic of Congo', 'OP0567816', '26-Feb-72', '082 310 1946', 'mbabuthomas052@gmail.com', '', '', '', '20210015', '', '', '', ''),
@@ -558,7 +851,7 @@ INSERT INTO `master_registration_list` (`id`, `student_id`, `student_name`, `reg
 (422, '210414-CD0804-44', 'Vanessa Bola Ikwa', '14-Apr-21', 'Democratic Republic of Congo', 'OP0306508', '4-Aug-92', '078 838 2602', 'ikwabolavanessa92@gmail.com', '', '', '', '20210149', '', '', '', ''),
 (423, '210611-GA0403-98', 'Vanessa Isabelle Bayonne Anzie', '11-Jun-21', 'Gabon', '17GA02874', '3-Apr-87', '060 462 6724', 'inivajessy@gmail.com', '', '', '', '20210814', '', '', '', ''),
 (424, '210303-CD0625-04', 'Vanessa Mwanza Mubenga', '3-Mar-21', 'Democratic Republic of Congo', 'OP0566905', '25-Jun-92', '078 074 9574', 'patientkabinda@gmail.com', '', '', '', '27998', '', '', '', ''),
-(425, '210319-CI0707-46', 'Vangah Eunice Mahounan Sawegnon', '19-Mar-21', 'C?te d\'Ivoire', '20AD34094', '7-Jul-03', '060 494 8357', 'eunicesawegnon9@gmail.com', '', '', '', '27972', '', '', '', ''),
+(425, '210319-CI0707-46', 'Vangah Eunice Mahounan Sawegnon', '19-Mar-21', 'Democratic Republic of Congo', '20AD34094', '7-Jul-03', '060 494 8357', 'eunicesawegnon9@gmail.com', '', '', '', '27972', '', '', '', ''),
 (426, '210604-UA0920-97', 'Viktor Fursov', '4-Jun-21', 'Ukraine', 'FE660152', '20-Sep-61', '069 128 8044', 'kirilenkoviktor5@gmail.com', '', '', '', 'NO REG INVOICE', '', '', '', ''),
 (427, '201130-CD0614-88', 'Vital Lumpungu Kabwika', '30-Nov-20', 'Democratic Republic of Congo', 'OP0490214', '14-Jun-01', '078 241 1048', 'vitalkabwika14@gmail.com', '', '', '', 'NO REG INVOICE', '', '', '', ''),
 (428, '210428-CD0322-03', 'Vivianne Iva Samba', '28-Apr-21', 'Democratic Republic of Congo', 'OP0714458', '22-Mar-78', '068 534 1085', 'vivianeiva@gmail.com', '', '', '', 'NO REG INVOICE', '', '', '', ''),
@@ -583,8 +876,9 @@ INSERT INTO `master_registration_list` (`id`, `student_id`, `student_name`, `reg
 (447, '210412-CD1120-21', 'Zachee Kanyeba Mabuisha', '12-Apr-21', 'Democratic Republic of Congo', 'OP0512251', '20-Nov-93', '067 872 6806', 'zacheemabuisha@yahoo.com', '', '', '', '20210127', '', '', '', ''),
 (448, NULL, '3232232', 'kashifkhan@loketa.com', 'Pakistan', '4', '5', '3232232', NULL, NULL, NULL, NULL, NULL, '3232232', 'KJASDFJAKSLDF ASJDKF', '10', '11'),
 (449, NULL, '3232232', 'kashifkhan@loketa.com', 'Pakistan', '4', '5', '3232232', NULL, NULL, NULL, NULL, NULL, '3232232', 'KJASDFJAKSLDF ASJDKF', '10', '11'),
-(450, NULL, '2', '1', '3', '4', '5', '6', NULL, NULL, NULL, NULL, NULL, '8', '9', '10', '11'),
-(451, '232-sdfsfddadf-2233', 'name', '20-11-2012', 'pak', 'passport#43443', '22-11-4444', '041155839484', NULL, NULL, NULL, NULL, NULL, '0320424242', 'no', 'fb', 'ins');
+(450, NULL, '2', '1', 'Pakistan', '4', '5', '6', NULL, NULL, NULL, NULL, NULL, '8', '9', '10', '11'),
+(451, '232-sdfsfddadf-2233', 'name', '20-11-2012', 'Pakistan', 'passport#43443', '22-11-4444', '041155839484', NULL, NULL, NULL, NULL, NULL, '0320424242', 'no', 'fb', 'ins'),
+(452, '23444343434', 'Kashif ALi', '24-Mar-2021', 'Pakistan', '2343434343', '15-5-1652', '3232232', NULL, NULL, NULL, NULL, NULL, '3232232', 'asdf fd sad fsd', 'fffff', 'iiiiii');
 
 -- --------------------------------------------------------
 
@@ -1451,6 +1745,18 @@ INSERT INTO `students_details` (`id`, `date`, `name`, `invoice`, `country`, `dob
 --
 
 --
+-- Indexes for table `admin_users`
+--
+ALTER TABLE `admin_users`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `countries`
+--
+ALTER TABLE `countries`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `courses`
 --
 ALTER TABLE `courses`
@@ -1491,16 +1797,28 @@ ALTER TABLE `students_details`
 --
 
 --
+-- AUTO_INCREMENT for table `admin_users`
+--
+ALTER TABLE `admin_users`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT for table `countries`
+--
+ALTER TABLE `countries`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=253;
+
+--
 -- AUTO_INCREMENT for table `courses`
 --
 ALTER TABLE `courses`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `courses_and_instructors`
 --
 ALTER TABLE `courses_and_instructors`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `instructors`
@@ -1512,7 +1830,7 @@ ALTER TABLE `instructors`
 -- AUTO_INCREMENT for table `master_registration_list`
 --
 ALTER TABLE `master_registration_list`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=452;
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=453;
 
 --
 -- AUTO_INCREMENT for table `master_student_invoice_list`
