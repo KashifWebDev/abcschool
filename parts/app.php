@@ -2,6 +2,7 @@
 
 session_start();
 require 'db.php';
+checkIfUserLoggedIn();
 
 //error_reporting(0);
 
@@ -66,11 +67,13 @@ require 'db.php';
     }
 
     function getloggedInUserId(){
-	    session_start();
 	    return isset($_SESSION["id"]) ? $_SESSION["id"] : null;
     }
 
-    function currentPath(){
-	    return __DIR__;
+    function checkIfUserLoggedIn(){
+        $uid = getloggedInUserId();
+        if(!$uid){
+            js_redirect("./");
+        }
     }
 ?>

@@ -1,5 +1,5 @@
 <?php
-require 'parts/app.php';
+require 'parts/db.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -25,26 +25,56 @@ require 'parts/head.php';
 <!--                            <div class="col-lg-6 d-none d-lg-block bg-login-image bg_logo"></div>-->
                             <div class="col-lg-10 mx-auto">
                                 <div class="p-5">
+                                    <?php
+                                    if(isset($_GET["err"])){
+                                        ?>
+                                        <div class="card mb-4 py-3 border-bottom-danger">
+                                            <div class="card-body text-danger">
+                                                <strong>Error! </strong> Invalid Credentials!
+                                            </div>
+                                        </div>
+                                    <?php
+                                    }
+                                    ?>
                                     <div class="text-center">
                                         <h1 class="h4 text-gray-900 mb-4">Welcome Back!</h1>
                                     </div>
-                                    <form class="user">
+                                    <form class="user" method="post" action="">
                                         <div class="form-group">
-                                            <input type="email" class="form-control form-control-user"
-                                                id="exampleInputEmail" aria-describedby="emailHelp"
-                                                placeholder="Enter Email Address...">
+                                            <input type="email" class="form-control form-control-user" name="email" placeholder="Enter Email Address..." required>
                                         </div>
                                         <div class="form-group">
-                                            <input type="password" class="form-control form-control-user"
-                                                id="exampleInputPassword" placeholder="Password">
+                                            <input type="password" name="pswd" class="form-control form-control-user" placeholder="Password" required>
                                         </div>
-                                        <a href="admin_dashboard.php" class="btn btn-primary btn-user btn-block">
-                                            Login
-                                        </a>
+                                        <button type="submit" class="btn btn-primary btn-user btn-block" name="login">
+                                            <i class="fas fa-sign-in-alt"></i> Login
+                                        </button>
                                     </form>
+                                    <?php
+                                    if(isset($_POST["login"])){
+                                        $email = $_POST["email"];
+                                        $pswd = $_POST["pswd"];
+
+                                        $sql = "SELECT * FROM admin_users WHERE email='$email' AND pass='$pswd'";
+                                        $r = mysqli_query($con, $sql);
+                                        if(mysqli_num_rows($r)){
+                                            $row = mysqli_fetch_array($r);
+                                            session_start();
+                                            $_SESSION["id"] = $row["id"];
+                                            echo "
+                                                <script>window.location.replace('admin_dashboard.php');</script>
+                                            ";
+                                        }else{
+                                            echo "
+                                                <script>window.location.replace('index.php?err=1');</script>
+                                            ";
+                                        }
+
+                                    }
+                                    ?>
                                     <hr>
                                     <div class="text-center">
-                                        <a class="small" href="register.html">Create an Account!</a>
+<!--                                        <a class="small" href="register.html">Create an Account!</a>-->
                                     </div>
                                 </div>
                             </div>

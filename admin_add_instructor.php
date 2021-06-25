@@ -52,15 +52,15 @@ require 'parts/head.php';
                                     </div>
                                     <div class="form-group">
                                         <label for="email">Instructor ID:</label>
-                                        <input type="text" name="instructor_id" class="form-control" placeholder="Registration Date" id="email">
+                                        <input type="text" name="instructor_id" class="form-control" placeholder="Registration Date" id="email" value="<?php echo random_int(100000, 999999); ?>" readonly>
                                     </div>
                                     <div class="form-group">
                                         <label for="pwd">Name:</label>
-                                        <input type="text" name="name" class="form-control" placeholder="201203-CD0616-30" id="pwd">
+                                        <input type="text" name="name" class="form-control" placeholder="Name" id="pwd">
                                     </div>
                                     <div class="form-group">
                                         <label for="pwd">Email:</label>
-                                        <input type="text" name="email" class="form-control" placeholder="Student Name" id="pwd">
+                                        <input type="text" name="email" class="form-control" placeholder="Email" id="pwd">
                                     </div>
                                     <div class="form-group">
                                         <label for="pwd">Phone Number</label>
@@ -116,25 +116,6 @@ require 'parts/head.php';
     <i class="fas fa-angle-up"></i>
 </a>
 
-<!-- Logout Modal-->
-<div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-     aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
-                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">×</span>
-                </button>
-            </div>
-            <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
-            <div class="modal-footer">
-                <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                <a class="btn btn-primary" href="login.html">Logout</a>
-            </div>
-        </div>
-    </div>
-</div>
 
 <!-- Bootstrap core JavaScript-->
 <script src="vendor/jquery/jquery.min.js"></script>

@@ -57,6 +57,10 @@
             <i class="fas fa-fw fa-address-book"></i>
             <span>Linked Courses</span>
         </a>
+        <a class="nav-link collapsed" href="admin_users.php">
+            <i class="fas fa-fw fa-address-book"></i>
+            <span>Admin Users</span>
+        </a>
     </li>
 
     <!-- Divider -->
