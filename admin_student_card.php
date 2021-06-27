@@ -114,7 +114,7 @@ require 'parts/head.php';
                                                         </span>
                                                         <span class="text">Student Permit</span>
                                                     </a>
-                                                    <a href="admin_student_card.php?id=<?php echo $row["id"]; ?>&mail=sent" target="_blank" class="btn btn-success btn-icon-split">
+                                                    <a href="admin_student_card.php?id=<?php echo $row["id"]; ?>&mail=sent" class="btn btn-success btn-icon-split">
                                                         <span class="icon text-white-50">
                                                             <i class="fas fa-at"></i>
                                                         </span>
