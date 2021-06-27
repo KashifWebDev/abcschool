@@ -1,6 +1,7 @@
 <?php
-//$con = mysqli_connect("localhost","root","kashif@123","project_member");
-$con = mysqli_connect("localhost","root","","project_abcschool");
+
+//$con = mysqli_connect("localhost","root","","project_abcschool");
+$con = mysqli_connect("localhost","abcintez_abcuser","fa213243z","abcintez_school");
 
 // Check connection
 if (mysqli_connect_errno()) {
