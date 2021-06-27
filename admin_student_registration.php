@@ -44,7 +44,7 @@ require 'parts/head.php';
                         </div>
                         <div class="card-body">
                             <form action="" method="POST">
-                                <input type="hidden" name="student_id" value="<?php echo random_int(10000000, 99999999); ?>">
+                                <input type="hidden" name="student_id" value="<?php echo rand(10000000, 99999999); ?>">
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group">
