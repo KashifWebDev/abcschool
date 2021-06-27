@@ -1,36 +1,11 @@
 <?php
 require 'parts/app.php';
-if(isset($_GET["mail"])){
-    $id = $_GET["id"];
-    $path = $GLOBALS["appAddress"]."permit.php?id=$id";
-
-    $sql = "SELECT * FROM master_registration_list WHERE id = '$id'";
-    $res = mysqli_query($con, $sql);
-    $row = mysqli_fetch_array($res);
-
-    $to = $row["email"];
-    $subject = "Student Permit Letter";
-    $txt = "Please <a href='$path'>CLICK HERE</a> to get your permit letter.";
-
-    $headers  = 'MIME-Version: 1.0' . "\r\n";
-    $headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
-    $headers .= 'X-Mailer: PHP/' . phpversion();
-
-
-
-    if(mail($to,$subject,$txt,$headers)){
-        js_redirect("admin_student_card.php?mailSent=1");
-    }else{
-        echo "============= MAIL WAS NOT SENT =============";
-        exit(); die();
-    }
-}
 ?>
 <!DOCTYPE html>
 <html lang="en">
 
 <?php
-$title = "Student Card";
+$title = "Edit Student";
 require 'parts/head.php';
 ?>
 
@@ -50,41 +25,37 @@ require 'parts/head.php';
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
 
-                    <?php
-                    if(isset($_GET["mailSent"])){
-                    ?>
-                    <div class="card mb-4 py-3 border-left-success">
-                        <div class="card-body text-success">
-                            <strong>Success! </strong> Mail was sent to the registered E-mail address!
-                        </div>
-                    </div>
-                    <?php } ?>
-
                     <!-- Page Heading -->
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">Student Cards Management</h6>
+                            <h6 class="m-0 font-weight-bold text-primary">Registered Students Record</h6>
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
                                     <tr>
-                                        <th>#</th>
                                         <th>Student ID</th>
                                         <th>Name</th>
+                                        <th>Country</th>
+                                        <th>Flag</th>
                                         <th>Passport #</th>
+                                        <th>Invoice #</th>
                                         <th>DOB</th>
+                                        <th>Email</th>
                                         <th>Action</th>
                                     </tr>
                                     </thead>
                                     <tfoot>
                                     <tr>
-                                        <th>#</th>
                                         <th>Student ID</th>
                                         <th>Name</th>
+                                        <th>Country</th>
+                                        <th>Flag</th>
                                         <th>Passport #</th>
+                                        <th>Invoice #</th>
                                         <th>DOB</th>
+                                        <th>Email</th>
                                         <th>Action</th>
                                     </tr>
                                     </tfoot>
@@ -94,31 +65,36 @@ require 'parts/head.php';
                                     $res = mysqli_query($con, $sql);
                                     if(mysqli_num_rows($res)){
                                         while($row = mysqli_fetch_array($res)){
+                                            $cntry_flag = null;
+                                            $cntry = $row["country"];
+                                            if($cntry == "Democratic Republic of Congo") $cntry_flag = '<img style="height: 35px;" src="img/flag_drc.png">';
+                                            if($cntry == "Republic of Congo") $cntry_flag = '<img style="height: 35px;" src="img/flag_rcf.png">';
+                                            if($cntry == "Libya") $cntry_flag = '<img style="height: 35px; width: 48px;" src="img/flag_libya.png">';
+                                            $s1 = "SELECT * FROM countries WHERE country_name='$cntry'";
+                                            $se = mysqli_query($con, $s1);
+                                            if(mysqli_num_rows($se)){
+                                                $cn = mysqli_fetch_array($se);
+                                                $f = $cn["country_code"];
+                                                $cntry_flag = '<img src="https://www.countryflags.io/'.$f.'/shiny/48.png">';
+                                            }else{
+//                                                echo $s1;
+                                            }
                                             ?>
                                             <tr>
-                                                <td><?php echo $row["id"]; ?></td>
                                                 <td><?php echo $row["student_id"]; ?></td>
                                                 <td><?php echo $row["student_name"]; ?></td>
+                                                <td><?php echo $row["country"]; ?></td>
+                                                <td><?php echo isset($cntry_flag) ? $cntry_flag : '--'; ?></td>
                                                 <td><?php echo $row["passport_no"]; ?></td>
+                                                <td><?php echo $row["registration_invoice_no"]; ?></td>
                                                 <td><?php echo $row["dob"]; ?></td>
+                                                <td><?php echo $row["email"]; ?></td>
                                                 <td>
-                                                    <a href="admin_show_card.php?id=<?php echo $row["id"]; ?>" class="btn btn-primary btn-icon-split">
+                                                    <a href="admin_edit_student_page.php?id=<?php echo $row["id"]; ?>" class="btn btn-info btn-icon-split">
                                                         <span class="icon text-white-50">
-                                                            <i class="fas fa-id-card"></i>
+                                                            <i class="fas fa-edit"></i>
                                                         </span>
-                                                        <span class="text">Prepare Card</span>
-                                                    </a>
-                                                    <a href="permit.php?id=<?php echo $row["id"]; ?>" target="_blank" class="btn btn-info btn-icon-split">
-                                                        <span class="icon text-white-50">
-                                                            <i class="fas fa-mail-bulk"></i>
-                                                        </span>
-                                                        <span class="text">Student Permit</span>
-                                                    </a>
-                                                    <a href="admin_student_card.php?id=<?php echo $row["id"]; ?>&mail=sent" target="_blank" class="btn btn-success btn-icon-split">
-                                                        <span class="icon text-white-50">
-                                                            <i class="fas fa-at"></i>
-                                                        </span>
-                                                        <span class="text">Email</span>
+                                                        <span class="text">Edit</span>
                                                     </a>
                                                 </td>
                                             </tr>
@@ -148,6 +124,7 @@ require 'parts/head.php';
     <a class="scroll-to-top rounded" href="#page-top">
         <i class="fas fa-angle-up"></i>
     </a>
+
 
     <!-- Bootstrap core JavaScript-->
     <script src="vendor/jquery/jquery.min.js"></script>

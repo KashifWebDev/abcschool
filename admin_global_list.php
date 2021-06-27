@@ -83,6 +83,7 @@ require 'parts/head.php';
                                             }else{
 //                                                echo $s1;
                                             }
+                                            if(!empty($row["registration_invoice_no"]) ||  $row["registration_invoice_no"]!=null){
                                             ?>
                                             <tr>
                                                 <td><?php echo $row["student_id"]; ?></td>
@@ -98,6 +99,7 @@ require 'parts/head.php';
                                                 <td><?php echo $row["insta"]; ?></td>
                                             </tr>
                                     <?php
+                                            }
                                         }
                                     }
                                     ?>

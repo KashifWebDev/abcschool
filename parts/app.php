@@ -4,6 +4,8 @@ session_start();
 require 'db.php';
 checkIfUserLoggedIn();
 
+$GLOBALS["appAddress"] = "http://localhost/abcschool/";
+
 //error_reporting(0);
 
 	function js_alert($msg){
