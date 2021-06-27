@@ -79,7 +79,7 @@ require 'parts/head.php';
                                         </div>
                                         <div class="form-group">
                                             <label for="email">Email</label>
-                                            <input type="text" class="form-control" placeholder="Email" id="email">
+                                            <input type="text" class="form-control" name="email" placeholder="Email" id="email">
                                         </div>
                                         <div class="form-group">
                                             <label for="pwd">Guardian Contact Number:</label>
@@ -124,9 +124,10 @@ require 'parts/head.php';
                         $SA_address = $_POST["SA_address"];
                         $fb = $_POST["fb"];
                         $insta = $_POST["insta"];
+                        $email = $_POST["email"];
 
-                        $sql = "INSERT INTO master_registration_list (student_id, registration_invoice_no, registration_date, student_name, country, passport_no, dob, phone_no, guardian_contact, address_S_A, facebook, insta) VALUES 
-                                ('$student_id', '$invoice_num', '$registration_date', '$name', '$country', '$passport', '$dob', '$phone_num', '$gardian_contact', '$SA_address', '$fb', '$insta')";
+                        $sql = "INSERT INTO master_registration_list (email, student_id, registration_invoice_no, registration_date, student_name, country, passport_no, dob, phone_no, guardian_contact, address_S_A, facebook, insta) VALUES 
+                                ('$email', '$student_id', '$invoice_num', '$registration_date', '$name', '$country', '$passport', '$dob', '$phone_num', '$gardian_contact', '$SA_address', '$fb', '$insta')";
 
                         if(phpRunSingleQuery($sql)){
                             js_redirect("admin_student_registration.php?success=1");
