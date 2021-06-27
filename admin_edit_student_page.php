@@ -83,7 +83,7 @@ require 'parts/head.php';
                                         </div>
                                         <div class="form-group">
                                             <label for="email">Email</label>
-                                            <input type="text" class="form-control" placeholder="Email" id="email" value="<?php echo $row["email"]; ?>">
+                                            <input type="text" name="email" class="form-control" placeholder="Email" id="email" value="<?php echo $row["email"]; ?>">
                                         </div>
                                         <div class="form-group">
                                             <label for="pwd">Guardian Contact Number:</label>
@@ -127,9 +127,10 @@ require 'parts/head.php';
                         $SA_address = $_POST["SA_address"];
                         $fb = $_POST["fb"];
                         $insta = $_POST["insta"];
+                        $email = $_POST["email"];
 
 
-                        $sql = "UPDATE master_registration_list SET registration_date='$registration_date', registration_invoice_no='$invoice_num', student_name='$name', country='$country', passport_no='$passport',
+                        $sql = "UPDATE master_registration_list SET email='$email', registration_date='$registration_date', registration_invoice_no='$invoice_num', student_name='$name', country='$country', passport_no='$passport',
                                 dob='$dob', phone_no='$phone_num', guardian_contact='$gardian_contact', address_S_A='$SA_address', facebook='$fb', insta='$insta' WHERE id=$id";
 
                         if(phpRunSingleQuery($sql)){
