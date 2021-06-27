@@ -113,6 +113,7 @@ require 'parts/head.php';
                     if(isset($_POST["add_student"])){
                         require 'parts/db.php';
                         $registration_date = $_POST["registration_date"];
+                        $student_id = $_POST["student_id"];
                         $name = $_POST["name"];
                         $invoice_num = $_POST["invoice"];
                         $country = $_POST["country"];
@@ -124,8 +125,8 @@ require 'parts/head.php';
                         $fb = $_POST["fb"];
                         $insta = $_POST["insta"];
 
-                        $sql = "INSERT INTO master_registration_list (registration_invoice_no, registration_date, student_name, country, passport_no, dob, phone_no, guardian_contact, address_S_A, facebook, insta) VALUES 
-                                ('$invoice_num', '$registration_date', '$name', '$country', '$passport', '$dob', '$phone_num', '$gardian_contact', '$SA_address', '$fb', '$insta')";
+                        $sql = "INSERT INTO master_registration_list (student_id, registration_invoice_no, registration_date, student_name, country, passport_no, dob, phone_no, guardian_contact, address_S_A, facebook, insta) VALUES 
+                                ('$student_id', '$invoice_num', '$registration_date', '$name', '$country', '$passport', '$dob', '$phone_num', '$gardian_contact', '$SA_address', '$fb', '$insta')";
 
                         if(phpRunSingleQuery($sql)){
                             js_redirect("admin_student_registration.php?success=1");
