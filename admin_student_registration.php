@@ -53,7 +53,7 @@ require 'parts/head.php';
                                         </div>
                                         <div class="form-group">
                                             <label for="pwd">Invoice Number:</label>
-                                            <input type="text" name="invoice" class="form-control" value="NO REG INVOICE">
+                                            <input type="text" name="invoice" class="form-control" value="">
                                         </div>
                                         <div class="form-group">
                                             <label for="pwd">Student Name:</label>
