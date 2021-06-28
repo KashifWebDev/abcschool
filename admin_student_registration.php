@@ -276,7 +276,7 @@ https://github.com/silviomoreto/bootstrap-select/issues/1135
 
 <!--Country dropdown-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.4/js/bootstrap-select.min.js"></script>
-    <script src="js/countrypicker.js"></script>
+    <script src="js/countrypicker.js?v=<?php echo rand(); ?>"></script>
 </body>
 
 </html>
