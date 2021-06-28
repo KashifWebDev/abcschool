@@ -45,7 +45,7 @@ require 'parts/head.php';
                                 </div>
                                 <div class="row no-gutters">
                                     <div class="col-md-5">
-                                        <img src="img/user.jpg" alt="" class="w-100">
+                                        <img src="img/students/<?php echo $row["pic"]; ?>" alt="" class="w-100" style="height: 200px;">
                                     </div>
                                     <div class="col-md-7 text-dark d-flex flex-column justify-content-center align-items-center">
                                         <h3 class="font-weight-bold" style="text-align: center;"><?php echo $row["student_name"]; ?></h3>

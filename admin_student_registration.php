@@ -9,6 +9,66 @@ $title = "Student Registration";
 require 'parts/head.php';
 ?>
 
+<link rel="stylesheet" href="css/bootstrap-select.min.css">
+<!--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.7/readable/bootstrap.min.css">-->
+
+<style>
+    /*
+Make bootstrap-select work with bootstrap 4 see:
+https://github.com/silviomoreto/bootstrap-select/issues/1135
+*/
+    .dropdown-toggle.btn-default {
+        color: #292b2c;
+        background-color: #fff;
+        border-color: #ccc;
+    }
+    .bootstrap-select.show > .dropdown-menu > .dropdown-menu {
+        display: block;
+    }
+    .bootstrap-select > .dropdown-menu > .dropdown-menu li.hidden {
+        display: none;
+    }
+    .bootstrap-select > .dropdown-menu > .dropdown-menu li a {
+        display: block;
+        width: 100%;
+        padding: 3px 1.5rem;
+        clear: both;
+        font-weight: 400;
+        color: #292b2c;
+        text-align: inherit;
+        white-space: nowrap;
+        background: 0 0;
+        border: 0;
+        text-decoration: none;
+    }
+    .bootstrap-select > .dropdown-menu > .dropdown-menu li a:hover {
+        background-color: #f4f4f4;
+    }
+    .bootstrap-select > .dropdown-toggle {
+        width: 100%;
+    }
+    .dropdown-menu > li.active > a {
+        color: #fff !important;
+        background-color: #337ab7 !important;
+    }
+    .bootstrap-select .check-mark {
+        line-height: 14px;
+    }
+    .bootstrap-select .check-mark::after {
+        font-family: "FontAwesome";
+        content: "\f00c";
+    }
+    .bootstrap-select button {
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    /* Make filled out selects be the same size as empty selects */
+    .bootstrap-select.btn-group .dropdown-toggle .filter-option {
+        display: inline !important;
+    }
+</style>
+
 <body id="page-top">
     <!-- Page Wrapper -->
     <div id="wrapper">
@@ -43,7 +103,7 @@ require 'parts/head.php';
                             <h6 class="m-0 font-weight-bold text-primary">Student Registration</h6>
                         </div>
                         <div class="card-body">
-                            <form action="" method="POST">
+                            <form action="" method="POST"  enctype="multipart/form-data">
                                 <input type="hidden" name="student_id" value="<?php echo rand(10000000, 99999999); ?>">
                                 <div class="row">
                                     <div class="col-md-6">
@@ -53,7 +113,7 @@ require 'parts/head.php';
                                         </div>
                                         <div class="form-group">
                                             <label for="pwd">Invoice Number:</label>
-                                            <input type="text" name="invoice" class="form-control" value="">
+                                            <input type="text" name="invoice" class="form-control" value="" required>
                                         </div>
                                         <div class="form-group">
                                             <label for="pwd">Student Name:</label>
@@ -73,9 +133,14 @@ require 'parts/head.php';
                                         </div>
                                     </div>
                                     <div class="col-md-6">
+<!--                                        <div class="form-group">-->
+<!--                                            <label for="pwd">Country:</label>-->
+<!--                                            <input type="text" name="country" class="form-control" placeholder="Country" id="pwd">-->
+<!--                                        </div>-->
                                         <div class="form-group">
-                                            <label for="pwd">Country:</label>
-                                            <input type="text" name="country" class="form-control" placeholder="Country" id="pwd">
+                                            <label for="exampleFormControlSelect1" class="mr-3">Select Country</label>
+                                            <select name="country" class="selectpicker countrypicker form-control" data-live-search="true" data-default="United States" data-flag="true"></select>
+<!--                                            <select class="selectpicker countrypicker form-control" data-live-search="true"></select>-->
                                         </div>
                                         <div class="form-group">
                                             <label for="email">Email</label>
@@ -100,6 +165,19 @@ require 'parts/head.php';
                                     </div>
                                 </div>
                                 <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="input-group mb-3">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text">Upload Student Picture</span>
+                                            </div>
+                                            <div class="custom-file">
+                                                <input class="custom-file-input" id="inputGroupFile01" type="file" accept="image/*" name="image">
+                                                <label class="custom-file-label" for="inputGroupFile01">Select file</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
                                     <div class="col-md-10 mx-auto">
                                         <button class="btn btn-primary bg-appColor w-100" type="submit" name="add_student">
                                             <span class="fas fa-save"></span> Register
@@ -111,6 +189,7 @@ require 'parts/head.php';
                     </div>
                     <?php
                     if(isset($_POST["add_student"])){
+//                        print_r($_POST); exit(); die();
                         require 'parts/db.php';
                         $registration_date = $_POST["registration_date"];
                         $student_id = $_POST["student_id"];
@@ -125,9 +204,36 @@ require 'parts/head.php';
                         $fb = $_POST["fb"];
                         $insta = $_POST["insta"];
                         $email = $_POST["email"];
+                        $pic = "";
 
-                        $sql = "INSERT INTO master_registration_list (email, student_id, registration_invoice_no, registration_date, student_name, country, passport_no, dob, phone_no, guardian_contact, address_S_A, facebook, insta) VALUES 
-                                ('$email', '$student_id', '$invoice_num', '$registration_date', '$name', '$country', '$passport', '$dob', '$phone_num', '$gardian_contact', '$SA_address', '$fb', '$insta')";
+                        $valid_extensions = array('jpeg', 'jpg', 'png', 'gif', 'bmp' , 'pdf' , 'doc' , 'ppt'); // valid extensions
+                        $path = 'img/students/'; // upload directory
+
+                            $img = $_FILES['image']['name'];
+                            $tmp = $_FILES['image']['tmp_name'];
+// get uploaded file's extension
+                            $ext = strtolower(pathinfo($img, PATHINFO_EXTENSION));
+// can upload same image using rand function
+                            $final_image = rand(1000,1000000).$img;
+// check's valid format
+                            if(in_array($ext, $valid_extensions))
+                            {
+                                $path = $path.strtolower($final_image);
+                                if(move_uploaded_file($tmp,$path))
+                                {
+                                   $pic = $final_image;
+                                }
+                            }
+                            else
+                            {
+                                echo 'invalid'; exit(); die();
+                            }
+
+                        $sql = "INSERT INTO master_registration_list (email, student_id, registration_invoice_no, registration_date, student_name,
+                                      country, passport_no, dob, phone_no, guardian_contact, address_S_A, facebook, insta, pic) VALUES 
+                                ('$email', '$student_id', '$invoice_num', '$registration_date', '$name', '$country', '$passport',
+                                 '$dob', '$phone_num', '$gardian_contact', '$SA_address', '$fb', '$insta', '$pic')";
+
 
                         if(phpRunSingleQuery($sql)){
                             js_redirect("admin_student_registration.php?success=1");
@@ -156,6 +262,8 @@ require 'parts/head.php';
     </a>
 
 
+
+
     <!-- Bootstrap core JavaScript-->
     <script src="vendor/jquery/jquery.min.js"></script>
     <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -166,6 +274,9 @@ require 'parts/head.php';
     <!-- Custom scripts for all pages-->
     <script src="js/sb-admin-2.min.js"></script>
 
+<!--Country dropdown-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.4/js/bootstrap-select.min.js"></script>
+    <script src="js/countrypicker.js"></script>
 </body>
 
 </html>
