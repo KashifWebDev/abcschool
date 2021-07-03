@@ -45,7 +45,7 @@
                 </a>
                 <a class="collapse-item" href="admin_student_card.php">
                     <i class="fas fa-fw fa-id-card"></i>
-                    <span>Student Card & Permit</span>
+                    <span>Student Management</span>
                 </a>
             </div>
         </div>
@@ -92,7 +92,7 @@
                 </a>
                 <a class="collapse-item" href="admin_linked_courses.php">
                     <i class="fas fa-fw fa-address-book"></i>
-                    <span>Linked Courses</span>
+                    <span>Monthly Roster</span>
                 </a>
             </div>
         </div>

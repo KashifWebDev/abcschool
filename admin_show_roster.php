@@ -1,11 +1,24 @@
 <?php
 require 'parts/app.php';
+
+$id = $_GET["id"];
+$s = "SELECT * FROM roster WHERE id=$id";
+$res = mysqli_query($con, $s);
+$row = $mainRow = mysqli_fetch_array($res);
+$courseID = $mainRow["course_id"];
+$month = $row["month"];
+
+$s = "SELECT * FROM courses WHERE id=$courseID";
+$res = mysqli_query($con, $s);
+$courseRow = mysqli_fetch_array($res);
+
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
 
 <?php
-$title = "Linked Courses";
+$title = "Roster - $month";
 require 'parts/head.php';
 ?>
 
@@ -36,86 +49,60 @@ require 'parts/head.php';
                     }
                     ?>
 
+                    <div class="container-fluid">
+                        <div class="card mb-4 py-3 border-left-primary">
+                            <div class="card-body p-0">
+                                <div class="d-flex justify-content-center text-primary" style="font-size: xx-large">
+                                    <?php echo $mainRow["month"]; ?> - <?php echo $courseRow["course_name"]; ?>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                     <!-- Page Heading -->
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">Linked Courses</h6>
+                            <h6 class="m-0 font-weight-bold text-primary">Roster</h6>
                         </div>
                         <div class="card-body">
+
 
                             <div class="table-responsive">
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
                                     <tr>
-                                        <th>#</th>
-                                        <th>Course Name</th>
-                                        <th>Instructor Name</th>
-                                        <th>Month</th>
-                                        <th>Actions</th>
+                                        <th>Student ID</th>
+                                        <th>Student Name</th>
                                     </tr>
                                     </thead>
                                     <tfoot>
                                     <tr>
-                                        <th>#</th>
-                                        <th>Course Name</th>
                                         <th>Student ID</th>
                                         <th>Student Name</th>
-                                        <th>Month</th>
-                                        <th>Actions</th>
                                     </tr>
                                     </tfoot>
                                     <tbody>
                                     <?php
-                                    $sql = "SELECT * FROM roster";
+                                    $sql = "SELECT * FROM roster WHERE month='$month'";
                                     $res = mysqli_query($con, $sql);
                                     if(mysqli_num_rows($res)){
                                         while($row = mysqli_fetch_array($res)){
-                                            $cID = $row["course_id"];
-                                            $iID = $row["student_id"];
                                             $mnth = $row["month"];
-                                            $linkID = $row["id"];
-                                            $s = "SELECT * FROM courses WHERE id=$cID";
+                                            $student = $row["student_id"];
+                                            $s = "SELECT student_id, student_name FROM master_registration_list WHERE id=$student";
                                             $r = mysqli_query($con, $s);
                                             $ro = mysqli_fetch_array($r);
-                                            $course_name = $ro["course_name"];
-                                            $s = "SELECT student_id, student_name FROM master_registration_list WHERE id=$iID";
-                                            $r = mysqli_query($con, $s);
-                                            $stu_ro = mysqli_fetch_array($r);
+                                            $student_id = $ro["student_id"];
+                                            $student_name = $ro["student_name"];
+//                                            $s = "SELECT name FROM instructors WHERE id=$iID";
+//                                            $r = mysqli_query($con, $s);
+//                                            $ro = mysqli_fetch_array($r);
+//                                            $instructor_name = $ro["name"];
                                             ?>
                                             <tr>
-                                                <td><?php echo $row["id"]; ?></td>
-                                                <td><?php echo $course_name; ?></td>
-                                                <td><?php echo $stu_ro["student_id"]; ?></td>
-                                                <td><?php echo $stu_ro["student_name"]; ?></td>
-                                                <td><?php echo $mnth; ?></td>
-                                                <td>
-                                                    <a href="admin_linked_courses.php?unlink=<?php echo $row["id"]; ?>" class="btn btn-danger btn-icon-split">
-                                                        <span class="icon text-white-50">
-                                                            <i class="fas fa-trash"></i>
-                                                        </span>
-                                                        <span class="text">Un Link</span>
-                                                    </a>
-                                                    <a href="admin_show_roster.php?id=<?php echo $linkID; ?>" class="btn btn-info btn-icon-split">
-                                                        <span class="icon text-white-50">
-                                                            <i class="fas fa-calendar-check"></i>
-                                                        </span>
-                                                        <span class="text">Monthly Roster</span>
-                                                    </a>
-                                                </td>
+                                                <td><?php echo $student_id; ?></td>
+                                                <td><?php echo $student_name; ?></td>
                                             </tr>
                                     <?php
-                                        }
-                                    }
-                                    if(isset($_GET["unlink"])){
-                                        require 'parts/db.php';
-                                        $id = $_GET["unlink"];
-
-                                        $sql = "DELETE FROM  roster WHERE id = $id";
-
-                                        if(phpRunSingleQuery($sql)){
-                                            js_redirect("admin_linked_courses.php");
-                                        }else{
-                                            echo mysqli_error($con);
                                         }
                                     }
                                     ?>

@@ -51,11 +51,11 @@ require 'parts/head.php';
                 <div class="container-fluid">
 
                     <?php
-                    if(isset($_GET["mailSent"])){
+                    if(isset($_GET["success"])){
                     ?>
                     <div class="card mb-4 py-3 border-left-success">
                         <div class="card-body text-success">
-                            <strong>Success! </strong> Mail was sent to the registered E-mail address!
+                            <strong>Success! </strong> Student Linked Successfully!
                         </div>
                     </div>
                     <?php } ?>
@@ -120,9 +120,96 @@ require 'parts/head.php';
                                                         </span>
                                                         <span class="text">Email</span>
                                                     </a>
+                                                    <a class="btn btn-secondary btn-icon-split" data-toggle="modal" data-target="#myModal">
+                                                        <span class="icon text-white-50">
+                                                            <i class="fas fa-calendar-check"></i>
+                                                        </span>
+                                                        <span class="text">Roster</span>
+                                                    </a>
                                                 </td>
                                             </tr>
+
+                                            <!-- Add to roster -->
+                                            <div class="modal" id="myModal">
+                                                <div class="modal-dialog">
+                                                    <div class="modal-content">
+
+                                                        <!-- Modal Header -->
+                                                        <div class="modal-header">
+                                                            <h4 class="modal-title">Add Student to roster</h4>
+                                                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                        </div>
+
+                                                        <!-- Modal body -->
+                                                        <div class="modal-body">
+
+                                                            <form action="" method="POST">
+                                                                <input type="hidden" name="student_id" value="<?php echo $row["id"]; ?>">
+                                                                <div class="form-group">
+                                                                    <label for="sel1">Select Course:</label>
+                                                                    <select class="form-control" name="course_id">
+                                                                        <option>-- SELECT --</option>
+                                                                        <?php
+                                                                        $s = "SELECT * FROM courses";
+                                                                        $r = mysqli_query($con, $s);
+                                                                        if(mysqli_num_rows($r)){
+                                                                            while($roww = mysqli_fetch_array($r)){
+                                                                                ?>
+                                                                                <option value="<?php echo $roww["id"]; ?>"><?php echo $roww["course_name"]; ?></option>
+                                                                                <?php
+                                                                            }
+                                                                        }
+                                                                        ?>
+                                                                    </select
+                                                                <div class="form-group">
+                                                                    <label for="sel1">Select Month:</label>
+                                                                    <select class="form-control" name="month">
+                                                                        <option>-- SELECT --</option>
+                                                                        <option value="January">January</option>
+                                                                        <option value="February">February</option>
+                                                                        <option value="March">March</option>
+                                                                        <option value="April">April</option>
+                                                                        <option value="May">May</option>
+                                                                        <option value="June">June</option>
+                                                                        <option value="July">July</option>
+                                                                        <option value="August">August</option>
+                                                                        <option value="September">September</option>
+                                                                        <option value="October">October</option>
+                                                                        <option value="November">November</option>
+                                                                        <option value="December">December</option>
+                                                                    </select>
+                                                                </div>
+                                                                <div class="row">
+                                                                    <div class="col-12">
+                                                                        <button type="submit" name="link" class="btn-info w-100 btn">
+                                                                            Link
+                                                                        </button>
+                                                                    </div>
+                                                                </div>
+                                                            </form>
+                                                        </div>
+
+                                                        <!-- Modal footer -->
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                            </div>
                                     <?php
+                                        }
+                                    }
+                                    if(isset($_POST["link"])){
+                                        $course_id = $_POST["course_id"];
+                                        $student_id = $_POST["student_id"];
+                                        $month = $_POST["month"];
+                                        $sql = "INSERT INTO roster (student_id, course_id, month) VALUES ($student_id, $course_id, '$month')";
+
+                                        if(phpRunSingleQuery($sql)){
+                                            js_redirect("admin_linked_courses.php?success=1");
+                                        }else{
+                                            echo mysqli_error($con);
                                         }
                                     }
                                     ?>

@@ -127,6 +127,24 @@ require 'parts/head.php';
                                                                         ?>
                                                                     </select>
                                                                 </div>
+                                                                <div class="form-group">
+                                                                    <label for="sel1">Select Month:</label>
+                                                                    <select class="form-control" name="month">
+                                                                        <option>-- SELECT --</option>
+                                                                        <option value="January">January</option>
+                                                                        <option value="February">February</option>
+                                                                        <option value="March">March</option>
+                                                                        <option value="April">April</option>
+                                                                        <option value="May">May</option>
+                                                                        <option value="June">June</option>
+                                                                        <option value="July">July</option>
+                                                                        <option value="August">August</option>
+                                                                        <option value="September">September</option>
+                                                                        <option value="October">October</option>
+                                                                        <option value="November">November</option>
+                                                                        <option value="December">December</option>
+                                                                    </select>
+                                                                </div>
                                                                 <div class="row">
                                                                     <div class="col-12">
                                                                         <button type="submit" name="link" class="btn-info w-100 btn">
@@ -151,7 +169,8 @@ require 'parts/head.php';
                                     if(isset($_POST["link"])){
                                         $instructor_id = $_POST["instructor_id"];
                                         $course_id = $_POST["course_id"];
-                                        $sql = "INSERT INTO courses_and_instructors (instructor, course) VALUES ($instructor_id, $course_id)";
+                                        $month = $_POST["month"];
+                                        $sql = "INSERT INTO courses_and_instructors (instructor, course, month) VALUES ($instructor_id, $course_id, '$month')";
 
                                         if(phpRunSingleQuery($sql)){
                                             js_redirect("admin_linked_courses.php?success=1");
