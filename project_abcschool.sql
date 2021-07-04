@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 03, 2021 at 08:12 AM
+-- Generation Time: Jul 04, 2021 at 03:49 AM
 -- Server version: 10.4.18-MariaDB
 -- PHP Version: 8.0.3
 
@@ -359,6 +359,38 @@ CREATE TABLE `courses_and_instructors` (
 
 INSERT INTO `courses_and_instructors` (`id`, `instructor`, `month`, `course`) VALUES
 (4, 8, 'June', 4);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `grades`
+--
+
+CREATE TABLE `grades` (
+  `id` int(11) NOT NULL,
+  `student_id` int(100) NOT NULL,
+  `month` varchar(100) NOT NULL,
+  `course_id` int(100) NOT NULL,
+  `instructor_id` int(100) NOT NULL,
+  `sub1` float NOT NULL,
+  `sub2` float NOT NULL,
+  `sub3` float NOT NULL,
+  `sub4` float NOT NULL,
+  `sub5` float NOT NULL,
+  `sub6` float NOT NULL,
+  `sub7` float NOT NULL,
+  `sub8` float NOT NULL,
+  `sub9` float NOT NULL,
+  `sub10` float NOT NULL,
+  `sub11` float NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `grades`
+--
+
+INSERT INTO `grades` (`id`, `student_id`, `month`, `course_id`, `instructor_id`, `sub1`, `sub2`, `sub3`, `sub4`, `sub5`, `sub6`, `sub7`, `sub8`, `sub9`, `sub10`, `sub11`) VALUES
+(2, 2, 'January', 3, 2, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11);
 
 -- --------------------------------------------------------
 
@@ -1791,6 +1823,12 @@ ALTER TABLE `courses_and_instructors`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `grades`
+--
+ALTER TABLE `grades`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `instructors`
 --
 ALTER TABLE `instructors`
@@ -1847,6 +1885,12 @@ ALTER TABLE `courses`
 --
 ALTER TABLE `courses_and_instructors`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT for table `grades`
+--
+ALTER TABLE `grades`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `instructors`

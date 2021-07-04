@@ -102,32 +102,120 @@ require 'parts/head.php';
                                                 <td><?php echo $row["passport_no"]; ?></td>
                                                 <td><?php echo $row["dob"]; ?></td>
                                                 <td>
-                                                    <a href="admin_show_card.php?id=<?php echo $row["id"]; ?>" class="btn btn-primary btn-icon-split">
-                                                        <span class="icon text-white-50">
-                                                            <i class="fas fa-id-card"></i>
-                                                        </span>
-                                                        <span class="text">Prepare Card</span>
-                                                    </a>
-                                                    <a href="permit.php?id=<?php echo $row["id"]; ?>" target="_blank" class="btn btn-info btn-icon-split">
-                                                        <span class="icon text-white-50">
-                                                            <i class="fas fa-mail-bulk"></i>
-                                                        </span>
-                                                        <span class="text">Student Permit</span>
-                                                    </a>
-                                                    <a href="admin_student_card.php?id=<?php echo $row["id"]; ?>&mail=sent" class="btn btn-success btn-icon-split">
-                                                        <span class="icon text-white-50">
-                                                            <i class="fas fa-at"></i>
-                                                        </span>
-                                                        <span class="text">Email</span>
-                                                    </a>
-                                                    <a class="btn btn-secondary btn-icon-split" data-toggle="modal" data-target="#myModal">
-                                                        <span class="icon text-white-50">
-                                                            <i class="fas fa-calendar-check"></i>
-                                                        </span>
-                                                        <span class="text">Roster</span>
-                                                    </a>
+                                                    <div class="dropdown mb-4">
+                                                        <button class="btn btn-danger dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                            Actions
+                                                        </button>
+                                                        <div class="dropdown-menu animated--fade-in text-center bg-gray-200" aria-labelledby="dropdownMenuButton" style="" id="dropdown_a">
+                                                            <a href="admin_show_card.php?id=<?php echo $row["id"]; ?>" class="btn btn-primary">
+                                                                <span class="icon text-white-50">
+                                                                    <i class="fas fa-id-card"></i>
+                                                                </span>
+                                                                <span class="text">Prepare Card</span>
+                                                            </a>
+                                                            <a href="permit.php?id=<?php echo $row["id"]; ?>" target="_blank" class="btn btn-info">
+                                                                <span class="icon text-white-50">
+                                                                    <i class="fas fa-mail-bulk"></i>
+                                                                </span>
+                                                                <span class="text">Student Permit</span>
+                                                            </a>
+                                                            <a href="admin_student_card.php?id=<?php echo $row["id"]; ?>&mail=sent" class="btn btn-success">
+                                                                <span class="icon text-white-50">
+                                                                    <i class="fas fa-at"></i>
+                                                                </span>
+                                                                <span class="text">Email</span>
+                                                            </a>
+                                                            <a class="btn btn-secondary" data-toggle="modal" data-target="#myModal">
+                                                                <span class="icon text-white-50">
+                                                                    <i class="fas fa-calendar-check"></i>
+                                                                </span>
+                                                                <span class="text">Roster</span>
+                                                            </a>
+                                                            <a class="btn btn-danger" href="admin_enter_grades.php?id=<?php echo $row["id"]; ?>">
+                                                                <span class="icon text-white-50">
+                                                                    <i class="fas fa-marker"></i>
+                                                                </span>
+                                                                <span class="text">Enter Grades</span>
+                                                            </a>
+                                                            <a class="btn btn-warning" data-toggle="modal" data-target="#ViewGrades">
+                                                                <span class="icon text-white-50">
+                                                                    <i class="fas fa-poll-h"></i>
+                                                                </span>
+                                                                <span class="text">View Grades</span>
+                                                            </a>
+                                                        </div>
+                                                    </div>
+
                                                 </td>
                                             </tr>
+                                            <!-- ViewGrades -->
+                                            <div class="modal" id="ViewGrades">
+                                                <div class="modal-dialog">
+                                                    <div class="modal-content">
+
+                                                        <!-- Modal Header -->
+                                                        <div class="modal-header">
+                                                            <h4 class="modal-title">View Grades</h4>
+                                                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                        </div>
+
+                                                        <!-- Modal body -->
+                                                        <div class="modal-body">
+                                                            <form action="admin_marks.php" method="GET">
+                                                                <input type="hidden" name="student_id" value="<?php echo $row["id"]; ?>">
+                                                                <div class="form-group">
+                                                                    <label for="sel1">Select Course:</label>
+                                                                    <select class="form-control" name="course_id">
+                                                                        <option>-- SELECT --</option>
+                                                                        <?php
+                                                                        $s = "SELECT * FROM courses";
+                                                                        $r = mysqli_query($con, $s);
+                                                                        if(mysqli_num_rows($r)){
+                                                                            while($roww = mysqli_fetch_array($r)){
+                                                                                ?>
+                                                                                <option value="<?php echo $roww["id"]; ?>"><?php echo $roww["course_name"]; ?></option>
+                                                                                <?php
+                                                                            }
+                                                                        }
+                                                                        ?>
+                                                                    </select>
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <label for="sel1">Select Month:</label>
+                                                                    <select class="form-control" name="month">
+                                                                        <option>-- SELECT --</option>
+                                                                        <option value="January">January</option>
+                                                                        <option value="February">February</option>
+                                                                        <option value="March">March</option>
+                                                                        <option value="April">April</option>
+                                                                        <option value="May">May</option>
+                                                                        <option value="June">June</option>
+                                                                        <option value="July">July</option>
+                                                                        <option value="August">August</option>
+                                                                        <option value="September">September</option>
+                                                                        <option value="October">October</option>
+                                                                        <option value="November">November</option>
+                                                                        <option value="December">December</option>
+                                                                    </select>
+                                                                </div>
+                                                                <div class="row">
+                                                                    <div class="col-12">
+                                                                        <button type="submit" name="link" class="btn-info w-100 btn">
+                                                                            Run Report
+                                                                        </button>
+                                                                    </div>
+                                                                </div>
+                                                            </form>
+                                                        </div>
+
+                                                        <!-- Modal footer -->
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                            </div>
 
                                             <!-- Add to roster -->
                                             <div class="modal" id="myModal">
