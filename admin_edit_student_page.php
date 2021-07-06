@@ -57,11 +57,11 @@ require 'parts/head.php';
                                         </div>
                                         <div class="form-group">
                                             <label for="pwd">Invoice Number:</label>
-                                            <input type="text" name="invoice" class="form-control" value="<?php echo $row["student_id"]; ?>">
+                                            <input type="text" name="invoice" class="form-control" value="<?php echo $row["registration_invoice_no"]; ?>">
                                         </div>
                                         <div class="form-group">
                                             <label for="pwd">Student Name:</label>
-                                            <input type="text" name="name" class="form-control" placeholder="Student Name" id="pwd" value="<?php echo $row["registration_invoice_no"]; ?>">
+                                            <input type="text" name="name" class="form-control" placeholder="Student Name" id="pwd" value="<?php echo $row["student_name"]; ?>">
                                         </div>
                                         <div class="form-group">
                                             <label for="pwd">Passport #:</label>

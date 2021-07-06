@@ -47,6 +47,10 @@
                     <i class="fas fa-fw fa-id-card"></i>
                     <span>Student Management</span>
                 </a>
+                <a class="collapse-item" href="admin_schedule_rewrite.php">
+                    <i class="fas fa-fw fa-pen"></i>
+                    <span>Schedule Rewrite</span>
+                </a>
             </div>
         </div>
     </li>

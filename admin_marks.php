@@ -127,7 +127,7 @@ body {margin-top: 0px;margin-left: 0px;}
 .t0{width: 644px;font: 15px 'Calibri';}
 .t1{width: 493px;margin-left: 35px;margin-top: 43px;font: 16px 'Calibri';}
 .t2{width: 655px;margin-left: 3px;margin-top: 9px;font: bold 15px 'Calibri';color: #666666;}
-
+TR:nth-child(3) { text-align: center; }
 </STYLE>
 </HEAD>
 
@@ -185,108 +185,108 @@ body {margin-top: 0px;margin-left: 0px;}
 	<TD class="tr4 td13"><P class="p4 ft11">&nbsp;</P></TD>
 	<TD class="tr4 td14"><P class="p4 ft11">&nbsp;</P></TD>
 </TR>
-<TR>
+<TR <?php if($row["sub1"]<65){?>  style="background-color: #ff00005e;" <?php } ?>>
 	<TD class="tr5 td15"><P class="p9 ft12">1.</P></TD>
 	<TD class="tr5 td16"><P class="p10 ft12">Grammar</P></TD>
-	<TD class="tr5 td17"><P class="p11 ft12"><?php echo $row["sub1"]; ?>% <SPAN class="ft13">.</SPAN></P></TD>
+	<TD class="tr5 td17"><P class="p11 ft12"><?php echo $row["sub1"]; ?>% </P></TD>
 </TR>
 <TR>
 	<TD class="tr6 td18"><P class="p4 ft14">&nbsp;</P></TD>
 	<TD class="tr6 td19"><P class="p4 ft14">&nbsp;</P></TD>
 	<TD class="tr6 td20"><P class="p4 ft14">&nbsp;</P></TD>
 </TR>
-<TR>
+<TR <?php if($row["sub2"]<65){?>  style="background-color: #ff00005e;" <?php } ?>>
 	<TD class="tr5 td15"><P class="p9 ft12">2.</P></TD>
 	<TD class="tr5 td16"><P class="p10 ft12">Vocabulary</P></TD>
-	<TD class="tr5 td17"><P class="p11 ft12"><?php echo $row["sub2"]; ?>% <SPAN class="ft13">.</SPAN></P></TD>
+	<TD class="tr5 td17"><P class="p11 ft12"><?php echo $row["sub2"]; ?>% </P></TD>
 </TR>
 <TR>
 	<TD class="tr6 td18"><P class="p4 ft14">&nbsp;</P></TD>
 	<TD class="tr6 td19"><P class="p4 ft14">&nbsp;</P></TD>
 	<TD class="tr6 td20"><P class="p4 ft14">&nbsp;</P></TD>
 </TR>
-<TR>
+<TR <?php if($row["sub3"]<65){?>  style="background-color: #ff00005e;" <?php } ?>>
 	<TD class="tr5 td15"><P class="p9 ft12">3.</P></TD>
 	<TD class="tr5 td16"><P class="p10 ft12">Comprehension</P></TD>
-	<TD class="tr5 td17"><P class="p11 ft12"><?php echo $row["sub3"]; ?>% <SPAN class="ft13">.</SPAN></P></TD>
+	<TD class="tr5 td17"><P class="p11 ft12"><?php echo $row["sub3"]; ?>% </P></TD>
 </TR>
 <TR>
 	<TD class="tr6 td18"><P class="p4 ft14">&nbsp;</P></TD>
 	<TD class="tr6 td19"><P class="p4 ft14">&nbsp;</P></TD>
 	<TD class="tr6 td20"><P class="p4 ft14">&nbsp;</P></TD>
 </TR>
-<TR>
+<TR <?php if($row["sub4"]<65){?>  style="background-color: #ff00005e;" <?php } ?>>
 	<TD class="tr5 td15"><P class="p9 ft12">4.</P></TD>
 	<TD class="tr5 td16"><P class="p10 ft12">Composition</P></TD>
-	<TD class="tr5 td17"><P class="p11 ft12"><?php echo $row["sub4"]; ?>% <SPAN class="ft13">.</SPAN></P></TD>
+	<TD class="tr5 td17"><P class="p11 ft12"><?php echo $row["sub4"]; ?>% </P></TD>
 </TR>
 <TR>
 	<TD class="tr6 td18"><P class="p4 ft14">&nbsp;</P></TD>
 	<TD class="tr6 td19"><P class="p4 ft14">&nbsp;</P></TD>
 	<TD class="tr6 td20"><P class="p4 ft14">&nbsp;</P></TD>
 </TR>
-<TR>
+<TR <?php if($row["sub5"]<65){?>  style="background-color: #ff00005e;" <?php } ?>>
 	<TD class="tr5 td15"><P class="p9 ft12">5.</P></TD>
 	<TD class="tr5 td16"><P class="p10 ft12">Pronunciation</P></TD>
-	<TD class="tr5 td17"><P class="p11 ft12"><?php echo $row["sub5"]; ?>% <SPAN class="ft13">.</SPAN></P></TD>
+	<TD class="tr5 td17"><P class="p11 ft12"><?php echo $row["sub5"]; ?>% </P></TD>
 </TR>
 <TR>
 	<TD class="tr6 td18"><P class="p4 ft14">&nbsp;</P></TD>
 	<TD class="tr6 td19"><P class="p4 ft14">&nbsp;</P></TD>
 	<TD class="tr6 td20"><P class="p4 ft14">&nbsp;</P></TD>
 </TR>
-<TR>
+<TR <?php if($row["sub6"]<65){?>  style="background-color: #ff00005e;" <?php } ?>>
 	<TD class="tr5 td15"><P class="p9 ft12">6.</P></TD>
 	<TD class="tr5 td16"><P class="p10 ft12">Prepared Speaking</P></TD>
-	<TD class="tr5 td17"><P class="p11 ft12"><?php echo $row["sub6"]; ?>% <SPAN class="ft13">.</SPAN></P></TD>
+	<TD class="tr5 td17"><P class="p11 ft12"><?php echo $row["sub6"]; ?>% </P></TD>
 </TR>
 <TR>
 	<TD class="tr6 td18"><P class="p4 ft14">&nbsp;</P></TD>
 	<TD class="tr6 td19"><P class="p4 ft14">&nbsp;</P></TD>
 	<TD class="tr6 td20"><P class="p4 ft14">&nbsp;</P></TD>
 </TR>
-<TR>
+<TR <?php if($row["sub7"]<65){?>  style="background-color: #ff00005e;" <?php } ?>>
 	<TD class="tr5 td15"><P class="p9 ft12">7.</P></TD>
 	<TD class="tr5 td16"><P class="p10 ft12">Unprepared Speaking</P></TD>
-	<TD class="tr5 td17"><P class="p11 ft12"><?php echo $row["sub7"]; ?>% <SPAN class="ft13">.</SPAN></P></TD>
+	<TD class="tr5 td17"><P class="p11 ft12"><?php echo $row["sub7"]; ?>% </P></TD>
 </TR>
 <TR>
 	<TD class="tr6 td18"><P class="p4 ft14">&nbsp;</P></TD>
 	<TD class="tr6 td19"><P class="p4 ft14">&nbsp;</P></TD>
 	<TD class="tr6 td20"><P class="p4 ft14">&nbsp;</P></TD>
 </TR>
-<TR>
+<TR <?php if($row["sub8"]<65){?>  style="background-color: #ff00005e;" <?php } ?>>
 	<TD class="tr5 td15"><P class="p9 ft12">8.</P></TD>
 	<TD class="tr5 td16"><P class="p10 ft12">Reading</P></TD>
-	<TD class="tr5 td17"><P class="p11 ft12"><?php echo $row["sub8"]; ?>% <SPAN class="ft13">.</SPAN></P></TD>
+	<TD class="tr5 td17"><P class="p11 ft12"><?php echo $row["sub8"]; ?>% </P></TD>
 </TR>
 <TR>
 	<TD class="tr6 td18"><P class="p4 ft14">&nbsp;</P></TD>
 	<TD class="tr6 td19"><P class="p4 ft14">&nbsp;</P></TD>
 	<TD class="tr6 td20"><P class="p4 ft14">&nbsp;</P></TD>
 </TR>
-<TR>
+<TR <?php if($row["sub9"]<65){?>  style="background-color: #ff00005e;" <?php } ?>>
 	<TD class="tr5 td15"><P class="p9 ft12">9.</P></TD>
 	<TD class="tr5 td16"><P class="p10 ft12">Dictation</P></TD>
-	<TD class="tr5 td17"><P class="p11 ft12"><?php echo $row["sub9"]; ?>% <SPAN class="ft13">.</SPAN></P></TD>
+	<TD class="tr5 td17"><P class="p11 ft12"><?php echo $row["sub9"]; ?>% </P></TD>
 </TR>
 <TR>
 	<TD class="tr6 td18"><P class="p4 ft14">&nbsp;</P></TD>
 	<TD class="tr6 td19"><P class="p4 ft14">&nbsp;</P></TD>
 	<TD class="tr6 td20"><P class="p4 ft14">&nbsp;</P></TD>
 </TR>
-<TR>
+<TR <?php if($row["sub10"]<65){?>  style="background-color: #ff00005e;" <?php } ?>>
 	<TD class="tr5 td15"><P class="p9 ft12">10.</P></TD>
 	<TD class="tr5 td16"><P class="p10 ft12">Active Listening</P></TD>
-	<TD class="tr5 td17"><P class="p11 ft12"><?php echo $row["sub10"]; ?>% <SPAN class="ft13">.</SPAN></P></TD>
+	<TD class="tr5 td17"><P class="p11 ft12"><?php echo $row["sub10"]; ?>% </P></TD>
 </TR>
 <TR>
 	<TD colspan=2 class="tr6 td21"><P class="p4 ft14">&nbsp;</P></TD>
 	<TD class="tr6 td20"><P class="p4 ft14">&nbsp;</P></TD>
 </TR>
-<TR>
+<TR <?php if($row["sub11"]<65){?>  style="background-color: #ff00005e;" <?php } ?>>
 	<TD colspan=2 class="tr5 td22"><P class="p9 ft12">11. Online Grammar</P></TD>
-	<TD class="tr5 td17"><P class="p11 ft12"><?php echo $row["sub11"]; ?>% <SPAN class="ft13">.</SPAN></P></TD>
+	<TD class="tr5 td17"><P class="p11 ft12"><?php echo $row["sub11"]; ?>% </P></TD>
 </TR>
 <TR>
 	<TD class="tr6 td18"><P class="p4 ft14">&nbsp;</P></TD>
