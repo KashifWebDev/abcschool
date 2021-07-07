@@ -51,6 +51,10 @@
                     <i class="fas fa-fw fa-pen"></i>
                     <span>Schedule Rewrite</span>
                 </a>
+                <a class="collapse-item" href="admin_student_certificate.php">
+                    <i class="fas fa-fw fa-certificate"></i>
+                    <span>Schedule Certificate</span>
+                </a>
             </div>
         </div>
     </li>
