@@ -66,7 +66,7 @@ require 'parts/head.php';
                                     </tfoot>
                                     <tbody>
                                     <?php
-                                    $sql = "SELECT * FROM roster group by course_id";
+                                    $sql = "SELECT * FROM roster";
                                     $res = mysqli_query($con, $sql);
                                     if(mysqli_num_rows($res)){
                                         while($row = mysqli_fetch_array($res)){
