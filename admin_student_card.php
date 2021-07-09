@@ -52,6 +52,17 @@ if(isset($_GET["send_grades"])){
         exit(); die();
     }
 }
+if(isset($_POST["link_roster"])){
+    $course_id = $_POST["course_id"];
+    $student_id = $_POST["student_id"];
+    $month = $_POST["month"];
+    $sql = "INSERT INTO roster (student_id, course_id, month) VALUES ($student_id, $course_id, '$month')";
+    if(phpRunSingleQuery($sql)){
+        js_redirect("admin_linked_courses.php");
+    }else{
+        echo mysqli_error($con);
+    }
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -397,17 +408,6 @@ require 'parts/head.php';
                                                 </td>
                                             </tr>
                                     <?php
-                                        }
-                                    }
-                                    if(isset($_POST["link_roster"])){
-                                        $course_id = $_POST["course_id"];
-                                        $student_id = $_POST["student_id"];
-                                        $month = $_POST["month"];
-                                        $sql = "INSERT INTO roster (student_id, course_id, month) VALUES ($student_id, $course_id, '$month')";
-                                        if(phpRunSingleQuery($sql)){
-                                            js_redirect("admin_linked_courses.php");
-                                        }else{
-                                            echo mysqli_error($con);
                                         }
                                     }
                                     ?>
