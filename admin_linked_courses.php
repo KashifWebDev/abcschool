@@ -49,7 +49,6 @@ require 'parts/head.php';
                                     <tr>
                                         <th>#</th>
                                         <th>Course Name</th>
-                                        <th>Instructor Name</th>
                                         <th>Month</th>
                                         <th>Actions</th>
                                     </tr>
@@ -58,8 +57,6 @@ require 'parts/head.php';
                                     <tr>
                                         <th>#</th>
                                         <th>Course Name</th>
-                                        <th>Student ID</th>
-                                        <th>Student Name</th>
                                         <th>Month</th>
                                         <th>Actions</th>
                                     </tr>
@@ -85,8 +82,6 @@ require 'parts/head.php';
                                             <tr>
                                                 <td><?php echo $row["id"]; ?></td>
                                                 <td><?php echo $course_name; ?></td>
-                                                <td><?php echo $stu_ro["student_id"]; ?></td>
-                                                <td><?php echo $stu_ro["student_name"]; ?></td>
                                                 <td><?php echo $mnth; ?></td>
                                                 <td>
                                                     <a href="admin_linked_courses.php?unlink=<?php echo $row["id"]; ?>" class="btn btn-danger btn-icon-split">
