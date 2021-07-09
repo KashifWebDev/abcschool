@@ -1,5 +1,31 @@
 <?php
 require 'parts/app.php';
+$id = $_GET["id"];
+$s = "SELECT * FROM master_registration_list WHERE id = $id";
+$r = mysqli_query($con, $s);
+$studentRow = mysqli_fetch_array($r);
+
+
+
+$s = "SELECT * FROM roster WHERE student_id = $id order by id desc limit 1";
+//echo $s;
+$r = mysqli_query($con, $s);
+if(!mysqli_num_rows($r)){
+    ?>
+    <div class="card mb-4 py-3 border-bottom-danger">
+        <div class="card-body text-danger">
+            <strong>Error! </strong> Student not found in course!
+        </div>
+    </div>
+<?php
+    exit(); die();
+}
+$row = mysqli_fetch_array($r);
+$course_id = $row["course_id"];
+
+$s = "SELECT * FROM courses WHERE id = $course_id";
+$r = mysqli_query($con, $s);
+$courseRow = mysqli_fetch_array($r);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -23,13 +49,13 @@ require 'parts/head.php';
             This is to certify that
         </div>
         <div class="font-weight-bold text-uppercase">
-            Kashif Ali
+            <?php echo $studentRow["student_name"]; ?>
         </div>
         <div>
             has successfully completed
         </div>
         <div class="font-weight-bold">
-            BASIC COURSE
+            <?php echo $courseRow["course_name"]; ?>
         </div>
         <div>
             in English Proficiency
