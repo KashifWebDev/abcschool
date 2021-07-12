@@ -38,8 +38,9 @@ div.cls_014{font-family:"Calibri Bold",serif;font-size:10.1px;color:rgb(17,84,20
 <body>
 <div style="position:absolute;left:50%;margin-left:-306px;top:0px;width:612px;height:100vh;overflow:hidden">
 <div style="position:absolute;left:0px;top:0px">
-<img src="img/permit_bg.jpg" width=612 height=792></div>
-<div style="position:absolute;left:149.25px;top:27.00px" class="cls_002"><span class="cls_002">ABC International - South Africa</span></div>
+<!--<img src="img/permit_bg.jpg" width=612 height=792></div>-->
+<!--<div style="position:absolute;left:149.25px;top:27.00px" class="cls_002"><span class="cls_002">ABC International - South Africa</span></div>-->
+<div style="position:absolute;left:149.25px;top:27.00px" class="cls_002"><span class="cls_002">&nbsp;</span></div>
 <div style="position:absolute;left:51.15px;top:101.60px" class="cls_003"><span class="cls_003">KBW House, 122 De Korte Street,</span></div>
 <div style="position:absolute;left:498.90px;top:101.60px" class="cls_004"><span class="cls_004"><?php echo date("M d, Y"); ?></span></div>
 <div style="position:absolute;left:51.15px;top:115.10px" class="cls_003"><span class="cls_003">Braamfontein, Johannesburg</span></div>
