@@ -144,210 +144,6 @@ require 'parts/head.php';
                                             $student_primary_id = $row["id"];
                                             $rand = rand();
                                             ?>
-                                            <!-- ViewGrades -->
-                                            <div class="modal" id="ViewGrades_<?php echo $rand; ?>">
-                                                <div class="modal-dialog">
-                                                    <div class="modal-content">
-
-                                                        <!-- Modal Header -->
-                                                        <div class="modal-header">
-                                                            <h4 class="modal-title">View Grades</h4>
-                                                            <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                                        </div>
-
-                                                        <!-- Modal body -->
-                                                        <div class="modal-body">
-                                                            <form action="admin_marks.php" method="GET">
-                                                                <input type="hidden" name="student_id" value="<?php echo $row["id"]; ?>">
-                                                                <div class="form-group">
-                                                                    <label for="sel1">Select Course:</label>
-                                                                    <select class="form-control" name="course_id">
-                                                                        <option>-- SELECT --</option>
-                                                                        <?php
-                                                                        $s = "SELECT * FROM courses";
-                                                                        $r = mysqli_query($con, $s);
-                                                                        if(mysqli_num_rows($r)){
-                                                                            while($roww = mysqli_fetch_array($r)){
-                                                                                ?>
-                                                                                <option value="<?php echo $roww["id"]; ?>"><?php echo $roww["course_name"]; ?></option>
-                                                                                <?php
-                                                                            }
-                                                                        }
-                                                                        ?>
-                                                                    </select>
-                                                                </div>
-                                                                <div class="form-group">
-                                                                    <label for="sel1">Select Month:</label>
-                                                                    <select class="form-control" name="month">
-                                                                        <option>-- SELECT --</option>
-                                                                        <option value="January">January</option>
-                                                                        <option value="February">February</option>
-                                                                        <option value="March">March</option>
-                                                                        <option value="April">April</option>
-                                                                        <option value="May">May</option>
-                                                                        <option value="June">June</option>
-                                                                        <option value="July">July</option>
-                                                                        <option value="August">August</option>
-                                                                        <option value="September">September</option>
-                                                                        <option value="October">October</option>
-                                                                        <option value="November">November</option>
-                                                                        <option value="December">December</option>
-                                                                    </select>
-                                                                </div>
-                                                                <div class="row">
-                                                                    <div class="col-12">
-                                                                        <button type="submit" name="link" class="btn-info w-100 btn">
-                                                                            Run Report
-                                                                        </button>
-                                                                    </div>
-                                                                </div>
-                                                            </form>
-                                                        </div>
-
-                                                        <!-- Modal footer -->
-                                                        <div class="modal-footer">
-                                                            <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                                                        </div>
-
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <!-- EmailGrade -->
-                                            <div class="modal" id="EmailGrade_<?php echo $rand; ?>">
-                                                <div class="modal-dialog">
-                                                    <div class="modal-content">
-
-                                                        <!-- Modal Header -->
-                                                        <div class="modal-header">
-                                                            <h4 class="modal-title">Email Grades</h4>
-                                                            <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                                        </div>
-
-                                                        <!-- Modal body -->
-                                                        <div class="modal-body">
-                                                            <form action="admin_student_card.php" method="GET">
-                                                                <input type="hidden" name="student_id" value="<?php echo $row["id"]; ?>">
-                                                                <div class="form-group">
-                                                                    <label for="sel1">Select Course:</label>
-                                                                    <select class="form-control" name="course_id">
-                                                                        <option>-- SELECT --</option>
-                                                                        <?php
-                                                                        $s = "SELECT * FROM courses";
-                                                                        $r = mysqli_query($con, $s);
-                                                                        if(mysqli_num_rows($r)){
-                                                                            while($roww = mysqli_fetch_array($r)){
-                                                                                ?>
-                                                                                <option value="<?php echo $roww["id"]; ?>"><?php echo $roww["course_name"]; ?></option>
-                                                                                <?php
-                                                                            }
-                                                                        }
-                                                                        ?>
-                                                                    </select>
-                                                                </div>
-                                                                <div class="form-group">
-                                                                    <label for="sel1">Select Month:</label>
-                                                                    <select class="form-control" name="month">
-                                                                        <option>-- SELECT --</option>
-                                                                        <option value="January">January</option>
-                                                                        <option value="February">February</option>
-                                                                        <option value="March">March</option>
-                                                                        <option value="April">April</option>
-                                                                        <option value="May">May</option>
-                                                                        <option value="June">June</option>
-                                                                        <option value="July">July</option>
-                                                                        <option value="August">August</option>
-                                                                        <option value="September">September</option>
-                                                                        <option value="October">October</option>
-                                                                        <option value="November">November</option>
-                                                                        <option value="December">December</option>
-                                                                    </select>
-                                                                </div>
-                                                                <div class="row">
-                                                                    <div class="col-12">
-                                                                        <button type="submit" name="send_grades" class="btn-info w-100 btn">
-                                                                            Send Report
-                                                                        </button>
-                                                                    </div>
-                                                                </div>
-                                                            </form>
-                                                        </div>
-
-                                                        <!-- Modal footer -->
-                                                        <div class="modal-footer">
-                                                            <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                                                        </div>
-
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <!-- Add to roster -->
-                                            <div class="modal" id="myModal_<?php echo $rand; ?>">
-                                                <div class="modal-dialog">
-                                                    <div class="modal-content">
-
-                                                        <!-- Modal Header -->
-                                                        <div class="modal-header">
-                                                            <h4 class="modal-title">Add Student to roster</h4>
-                                                            <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                                        </div>
-
-                                                        <!-- Modal body -->
-                                                        <div class="modal-body">
-
-                                                            <form action="" method="POST">
-                                                                <input type="hidden" name="student_id" value="<?php echo $student_primary_id; ?>">
-                                                                <div class="form-group">
-                                                                    <label for="sel1">Select Course:</label>
-                                                                    <select class="form-control" name="course_id">
-                                                                        <option>-- SELECT --</option>
-                                                                        <?php
-                                                                        $s = "SELECT * FROM courses";
-                                                                        $r = mysqli_query($con, $s);
-                                                                        if(mysqli_num_rows($r)){
-                                                                            while($roww = mysqli_fetch_array($r)){
-                                                                                ?>
-                                                                                <option value="<?php echo $roww["id"]; ?>"><?php echo $roww["course_name"]; ?></option>
-                                                                                <?php
-                                                                            }
-                                                                        }
-                                                                        ?>
-                                                                    </select>
-                                                                    <div class="form-group">
-                                                                        <label for="sel1">Select Month:</label>
-                                                                        <select class="form-control" name="month">
-                                                                            <option>-- SELECT --</option>
-                                                                            <option value="January">January</option>
-                                                                            <option value="February">February</option>
-                                                                            <option value="March">March</option>
-                                                                            <option value="April">April</option>
-                                                                            <option value="May">May</option>
-                                                                            <option value="June">June</option>
-                                                                            <option value="July">July</option>
-                                                                            <option value="August">August</option>
-                                                                            <option value="September">September</option>
-                                                                            <option value="October">October</option>
-                                                                            <option value="November">November</option>
-                                                                            <option value="December">December</option>
-                                                                        </select>
-                                                                    </div>
-                                                                    <div class="row">
-                                                                        <div class="col-12">
-                                                                            <button type="submit" name="link_roster" class="btn-info w-100 btn">
-                                                                                Link to Roster
-                                                                            </button>
-                                                                        </div>
-                                                                    </div>
-                                                            </form>
-                                                        </div>
-
-                                                        <!-- Modal footer -->
-                                                        <div class="modal-footer">
-                                                            <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                                                        </div>
-
-                                                    </div>
-                                                </div>
-                                            </div>
                                             <tr>
                                                 <td><?php echo $student_primary_id; ?></td>
                                                 <td><?php echo $row["student_id"]; ?></td>
@@ -378,7 +174,7 @@ require 'parts/head.php';
                                                                 </span>
                                                                 <span class="text">Email Permit</span>
                                                             </a>
-                                                            <a class="btn btn-secondary" data-toggle="modal" data-target="#myModal_<?php echo $rand; ?>">
+                                                            <a class="btn btn-secondary" onclick="addToRosterModal(<?php echo $row["id"]; ?>)">
                                                                 <span class="icon text-white-50">
                                                                     <i class="fas fa-calendar-check"></i>
                                                                 </span>
@@ -390,13 +186,13 @@ require 'parts/head.php';
                                                                 </span>
                                                                 <span class="text">Enter Grades</span>
                                                             </a>
-                                                            <a class="btn btn-warning" data-toggle="modal" data-target="#ViewGrades_<?php echo $rand; ?>">
+                                                            <a class="btn btn-warning" id="viewGrade_btn" onclick="viewGradeModal(<?php echo $row["id"]; ?>)">
                                                                 <span class="icon text-white-50">
                                                                     <i class="fas fa-poll-h"></i>
                                                                 </span>
                                                                 <span class="text">View Grades</span>
                                                             </a>
-                                                            <a class="btn btn-success" data-toggle="modal" data-target="#EmailGrade_<?php echo $rand; ?>">
+                                                            <a class="btn btn-success" onclick="emailGradeModal(<?php echo $row["id"]; ?>)">
                                                                 <span class="icon text-white-50">
                                                                     <i class="fas fa-at"></i>
                                                                 </span>
@@ -418,6 +214,218 @@ require 'parts/head.php';
                     </div>
                 </div>
                 <!-- /.container-fluid -->
+
+                <script>
+                    function viewGradeModal(id){
+                        $('#ViewGrades').modal('show');
+                        $('#student_id_Input').val(id);
+                    }
+                    function emailGradeModal(id){
+                        $('#ViewGrades').modal('show');
+                        $('#student_id_Input').val(id);
+                    }
+                    function addToRosterModal(id){
+                        $('#ViewGrades').modal('show');
+                        $('#student_id_Input').val(id);
+                    }
+                </script>
+
+                <!-- ViewGrades -->
+                <div class="modal" id="ViewGrades">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <!-- Modal Header -->
+                            <div class="modal-header">
+                                <h4 class="modal-title">View Grades</h4>
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            </div>
+                            <!-- Modal body -->
+                            <div class="modal-body">
+                                <form action="admin_marks.php" method="GET">
+                                    <input type="hidden" name="student_id" id="student_id_Input" value="">
+                                    <div class="form-group">
+                                        <label for="sel1">Select Course:</label>
+                                        <select class="form-control" name="course_id">
+                                            <option>-- SELECT --</option>
+                                            <?php
+                                            $s = "SELECT * FROM courses";
+                                            $r = mysqli_query($con, $s);
+                                            if(mysqli_num_rows($r)){
+                                                while($roww = mysqli_fetch_array($r)){
+                                                    ?>
+                                                    <option value="<?php echo $roww["id"]; ?>"><?php echo $roww["course_name"]; ?></option>
+                                                    <?php
+                                                }
+                                            }
+                                            ?>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="sel1">Select Month:</label>
+                                        <select class="form-control" name="month">
+                                            <option>-- SELECT --</option>
+                                            <option value="January">January</option>
+                                            <option value="February">February</option>
+                                            <option value="March">March</option>
+                                            <option value="April">April</option>
+                                            <option value="May">May</option>
+                                            <option value="June">June</option>
+                                            <option value="July">July</option>
+                                            <option value="August">August</option>
+                                            <option value="September">September</option>
+                                            <option value="October">October</option>
+                                            <option value="November">November</option>
+                                            <option value="December">December</option>
+                                        </select>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <button type="submit" name="link" class="btn-info w-100 btn">
+                                                Run Report
+                                            </button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+
+                            <!-- Modal footer -->
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <!-- EmailGrade -->
+                <div class="modal" id="EmailGrade">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <!-- Modal Header -->
+                            <div class="modal-header">
+                                <h4 class="modal-title">Email Grades</h4>
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            </div>
+                            <!-- Modal body -->
+                            <div class="modal-body">
+                                <form action="admin_student_card.php" method="GET">
+                                    <input type="hidden" name="student_id" id="student_id_Input" value="">
+                                    <div class="form-group">
+                                        <label for="sel1">Select Course:</label>
+                                        <select class="form-control" name="course_id">
+                                            <option>-- SELECT --</option>
+                                            <?php
+                                            $s = "SELECT * FROM courses";
+                                            $r = mysqli_query($con, $s);
+                                            if(mysqli_num_rows($r)){
+                                                while($roww = mysqli_fetch_array($r)){
+                                                    ?>
+                                                    <option value="<?php echo $roww["id"]; ?>"><?php echo $roww["course_name"]; ?></option>
+                                                    <?php
+                                                }
+                                            }
+                                            ?>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="sel1">Select Month:</label>
+                                        <select class="form-control" name="month">
+                                            <option>-- SELECT --</option>
+                                            <option value="January">January</option>
+                                            <option value="February">February</option>
+                                            <option value="March">March</option>
+                                            <option value="April">April</option>
+                                            <option value="May">May</option>
+                                            <option value="June">June</option>
+                                            <option value="July">July</option>
+                                            <option value="August">August</option>
+                                            <option value="September">September</option>
+                                            <option value="October">October</option>
+                                            <option value="November">November</option>
+                                            <option value="December">December</option>
+                                        </select>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <button type="submit" name="send_grades" class="btn-info w-100 btn">
+                                                Send Report
+                                            </button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                            <!-- Modal footer -->
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <!-- Add to roster -->
+                <div class="modal" id="myModal">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <!-- Modal Header -->
+                            <div class="modal-header">
+                                <h4 class="modal-title">Add Student to roster</h4>
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            </div>
+                            <!-- Modal body -->
+                            <div class="modal-body">
+                                <form action="" method="POST">
+                                    <input type="hidden" name="student_id" id="student_id_Input" value="">
+                                    <div class="form-group">
+                                        <label for="sel1">Select Course:</label>
+                                        <select class="form-control" name="course_id">
+                                            <option>-- SELECT --</option>
+                                            <?php
+                                            $s = "SELECT * FROM courses";
+                                            $r = mysqli_query($con, $s);
+                                            if(mysqli_num_rows($r)){
+                                                while($roww = mysqli_fetch_array($r)){
+                                                    ?>
+                                                    <option value="<?php echo $roww["id"]; ?>"><?php echo $roww["course_name"]; ?></option>
+                                                    <?php
+                                                }
+                                            }
+                                            ?>
+                                        </select>
+                                        <div class="form-group">
+                                            <label for="sel1">Select Month:</label>
+                                            <select class="form-control" name="month">
+                                                <option>-- SELECT --</option>
+                                                <option value="January">January</option>
+                                                <option value="February">February</option>
+                                                <option value="March">March</option>
+                                                <option value="April">April</option>
+                                                <option value="May">May</option>
+                                                <option value="June">June</option>
+                                                <option value="July">July</option>
+                                                <option value="August">August</option>
+                                                <option value="September">September</option>
+                                                <option value="October">October</option>
+                                                <option value="November">November</option>
+                                                <option value="December">December</option>
+                                            </select>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-12">
+                                                <button type="submit" name="link_roster" class="btn-info w-100 btn">
+                                                    Link to Roster
+                                                </button>
+                                            </div>
+                                        </div>
+                                </form>
+                            </div>
+
+                            <!-- Modal footer -->
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
 
             </div>
             <!-- End of Main Content -->
