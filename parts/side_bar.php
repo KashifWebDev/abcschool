@@ -53,7 +53,7 @@
                 </a>
                 <a class="collapse-item" href="admin_student_certificate.php">
                     <i class="fas fa-fw fa-certificate"></i>
-                    <span>Schedule Certificate</span>
+                    <span>Certificates</span>
                 </a>
             </div>
         </div>
