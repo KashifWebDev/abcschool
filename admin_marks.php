@@ -171,8 +171,10 @@ TR:nth-child(3) { text-align: center; }
 	<TD colspan=2 class="tr2 td8"><P class="p6 ft8"><SPAN class="ft7">Instructor(s) : </SPAN><?php echo $instructor_row["name"]; ?></P></TD>
 </TR>
 <TR>
-	<TD class="tr1 td5"><P class="p4 ft4">Course Session :</P></TD>
-	<TD colspan=2 class="tr1 td9"><P class="p4 ft5"><?php echo $row["month"]; ?> - 2021</P></TD>
+	<TD class="tr1"><P class="p4 ft4">Course Session :</P></TD>
+	<TD colspan=2 class="tr1"><P class="p4 ft5"><?php echo $row["month"]; ?> - 2021</P></TD>
+    <TD class="tr2"><P class="p4 ft6">&nbsp;</P></TD>
+    <TD colspan=2 class="tr2 "><P class="p6 ft8"><SPAN class="ft7">Rewrite Date: </SPAN><?php echo $row["rewrite_date"]; ?></P></TD>
 </TR>
 </TABLE>
 <TABLE cellpadding=0 cellspacing=0 class="t1">
