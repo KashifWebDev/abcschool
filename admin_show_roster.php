@@ -22,6 +22,9 @@ $title = "Roster - $month";
 require 'parts/head.php';
 ?>
 
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+
 <body id="page-top">
     <!-- Page Wrapper -->
     <div id="wrapper">
@@ -47,6 +50,15 @@ require 'parts/head.php';
                         </div>
                         <?php
                     }
+                    if(isset($_GET["students"]) && $_GET["students"]){
+                        ?>
+                        <div class="card mb-4 py-3 border-left-success">
+                            <div class="card-body text-success">
+                                <strong>Success! </strong> Students Added successfully!
+                            </div>
+                        </div>
+                        <?php
+                    }
                     ?>
 
                     <div class="container-fluid">
@@ -65,6 +77,83 @@ require 'parts/head.php';
                         </div>
                         <div class="card-body">
 
+                            <button type="button" name="add_course" class="btn btn-primary mb-2" data-toggle="modal" data-target="#myModal">Add Students</button>
+                            <!-- Add New Admin Modal -->
+                            <div class="modal" id="myModal">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+
+                                        <!-- Modal Header -->
+                                        <div class="modal-header">
+                                            <h4 class="modal-title">Add Students to Roster</h4>
+                                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                        </div>
+
+                                        <!-- Modal body -->
+                                        <div class="modal-body">
+                                            <form action="" method="post">
+                                                <div class="mb-3">
+                                                    <input type="hidden" name="roster" value="<?php echo $_GET["id"]; ?>">
+                                                    <label class="form-label">Students</label>
+                                                    <select class="songs form-select w-100" name="students[]" multiple>
+                                                        <?php
+                                                            $s = "SELECT * FROM master_registration_list";
+                                                            $qry = mysqli_query($con, $s);
+                                                            while($row = mysqli_fetch_array($qry)){
+                                                                ?>
+                                                                <option value="<?php echo $row["id"]; ?>"><?php echo $row["student_name"]; ?></option>
+                                                        <?php
+                                                            }
+                                                        ?>
+                                                    </select>
+                                                </div>
+                                                <button type="submit" class="btn btn-primary w-100 add-dataa" name="add_user">
+                                                    <i class="fas fa-save"></i> Add
+                                                </button>
+                                            </form>
+                                        </div>
+                                        <?php
+                                        if(isset($_POST["add_user"])){
+                                            $roster = $_POST["roster"];
+                                            $s = "SELECT * FROM roster WHERE id = $roster";
+                                            $qry = mysqli_query($con, $s);
+                                            $r = mysqli_fetch_array($qry);
+                                            $mnt = $r["month"];
+                                            $course_id = $r["course_id"];
+
+                                            $ids = implode(', ', $_POST['students']);
+
+                                            $sql = "INSERT INTO roster (month, student_id, course_id) VALUES ('$month', $ids, $course_id)";
+
+                                            foreach ($_POST['students'] as $key => $value) {
+                                                $sql = "INSERT INTO roster (month, student_id, course_id) VALUES ('$month', $value, $course_id)";
+                                                mysqli_query($con, $sql);
+                                            }
+                                            js_redirect("admin_show_roster.php?students=1&id=$roster");
+                                        }
+                                        if(isset($_GET["del_user"])){
+                                            $id = $_GET["del_user"];
+
+                                            $sql = "DELETE FROM  admin_users WHERE id = $id";
+
+                                            if(phpRunSingleQuery($sql)){
+                                                js_redirect("admin_users.php");
+                                            }else{
+                                                echo mysqli_error($con);
+                                            }
+                                        }
+                                        ?>
+
+                                        <!-- Modal footer -->
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-primary" data-dismiss="modal">
+                                                <i class="fas fa-times"></i> Cancel
+                                            </button>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
 
                             <div class="table-responsive">
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
@@ -130,9 +219,16 @@ require 'parts/head.php';
     </a>
 
 
+
     <!-- Bootstrap core JavaScript-->
     <script src="vendor/jquery/jquery.min.js"></script>
     <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!--    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>-->
+    <!--    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"></script>-->
+<!--    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>-->
+    <script src="js/select.js"></script>
+
 
     <!-- Core plugin JavaScript-->
     <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
@@ -145,6 +241,46 @@ require 'parts/head.php';
 
     <!-- Page level custom scripts -->
     <script src="js/demo/datatables-demo.js"></script>
+
+
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('.songs').select2();
+        });
+
+        $('body').on('click', '.add-data', function (event) {
+            event.preventDefault();
+            var name = $('input[name=name]').val();
+            var songs = $('.songs').val();
+            console.log(songs);
+            // $.ajax({
+            //     method: 'POST',
+            //     url: './database/db.php',
+            //     data: {
+            //         name: name,
+            //         songs: songs,
+            //     },
+            //     success: function (data) {
+            //         console.log(data);
+            //         $('.res-msg').css('display', 'block');
+            //         $('.alert-success').text(data).show();
+            //         $('input[name=name]').val('');
+            //         $(".songs").val('').trigger('change');
+            //
+            //         setTimeout(function () {
+            //             $('.alert-success').hide();
+            //         }, 3500);
+            //     }
+            // });
+        });
+
+        // $("#myModal > div > div > div.modal-body > form > div > span").addClass("w-100");
+        $("#myModal > div > div > div.modal-body > form > div > span").css("width", "100% !important");
+        $("#myModal > div > div > div.modal-body > form > div > span").attr('style','width: 100% !important');
+        // $("#myModal > div > div > div.modal-body > form > div > span").addClass(".w-100");
+    </script>
+
 </body>
 
 </html>
