@@ -52,7 +52,7 @@ require 'parts/head.php';
                                     </div>
                                     <div class="form-group">
                                         <label for="email">Instructor ID:</label>
-                                        <input type="text" name="instructor_id" class="form-control" placeholder="Registration Date" id="email" value="<?php echo random_int(100000, 999999); ?>" readonly>
+                                        <input type="text" name="instructor_id" class="form-control" placeholder="Registration Date" id="email" value="<?php echo rand(100000, 999999); ?>" readonly>
                                     </div>
                                     <div class="form-group">
                                         <label for="pwd">Name:</label>

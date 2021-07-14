@@ -34,6 +34,15 @@ require 'parts/head.php';
                         </div>
                         <?php
                     }
+                    if(isset($_GET["roster"]) && $_GET["roster"]){
+                        ?>
+                        <div class="card mb-4 py-3 border-left-success">
+                            <div class="card-body text-success">
+                                <strong>Success! </strong> Roster Created successfully!
+                            </div>
+                        </div>
+                        <?php
+                    }
                     ?>
 
                     <!-- Page Heading -->
@@ -42,6 +51,101 @@ require 'parts/head.php';
                             <h6 class="m-0 font-weight-bold text-primary">Linked Courses</h6>
                         </div>
                         <div class="card-body">
+
+                            <button type="button" name="add_course" class="btn btn-primary mb-2" data-toggle="modal" data-target="#myModal">Create New Roster</button>
+                            <!-- Add New Admin Modal -->
+                            <div class="modal" id="myModal">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+
+                                        <!-- Modal Header -->
+                                        <div class="modal-header">
+                                            <h4 class="modal-title">Add New Roster</h4>
+                                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                        </div>
+
+                                        <!-- Modal body -->
+                                        <div class="modal-body">
+                                            <form action="" method="post">
+                                                <div class="form-group">
+                                                    <label for="sel1">Select Course:</label>
+                                                    <select class="form-control" name="course_id">
+                                                        <option>-- SELECT --</option>
+                                                        <?php
+                                                        $s = "SELECT * FROM courses";
+                                                        $r = mysqli_query($con, $s);
+                                                        if(mysqli_num_rows($r)){
+                                                            while($roww = mysqli_fetch_array($r)){
+                                                                ?>
+                                                                <option value="<?php echo $roww["id"]; ?>"><?php echo $roww["course_name"]; ?></option>
+                                                                <?php
+                                                            }
+                                                        }
+                                                        ?>
+                                                    </select>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="sel1">Select Month:</label>
+                                                    <select class="form-control" name="month">
+                                                        <option>-- SELECT --</option>
+                                                        <option value="January">January</option>
+                                                        <option value="February">February</option>
+                                                        <option value="March">March</option>
+                                                        <option value="April">April</option>
+                                                        <option value="May">May</option>
+                                                        <option value="June">June</option>
+                                                        <option value="July">July</option>
+                                                        <option value="August">August</option>
+                                                        <option value="September">September</option>
+                                                        <option value="October">October</option>
+                                                        <option value="November">November</option>
+                                                        <option value="December">December</option>
+                                                    </select>
+                                                </div>
+                                                <button type="submit" class="btn btn-primary w-100" name="add_roster">
+                                                    <i class="fas fa-save"></i> Add
+                                                </button>
+                                            </form>
+                                        </div>
+                                        <?php
+                                        if(isset($_POST["add_roster"])){
+//                                            require 'parts/db.php';
+                                            $course_id = $_POST["course_id"];
+                                            $month = $_POST["month"];
+
+                                            $sql = "INSERT INTO roster (month, course_id) VALUES 
+                                                    ('$month', $course_id)";
+
+                                            if(phpRunSingleQuery($sql)){
+                                                js_redirect("admin_linked_courses.php?roster=1");
+                                            }else{
+                                                echo mysqli_error($con); exit(); die();
+                                            }
+
+                                        }
+                                        if(isset($_GET["del_user"])){
+                                            $id = $_GET["del_user"];
+
+                                            $sql = "DELETE FROM  admin_users WHERE id = $id";
+
+                                            if(phpRunSingleQuery($sql)){
+                                                js_redirect("admin_users.php");
+                                            }else{
+                                                echo mysqli_error($con);
+                                            }
+                                        }
+                                        ?>
+
+                                        <!-- Modal footer -->
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-primary" data-dismiss="modal">
+                                                <i class="fas fa-times"></i> Cancel
+                                            </button>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
 
                             <div class="table-responsive">
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">

@@ -162,7 +162,7 @@ require 'parts/head.php';
                                                                 </span>
                                                                 <span class="text">Prepare Card</span>
                                                             </a>
-                                                            <a href="permit.php?id=<?php echo $row["id"]; ?>" target="_blank" class="btn btn-info">
+                                                            <a href="permit1.php?id=<?php echo $row["id"]; ?>" target="_blank" class="btn btn-info">
                                                                 <span class="icon text-white-50">
                                                                     <i class="fas fa-mail-bulk"></i>
                                                                 </span>

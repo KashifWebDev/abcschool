@@ -179,9 +179,12 @@ require 'parts/head.php';
                                             $student = $row["student_id"];
                                             $s = "SELECT student_id, student_name FROM master_registration_list WHERE id=$student";
                                             $r = mysqli_query($con, $s);
-                                            $ro = mysqli_fetch_array($r);
-                                            $student_id = $ro["student_id"];
-                                            $student_name = $ro["student_name"];
+                                            $student_id = $student_name = "";
+                                            if(mysqli_num_rows($r)){
+                                                $ro = mysqli_fetch_array($r);
+                                                $student_id = $ro["student_id"];
+                                                $student_name = $ro["student_name"];
+                                            }
 //                                            $s = "SELECT name FROM instructors WHERE id=$iID";
 //                                            $r = mysqli_query($con, $s);
 //                                            $ro = mysqli_fetch_array($r);
