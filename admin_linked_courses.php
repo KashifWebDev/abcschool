@@ -206,6 +206,8 @@ require 'parts/head.php';
                                         $id = $_GET["unlink"];
 
                                         $sql = "DELETE FROM  roster WHERE id = $id";
+                                        $sql = "DELETE FROM  courses_and_students WHERE roster_id = $id";
+                                        phpRunSingleQuery($sql);
 
                                         if(phpRunSingleQuery($sql)){
                                             js_redirect("admin_linked_courses.php");
