@@ -184,11 +184,11 @@ require 'parts/head.php';
                                                 <td><?php echo $course_name; ?></td>
                                                 <td><?php echo $mnth; ?></td>
                                                 <td>
-                                                    <a href="admin_linked_courses.php?unlink=<?php echo $row["id"]; ?>" class="btn btn-danger btn-icon-split">
+                                                    <a href="admin_linked_courses.php?unlink=<?php echo $linkID; ?>" class="btn btn-danger btn-icon-split">
                                                         <span class="icon text-white-50">
                                                             <i class="fas fa-trash"></i>
                                                         </span>
-                                                        <span class="text">Un Link</span>
+                                                        <span class="text">Remove</span>
                                                     </a>
                                                     <a href="admin_show_roster.php?id=<?php echo $linkID; ?>" class="btn btn-info btn-icon-split">
                                                         <span class="icon text-white-50">
