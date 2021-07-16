@@ -171,7 +171,7 @@ require 'parts/head.php';
                                         $course_id = $_POST["course_id"];
                                         $month = $_POST["month"];
                                         $sql = "INSERT INTO courses_and_instructors (instructor, course, month) VALUES ($instructor_id, $course_id, '$month')";
-                                        echo $sql; exit(); die();
+//                                        echo $sql; exit(); die();
 
                                         if(phpRunSingleQuery($sql)){
                                             js_redirect("admin_linked_courses.php?success=1");
