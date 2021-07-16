@@ -1,12 +1,12 @@
 <?php
 require 'parts/app.php';
 
-$id = $_GET["id"];
+$id = $page_id = $_GET["id"];
 $s = "SELECT * FROM roster WHERE id=$id";
 $res = mysqli_query($con, $s);
 $row = $mainRow = mysqli_fetch_array($res);
 $courseID = $mainRow["course_id"];
-$month = $row["month"];
+$month = $page_month = $row["month"];
 
 $s = "SELECT * FROM courses WHERE id=$courseID";
 $res = mysqli_query($con, $s);
@@ -59,6 +59,15 @@ require 'parts/head.php';
                         </div>
                         <?php
                     }
+                    if(isset($_GET["instructor"]) && $_GET["instructor"]){
+                        ?>
+                        <div class="card mb-4 py-3 border-left-success">
+                            <div class="card-body text-success">
+                                <strong>Success! </strong> Instructor Added successfully!
+                            </div>
+                        </div>
+                        <?php
+                    }
                     ?>
 
                     <div class="container-fluid">
@@ -78,7 +87,7 @@ require 'parts/head.php';
                         <div class="card-body">
 
                             <button type="button" name="add_course" class="btn btn-primary mb-2" data-toggle="modal" data-target="#myModal">Add Students</button>
-                            <!-- Add New Admin Modal -->
+                            <!-- Add students -->
                             <div class="modal" id="myModal">
                                 <div class="modal-dialog">
                                     <div class="modal-content">
@@ -123,10 +132,8 @@ require 'parts/head.php';
 
                                             $ids = implode(', ', $_POST['students']);
 
-                                            $sql = "INSERT INTO roster (month, student_id, course_id) VALUES ('$month', $ids, $course_id)";
-
                                             foreach ($_POST['students'] as $key => $value) {
-                                                $sql = "INSERT INTO roster (month, student_id, course_id) VALUES ('$month', $value, $course_id)";
+                                                $sql = "INSERT INTO courses_and_students (roster_id, student_id) VALUES ($page_id, $value)";
                                                 mysqli_query($con, $sql);
                                             }
                                             js_redirect("admin_show_roster.php?students=1&id=$roster");
@@ -155,6 +162,120 @@ require 'parts/head.php';
                                 </div>
                             </div>
 
+                            <button type="button" name="add_course" class="btn btn-secondary mb-2" data-toggle="modal" data-target="#myModal1">Add Instructors</button>
+                            <!-- Add Instructors -->
+                            <div class="modal" id="myModal1">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+
+                                        <!-- Modal Header -->
+                                        <div class="modal-header">
+                                            <h4 class="modal-title">Add Instructor to Roster</h4>
+                                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                        </div>
+
+                                        <!-- Modal body -->
+                                        <div class="modal-body">
+                                            <form action="" method="post">
+                                                <div class="mb-3">
+                                                    <input type="hidden" name="roster" value="<?php echo $_GET["id"]; ?>">
+                                                    <div class="form-group">
+                                                        <label for="sel1">Select Instructor:</label>
+                                                        <select class="form-control" name="instructor_id">
+                                                            <option>-- SELECT --</option>
+                                                            <?php
+                                                            $s = "SELECT * FROM instructors";
+                                                            $r = mysqli_query($con, $s);
+                                                            if(mysqli_num_rows($r)){
+                                                                while($roww = mysqli_fetch_array($r)){
+                                                                    ?>
+                                                                    <option value="<?php echo $roww["id"]; ?>"><?php echo $roww["name"]; ?></option>
+                                                                    <?php
+                                                                }
+                                                            }
+                                                            ?>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <button type="submit" class="btn btn-primary w-100 add-dataa" name="add_instructor">
+                                                    <i class="fas fa-save"></i> Add
+                                                </button>
+                                            </form>
+                                        </div>
+
+                                        <!-- Modal footer -->
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-primary" data-dismiss="modal">
+                                                <i class="fas fa-times"></i> Cancel
+                                            </button>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <?php
+                            if(isset($_POST["add_instructor"])){
+                                $roster = $_POST["roster"];
+                                $instructor_id = $_POST["instructor_id"];
+
+                                $sql = "INSERT INTO courses_and_instructors (roster_id, instructor) VALUES ($roster, $instructor_id)";
+                                mysqli_query($con, $sql);
+
+                                js_redirect("admin_show_roster.php?instructor=1&id=$roster");
+                            }
+                            if(isset($_POST["add_user"])){
+                                $roster = $_POST["roster"];
+                                $s = "SELECT * FROM roster WHERE id = $roster";
+                                $qry = mysqli_query($con, $s);
+                                $r = mysqli_fetch_array($qry);
+                                $mnt = $r["month"];
+                                $course_id = $r["course_id"];
+
+                                $ids = implode(', ', $_POST['students']);
+
+                                foreach ($_POST['students'] as $key => $value) {
+                                    $sql = "INSERT INTO courses_and_students (roster_id, student_id) VALUES ($page_id, $value)";
+                                    mysqli_query($con, $sql);
+                                }
+                                js_redirect("admin_show_roster.php?students=1&id=$roster");
+                            }
+                            if(isset($_GET["del_user"])){
+                                $id = $_GET["del_user"];
+
+                                $sql = "DELETE FROM  admin_users WHERE id = $id";
+
+                                if(phpRunSingleQuery($sql)){
+                                    js_redirect("admin_users.php");
+                                }else{
+                                    echo mysqli_error($con);
+                                }
+                            }
+                            ?>
+
+                            <div class="card mb-4 py-1 ">
+                                <div class="card-body">
+                                    <div class="d-flex">
+                                        <p class="m-0 font-weight-bold text-primary" style="font-size: large;">Instructors:</p>
+                                        <p class="ml-2" style="font-size: large;">
+                                            <?php
+                                                $s = "SELECT * FROM courses_and_instructors WHERE roster_id=$page_id ORDER BY id DESC LIMIT 1";
+                                                $q = mysqli_query($con, $s);
+                                                if(mysqli_num_rows($q)){
+                                                    $r = mysqli_fetch_array($q);
+                                                    $inst_id = $r["instructor"];
+                                                    $s = "SELECT * FROM instructors WHERE id=$inst_id";
+                                                    $q = mysqli_query($con, $s);
+                                                    $r = mysqli_fetch_array($q);
+                                                    echo $r["name"];
+                                                }
+                                            ?>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+
                             <div class="table-responsive">
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
@@ -171,11 +292,11 @@ require 'parts/head.php';
                                     </tfoot>
                                     <tbody>
                                     <?php
-                                    $sql = "SELECT * FROM roster WHERE month='$month'";
+                                    $sql = "SELECT * FROM courses_and_students WHERE roster_id=$page_id";
                                     $res = mysqli_query($con, $sql);
                                     if(mysqli_num_rows($res)){
                                         while($row = mysqli_fetch_array($res)){
-                                            $mnth = $row["month"];
+                                            $mnth = $page_month;
                                             $student = $row["student_id"];
                                             $s = "SELECT student_id, student_name FROM master_registration_list WHERE id=$student";
                                             $r = mysqli_query($con, $s);

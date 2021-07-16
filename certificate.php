@@ -7,19 +7,25 @@ $studentRow = mysqli_fetch_array($r);
 
 
 
-$s = "SELECT * FROM roster WHERE student_id = $id order by id desc limit 1";
+$s = "SELECT * FROM courses_and_students WHERE student_id = $id order by id desc limit 1";
 //echo $s;
 $r = mysqli_query($con, $s);
 if(!mysqli_num_rows($r)){
     ?>
     <div class="card mb-4 py-3 border-bottom-danger">
         <div class="card-body text-danger">
-            <strong>Error! </strong> Student not found in course!
+            <strong>Error! </strong> Student not found in course! Please add them in roster first!
         </div>
     </div>
 <?php
     exit(); die();
 }
+$row = mysqli_fetch_array($r);
+$roster_id = $row["roster_id"];
+
+
+$s = "SELECT * FROM roster WHERE id= $roster_id";
+$r = mysqli_query($con, $s);
 $row = mysqli_fetch_array($r);
 $course_id = $row["course_id"];
 

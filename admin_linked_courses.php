@@ -167,21 +167,17 @@ require 'parts/head.php';
                                     </tfoot>
                                     <tbody>
                                     <?php
-                                    $sql = "SELECT * FROM roster group by course_id";
+                                    $sql = "SELECT * FROM roster";
                                     $res = mysqli_query($con, $sql);
                                     if(mysqli_num_rows($res)){
                                         while($row = mysqli_fetch_array($res)){
                                             $cID = $row["course_id"];
-                                            $iID = $row["student_id"];
                                             $mnth = $row["month"];
                                             $linkID = $row["id"];
                                             $s = "SELECT * FROM courses WHERE id=$cID";
                                             $r = mysqli_query($con, $s);
                                             $ro = mysqli_fetch_array($r);
                                             $course_name = $ro["course_name"];
-                                            $s = "SELECT student_id, student_name FROM master_registration_list WHERE id=$iID";
-                                            $r = mysqli_query($con, $s);
-                                            $stu_ro = mysqli_fetch_array($r);
                                             ?>
                                             <tr>
                                                 <td><?php echo $row["id"]; ?></td>

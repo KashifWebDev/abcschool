@@ -74,7 +74,11 @@ require 'parts/head.php';
                                             if($cntry == "Democratic Republic of Congo") $cntry_flag = '<img style="height: 35px;" src="img/flag_drc.png">';
                                             if($cntry == "Republic of Congo") $cntry_flag = '<img style="height: 35px;" src="img/flag_rcf.png">';
                                             if($cntry == "Libya") $cntry_flag = '<img style="height: 35px; width: 48px;" src="img/flag_libya.png">';
+
+
+                                            $cntry = mysqli_real_escape_string($con, $cntry);
                                             $s1 = "SELECT * FROM countries WHERE country_name='$cntry'";
+
                                             $se = mysqli_query($con, $s1);
                                             if(mysqli_num_rows($se)){
                                                 $cn = mysqli_fetch_array($se);
