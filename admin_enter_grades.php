@@ -234,17 +234,17 @@ require 'parts/head.php';
                             $instructor_id = $_POST["instructor_id"];
                             $course_id = $_POST["course_id"];
                             $month = $_POST["month"];
-                            $sub1 = $_POST["sub1"];
-                            $sub2 = $_POST["sub2"];
-                            $sub3 = $_POST["sub3"];
-                            $sub4 = $_POST["sub4"];
-                            $sub5 = $_POST["sub5"];
-                            $sub6 = $_POST["sub6"];
-                            $sub7 = $_POST["sub7"];
-                            $sub8 = $_POST["sub8"];
-                            $sub9 = $_POST["sub9"];
-                            $sub10 = $_POST["sub10"];
-                            $sub11 = $_POST["sub11"];
+                            $sub1 = isset($_POST["sub1"]) ? $_POST["sub1"] : 0;
+                            $sub2 = isset($_POST["sub2"]) ? $_POST["sub2"] : 0;
+                            $sub3 = isset($_POST["sub3"]) ? $_POST["sub3"] : 0;
+                            $sub4 = isset($_POST["sub4"]) ? $_POST["sub4"] : 0;
+                            $sub5 = isset($_POST["sub5"]) ? $_POST["sub5"] : 0;
+                            $sub6 = isset($_POST["sub6"]) ? $_POST["sub6"] : 0;
+                            $sub7 = isset($_POST["sub7"]) ? $_POST["sub7"] : 0;
+                            $sub8 = isset($_POST["sub8"]) ? $_POST["sub8"] : 0;
+                            $sub9 = isset($_POST["sub9"]) ? $_POST["sub9"] : 0;
+                            $sub10 = isset($_POST["sub10"]) ? $_POST["sub10"] : 0;
+                            $sub11 = isset($_POST["sub11"]) ? $_POST["sub11"] : 0;
 
 
                         $sql = "INSERT INTO grades (student_id, month, course_id, instructor_id, sub1, sub2, sub3, sub4, sub5, sub6, sub7, sub8, sub9, sub10, sub11) VALUES 

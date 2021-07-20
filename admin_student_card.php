@@ -157,45 +157,24 @@ require 'parts/head.php';
                                                         </button>
                                                         <div class="dropdown-menu animated--fade-in text-center bg-gray-200 px-3" aria-labelledby="dropdownMenuButton" style="" id="dropdown_a">
                                                             <a href="admin_show_card.php?id=<?php echo $row["id"]; ?>" class="btn btn-primary">
-                                                                <span class="icon text-white-50">
-                                                                    <i class="fas fa-id-card"></i>
-                                                                </span>
                                                                 <span class="text">Prepare Card</span>
                                                             </a>
                                                             <a href="permit1.php?id=<?php echo $row["id"]; ?>" target="_blank" class="btn btn-info">
-                                                                <span class="icon text-white-50">
-                                                                    <i class="fas fa-mail-bulk"></i>
-                                                                </span>
                                                                 <span class="text">View Permit</span>
                                                             </a>
                                                             <a href="admin_student_card.php?id=<?php echo $row["id"]; ?>&mail=sent" class="btn btn-success">
-                                                                <span class="icon text-white-50">
-                                                                    <i class="fas fa-at"></i>
-                                                                </span>
                                                                 <span class="text">Email Permit</span>
                                                             </a>
                                                             <a class="btn btn-secondary" onclick="addToRosterModal(<?php echo $row["id"]; ?>)">
-                                                                <span class="icon text-white-50">
-                                                                    <i class="fas fa-calendar-check"></i>
-                                                                </span>
                                                                 <span class="text">Roster</span>
                                                             </a>
                                                             <a class="btn btn-danger" href="admin_enter_grades.php?id=<?php echo $row["id"]; ?>">
-                                                                <span class="icon text-white-50">
-                                                                    <i class="fas fa-marker"></i>
-                                                                </span>
                                                                 <span class="text">Enter Grades</span>
                                                             </a>
                                                             <a class="btn btn-warning" id="viewGrade_btn" onclick="viewGradeModal(<?php echo $row["id"]; ?>)">
-                                                                <span class="icon text-white-50">
-                                                                    <i class="fas fa-poll-h"></i>
-                                                                </span>
                                                                 <span class="text">View Grades</span>
                                                             </a>
                                                             <a class="btn btn-success" onclick="emailGradeModal(<?php echo $row["id"]; ?>)">
-                                                                <span class="icon text-white-50">
-                                                                    <i class="fas fa-at"></i>
-                                                                </span>
                                                                 <span class="text">Email Grades Sheet</span>
                                                             </a>
                                                         </div>
