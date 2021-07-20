@@ -121,7 +121,7 @@ require 'parts/head.php';
                                             <div class="input-group-prepend">
                                                 <span class="input-group-text">Grammar</span>
                                             </div>
-                                            <input type="number" class="form-control" name="sub1">
+                                            <input type="number" class="form-control" name="sub1" value="0">
                                             <div class="input-group-append">
                                                 <span class="input-group-text">%</span>
                                             </div>
@@ -130,7 +130,7 @@ require 'parts/head.php';
                                             <div class="input-group-prepend">
                                                 <span class="input-group-text">Vocabulary</span>
                                             </div>
-                                            <input type="number" class="form-control" name="sub2">
+                                            <input type="number" class="form-control" name="sub2" value="0">
                                             <div class="input-group-append">
                                                 <span class="input-group-text">%</span>
                                             </div>
@@ -139,7 +139,7 @@ require 'parts/head.php';
                                             <div class="input-group-prepend">
                                                 <span class="input-group-text">Comprehension</span>
                                             </div>
-                                            <input type="number" class="form-control" name="sub3">
+                                            <input type="number" class="form-control" name="sub3" value="0">
                                             <div class="input-group-append">
                                                 <span class="input-group-text">%</span>
                                             </div>
@@ -148,7 +148,7 @@ require 'parts/head.php';
                                             <div class="input-group-prepend">
                                                 <span class="input-group-text">Composition</span>
                                             </div>
-                                            <input type="number" class="form-control" name="sub4">
+                                            <input type="number" class="form-control" name="sub4" value="0">
                                             <div class="input-group-append">
                                                 <span class="input-group-text">%</span>
                                             </div>
@@ -157,7 +157,7 @@ require 'parts/head.php';
                                             <div class="input-group-prepend">
                                                 <span class="input-group-text">Pronunciation</span>
                                             </div>
-                                            <input type="number" class="form-control" name="sub5">
+                                            <input type="number" class="form-control" name="sub5" value="0">
                                             <div class="input-group-append">
                                                 <span class="input-group-text">%</span>
                                             </div>
@@ -166,7 +166,7 @@ require 'parts/head.php';
                                             <div class="input-group-prepend">
                                                 <span class="input-group-text">Prepared Speaking</span>
                                             </div>
-                                            <input type="number" class="form-control" name="sub6">
+                                            <input type="number" class="form-control" name="sub6" value="0">
                                             <div class="input-group-append">
                                                 <span class="input-group-text">%</span>
                                             </div>
@@ -175,7 +175,7 @@ require 'parts/head.php';
                                             <div class="input-group-prepend">
                                                 <span class="input-group-text">Unprepared Speaking</span>
                                             </div>
-                                            <input type="number" class="form-control" name="sub7">
+                                            <input type="number" class="form-control" name="sub7" value="0">
                                             <div class="input-group-append">
                                                 <span class="input-group-text">%</span>
                                             </div>
@@ -184,7 +184,7 @@ require 'parts/head.php';
                                             <div class="input-group-prepend">
                                                 <span class="input-group-text">Reading</span>
                                             </div>
-                                            <input type="number" class="form-control" name="sub8">
+                                            <input type="number" class="form-control" name="sub8" value="0">
                                             <div class="input-group-append">
                                                 <span class="input-group-text">%</span>
                                             </div>
@@ -193,7 +193,7 @@ require 'parts/head.php';
                                             <div class="input-group-prepend">
                                                 <span class="input-group-text">Dictation</span>
                                             </div>
-                                            <input type="number" class="form-control" name="sub9">
+                                            <input type="number" class="form-control" name="sub9" value="0">
                                             <div class="input-group-append">
                                                 <span class="input-group-text">%</span>
                                             </div>
@@ -202,7 +202,7 @@ require 'parts/head.php';
                                             <div class="input-group-prepend">
                                                 <span class="input-group-text">Active Listening</span>
                                             </div>
-                                            <input type="number" class="form-control" name="sub10">
+                                            <input type="number" class="form-control" name="sub10" value="0">
                                             <div class="input-group-append">
                                                 <span class="input-group-text">%</span>
                                             </div>
@@ -211,7 +211,7 @@ require 'parts/head.php';
                                             <div class="input-group-prepend">
                                                 <span class="input-group-text">Online Grammar</span>
                                             </div>
-                                            <input type="number" class="form-control" name="sub11">
+                                            <input type="number" class="form-control" name="sub11" value="0">
                                             <div class="input-group-append">
                                                 <span class="input-group-text">%</span>
                                             </div>
