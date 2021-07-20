@@ -9,65 +9,9 @@ $title = "Student Registration";
 require 'parts/head.php';
 ?>
 
-<link rel="stylesheet" href="css/bootstrap-select.min.css">
-<!--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.7/readable/bootstrap.min.css">-->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
 
-<style>
-    /*
-Make bootstrap-select work with bootstrap 4 see:
-https://github.com/silviomoreto/bootstrap-select/issues/1135
-*/
-    .dropdown-toggle.btn-default {
-        color: #292b2c;
-        background-color: #fff;
-        border-color: #ccc;
-    }
-    .bootstrap-select.show > .dropdown-menu > .dropdown-menu {
-        display: block;
-    }
-    .bootstrap-select > .dropdown-menu > .dropdown-menu li.hidden {
-        display: none;
-    }
-    .bootstrap-select > .dropdown-menu > .dropdown-menu li a {
-        display: block;
-        width: 100%;
-        padding: 3px 1.5rem;
-        clear: both;
-        font-weight: 400;
-        color: #292b2c;
-        text-align: inherit;
-        white-space: nowrap;
-        background: 0 0;
-        border: 0;
-        text-decoration: none;
-    }
-    .bootstrap-select > .dropdown-menu > .dropdown-menu li a:hover {
-        background-color: #f4f4f4;
-    }
-    .bootstrap-select > .dropdown-toggle {
-        width: 100%;
-    }
-    .dropdown-menu > li.active > a {
-        color: #fff !important;
-        background-color: #337ab7 !important;
-    }
-    .bootstrap-select .check-mark {
-        line-height: 14px;
-    }
-    .bootstrap-select .check-mark::after {
-        font-family: "FontAwesome";
-        content: "\f00c";
-    }
-    .bootstrap-select button {
-        overflow: hidden;
-        text-overflow: ellipsis;
-    }
-
-    /* Make filled out selects be the same size as empty selects */
-    .bootstrap-select.btn-group .dropdown-toggle .filter-option {
-        display: inline !important;
-    }
-</style>
 
 <body id="page-top">
     <!-- Page Wrapper -->
@@ -139,8 +83,19 @@ https://github.com/silviomoreto/bootstrap-select/issues/1135
 <!--                                        </div>-->
                                         <div class="form-group">
                                             <label for="exampleFormControlSelect1" class="mr-3">Select Country</label>
-                                            <select name="country" class="selectpicker countrypicker form-control" data-live-search="true" data-default="United States" data-flag="true"></select>
+<!--                                            <select name="country" class="selectpicker countrypicker form-control" data-live-search="true" data-default="United States" data-flag="true"></select>-->
 <!--                                            <select class="selectpicker countrypicker form-control" data-live-search="true"></select>-->
+                                            <select class="songs form-select w-100" name="country">
+                                                <?php
+                                                $s = "SELECT * FROM countries";
+                                                $qry = mysqli_query($con, $s);
+                                                while($row = mysqli_fetch_array($qry)){
+                                                    ?>
+                                                    <option value="<?php echo $row["country_name"]; ?>"><?php echo $row["country_name"]; ?></option>
+                                                    <?php
+                                                }
+                                                ?>
+                                            </select>
                                         </div>
                                         <div class="form-group">
                                             <label for="email">Email</label>
@@ -164,7 +119,7 @@ https://github.com/silviomoreto/bootstrap-select/issues/1135
                                         </div>
                                     </div>
                                 </div>
-                                <div class="row">
+                                <div class="col-12">
                                     <div class="col-md-6">
                                         <div class="input-group mb-3">
                                             <div class="input-group-prepend">
@@ -177,7 +132,7 @@ https://github.com/silviomoreto/bootstrap-select/issues/1135
                                         </div>
                                     </div>
                                 </div>
-                                <div class="row">
+                                <div class="col-12">
                                     <div class="col-md-10 mx-auto">
                                         <button class="btn btn-primary bg-appColor w-100" type="submit" name="add_student">
                                             <span class="fas fa-save"></span> Register
@@ -261,8 +216,6 @@ https://github.com/silviomoreto/bootstrap-select/issues/1135
     </a>
 
 
-
-
     <!-- Bootstrap core JavaScript-->
     <script src="vendor/jquery/jquery.min.js"></script>
     <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -273,9 +226,47 @@ https://github.com/silviomoreto/bootstrap-select/issues/1135
     <!-- Custom scripts for all pages-->
     <script src="js/sb-admin-2.min.js"></script>
 
-<!--Country dropdown-->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.4/js/bootstrap-select.min.js"></script>
-    <script src="js/countrypicker.js?v=<?php echo rand(); ?>"></script>
+
+<!--COuntry-->
+    <script src="js/select.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('.songs').select2();
+        });
+
+        $('body').on('click', '.add-data', function (event) {
+            event.preventDefault();
+            var name = $('input[name=name]').val();
+            var songs = $('.songs').val();
+            console.log(songs);
+            // $.ajax({
+            //     method: 'POST',
+            //     url: './database/db.php',
+            //     data: {
+            //         name: name,
+            //         songs: songs,
+            //     },
+            //     success: function (data) {
+            //         console.log(data);
+            //         $('.res-msg').css('display', 'block');
+            //         $('.alert-success').text(data).show();
+            //         $('input[name=name]').val('');
+            //         $(".songs").val('').trigger('change');
+            //
+            //         setTimeout(function () {
+            //             $('.alert-success').hide();
+            //         }, 3500);
+            //     }
+            // });
+        });
+
+        // $("#myModal > div > div > div.modal-body > form > div > span").addClass("w-100");
+        $("#myModal > div > div > div.modal-body > form > div > span").css("width", "100% !important");
+        $("#myModal > div > div > div.modal-body > form > div > span").attr('style','width: 100% !important');
+        // $("#myModal > div > div > div.modal-body > form > div > span").addClass(".w-100");
+    </script>
+
+
 </body>
 
 </html>
