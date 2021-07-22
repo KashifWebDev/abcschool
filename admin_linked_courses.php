@@ -154,6 +154,7 @@ require 'parts/head.php';
                                         <th>#</th>
                                         <th>Course Name</th>
                                         <th>Month</th>
+                                        <th>Instructor</th>
                                         <th>Actions</th>
                                     </tr>
                                     </thead>
@@ -162,6 +163,7 @@ require 'parts/head.php';
                                         <th>#</th>
                                         <th>Course Name</th>
                                         <th>Month</th>
+                                        <th>Instructor</th>
                                         <th>Actions</th>
                                     </tr>
                                     </tfoot>
@@ -178,10 +180,19 @@ require 'parts/head.php';
                                             $r = mysqli_query($con, $s);
                                             $ro = mysqli_fetch_array($r);
                                             $course_name = $ro["course_name"];
+                                            $s = "SELECT * FROM courses_and_instructors WHERE roster_id=$linkID";
+                                            $r = mysqli_query($con, $s);
+                                            $ro = mysqli_fetch_array($r);
+                                            $instID = $ro["instructor"];
+                                            $s = "SELECT * FROM instructors WHERE id=$instID";
+                                            $r = mysqli_query($con, $s);
+                                            $ro = mysqli_fetch_array($r);
+                                            $instName = $ro["name"];
                                             ?>
                                             <tr>
                                                 <td><?php echo $row["id"]; ?></td>
                                                 <td><?php echo $course_name; ?></td>
+                                                <td><?php echo $instName; ?></td>
                                                 <td><?php echo $mnth; ?></td>
                                                 <td>
                                                     <a href="admin_linked_courses.php?unlink=<?php echo $linkID; ?>" class="btn btn-danger btn-icon-split">
