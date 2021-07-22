@@ -1,11 +1,14 @@
 <?php
 require 'parts/app.php';
 $id = $_GET["student_id"];
+$courseID = $_GET["course_id"];
+$mnth = $_GET["month"];
+
 $sql = "SELECT * FROM master_registration_list WHERE id=$id";
 $res = mysqli_query($con, $sql);
 $row = $mainRow = mysqli_fetch_array($res);
 
-$sql = "SELECT * FROM grades WHERE student_id=$id";
+$sql = "SELECT * FROM grades WHERE student_id=$id AND course_id=$courseID AND month='$mnth'";
 $res = mysqli_query($con, $sql);
 if(mysqli_num_rows($res)){
     $marksRow = mysqli_fetch_array($res);
