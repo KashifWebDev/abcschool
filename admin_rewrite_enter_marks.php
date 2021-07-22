@@ -1,13 +1,22 @@
 <?php
 require 'parts/app.php';
-$id = $_GET["id"];
+$id = $_GET["student_id"];
 $sql = "SELECT * FROM master_registration_list WHERE id=$id";
 $res = mysqli_query($con, $sql);
 $row = $mainRow = mysqli_fetch_array($res);
 
 $sql = "SELECT * FROM grades WHERE student_id=$id";
 $res = mysqli_query($con, $sql);
-$marksRow = mysqli_fetch_array($res);
+if(mysqli_num_rows($res)){
+    $marksRow = mysqli_fetch_array($res);
+}else{
+    ?>
+    <h3>
+        Student Not found in selected Course/Month!
+    </h3>
+<?php
+    exit(); die();
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -68,7 +77,7 @@ require 'parts/head.php';
                                         </div>
                                         <div class="form-group">
                                             <label for="sel1">Select Course:</label>
-                                            <select class="form-control" name="course_id" readonly>
+                                            <select class="form-control" name="course_id">
                                                 <option>-- SELECT --</option>
                                                 <?php
                                                 $s = "SELECT * FROM courses";
@@ -85,7 +94,7 @@ require 'parts/head.php';
                                         </div>
                                         <div class="form-group">
                                             <label for="sel1">Select Month:</label>
-                                            <select class="form-control" name="month" readonly>
+                                            <select class="form-control" name="month">
                                                 <option>-- SELECT --</option>
                                                 <option value="January" <?php if($marksRow["month"]=="January") echo "selected"; ?>>January</option>
                                                 <option value="February" <?php if($marksRow["month"]=="February") echo "selected"; ?>>February</option>

@@ -145,12 +145,14 @@ body {margin-top: 0px;margin-left: 0px;}
 </TR>
 </TABLE>
 <P class="p5 ft8">This is to certify that the student above has been accepted to study at the above Academy</P>
-<P class="p6 ft8">and <SPAN class="ft9">has paid the required deposit to study for 12 months</SPAN> ( Invoice number: 44278OP073564237290 ).</P>
+<P class="p6 ft8">and <SPAN class="ft9">has paid the required deposit to study for 12 months</SPAN> ( Invoice number: <?php echo $row["registration_invoice_no"]; ?> ).</P>
 <P class="p7 ft5">The student will complete the following courses:</P>
 <P class="p8 ft4">ENGLISH FOUNDATION COURSE (LEVEL 1 - 6)</P>
 <P class="p9 ft4">ENGLISH BASIC COURSE (LEVEL 7 - 15)</P>
 <P class="p9 ft4">ENGLISH INTERMEDIATE COURSE (LEVEL 16 - 23)</P>
-<P class="p10 ft8"><SPAN class="ft4">Duration: </SPAN>April, 2021 to March, 2022</P>
+    <?php
+    $newDate = date("M", strtotime($row["registration_date"]));   ?>
+<P class="p10 ft8"><SPAN class="ft4">Duration: </SPAN><?php echo $newDate; ?>, 2021 to <?php echo $newDate; ?>, 2022</P>
 <P class="p11 ft5">The above registration is based on the following criteria:</P>
 <TABLE cellpadding=0 cellspacing=0 class="t2">
 <TR>
