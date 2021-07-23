@@ -259,7 +259,7 @@ require 'parts/head.php';
 //                        echo $sql; exit(); die();
 
                         if(mysqli_query($GLOBALS["con"], $sql)){
-                            js_redirect("admin_rewrite_enter_marks.php?id=$student_id&success=1");
+                            js_redirect("admin_rewrite_enter_marks.php?id=$student_id&success=1&month=$mnth&course_id=$courseID");
                         }else{
                             echo mysqli_error($GLOBALS["con"]); exit(); die();
                         }
