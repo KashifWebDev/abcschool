@@ -1,6 +1,6 @@
 <?php
 
-print_r($_GET); exit(); die();
+//print_r($_GET); exit(); die();
 
 require 'parts/app.php';
 $id = $_GET["student_id"];
