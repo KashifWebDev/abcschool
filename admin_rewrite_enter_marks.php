@@ -1,4 +1,7 @@
 <?php
+
+print_r($_GET); exit(); die();
+
 require 'parts/app.php';
 $id = $_GET["student_id"];
 $courseID = $_GET["course_id"];
@@ -115,7 +118,7 @@ require 'parts/head.php';
                                         </div>
                                         <div class="form-group">
                                             <label for="email">ReWrite Date:</label>
-                                            <input type="date" name="rewrite_date" class="form-control">
+                                            <input type="date" name="rewrite_date" class="form-control" required>
                                         </div>
                                     </div>
                                     <div class="col-md-6">
@@ -259,7 +262,7 @@ require 'parts/head.php';
 //                        echo $sql; exit(); die();
 
                         if(mysqli_query($GLOBALS["con"], $sql)){
-                            js_redirect("admin_rewrite_enter_marks.php?id=$student_id&success=1&month=$mnth&course_id=$courseID");
+                            js_redirect("admin_rewrite_enter_marks.php?student_id=$student_id&success=1&month=$mnth&course_id=$courseID");
                         }else{
                             echo mysqli_error($GLOBALS["con"]); exit(); die();
                         }
