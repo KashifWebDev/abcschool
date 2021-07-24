@@ -75,6 +75,15 @@ require 'parts/head.php';
                                             <label for="pwd">Phone Number</label>
                                             <input type="text" name="phone_num" class="form-control" placeholder="Phone Number" id="pwd">
                                         </div>
+                                        <div class="input-group mb-3">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text">Upload Student Picture</span>
+                                            </div>
+                                            <div class="custom-file">
+                                                <input class="custom-file-input" id="inputGroupFile01" type="file" accept="image/*" name="image">
+                                                <label class="custom-file-label" for="inputGroupFile01">Select file</label>
+                                            </div>
+                                        </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
@@ -117,19 +126,19 @@ require 'parts/head.php';
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-12">
-                                    <div class="col-md-6">
-                                        <div class="input-group mb-3">
-                                            <div class="input-group-prepend">
-                                                <span class="input-group-text">Upload Student Picture</span>
-                                            </div>
-                                            <div class="custom-file">
-                                                <input class="custom-file-input" id="inputGroupFile01" type="file" accept="image/*" name="image">
-                                                <label class="custom-file-label" for="inputGroupFile01">Select file</label>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+<!--                                <div class="col-12">-->
+<!--                                    <div class="col-md-6">-->
+<!--                                        <div class="input-group mb-3">-->
+<!--                                            <div class="input-group-prepend">-->
+<!--                                                <span class="input-group-text">Upload Student Picture</span>-->
+<!--                                            </div>-->
+<!--                                            <div class="custom-file">-->
+<!--                                                <input class="custom-file-input" id="inputGroupFile01" type="file" accept="image/*" name="image">-->
+<!--                                                <label class="custom-file-label" for="inputGroupFile01">Select file</label>-->
+<!--                                            </div>-->
+<!--                                        </div>-->
+<!--                                    </div>-->
+<!--                                </div>-->
                                 <div class="col-12">
                                     <div class="col-md-10 mx-auto">
                                         <button class="btn btn-primary bg-appColor w-100" type="submit" name="add_student">
