@@ -77,14 +77,12 @@ require 'parts/head.php';
                                         </div>
                                     </div>
                                     <div class="col-md-6">
-<!--                                        <div class="form-group">-->
-<!--                                            <label for="pwd">Country:</label>-->
-<!--                                            <input type="text" name="country" class="form-control" placeholder="Country" id="pwd">-->
-<!--                                        </div>-->
+                                        <div class="form-group">
+                                            <label for="email">Date of Commencement</label>
+                                            <input type="date" name="start_date" class="form-control" placeholder="Commencement Date" id="email">
+                                        </div>
                                         <div class="form-group">
                                             <label for="exampleFormControlSelect1" class="mr-3">Select Country</label>
-<!--                                            <select name="country" class="selectpicker countrypicker form-control" data-live-search="true" data-default="United States" data-flag="true"></select>-->
-<!--                                            <select class="selectpicker countrypicker form-control" data-live-search="true"></select>-->
                                             <select class="songs form-select w-100" name="country">
                                                 <?php
                                                 $s = "SELECT * FROM countries";
@@ -147,6 +145,7 @@ require 'parts/head.php';
 //                        print_r($_POST); exit(); die();
                         require 'parts/db.php';
                         $registration_date = $_POST["registration_date"];
+                        $start_date = $_POST["start_date"];
                         $student_id = $_POST["student_id"];
                         $name = $_POST["name"];
                         $invoice_num = $_POST["invoice"];
@@ -183,9 +182,9 @@ require 'parts/head.php';
                                 die();
                             }
                         }
-                        $sql = "INSERT INTO master_registration_list (email, student_id, registration_invoice_no, registration_date, student_name,
+                        $sql = "INSERT INTO master_registration_list (email, student_id, registration_invoice_no, registration_date, student_name, start_date,
                                       country, passport_no, dob, phone_no, guardian_contact, address_S_A, facebook, insta, pic) VALUES 
-                                ('$email', '$student_id', '$invoice_num', '$registration_date', '$name', '$country', '$passport',
+                                ('$email', '$student_id', '$invoice_num', '$registration_date', '$name', '$start_date', '$country', '$passport',
                                  '$dob', '$phone_num', '$gardian_contact', '$SA_address', '$fb', '$insta', '$pic')";
 
 
