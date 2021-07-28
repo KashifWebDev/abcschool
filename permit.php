@@ -86,6 +86,7 @@ body {margin-top: 0px;margin-left: 0px;}
 .t0{width: 677px;margin-left: 1px;margin-top: 70px;font: 13px 'Calibri';color: #666666;}
 .t1{width: 407px;margin-left: 4px;margin-top: 1px;font: bold 13px 'Calibri';}
 .t2{width: 287px;margin-left: 26px;font: 13px 'Calibri';color: #424242;}
+*{font-size: 17px !important;}
 
 </STYLE>
 </HEAD>
@@ -179,7 +180,7 @@ body {margin-top: 0px;margin-left: 0px;}
 <P class="p18 ft5">Sincerely,</P>
 <P class="p17 ft14">Kim Wetzl</P>
 <P class="p19 ft4">Principal</P>
-<P class="p20 ft15"><A href="mailto:kim@abcinternational.co.za">kim@abcinternational.co.za</A></P>
+<P class="p20 ft15"><A href="mailto:kim@abcinternational.co.za">info@abcinternational.co.za</A></P>
 </DIV>
 </BODY>
 </HTML>

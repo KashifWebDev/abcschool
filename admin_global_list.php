@@ -44,8 +44,6 @@ require 'parts/head.php';
                                         <th>DOB</th>
                                         <th>Email</th>
                                         <th>Invoice #</th>
-                                        <th>Facebook</th>
-                                        <th>Insta</th>
                                     </tr>
                                     </thead>
                                     <tfoot>
@@ -59,8 +57,6 @@ require 'parts/head.php';
                                         <th>DOB</th>
                                         <th>Email</th>
                                         <th>Invoice #</th>
-                                        <th>Facebook</th>
-                                        <th>Insta</th>
                                     </tr>
                                     </tfoot>
                                     <tbody>
@@ -99,8 +95,6 @@ require 'parts/head.php';
                                                 <td><?php echo $row["dob"]; ?></td>
                                                 <td><?php echo $row["email"]; ?></td>
                                                 <td><?php echo $row["registration_invoice_no"]; ?></td>
-                                                <td><?php echo $row["facebook"]; ?></td>
-                                                <td><?php echo $row["insta"]; ?></td>
                                             </tr>
                                     <?php
                                             }
