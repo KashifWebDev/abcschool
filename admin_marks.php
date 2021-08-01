@@ -3,8 +3,8 @@ require 'parts/app.php';
 
 $student_id = $_GET["student_id"];
 $course_id = $_GET["course_id"];
-$month = $_GET["month"];
-$sql = "SELECT * FROM grades WHERE student_id=$student_id AND month='$month' AND course_id='$course_id'";
+
+$sql = "SELECT * FROM grades WHERE student_id=$student_id AND course_id='$course_id'";
 $res = mysqli_query($con, $sql);
 
 if(!mysqli_num_rows($res)){

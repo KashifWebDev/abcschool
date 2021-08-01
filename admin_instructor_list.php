@@ -38,9 +38,11 @@ require 'parts/head.php';
                                         <th>#</th>
                                         <th>Instructors ID</th>
                                         <th>Name</th>
+                                        <th>Common Name</th>
                                         <th>Registration Date</th>
                                         <th>Phone</th>
                                         <th>Email</th>
+                                        <th>Actions</th>
                                     </tr>
                                     </thead>
                                     <tfoot>
@@ -48,9 +50,11 @@ require 'parts/head.php';
                                         <th>#</th>
                                         <th>Instructors ID</th>
                                         <th>Name</th>
+                                        <th>Common Name</th>
                                         <th>Registration Date</th>
                                         <th>Phone</th>
                                         <th>Email</th>
+                                        <th>Actions</th>
                                     </tr>
                                     </tfoot>
                                     <tbody>
@@ -64,9 +68,18 @@ require 'parts/head.php';
                                                 <td><?php echo $row["id"]; ?></td>
                                                 <td><?php echo $row["instructor_id"]; ?></td>
                                                 <td><?php echo $row["name"]; ?></td>
+                                                <td><?php echo $row["common_name"]; ?></td>
                                                 <td><?php echo $row["hire_date"]; ?></td>
                                                 <td><?php echo $row["phone"]; ?></td>
                                                 <td><?php echo $row["email"]; ?></td>
+                                                <td>
+                                                    <a href="admin_edit_instructor.php?id=<?php echo $row["id"]; ?>" class="btn btn-info btn-icon-split">
+                                                        <span class="icon text-white-50">
+                                                            <i class="fas fa-edit"></i>
+                                                        </span>
+                                                        <span class="text">Edit</span>
+                                                    </a>
+                                                </td>
                                             </tr>
                                     <?php
                                         }

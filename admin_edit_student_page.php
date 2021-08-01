@@ -47,7 +47,7 @@ require 'parts/head.php';
                             <h6 class="m-0 font-weight-bold text-primary">Student Registration</h6>
                         </div>
                         <div class="card-body">
-                            <form action="" method="POST">
+                            <form action="" method="POST"  enctype="multipart/form-data">
                                 <input type="hidden" name="id" value="<?php echo $id; ?>">
                                 <div class="row">
                                     <div class="col-md-6">
@@ -102,6 +102,17 @@ require 'parts/head.php';
                                             <input type="text" name="insta" class="form-control" placeholder="Instagram Name/ID" id="pwd" value="<?php echo $row["insta"]; ?>">
                                         </div>
                                     </div>
+                                    <div class="col-md-6">
+                                        <div class="input-group mb-3">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text">Upload Student Picture</span>
+                                            </div>
+                                            <div class="custom-file">
+                                                <input class="custom-file-input" id="inputGroupFile01" type="file" accept="image/*" name="image">
+                                                <label class="custom-file-label" for="inputGroupFile01">Select file</label>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-md-10 mx-auto">
@@ -128,10 +139,36 @@ require 'parts/head.php';
                         $fb = $_POST["fb"];
                         $insta = $_POST["insta"];
                         $email = $_POST["email"];
+                        $pic = "default.jpg";
+
+                        if (!empty($_FILES["image"]["name"])) {
+                            $valid_extensions = array('jpeg', 'jpg', 'png', 'gif', 'bmp', 'pdf', 'doc', 'ppt'); // valid extensions
+                            $path = 'img/students/'; // upload directory
+
+                            $img = $_FILES['image']['name'];
+                            $tmp = $_FILES['image']['tmp_name'];
+// get uploaded file's extension
+                            $ext = strtolower(pathinfo($img, PATHINFO_EXTENSION));
+// can upload same image using rand function
+                            $final_image = rand(1000, 1000000) . $img;
+// check's valid format
+                            if (in_array($ext, $valid_extensions)) {
+                                $path = $path . strtolower($final_image);
+                                if (move_uploaded_file($tmp, $path)) {
+                                    $pic = $final_image;
+                                }
+                            } else {
+                                echo 'invalid';
+                                exit();
+                                die();
+                            }
+                        }
 
 
                         $sql = "UPDATE master_registration_list SET email='$email', registration_date='$registration_date', registration_invoice_no='$invoice_num', student_name='$name', country='$country', passport_no='$passport',
-                                dob='$dob', phone_no='$phone_num', guardian_contact='$gardian_contact', address_S_A='$SA_address', facebook='$fb', insta='$insta' WHERE id=$id";
+                                dob='$dob', phone_no='$phone_num', guardian_contact='$gardian_contact', address_S_A='$SA_address', facebook='$fb', insta='$insta', pic='$pic'
+                                WHERE id=$id";
+//                        echo $sql; exit(); die();
 
                         if(phpRunSingleQuery($sql)){
                             js_redirect("admin_edit_student_page.php?success=1&id=$id");
