@@ -35,7 +35,6 @@ if(isset($_GET["send_grades"])){
     $sql = "SELECT * FROM master_registration_list WHERE id = '$student_id'";
     $res = mysqli_query($con, $sql);
     $row = mysqli_fetch_array($res);
-
     $to = $row["email"];
     $subject = "Student Grades Sheet";
     $txt = "Please <a href='$path'>CLICK HERE</a> to get your grades Sheet.";
@@ -197,8 +196,9 @@ require 'parts/head.php';
                         $('#student_id_Input').val(id);
                     }
                     function emailGradeModal(id){
+                        console.log(id);
                         $('#EmailGrade').modal('show');
-                        $('#student_id_Input').val(id);
+                        $('#student_id_Input_email').val(id);
                     }
                 </script>
 
@@ -262,7 +262,7 @@ require 'parts/head.php';
                             <!-- Modal body -->
                             <div class="modal-body">
                                 <form action="admin_student_card.php" method="GET">
-                                    <input type="hidden" name="student_id" id="student_id_Input" value="">
+                                    <input type="hidden" name="student_id" id="student_id_Input_email" value="">
                                     <div class="form-group">
                                         <label for="sel1">Select Course:</label>
                                         <select class="form-control" name="course_id">
