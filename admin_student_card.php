@@ -27,10 +27,10 @@ if(isset($_GET["mail"])){
 if(isset($_GET["send_grades"])){
     $course_id = $_GET["course_id"];
     $student_id = $_GET["student_id"];
-    $month = $_GET["month"];
+//    $month = $_GET["month"];
 
 
-    $path = $GLOBALS["appAddress"]."admin_marks.php?student_id=$student_id&course_id=$course_id&month=$month";
+    $path = $GLOBALS["appAddress"]."admin_marks.php?student_id=$student_id&course_id=$course_id";
 
     $sql = "SELECT * FROM master_registration_list WHERE id = '$student_id'";
     $res = mysqli_query($con, $sql);
@@ -156,8 +156,8 @@ require 'parts/head.php';
                                                             Actions
                                                         </button>
                                                         <div class="dropdown-menu animated--fade-in text-center bg-gray-200 px-3" aria-labelledby="dropdownMenuButton" style="" id="dropdown_a">
-                                                            <a href="admin_show_card.php?id=<?php echo $row["id"]; ?>" class="btn btn-primary">
-                                                                <span class="text">Prepare Card</span>
+                                                            <a target="_blank" href="admin_show_card.php?id=<?php echo $row["id"]; ?>" class="btn btn-primary">
+                                                                <span class="text">Student Card</span>
                                                             </a>
                                                             <a href="permit1.php?id=<?php echo $row["id"]; ?>" target="_blank" class="btn btn-info">
                                                                 <span class="text">View Permit</span>
@@ -278,24 +278,6 @@ require 'parts/head.php';
                                                 }
                                             }
                                             ?>
-                                        </select>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="sel1">Select Month:</label>
-                                        <select class="form-control" name="month">
-                                            <option>-- SELECT --</option>
-                                            <option value="January">January</option>
-                                            <option value="February">February</option>
-                                            <option value="March">March</option>
-                                            <option value="April">April</option>
-                                            <option value="May">May</option>
-                                            <option value="June">June</option>
-                                            <option value="July">July</option>
-                                            <option value="August">August</option>
-                                            <option value="September">September</option>
-                                            <option value="October">October</option>
-                                            <option value="November">November</option>
-                                            <option value="December">December</option>
                                         </select>
                                     </div>
                                     <div class="row">
