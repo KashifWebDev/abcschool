@@ -92,8 +92,8 @@ require 'parts/head.php';
                     $email = $_POST["email"];
                     $phone_num = $_POST["phone_num"];
 
-                    $sql = "INSERT INTO instructors (instructor_id, name, hire_date, phone, email) VALUES 
-                                ('$instructor_id', '$name', '$registration_date', '$phone_num', '$email')";
+                    $sql = "INSERT INTO instructors (instructor_id, name, hire_date, phone, email, common_name) VALUES 
+                                ('$instructor_id', '$name', '$registration_date', '$phone_num', '$email', '$common_name')";
 
                     if(phpRunSingleQuery($sql)){
                         js_redirect("admin_add_instructor.php?success=1");
