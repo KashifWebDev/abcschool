@@ -59,6 +59,10 @@ require 'parts/head.php';
                                         <input type="text" name="name" class="form-control" placeholder="Name" id="pwd">
                                     </div>
                                     <div class="form-group">
+                                        <label for="pwd">Common Name:</label>
+                                        <input type="text" name="common_name" class="form-control" placeholder="Name" id="pwd">
+                                    </div>
+                                    <div class="form-group">
                                         <label for="pwd">Email:</label>
                                         <input type="text" name="email" class="form-control" placeholder="Email" id="pwd">
                                     </div>
@@ -83,6 +87,7 @@ require 'parts/head.php';
                     require 'parts/db.php';
                     $registration_date = $_POST["registration_date"];
                     $name = $_POST["name"];
+                    $common_name = $_POST["common_name"];
                     $instructor_id = $_POST["instructor_id"];
                     $email = $_POST["email"];
                     $phone_num = $_POST["phone_num"];

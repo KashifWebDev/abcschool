@@ -164,6 +164,7 @@ require 'parts/head.php';
                             }
                         }
 
+                        $pic = strtolower($pic);
 
                         $sql = "UPDATE master_registration_list SET email='$email', registration_date='$registration_date', registration_invoice_no='$invoice_num', student_name='$name', country='$country', passport_no='$passport',
                                 dob='$dob', phone_no='$phone_num', guardian_contact='$gardian_contact', address_S_A='$SA_address', facebook='$fb', insta='$insta', pic='$pic'

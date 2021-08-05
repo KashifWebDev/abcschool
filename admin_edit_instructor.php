@@ -91,7 +91,8 @@ require 'parts/head.php';
                     $email = $_POST["email"];
                     $phone_num = $_POST["phone_num"];
 
-                    $sql = "UPDATE instructors SET name='$name', common_name='$common_name', email='$email', phone='$phone_num' WHERE id=$id";
+                    $sql = "UPDATE instructors SET name='$name', common_name='$common_name', email='$email', phone='$phone_num', common_name='$common_name'
+                            WHERE id=$id";
 
 
                     if(phpRunSingleQuery($sql)){

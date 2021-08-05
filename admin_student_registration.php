@@ -191,6 +191,7 @@ require 'parts/head.php';
                                 die();
                             }
                         }
+                        $pic = strtolower($pic);
                         $sql = "INSERT INTO master_registration_list (email, student_id, registration_invoice_no, registration_date, student_name, start_date,
                                       country, passport_no, dob, phone_no, guardian_contact, address_S_A, facebook, insta, pic) VALUES 
                                 ('$email', '$student_id', '$invoice_num', '$registration_date', '$name', '$start_date', '$country', '$passport',
