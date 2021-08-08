@@ -110,6 +110,29 @@
         </div>
     </li>
 
+    <!-- Invoices -->
+    <hr class="sidebar-divider">
+    <li class="nav-item">
+        <a class="nav-link" href="#" data-toggle="collapse" data-target="#invoices-tab" aria-expanded="true"
+           aria-controls="invoices-tab">
+            <i class="fas fa-fw fa-file-invoice-dollar"></i>
+            <span>Invoices Management</span>
+        </a>
+        <div id="invoices-tab" class="collapse" aria-labelledby="heading3"
+             data-parent="#accordionSidebar">
+            <div class="bg-gradient-light py-2 collapse-inner rounded">
+                <a class="collapse-item" href="admin_all_invoices.php">
+                    <i class="fas fa-fw fa-file-alt"></i>
+                    <span>Invoices List</span>
+                </a>
+                <a class="collapse-item" href="admin_enter_payment.php">
+                    <i class="fas fa-fw fa-plus-square"></i>
+                    <span>Payment Entry</span>
+                </a>
+            </div>
+        </div>
+    </li>
+
     <!-- Administration -->
     <hr class="sidebar-divider">
     <li class="nav-item">
