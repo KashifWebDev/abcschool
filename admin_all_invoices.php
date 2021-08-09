@@ -68,6 +68,7 @@ require 'parts/head.php';
                                         <th>No of Pages</th>
                                         <th>Month</th>
                                         <th>Language</th>
+                                        <th>Action</th>
                                     </tr>
                                     </thead>
                                     <tfoot>
@@ -87,6 +88,7 @@ require 'parts/head.php';
                                         <th>No of Pages</th>
                                         <th>Month</th>
                                         <th>Language</th>
+                                        <th>Action</th>
                                     </tr>
                                     </tfoot>
                                     <tbody>
@@ -114,6 +116,7 @@ require 'parts/head.php';
                                                 <td><?php echo $row["Tranlations_no_of_pages"]; ?></td>
                                                 <td><?php echo $row["mnth"]; ?></td>
                                                 <td><?php echo $row["lang"]; ?></td>
+                                                <td><a target="_blank" href="admin_print_invoice.php" class="btn btn-info">Print</a></td>
                                             </tr>
                                     <?php
                                         }

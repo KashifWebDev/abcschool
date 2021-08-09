@@ -90,7 +90,7 @@ require 'parts/head.php';
                                                 <td><?php echo $row["dob"]; ?></td>
                                                 <td><?php echo $row["email"]; ?></td>
                                                 <td>
-                                                    <a href="admin_edit_student_page.php?id=<?php echo $row["id"]; ?>" class="btn btn-info btn-icon-split">
+                                                    <a href="admin_student_profile_page.php?id=<?php echo $row["id"]; ?>" class="btn btn-info btn-icon-split">
                                                         <span class="icon text-white-50">
                                                             <i class="fas fa-id-card"></i>
                                                         </span>
