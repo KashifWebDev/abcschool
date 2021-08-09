@@ -39,6 +39,10 @@
                     <i class="fas fa-fw fa-list"></i>
                     <span>Registered Students</span>
                 </a>
+                <a class="collapse-item" href="admin_student_profile.php">
+                    <i class="fas fa-fw fa-id-card"></i>
+                    <span>Student Profile</span>
+                </a>
                 <a class="collapse-item" href="admin_edit_student.php">
                     <i class="fas fa-fw fa-edit"></i>
                     <span>Edit Student</span>
@@ -121,13 +125,13 @@
         <div id="invoices-tab" class="collapse" aria-labelledby="heading3"
              data-parent="#accordionSidebar">
             <div class="bg-gradient-light py-2 collapse-inner rounded">
-                <a class="collapse-item" href="admin_all_invoices.php">
-                    <i class="fas fa-fw fa-file-alt"></i>
-                    <span>Invoices List</span>
-                </a>
                 <a class="collapse-item" href="admin_enter_payment.php">
                     <i class="fas fa-fw fa-plus-square"></i>
                     <span>Payment Entry</span>
+                </a>
+                <a class="collapse-item" href="admin_all_invoices.php">
+                    <i class="fas fa-fw fa-file-alt"></i>
+                    <span>Invoices List</span>
                 </a>
             </div>
         </div>

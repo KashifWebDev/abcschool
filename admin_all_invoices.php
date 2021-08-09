@@ -57,6 +57,8 @@ require 'parts/head.php';
                                         <th>Customer</th>
                                         <th>Date</th>
                                         <th>Terms of Payment</th>
+                                        <th>EFT Date</th>
+                                        <th>EFT Reference</th>
                                         <th>ABC Receipt</th>
                                         <th>Service Description</th>
                                         <th>Notes</th>
@@ -64,6 +66,8 @@ require 'parts/head.php';
                                         <th>Course</th>
                                         <th>Teacher</th>
                                         <th>No of Pages</th>
+                                        <th>Month</th>
+                                        <th>Language</th>
                                     </tr>
                                     </thead>
                                     <tfoot>
@@ -72,6 +76,8 @@ require 'parts/head.php';
                                         <th>Customer</th>
                                         <th>Date</th>
                                         <th>Terms of Payment</th>
+                                        <th>EFT Date</th>
+                                        <th>EFT Reference</th>
                                         <th>ABC Receipt</th>
                                         <th>Service Description</th>
                                         <th>Notes</th>
@@ -79,6 +85,8 @@ require 'parts/head.php';
                                         <th>Course</th>
                                         <th>Teacher</th>
                                         <th>No of Pages</th>
+                                        <th>Month</th>
+                                        <th>Language</th>
                                     </tr>
                                     </tfoot>
                                     <tbody>
@@ -95,6 +103,8 @@ require 'parts/head.php';
                                                 <td><?php echo $row["Customer"]; ?></td>
                                                 <td><?php echo $row["Invoice_Date"]; ?></td>
                                                 <td><?php echo $row["Terms_of_Payment"]; ?></td>
+                                                <td><?php echo $row["eft_date"]; ?></td>
+                                                <td><?php echo $row["eft_reference"]; ?></td>
                                                 <td><?php echo $row["ABC_Receipt_book"]; ?></td>
                                                 <td><?php echo $row["ProductService_Description"]; ?></td>
                                                 <td><?php echo $row["Notes"]; ?></td>
@@ -102,6 +112,8 @@ require 'parts/head.php';
                                                 <td><?php echo $row["Course"]; ?></td>
                                                 <td><?php echo $row["Teacher"]; ?></td>
                                                 <td><?php echo $row["Tranlations_no_of_pages"]; ?></td>
+                                                <td><?php echo $row["mnth"]; ?></td>
+                                                <td><?php echo $row["lang"]; ?></td>
                                             </tr>
                                     <?php
                                         }

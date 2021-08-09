@@ -42,7 +42,7 @@ require 'parts/head.php';
                         ?>
                         <div class="card mb-4 py-3 border-left-success">
                             <div class="card-body text-success">
-                                <strong>Success! </strong> Student Record added Successfully!
+                                <strong>Success! </strong> Payment Inserted! ID: <?php echo $_GET["last_id"]; ?>
                             </div>
                         </div>
                     <?php
@@ -131,7 +131,7 @@ require 'parts/head.php';
                                         <div class="form-group mt-2" id="mnthBox">
                                             <label for="sel1">Select Month:</label>
                                             <select class="form-control" name="month">
-                                                <option>-- SELECT --</option>
+                                                <option value="">-- SELECT --</option>
                                                 <option value="January">January</option>
                                                 <option value="February">February</option>
                                                 <option value="March">March</option>
@@ -150,7 +150,7 @@ require 'parts/head.php';
                                             <div class="form-group mt-2">
                                                 <label for="sel1">Select Course:</label>
                                                 <select class="form-control" name="course">
-                                                    <option>-- SELECT --</option>
+                                                    <option value="">-- SELECT --</option>
                                                     <option value="Foundation">Foundation</option>
                                                     <option value="Basic">Basic</option>
                                                     <option value="Intermediate">Intermediate</option>
@@ -162,7 +162,7 @@ require 'parts/head.php';
                                             <div class="form-group mt-2">
                                                 <label for="sel1">Select Language:</label>
                                                 <select class="form-control" name="lang">
-                                                    <option>-- SELECT --</option>
+                                                    <option value="">-- SELECT --</option>
                                                     <option value="French">French</option>
                                                     <option value="Portuguese">Portuguese</option>
                                                 </select>
@@ -195,13 +195,14 @@ require 'parts/head.php';
                         $receipt = $_POST["receipt"];
                         $desc = $_POST["desc"];
                         $pay = $_POST["pay"];
-                        $eft_date = $_POST["eft_date"];
-                        $eft_reference = $_POST["eft_reference"];
+                        $eft_date = $_POST["eft_date"] ?? '00-00-0000';
+                        $eft_reference = $_POST["eft_reference"] ?? null;
                         $userSelection = $_POST["userSelection"];
-                        $month = $_POST["month"];
-                        $bookBox = $_POST["course"];
-                        $langBox = $_POST["lang"];
-                        $numOfPages = $_POST["numOfPages"];
+                        $month = $_POST["month"] ?? null;
+                        $bookBox = $_POST["course"] ?? null;
+                        $langBox = $_POST["lang"] ?? null;
+                        $numOfPages = !empty($_POST["numOfPages"]) ? $_POST["numOfPages"] : 0;
+
 
                         $amount = 0;
 
@@ -217,14 +218,21 @@ require 'parts/head.php';
                             }
                         }
 
-                        $sql = "INSERT INTO payments (Customer, Invoice_Date, Terms_of_Payment, eft_date, eft_reference, ABC_Receipt_book, ProductService_Description, Amount, Course, Teacher, Tranlations_no_of_pages)
-                                VALUES ()";
+//                        echo $amount; exit(); die();
+                        echo $amount;
 
+                        $sql = "INSERT INTO payments (Customer, Invoice_Date, Terms_of_Payment, eft_date, eft_reference, ABC_Receipt_book, ProductService_Description, Amount, Course, Teacher,
+                                                    Tranlations_no_of_pages, mnth, lang)
+                                VALUES ('$name', '$date', '$pay', '$eft_date', '$eft_reference', '$receipt', '$desc', $amount, '$bookBox', '$teacher', $numOfPages, '$month', '$langBox')";
 
-                        if(phpRunSingleQuery($sql)){
-                            js_redirect("admin_enter_payment.php?success=1");
+                        echo $sql;
+
+                        require 'parts/db.php';
+                        if(mysqli_query($con, $sql)){
+                            $last_id = mysqli_insert_id($con);
+                            js_redirect("admin_enter_payment.php?success=1&last_id=$last_id");
                         }else{
-//
+                            echo mysqli_error($con); exit(); die();
                         }
 
                     }
