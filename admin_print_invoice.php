@@ -57,18 +57,50 @@
                                 <td class="w-50">Teacher</td>
                                 <td class="w-50"><?php echo $row["Teacher"]; ?></td>
                             </tr>
-                            <?php if(!empty($row["Course"])) { ?>
+                            <tr class="w-100">
+                                <td class="w-50">Payment Method</td>
+                                <td class="w-50"><?php echo $row["Terms_of_Payment"]; ?></td>
+                            </tr>
+                            <?php if($row["Terms_of_Payment"]=="EFT") { ?>
+                                <tr class="w-100">
+                                    <td class="w-50">EFT Date/Reference</td>
+                                    <td class="w-50"><?php echo $row["eft_date"].' / '.$row["eft_reference"]; ?></td>
+                                </tr>
+                            <?php } ?>
+                            <?php if($row["userSelection"]=="Books") { ?>
                                 <tr class="w-100">
                                     <td class="w-50">Course</td>
                                     <td class="w-50"><?php echo $row["course"]; ?></td>
                                 </tr>
                             <?php } ?>
-                            <?php if(!empty($row["Course"])) { ?>
+                            <?php if($row["userSelection"]=="Registration fee") { ?>
                                 <tr class="w-100">
-                                    <td class="w-50">Course</td>
-                                    <td class="w-50"><?php echo $row["course"]; ?></td>
+                                    <td class="w-50">Registration Fee</td>
+                                    <td class="w-50"><?php echo 1600; ?></td>
                                 </tr>
                             <?php } ?>
+                            <?php if($row["userSelection"]=="Monthly fee") { ?>
+                                <tr class="w-100">
+                                    <td class="w-50">Monthly Fee for Month</td>
+                                    <td class="w-50"><?php echo $row["mnth"]; ?></td>
+                                </tr>
+                            <?php } ?>
+                            <?php if($row["userSelection"]=="Exam Re-write") { ?>
+                                <tr class="w-100">
+                                    <td class="w-50">ReWrite Fee for Month</td>
+                                    <td class="w-50"><?php echo $row["mnth"]; ?></td>
+                                </tr>
+                            <?php } ?>
+                            <?php if($row["userSelection"]=="Translation") { ?>
+                                <tr class="w-100">
+                                    <td class="w-50">Translation Languages / Pages</td>
+                                    <td class="w-50"><?php echo $row["lang"].' / '.$row["Tranlations_no_of_pages"]; ?></td>
+                                </tr>
+                            <?php } ?>
+                            <tr class="w-100">
+                                <td class="w-50">&nbsp</td>
+                                <td class="w-50"><b>Total &nbsp;</b><?php echo $row["Amount"]; ?></td>
+                            </tr>
                         </tbody>
                     </table>
                 </div>

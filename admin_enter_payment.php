@@ -109,23 +109,23 @@ require 'parts/head.php';
                                             <label for="email" class="font-weight-bold">Select Services</label>
                                         </div>
                                         <div class="form-check form-check-inline" id="registration_check">
-                                            <input class="form-check-input" type="checkbox" id="" value="Registration fee" name="userSelection[]">
+                                            <input class="form-check-input" type="checkbox" id="" value="Registration fee" name="userSelection">
                                             <label class="form-check-label" for="Registration">Registration</label>
                                         </div>
                                         <div class="form-check form-check-inline" id="registration_check">
-                                            <input class="form-check-input" type="checkbox" id="RegistrationInputCheck" value="Monthly fee" name="userSelection[]">
+                                            <input class="form-check-input" type="checkbox" id="RegistrationInputCheck" value="Monthly fee" name="userSelection">
                                             <label class="form-check-label" for="Registration">Monthly Fee</label>
                                         </div>
                                         <div class="form-check form-check-inline" id="book_check">
-                                            <input class="form-check-input" type="checkbox" id="BooksInput" value="Books" name="userSelection[]">
+                                            <input class="form-check-input" type="checkbox" id="BooksInput" value="Books" name="userSelection">
                                             <label class="form-check-label" for="Books">Books</label>
                                         </div>
                                         <div class="form-check form-check-inline" id="lang_check">
-                                            <input class="form-check-input" type="checkbox" id="TranslationInput" value="Translation" name="userSelection[]">
+                                            <input class="form-check-input" type="checkbox" id="TranslationInput" value="Translation" name="userSelection">
                                             <label class="form-check-label" for="Translation">Translation</label>
                                         </div>
                                         <div class="form-check form-check-inline" id="rewrite_check">
-                                            <input class="form-check-input" type="checkbox" id="ReWrite" value="Exam Re-write" name="userSelection[]">
+                                            <input class="form-check-input" type="checkbox" id="ReWrite" value="Exam Re-write" name="userSelection">
                                             <label class="form-check-label" for="ReWrite">Exam Re-write</label>
                                         </div>
                                         <div class="form-group mt-2" id="mnthBox">
@@ -206,24 +206,33 @@ require 'parts/head.php';
 
                         $amount = 0;
 
-                        foreach($userSelection as $chk1)
-                        {
-                            if($chk1=="Registration fee") $amount += 1600;
-                            if($chk1=="Monthly fee") $amount += 2500;
-                            if($chk1=="Books") { $amount += $bookBox=="Reader" ? 30 : 600; }
-                            if($chk1=="Exam Re-write") $amount += 300;
-                            if($chk1=="Translation") {
-                                $factor = $langBox=="French" ? 150 : 200;
-                                $amount += $factor*$numOfPages;
-                            }
+//                        foreach($userSelection as $chk1)
+//                        {
+//                            if($userSelection=="Registration fee") $amount += 1600;
+//                            if($userSelection=="Monthly fee") $amount += 2500;
+//                            if($userSelection=="Books") { $amount += $bookBox=="Reader" ? 30 : 600; }
+//                            if($userSelection=="Exam Re-write") $amount += 300;
+//                            if($userSelection=="Translation") {
+//                                $factor = $langBox=="French" ? 150 : 200;
+//                                $amount += $factor*$numOfPages;
+//                            }
+//                        }
+                        if($userSelection=="Registration fee") $amount += 1600;
+                        if($userSelection=="Monthly fee") $amount += 2500;
+                        if($userSelection=="Books") { $amount += $bookBox=="Reader" ? 30 : 600; }
+                        if($userSelection=="Exam Re-write") $amount += 300;
+                        if($userSelection=="Translation") {
+                            $factor = $langBox=="French" ? 150 : 200;
+                            $amount += $factor*$numOfPages;
                         }
 
 //                        echo $amount; exit(); die();
                         echo $amount;
 
                         $sql = "INSERT INTO payments (Customer, Invoice_Date, Terms_of_Payment, eft_date, eft_reference, ABC_Receipt_book, ProductService_Description, Amount, Course, Teacher,
-                                                    Tranlations_no_of_pages, mnth, lang)
-                                VALUES ('$name', '$date', '$pay', '$eft_date', '$eft_reference', '$receipt', '$desc', $amount, '$bookBox', '$teacher', $numOfPages, '$month', '$langBox')";
+                                                    Tranlations_no_of_pages, mnth, lang, userSelection)
+                                VALUES ('$name', '$date', '$pay', '$eft_date', '$eft_reference', '$receipt', '$desc', $amount, '$bookBox', '$teacher', $numOfPages, '$month', '$langBox',
+                                        '$userSelection')";
 
                         echo $sql;
 

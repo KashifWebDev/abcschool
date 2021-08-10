@@ -116,7 +116,7 @@ require 'parts/head.php';
                                                 <td><?php echo $row["Tranlations_no_of_pages"]; ?></td>
                                                 <td><?php echo $row["mnth"]; ?></td>
                                                 <td><?php echo $row["lang"]; ?></td>
-                                                <td><a target="_blank" href="admin_print_invoice.php" class="btn btn-info">Print</a></td>
+                                                <td><a target="_blank" href="admin_print_invoice.php?id=<?php echo $row["Database_Invoice_No"]; ?>" class="btn btn-info">Print</a></td>
                                             </tr>
                                     <?php
                                         }
