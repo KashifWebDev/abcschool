@@ -75,8 +75,12 @@ require 'parts/head.php';
                                             <input type="text" name="receipt" class="form-control" placeholder="Passport Number" id="pwd">
                                         </div>
                                         <div class="form-group">
-                                            <label for="pwd">Service Description #:</label>
+                                            <label for="pwd">Notes #:</label>
                                             <input type="text" name="desc" class="form-control" placeholder="Service Description" id="pwd">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="pwd">User Email</label>
+                                            <input type="email" name="email" class="form-control" placeholder="user@email.com" id="pwd" required>
                                         </div>
                                         <div class="form-group">
                                             <label for="pwd">Payment Method:</label>
@@ -193,6 +197,7 @@ require 'parts/head.php';
                         $teacher = $_POST["teacher"];
                         $name = $_POST["name"];
                         $receipt = $_POST["receipt"];
+                        $email = $_POST["email"];
                         $desc = $_POST["desc"];
                         $pay = $_POST["pay"];
                         $eft_date = $_POST["eft_date"] ?? '00-00-0000';
@@ -230,9 +235,9 @@ require 'parts/head.php';
                         echo $amount;
 
                         $sql = "INSERT INTO payments (Customer, Invoice_Date, Terms_of_Payment, eft_date, eft_reference, ABC_Receipt_book, ProductService_Description, Amount, Course, Teacher,
-                                                    Tranlations_no_of_pages, mnth, lang, userSelection)
+                                                    Tranlations_no_of_pages, mnth, lang, userSelection, email)
                                 VALUES ('$name', '$date', '$pay', '$eft_date', '$eft_reference', '$receipt', '$desc', $amount, '$bookBox', '$teacher', $numOfPages, '$month', '$langBox',
-                                        '$userSelection')";
+                                        '$userSelection', '$email')";
 
                         echo $sql;
 
@@ -346,12 +351,12 @@ require 'parts/head.php';
             });
             $('#rewrite_check').click(function() {
                 if($("#ReWrite").is(':checked')){
-                    $("#mnthBox").show();
+                    $("#bookBox").show();
                     console.log("in");
                 }
                 else{
                     console.log("out");
-                    $("#mnthBox").hide();
+                    $("#bookBox").hide();
                 }
             });
             $('#BooksInput').click(function() {

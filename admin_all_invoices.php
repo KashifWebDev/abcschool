@@ -1,5 +1,26 @@
 <?php
 require 'parts/app.php';
+if(isset($_GET["mail"])){
+    $id = $_GET["id"];
+    $path = "https://www.18jorissen.co.za/abc/admin_print_invoice.php?id=$id";
+
+
+    $to = $_GET["email"];
+    $subject = "ABC International - Invoice";
+    $txt = "Please <a href='$path'>CLICK HERE</a> to get invoice.";
+
+    $headers  = 'MIME-Version: 1.0' . "\r\n";
+    $headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
+    $headers .= 'X-Mailer: PHP/' . phpversion();
+
+
+    if(mail($to,$subject,$txt,$headers)){
+        js_redirect("admin_all_invoices.php?mailSent=1");
+    }else{
+        echo "============= MAIL WAS NOT SENT =============";
+        exit(); die();
+    }
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -116,7 +137,21 @@ require 'parts/head.php';
                                                 <td><?php echo $row["Tranlations_no_of_pages"]; ?></td>
                                                 <td><?php echo $row["mnth"]; ?></td>
                                                 <td><?php echo $row["lang"]; ?></td>
-                                                <td><a target="_blank" href="admin_print_invoice.php?id=<?php echo $row["Database_Invoice_No"]; ?>" class="btn btn-info">Print</a></td>
+                                                <td>
+                                                    <div class="dropdown mb-4">
+                                                        <button class="btn btn-danger dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                            Actions
+                                                        </button>
+                                                        <div class="dropdown-menu animated--fade-in text-center bg-gray-200" aria-labelledby="dropdownMenuButton" style="" id="dropdown_a">
+                                                            <a target="_blank" href="admin_print_invoice.php?id=<?php echo $row["Database_Invoice_No"]; ?>" class="btn btn-primary">
+                                                                <span class="text">Print</span>
+                                                            </a>
+                                                            <a href="admin_all_invoices.php?mail=1&id=<?php echo $row["Database_Invoice_No"]; ?>&email=<?php echo $row["email"]; ?>" target="_blank" class="btn btn-info">
+                                                                <span class="text">Email</span>
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                </td>
                                             </tr>
                                     <?php
                                         }

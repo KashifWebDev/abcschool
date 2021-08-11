@@ -15,15 +15,29 @@
         <div class="container mt-2">
             <div class="row">
                 <div class="col-12 text-center">
-                    <p class="text-dark display-4 font-weight-bold">ABC School System</p>
-                    <p class="lead text-dark font-weight-bold">
-                        Invoice # <span class="font-weight-normal">34434</span>
-                    </p>
+                    <div class="row">
+                        <div class="col-md-3">
+                            <img src="img/logo.jpg" alt="" style="width: 150px;">
+                        </div>
+                        <div class="col-md-9">
+                            <b>KBW House, 122 De Korte street</b>
+                            <p class="m-0">Braamfontein, Johannesburg, South Africa</p>
+                            <p class="m-0">Tel: (011) 403 2171</p>
+                            <p class="m-0">TE -mail: info@abcinternaonal.co.za</p>
+                            <p class="m-0">www.abcinternaonal.co.za</p>
+                        </div>
+                    </div>
+                    <div class="w-100" style="border-top: .105rem solid #5a5c69!important; height: 10px !important;">&nbsp;</div>
                 </div>
-                <div class="d-flex">
-                    <p><span class="font-weight-bold">Date:</span> <?php echo $row["Invoice_Date"]; ?></p>
+                <div class="col-12">
+                    <div class="d-flex">
+                        <p><span class="font-weight-bold">Date:</span> <?php echo $row["Invoice_Date"]; ?></p>
+                        <p class="lead text-dark font-weight-bold mt-3">
+                            Invoice # <span class="font-weight-normal">34434</span>
+                        </p>
+                        <p>&nbsp;</p>
+                    </div>
                 </div>
-                <div class="w-100" style="border-top: .105rem solid #5a5c69!important; height: 10px !important;">&nbsp;</div>
                 <div class="col-12">
                     <table class="table table-striped text-center">
                         <tbody>
@@ -87,8 +101,8 @@
                             <?php } ?>
                             <?php if($row["userSelection"]=="Exam Re-write") { ?>
                                 <tr class="w-100">
-                                    <td class="w-50">ReWrite Fee for Month</td>
-                                    <td class="w-50"><?php echo $row["mnth"]; ?></td>
+                                    <td class="w-50">ReWrite Fee for course</td>
+                                    <td class="w-50"><?php echo $row["Course"]; ?></td>
                                 </tr>
                             <?php } ?>
                             <?php if($row["userSelection"]=="Translation") { ?>
