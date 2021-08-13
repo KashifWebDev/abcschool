@@ -18,7 +18,7 @@ require 'parts/head.php';
 
 
                     <div class="row">
-                        <div class="col-md-7 mx-auto">
+                        <div class="col-md-6 mx-auto">
                             <!-- Card Front -->
                             <div id="CardFront">
                                 <div class="row" style="background-color: #bebebe;">
@@ -32,7 +32,7 @@ require 'parts/head.php';
                                 </div>
                                 <div class="row no-gutters">
                                     <div class="col-md-5">
-                                        <img src="img/students/<?php echo $row["pic"]; ?>" alt="" class="w-100" style="height: 200px;">
+                                        <img src="img/students/<?php echo $row["pic"]; ?>" alt="" class="w-100" style="height: 185px;">
                                     </div>
                                     <div class="col-md-7 text-dark d-flex flex-column justify-content-center align-items-center">
                                         <h3 class="font-weight-bold" style="text-align: center;"><?php echo $row["student_name"]; ?></h3>
