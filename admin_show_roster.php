@@ -1,6 +1,44 @@
 <?php
 require 'parts/app.php';
 
+if(isset($_GET["send_grades"])) {
+    $headers = 'MIME-Version: 1.0' . "\r\n";
+    $headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
+    $headers .= 'X-Mailer: PHP/' . phpversion();
+
+
+    $id = $page_id = $_GET["send_grades"];
+    $s = "SELECT * FROM roster WHERE id=$id";
+    $res = mysqli_query($con, $s);
+    $row = $mainRow = mysqli_fetch_array($res);
+    $courseID = $mainRow["course_id"];
+    $month = $page_month = $row["month"];
+
+    $sql = "SELECT * FROM courses_and_students WHERE roster_id=$page_id group by student_id";
+    $res = mysqli_query($con, $sql);
+    if (mysqli_num_rows($res)) {
+        while ($row = mysqli_fetch_array($res)) {
+            $mnth = $page_month;
+            $student = $row["student_id"];
+            $s = "SELECT email FROM master_registration_list WHERE id=$student";
+            $r = mysqli_query($con, $s);
+            if (mysqli_num_rows($r)) {
+                $ro = mysqli_fetch_array($r);
+                $email = $ro["email"];
+                if(isset($email) && !empty($email)){
+                    $path = "https://www.18jorissen.co.za/abc/admin_marks.php?student_id=$student&course_id=$courseID";
+                    $txt = "Please <a href='$path'>CLICK HERE</a> to get your grades Sheet.";
+                    echo "To: " . $email . "     Link: " . $path . "<br>";
+                    mail($email, "Student Grades Sheet", $txt, $headers);
+                }
+            }
+        }
+//        exit(); die();
+        js_redirect("admin_show_roster.php?id=$id&mailSent=1");
+
+    }
+}
+
 $id = $page_id = $_GET["id"];
 $s = "SELECT * FROM roster WHERE id=$id";
 $res = mysqli_query($con, $s);
@@ -11,7 +49,6 @@ $month = $page_month = $row["month"];
 $s = "SELECT * FROM courses WHERE id=$courseID";
 $res = mysqli_query($con, $s);
 $courseRow = mysqli_fetch_array($res);
-
 
 ?>
 <!DOCTYPE html>
@@ -55,6 +92,15 @@ require 'parts/head.php';
                         <div class="card mb-4 py-3 border-left-success">
                             <div class="card-body text-success">
                                 <strong>Success! </strong> Students Added successfully!
+                            </div>
+                        </div>
+                        <?php
+                    }
+                    if(isset($_GET["mailSent"]) && $_GET["mailSent"]){
+                        ?>
+                        <div class="card mb-4 py-3 border-left-success">
+                            <div class="card-body text-success">
+                                <strong>Success! </strong> Mail was sent to all enrolled students of this class.
                             </div>
                         </div>
                         <?php
@@ -214,6 +260,7 @@ require 'parts/head.php';
                                 </div>
                             </div>
 
+                            <a href="admin_show_roster.php?send_grades=<?php echo $page_id; ?>" class="btn btn-warning mb-2">Email Grades</a>
 
                             <?php
                             if(isset($_POST["add_instructor"])){
