@@ -282,12 +282,16 @@ require 'parts/head.php';
                                     <tr>
                                         <th>Student ID</th>
                                         <th>Student Name</th>
+                                        <th>Paid</th>
+                                        <th>Action</th>
                                     </tr>
                                     </thead>
                                     <tfoot>
                                     <tr>
                                         <th>Student ID</th>
                                         <th>Student Name</th>
+                                        <th>Paid</th>
+                                        <th>Action</th>
                                     </tr>
                                     </tfoot>
                                     <tbody>
@@ -306,14 +310,30 @@ require 'parts/head.php';
                                                 $student_id = $ro["student_id"];
                                                 $student_name = $ro["student_name"];
                                             }
-//                                            $s = "SELECT name FROM instructors WHERE id=$iID";
-//                                            $r = mysqli_query($con, $s);
-//                                            $ro = mysqli_fetch_array($r);
-//                                            $instructor_name = $ro["name"];
+                                            $paid = false;
+                                            $s = "SELECT * FROM payments WHERE Customer='$student_name' && (ProductService_Description='$page_month fees' OR mnth='$page_month')";
+                                            $r = mysqli_query($con, $s);
+                                            if(mysqli_num_rows($r)){
+                                                $paid = true;
+                                                $x = mysqli_fetch_array($r);
+//                                                print_r($x);
+                                            }
                                             ?>
                                             <tr>
                                                 <td><?php echo $student_id; ?></td>
                                                 <td><?php echo $student_name; ?></td>
+                                                <td>
+                                                    <?php
+                                                        echo $paid ?
+                                                            '<span class="bg-success text-white px-2 py-1" style="border-radius: 10px;">Paid</span>' :
+                                                            '<span class="bg-danger text-white px-2 py-1" style="border-radius: 10px;">Un Paid</span>';
+                                                    ?>
+                                                </td>
+                                                <td>
+                                                    <a class="btn btn-danger" href="admin_enter_grades.php?id=<?php echo $row["id"]; ?>">
+                                                        <span class="text">Enter Grades</span>
+                                                    </a>
+                                                </td>
                                             </tr>
                                     <?php
                                         }

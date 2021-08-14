@@ -21,11 +21,11 @@ require 'parts/head.php';
                         <div class="col-md-6 mx-auto">
                             <!-- Card Front -->
                             <div id="CardFront">
-                                <div class="row" style="background-color: #bebebe;">
+                                <div class="row bg-appColor" style="//background-color: #bebebe;">
                                     <div class="col-md-4 mx-auto">
                                         <img src="img/logo.png" alt="" height="60px">
                                     </div>
-                                    <div class="col-md-8 mx-auto d-flex flex-column justify-content-center align-items-center text-dark">
+                                    <div class="col-md-8 mx-auto d-flex flex-column justify-content-center align-items-center text-white">
                                         <p class="m-0" style="font-size: x-large;font-weight: 800;">ABC International</p>
                                         <p class="m-0" style="font-size: large;font-weight: 400;">Professional Language Learning Programme</p>
                                     </div>
@@ -61,8 +61,8 @@ require 'parts/head.php';
                             <hr>
                             <!-- Card Back -->
                             <div id="CardFront">
-                                <div class="row" style="background-color: #bebebe;">
-                                    <div class="col-md-12 py-2 d-flex flex-column justify-content-center align-items-center text-dark">
+                                <div class="row bg-appColor" style="//background-color: #bebebe;">
+                                    <div class="col-md-12 py-2 d-flex flex-column justify-content-center align-items-center text-white">
                                         <p class="m-0" style="font-size: x-large;font-weight: 800;">ABC International (PTY) Ltd</p>
                                         <p class="m-0 font-weight-bold" style="font-size: large;font-weight: 400;">2018/506135/07</p>
                                     </div>
@@ -80,7 +80,7 @@ require 'parts/head.php';
                                             </tr>
                                             <tr style="font-size: large;">
                                                 <td class="text-center">Address : </td>
-                                                <td style="text-align: justify; width: 55%;">KBW House, 122 De Korte street,
+                                                <td style="width: 55%;">KBW House, 122 De Korte street,
                                                     Braamfontein, Johannesburg
                                                     South Africa
                                             </td>
