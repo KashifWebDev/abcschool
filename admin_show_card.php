@@ -92,10 +92,8 @@ require 'parts/head.php';
                                         </table>
                                     </div>
                                 </div>
-                                <div class="row bg-appColor py-2">
-                                    &nbsp;<div class="col-12 text-center text-white">
+                                <div class="w-100 bg-appColor py-2 text-center text-white">
                                         Telephone: +27 (11) 4032171
-                                    </div>
                                 </div>
                             </div>
                         </div>
