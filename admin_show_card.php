@@ -27,7 +27,7 @@ require 'parts/head.php';
                                     </div>
                                     <div class="col-md-8 mx-auto d-flex flex-column justify-content-center align-items-center text-dark">
                                         <p class="m-0" style="font-size: x-large;font-weight: 800;">ABC International</p>
-                                        <p class="m-0" style="font-size: large;font-weight: 400;">Professional Learnship Programme</p>
+                                        <p class="m-0" style="font-size: large;font-weight: 400;">Professional Language Learning Programme</p>
                                     </div>
                                 </div>
                                 <div class="row no-gutters">
@@ -53,7 +53,7 @@ require 'parts/head.php';
                                 <div class="row bg-appColor">
                                     <div class="col-md-5"></div>
                                     <div class="col-md-7 text-center text-white py-2" style="font-size: large">
-                                        Expiry Date: October 2021
+                                        Expiry Date: <b>Dec 2021</b>
                                     </div>
                                 </div>
                             </div>
@@ -93,7 +93,9 @@ require 'parts/head.php';
                                     </div>
                                 </div>
                                 <div class="row bg-appColor py-2">
-                                    &nbsp;
+                                    &nbsp;<div class="col-12 text-center text-white">
+                                        Telephone: +27 (11) 4032171
+                                    </div>
                                 </div>
                             </div>
                         </div>
