@@ -260,7 +260,7 @@ require 'parts/head.php';
                                 </div>
                             </div>
 
-                            <a href="admin_show_roster.php?send_grades=<?php echo $page_id; ?>" class="btn btn-warning mb-2">Email Grades</a>
+                            <a href="admin_show_roster.php?send_grades=<?php echo $page_id; ?>" class="btn btn-success mb-2">Email Grades</a>
 
                             <?php
                             if(isset($_POST["add_instructor"])){

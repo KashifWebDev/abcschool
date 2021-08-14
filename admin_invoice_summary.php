@@ -5,7 +5,7 @@ require 'parts/app.php';
 <html lang="en">
 
 <?php
-$title = "Edit Student";
+$title = "Invoices Summary";
 require 'parts/head.php';
 ?>
 
@@ -28,7 +28,7 @@ require 'parts/head.php';
                     <!-- Page Heading -->
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">Registered Students Record</h6>
+                            <h6 class="m-0 font-weight-bold text-primary">Invoices Summary</h6>
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
@@ -37,26 +37,20 @@ require 'parts/head.php';
                                     <tr>
                                         <th>Student ID</th>
                                         <th>Name</th>
-                                        <th>Country</th>
-                                        <th>Flag</th>
-                                        <th>Passport #</th>
                                         <th>Invoice #</th>
-                                        <th>DOB</th>
+                                        <th>Month</th>
                                         <th>Email</th>
-                                        <th>Action</th>
+                                        <th>Status</th>
                                     </tr>
                                     </thead>
                                     <tfoot>
                                     <tr>
                                         <th>Student ID</th>
                                         <th>Name</th>
-                                        <th>Country</th>
-                                        <th>Flag</th>
-                                        <th>Passport #</th>
                                         <th>Invoice #</th>
-                                        <th>DOB</th>
+                                        <th>Month</th>
                                         <th>Email</th>
-                                        <th>Action</th>
+                                        <th>Status</th>
                                     </tr>
                                     </tfoot>
                                     <tbody>
@@ -65,37 +59,29 @@ require 'parts/head.php';
                                     $res = mysqli_query($con, $sql);
                                     if(mysqli_num_rows($res)){
                                         while($row = mysqli_fetch_array($res)){
-                                            $cntry_flag = null;
-                                            $cntry = $row["country"];
-                                            if($cntry == "Democratic Republic of Congo") $cntry_flag = '<img style="height: 35px;" src="img/flag_drc.png">';
-                                            if($cntry == "Republic of Congo") $cntry_flag = '<img style="height: 35px;" src="img/flag_rcf.png">';
-                                            if($cntry == "Libya") $cntry_flag = '<img style="height: 35px; width: 48px;" src="img/flag_libya.png">';
-                                            $s1 = "SELECT * FROM countries WHERE country_name='$cntry'";
-                                            $se = mysqli_query($con, $s1);
-                                            if(mysqli_num_rows($se)){
-                                                $cn = mysqli_fetch_array($se);
-                                                $f = $cn["country_code"];
-                                                $cntry_flag = '<img src="https://www.countryflags.io/'.$f.'/shiny/48.png">';
-                                            }else{
-//                                                echo $s1;
+                                            $name = $row["student_name"];
+                                            $paid = false;
+                                            $s = "SELECT * FROM payments WHERE Customer='$name'";
+                                            $r = mysqli_query($con, $s);
+                                            if(mysqli_num_rows($r)){
+                                                $paid = true;
+                                                $x = mysqli_fetch_array($r);
+                                                $mnth = $x["mnth"];
+//                                                print_r($x);
                                             }
                                             ?>
                                             <tr>
                                                 <td><?php echo $row["student_id"]; ?></td>
                                                 <td><?php echo $row["student_name"]; ?></td>
-                                                <td><?php echo $row["country"]; ?></td>
-                                                <td><?php echo isset($cntry_flag) ? $cntry_flag : '--'; ?></td>
-                                                <td><?php echo $row["passport_no"]; ?></td>
                                                 <td><?php echo $row["registration_invoice_no"]; ?></td>
-                                                <td><?php echo $row["dob"]; ?></td>
+                                                <td><?php echo $mnth; ?></td>
                                                 <td><?php echo $row["email"]; ?></td>
-                                                <td>
-                                                    <a href="admin_edit_student_page.php?id=<?php echo $row["id"]; ?>" class="btn btn-info btn-icon-split">
-                                                        <span class="icon text-white-50">
-                                                            <i class="fas fa-edit"></i>
-                                                        </span>
-                                                        <span class="text">Edit</span>
-                                                    </a>
+                                                <td class="d-block" style="width: max-content;">
+                                                    <?php
+                                                    echo $paid ?
+                                                        '<span class="bg-success text-white px-2 py-1" style="border-radius: 10px;">Paid</span>' :
+                                                        '<span class="bg-danger text-white px-2 py-1" style="border-radius: 10px;">Un Paid</span>';
+                                                    ?>
                                                 </td>
                                             </tr>
                                     <?php

@@ -133,6 +133,10 @@
                     <i class="fas fa-fw fa-file-alt"></i>
                     <span>Invoices List</span>
                 </a>
+                <a class="collapse-item" href="admin_invoice_summary.php">
+                    <i class="fas fa-fw fa-poll-h"></i>
+                    <span>Summary</span>
+                </a>
             </div>
         </div>
     </li>
