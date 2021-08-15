@@ -177,6 +177,10 @@ require 'parts/head.php';
                                                 </div>
                                             </div>
                                         </div>
+                                        <div class="form-group mt-5">
+                                            <label for="pwd">Balance (<b>If Any</b>):</label>
+                                            <input type="number" min="0" name="balance" class="form-control" placeholder="Enter balance, IF ANY" id="pwd">
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="col-12">
@@ -206,6 +210,7 @@ require 'parts/head.php';
                         $month = $_POST["month"] ?? null;
                         $bookBox = $_POST["course"] ?? null;
                         $langBox = $_POST["lang"] ?? null;
+                        $balance = $_POST["balance"];
                         $numOfPages = !empty($_POST["numOfPages"]) ? $_POST["numOfPages"] : 0;
 
 
@@ -235,9 +240,9 @@ require 'parts/head.php';
                         echo $amount;
 
                         $sql = "INSERT INTO payments (Customer, Invoice_Date, Terms_of_Payment, eft_date, eft_reference, ABC_Receipt_book, ProductService_Description, Amount, Course, Teacher,
-                                                    Tranlations_no_of_pages, mnth, lang, userSelection, email)
+                                                    Tranlations_no_of_pages, mnth, lang, userSelection, email, balance)
                                 VALUES ('$name', '$date', '$pay', '$eft_date', '$eft_reference', '$receipt', '$desc', $amount, '$bookBox', '$teacher', $numOfPages, '$month', '$langBox',
-                                        '$userSelection', '$email')";
+                                        '$userSelection', '$email', $balance)";
 
                         echo $sql;
 

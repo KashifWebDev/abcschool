@@ -29,13 +29,12 @@
                     </div>
                     <div class="w-100" style="border-top: .105rem solid #5a5c69!important; height: 10px !important;">&nbsp;</div>
                 </div>
-                <div class="col-12">
-                    <div class="d-flex">
-                        <p><span class="font-weight-bold">Date:</span> <?php echo $row["Invoice_Date"]; ?></p>
-                        <p class="lead text-dark font-weight-bold mt-3">
-                            Invoice # <span class="font-weight-normal">34434</span>
+                <div class="w-100 py-3">
+                    <div class="clearfix">
+                        <p class="float-left m-0"><span class="font-weight-bold">Date:</span> <?php echo $row["Invoice_Date"]; ?></p>
+                        <p class="lead text-dark font-weight-bold float-right m-0">
+                            Invoice # <span class="font-weight-normal"><?php echo $row["Database_Invoice_No"]; ?></span>
                         </p>
-                        <p>&nbsp;</p>
                     </div>
                 </div>
                 <div class="col-12">
@@ -111,6 +110,10 @@
                                     <td class="w-50"><?php echo $row["lang"].' / '.$row["Tranlations_no_of_pages"]; ?></td>
                                 </tr>
                             <?php } ?>
+                            <tr class="w-100">
+                                <td class="w-50">Balance</td>
+                                <td class="w-50"><?php echo $row["balance"]; ?></td>
+                            </tr>
                             <tr class="w-100">
                                 <td class="w-50">&nbsp</td>
                                 <td class="w-50"><b>Total &nbsp;</b><?php echo $row["Amount"]; ?></td>

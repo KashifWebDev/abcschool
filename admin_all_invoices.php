@@ -149,6 +149,9 @@ require 'parts/head.php';
                                                             <a href="admin_all_invoices.php?mail=1&id=<?php echo $row["Database_Invoice_No"]; ?>&email=<?php echo $row["email"]; ?>" target="_blank" class="btn btn-info">
                                                                 <span class="text">Email</span>
                                                             </a>
+                                                            <a href="admin_edit_invoice.php?&id=<?php echo $row["Database_Invoice_No"]; ?>" target="_blank" class="btn btn-success">
+                                                                <span class="text">Edit</span>
+                                                            </a>
                                                         </div>
                                                     </div>
                                                 </td>

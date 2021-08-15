@@ -78,6 +78,10 @@ require 'parts/head.php';
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
+                                            <label for="email">Date of Commencement</label>
+                                            <input type="date" name="start_date" class="form-control" placeholder="Commencement Date" value="<?php echo $row["start_date"]; ?>">
+                                        </div>
+                                        <div class="form-group">
                                             <label for="pwd">Country:</label>
                                             <input type="text" name="country" class="form-control" placeholder="Country" id="pwd" value="<?php echo $row["country"]; ?>">
                                         </div>
@@ -138,6 +142,7 @@ require 'parts/head.php';
                         $SA_address = $_POST["SA_address"];
                         $fb = $_POST["fb"];
                         $insta = $_POST["insta"];
+                        $start_date = $_POST["start_date"];
                         $email = $_POST["email"];
                         $pic = "default.jpg";
 
@@ -166,8 +171,9 @@ require 'parts/head.php';
 
                         $pic = strtolower($pic);
 
-                        $sql = "UPDATE master_registration_list SET email='$email', registration_date='$registration_date', registration_invoice_no='$invoice_num', student_name='$name', country='$country', passport_no='$passport',
-                                dob='$dob', phone_no='$phone_num', guardian_contact='$gardian_contact', address_S_A='$SA_address', facebook='$fb', insta='$insta', pic='$pic'
+                        $sql = "UPDATE master_registration_list SET email='$email', registration_date='$registration_date', registration_invoice_no='$invoice_num',
+                                student_name='$name', country='$country', passport_no='$passport',dob='$dob', phone_no='$phone_num', guardian_contact='$gardian_contact',
+                                address_S_A='$SA_address', facebook='$fb', insta='$insta', pic='$pic', start_date='$start_date'
                                 WHERE id=$id";
 //                        echo $sql; exit(); die();
 

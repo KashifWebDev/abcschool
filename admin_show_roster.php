@@ -1,6 +1,16 @@
 <?php
 require 'parts/app.php';
 
+if(isset($_GET["delUser"])){
+    $stdID = $_GET["student_id_Input"];
+    $rosterID = $_GET["page_id"];
+    $s = "DELETE FROM courses_and_students WHERE student_id='$stdID'";
+//    echo $s; exit(); die();
+    if(mysqli_query($con, $s)){
+        js_redirect("admin_show_roster.php?id=$rosterID");
+    }
+}
+
 if(isset($_GET["send_grades"])) {
     $headers = 'MIME-Version: 1.0' . "\r\n";
     $headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
@@ -349,11 +359,12 @@ require 'parts/head.php';
                                         while($row = mysqli_fetch_array($res)){
                                             $mnth = $page_month;
                                             $student = $row["student_id"];
-                                            $s = "SELECT student_id, student_name FROM master_registration_list WHERE id=$student";
+                                            $s = "SELECT id, student_id, student_name FROM master_registration_list WHERE id=$student";
                                             $r = mysqli_query($con, $s);
                                             $student_id = $student_name = "";
                                             if(mysqli_num_rows($r)){
                                                 $ro = mysqli_fetch_array($r);
+                                                $student_real_id = $ro["id"];
                                                 $student_id = $ro["student_id"];
                                                 $student_name = $ro["student_name"];
                                             }
@@ -377,7 +388,10 @@ require 'parts/head.php';
                                                     ?>
                                                 </td>
                                                 <td>
-                                                    <a class="btn btn-danger" href="admin_enter_grades.php?id=<?php echo $row["id"]; ?>">
+                                                    <button class="btn btn-danger" onclick="delUser('<?php echo $student_real_id; ?>')">
+                                                        Delete
+                                                    </button>
+                                                    <a class="btn btn-primary" href="admin_enter_grades.php?id=<?php echo $row["id"]; ?>">
                                                         <span class="text">Enter Grades</span>
                                                     </a>
                                                 </td>
@@ -393,6 +407,45 @@ require 'parts/head.php';
                     </div>
                 </div>
                 <!-- /.container-fluid -->
+                <script>
+                    function delUser(id){
+                        $('#delUser').modal('show');
+                        $('#student_id_Input').val(id);
+                    }
+                </script>                <!-- ViewGrades -->
+                <div class="modal" id="delUser">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <!-- Modal Header -->
+                            <div class="modal-header">
+                                <h4 class="modal-title">Delete User</h4>
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            </div>
+                            <!-- Modal body -->
+                            <div class="modal-body">
+                                <form action="admin_show_roster.php" method="GET">
+                                    <input type="hidden" name="student_id_Input" id="student_id_Input" value="">
+                                    <input type="hidden" name="page_id" value="<?php echo $page_id; ?>">
+                                    <span>Do you really want to <b>delete</b> this user?</span>
+                                    <hr>
+                                    <div class="row">
+                                        <div class="col-6">
+                                            <button type="submit" name="delUser" class="btn-danger w-100 btn">
+                                                Delete
+                                            </button>
+                                        </div>
+                                        <div class="col-6">
+                                            <button class="btn-secondary w-100 btn" data-dismiss="modal" type="button">
+                                                Cancel
+                                            </button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
 
             </div>
             <!-- End of Main Content -->
