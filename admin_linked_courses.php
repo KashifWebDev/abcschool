@@ -195,12 +195,12 @@ require 'parts/head.php';
                                                 <td><?php echo $instName; ?></td>
                                                 <td><?php echo $mnth; ?></td>
                                                 <td>
-                                                    <a href="admin_linked_courses.php?unlink=<?php echo $linkID; ?>" class="btn btn-danger btn-icon-split">
-                                                        <span class="icon text-white-50">
-                                                            <i class="fas fa-trash"></i>
-                                                        </span>
-                                                        <span class="text">Remove</span>
-                                                    </a>
+<!--                                                    <a href="admin_linked_courses.php?unlink=--><?php //echo $linkID; ?><!--" class="btn btn-danger btn-icon-split">-->
+<!--                                                        <span class="icon text-white-50">-->
+<!--                                                            <i class="fas fa-trash"></i>-->
+<!--                                                        </span>-->
+<!--                                                        <span class="text">Remove</span>-->
+<!--                                                    </a>-->
                                                     <a href="admin_show_roster.php?id=<?php echo $linkID; ?>" class="btn btn-info btn-icon-split">
                                                         <span class="icon text-white-50">
                                                             <i class="fas fa-calendar-check"></i>

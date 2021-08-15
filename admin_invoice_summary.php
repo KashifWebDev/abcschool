@@ -38,7 +38,7 @@ require 'parts/head.php';
                                         <th>Student ID</th>
                                         <th>Name</th>
                                         <th>Invoice #</th>
-                                        <th>Month</th>
+                                        <th>Service</th>
                                         <th>Email</th>
                                         <th>Status</th>
                                     </tr>
@@ -48,7 +48,7 @@ require 'parts/head.php';
                                         <th>Student ID</th>
                                         <th>Name</th>
                                         <th>Invoice #</th>
-                                        <th>Month</th>
+                                        <th>Service</th>
                                         <th>Email</th>
                                         <th>Status</th>
                                     </tr>
@@ -61,12 +61,15 @@ require 'parts/head.php';
                                         while($row = mysqli_fetch_array($res)){
                                             $name = $row["student_name"];
                                             $paid = false;
-                                            $s = "SELECT * FROM payments WHERE Customer='$name'";
+                                            $s = "SELECT * FROM payments WHERE Customer='$name' ORDER BY Database_Invoice_No DESC";
                                             $r = mysqli_query($con, $s);
                                             if(mysqli_num_rows($r)){
-                                                $paid = true;
                                                 $x = mysqli_fetch_array($r);
-                                                $mnth = $x["mnth"];
+                                                $mnth = strtolower(date("M"));
+//                                                echo 'FLAG: '.strpos(strtolower($x["ProductService_Description"]),$mnth);
+                                                if (strpos(strtolower($x["ProductService_Description"]),$mnth)!== false || strpos(strtolower($x["mnth"]),$mnth)!== false) {
+                                                    $paid = true;
+                                                }
 //                                                print_r($x);
                                             }
                                             ?>
