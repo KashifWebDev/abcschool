@@ -82,7 +82,7 @@ require 'parts/head.php';
                                                 <td><?php echo $row["student_id"]; ?></td>
                                                 <td><?php echo $row["student_name"]; ?></td>
                                                 <td><?php echo $row["registration_invoice_no"]; ?></td>
-                                                <td><?php echo $mnth; ?></td>
+                                                <td><?php echo $x["ProductService_Description"]; ?></td>
                                                 <td><?php echo $row["email"]; ?></td>
                                                 <td class="d-block" style="width: max-content;">
                                                     <?php
