@@ -62,14 +62,19 @@ require 'parts/head.php';
                                             $name = $row["student_name"];
                                             $paid = false;
                                             $s = "SELECT * FROM payments WHERE Customer='$name' ORDER BY Database_Invoice_No DESC";
+//                                            $s = "SELECT * FROM payments where Database_Invoice_No  = 3165";
                                             $r = mysqli_query($con, $s);
                                             if(mysqli_num_rows($r)){
                                                 $x = mysqli_fetch_array($r);
                                                 $mnth = strtolower(date("M"));
-//                                                echo 'FLAG: '.strpos(strtolower($x["ProductService_Description"]),$mnth);
+                                                $curMonth = strtolower($x["ProductService_Description"]);
+//                                                echo $mnth.' '.$curMonth.'<br>';
+//                                                echo 'FLAG: '.strpos($curMonth,$mnth); //exit(); die();
+//                                                if (strpos($mystring, $word) !== false){
                                                 if (strpos(strtolower($x["ProductService_Description"]),$mnth)!== false || strpos(strtolower($x["mnth"]),$mnth)!== false) {
                                                     $paid = true;
                                                 }
+//                                                echo $paid; exit(); die();
 //                                                print_r($x);
                                             }
                                             ?>

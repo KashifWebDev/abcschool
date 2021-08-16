@@ -155,10 +155,17 @@ require 'parts/head.php';
                                                 <label for="sel1">Select Course:</label>
                                                 <select class="form-control" name="course">
                                                     <option value="">-- SELECT --</option>
-                                                    <option value="Foundation">Foundation</option>
-                                                    <option value="Basic">Basic</option>
-                                                    <option value="Intermediate">Intermediate</option>
-                                                    <option value="Reader">Reader</option>
+                                                    <?php
+                                                    $s = "SELECT * FROM courses";
+                                                    $r = mysqli_query($con, $s);
+                                                    if(mysqli_num_rows($r)){
+                                                        while($roww = mysqli_fetch_array($r)){
+                                                            ?>
+                                                            <option value="<?php echo $roww["id"]; ?>"><?php echo $roww["course_name"]; ?></option>
+                                                            <?php
+                                                        }
+                                                    }
+                                                    ?>
                                                 </select>
                                             </div>
                                         </div>
@@ -179,7 +186,7 @@ require 'parts/head.php';
                                         </div>
                                         <div class="form-group mt-5">
                                             <label for="pwd">Balance (<b>If Any</b>):</label>
-                                            <input type="number" min="0" name="balance" class="form-control" placeholder="Enter balance, IF ANY" id="pwd">
+                                            <input type="number" min="0" name="balance" class="form-control" placeholder="Enter balance, IF ANY" id="pwd" value="0">
                                         </div>
                                     </div>
                                 </div>
@@ -210,8 +217,8 @@ require 'parts/head.php';
                         $month = $_POST["month"] ?? null;
                         $bookBox = $_POST["course"] ?? null;
                         $langBox = $_POST["lang"] ?? null;
-                        $balance = $_POST["balance"];
                         $numOfPages = !empty($_POST["numOfPages"]) ? $_POST["numOfPages"] : 0;
+                        $balance = !empty($_POST["balance"]) ? $_POST["balance"] : 0;
 
 
                         $amount = 0;
@@ -244,7 +251,7 @@ require 'parts/head.php';
                                 VALUES ('$name', '$date', '$pay', '$eft_date', '$eft_reference', '$receipt', '$desc', $amount, '$bookBox', '$teacher', $numOfPages, '$month', '$langBox',
                                         '$userSelection', '$email', $balance)";
 
-                        echo $sql;
+//                        echo $sql; exit(); die();
 
                         require 'parts/db.php';
                         if(mysqli_query($con, $sql)){
