@@ -21,6 +21,9 @@ require 'parts/head.php';
     }
 </style>
 
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+
 <body id="page-top">
     <!-- Page Wrapper -->
     <div id="wrapper">
@@ -60,27 +63,34 @@ require 'parts/head.php';
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="email">Date</label>
-                                            <input type="date" name="date" class="form-control" placeholder="Registration Date" id="email">
+                                            <input type="date" name="date" class="form-control" placeholder="Registration Date" id="email" required>
                                         </div>
                                         <div class="form-group">
                                             <label for="pwd">Teacher:</label>
-                                            <input type="text" name="teacher" placeholder="Teacher Name" class="form-control" value="" required>
+                                            <input type="text" name="teacher" placeholder="Teacher Name" class="form-control" value="">
                                         </div>
                                         <div class="form-group">
                                             <label for="pwd">Student/Customer Name:</label>
-                                            <input type="text" name="name" placeholder="Student/Customer Name" class="form-control" value="" required>
+<!--                                            <input type="text" name="name" placeholder="Student/Customer Name" class="form-control" value="" required>-->
+                                            <select class="songs form-select form-control" name="name">
+                                                <?php
+                                                $s = "SELECT * FROM master_registration_list";
+                                                $qry = mysqli_query($con, $s);
+                                                while($row = mysqli_fetch_array($qry)){
+                                                    ?>
+                                                    <option value="<?php echo $row["student_name"]; ?>"><?php echo $row["student_name"]; ?></option>
+                                                    <?php
+                                                }
+                                                ?>
+                                            </select>
                                         </div>
                                         <div class="form-group">
                                             <label for="pwd">ABC Receipt #:</label>
-                                            <input type="text" name="receipt" class="form-control" placeholder="Passport Number" id="pwd">
+                                            <input type="text" name="receipt" class="form-control" placeholder="Passport Number" id="pwd" required>
                                         </div>
                                         <div class="form-group">
                                             <label for="pwd">Notes #:</label>
                                             <input type="text" name="desc" class="form-control" placeholder="Service Description" id="pwd">
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="pwd">User Email</label>
-                                            <input type="email" name="email" class="form-control" placeholder="user@email.com" id="pwd" required>
                                         </div>
                                         <div class="form-group">
                                             <label for="pwd">Payment Method:</label>
@@ -169,8 +179,16 @@ require 'parts/head.php';
                                                 </select>
                                             </div>
                                         </div>
-                                        <div id="langBox">
-                                            <div class="form-group mt-2">
+                                        <div id="langBox" class=" mt-2">
+                                            <div class="form-group">
+                                                <label for="pwd">Customer Name:</label>
+                                                <input type="text" name="c_name" placeholder="StudentCustomer Name" class="form-control" value="">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="pwd">Customer Email</label>
+                                                <input type="email" name="email" class="form-control" placeholder="Customer@email.com" id="pwd">
+                                            </div>
+                                            <div class="form-group">
                                                 <label for="sel1">Select Language:</label>
                                                 <select class="form-control" name="lang">
                                                     <option value="">-- SELECT --</option>
@@ -205,11 +223,11 @@ require 'parts/head.php';
 //                        print_r($_POST); exit(); die();
                         require 'parts/db.php';
                         $date = $_POST["date"];
-                        $teacher = $_POST["teacher"];
+                        $teacher = $_POST["teacher"] ?? '';
                         $name = $_POST["name"];
                         $receipt = $_POST["receipt"];
-                        $email = $_POST["email"];
-                        $desc = $_POST["desc"];
+                        $email = $_POST["email"] ?? '';
+                        $desc = $_POST["desc"] ?? '';
                         $pay = $_POST["pay"];
                         $eft_date = $_POST["eft_date"] ?? '00-00-0000';
                         $eft_reference = $_POST["eft_reference"] ?? null;
@@ -219,32 +237,35 @@ require 'parts/head.php';
                         $langBox = $_POST["lang"] ?? null;
                         $numOfPages = !empty($_POST["numOfPages"]) ? $_POST["numOfPages"] : 0;
                         $balance = !empty($_POST["balance"]) ? $_POST["balance"] : 0;
-
-
                         $amount = 0;
 
-//                        foreach($userSelection as $chk1)
-//                        {
-//                            if($userSelection=="Registration fee") $amount += 1600;
-//                            if($userSelection=="Monthly fee") $amount += 2500;
-//                            if($userSelection=="Books") { $amount += $bookBox=="Reader" ? 30 : 600; }
-//                            if($userSelection=="Exam Re-write") $amount += 300;
-//                            if($userSelection=="Translation") {
-//                                $factor = $langBox=="French" ? 150 : 200;
-//                                $amount += $factor*$numOfPages;
-//                            }
-//                        }
-                        if($userSelection=="Registration fee") $amount += 1600;
-                        if($userSelection=="Monthly fee") $amount += 2500;
-                        if($userSelection=="Books") { $amount += $bookBox=="Reader" ? 30 : 600; }
-                        if($userSelection=="Exam Re-write") $amount += 300;
+                        $s="SELECT * FROM master_registration_list WHERE student_name='$name'";
+                        $s1 = mysqli_query($con, $s);
+                        if(mysqli_num_rows($s1)){
+                            $row = mysqli_fetch_array($s1);
+                            $email = $row["email"];
+                        }
+
+                        if($userSelection=="Registration fee"){
+                            $amount += 1600;
+                        }
+                        if($userSelection=="Monthly fee"){
+                            $amount += 2500;
+                        }
+                        if($userSelection=="Books"){
+                            $amount += $bookBox=="Reader" ? 30 : 600;
+                        }
+                        if($userSelection=="Exam Re-write"){
+                            $amount += 300;
+                        }
                         if($userSelection=="Translation") {
                             $factor = $langBox=="French" ? 150 : 200;
                             $amount += $factor*$numOfPages;
+                            $name = $_POST["c_name"];
+                            $email = $_POST["email"];
                         }
 
 //                        echo $amount; exit(); die();
-                        echo $amount;
 
                         $sql = "INSERT INTO payments (Customer, Invoice_Date, Terms_of_Payment, eft_date, eft_reference, ABC_Receipt_book, ProductService_Description, Amount, Course, Teacher,
                                                     Tranlations_no_of_pages, mnth, lang, userSelection, email, balance)
@@ -256,7 +277,8 @@ require 'parts/head.php';
                         require 'parts/db.php';
                         if(mysqli_query($con, $sql)){
                             $last_id = mysqli_insert_id($con);
-                            js_redirect("admin_enter_payment.php?success=1&last_id=$last_id");
+                            echo "DONE ID: ".$last_id;
+//                            js_redirect("admin_enter_payment.php?success=1&last_id=$last_id");
                         }else{
                             echo mysqli_error($con); exit(); die();
                         }
@@ -285,6 +307,7 @@ require 'parts/head.php';
     <!-- Bootstrap core JavaScript-->
     <script src="vendor/jquery/jquery.min.js"></script>
     <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="js/select.js"></script>
 
     <!-- Core plugin JavaScript-->
     <script src="vendor/jquery-easing/jquery.easing.min.js"></script>

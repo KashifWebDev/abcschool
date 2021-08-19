@@ -59,10 +59,10 @@
                     <i class="fas fa-fw fa-certificate"></i>
                     <span>Certificates</span>
                 </a>
-                <a class="collapse-item" href="admin_student_invoice.php">
-                    <i class="fas fa-file-invoice-dollar"></i>
-                    <span>Invoices</span>
-                </a>
+<!--                <a class="collapse-item" href="admin_student_invoice.php">-->
+<!--                    <i class="fas fa-file-invoice-dollar"></i>-->
+<!--                    <span>Invoices</span>-->
+<!--                </a>-->
             </div>
         </div>
     </li>
