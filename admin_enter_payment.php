@@ -58,7 +58,7 @@ require 'parts/head.php';
                             <h6 class="m-0 font-weight-bold text-primary">Payment Entry</h6>
                         </div>
                         <div class="card-body">
-                            <form action="" method="POST">
+                            <form action="" method="POST" id="myForm">
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group">
@@ -123,23 +123,23 @@ require 'parts/head.php';
                                             <label for="email" class="font-weight-bold">Select Services</label>
                                         </div>
                                         <div class="form-check form-check-inline" id="registration_check">
-                                            <input class="form-check-input" type="checkbox" id="" value="Registration fee" name="userSelection">
+                                            <input class="form-check-input" type="checkbox" id="" value="Registration fee" name="userSelection" onclick="totalAmount()">
                                             <label class="form-check-label" for="Registration">Registration</label>
                                         </div>
                                         <div class="form-check form-check-inline" id="registration_check">
-                                            <input class="form-check-input" type="checkbox" id="RegistrationInputCheck" value="Monthly fee" name="userSelection">
+                                            <input class="form-check-input" type="checkbox" id="RegistrationInputCheck" value="Monthly fee" name="userSelection" onclick="totalAmount()">
                                             <label class="form-check-label" for="Registration">Monthly Fee</label>
                                         </div>
                                         <div class="form-check form-check-inline" id="book_check">
-                                            <input class="form-check-input" type="checkbox" id="BooksInput" value="Books" name="userSelection">
+                                            <input class="form-check-input" type="checkbox" id="BooksInput" value="Books" name="userSelection" onclick="totalAmount()">
                                             <label class="form-check-label" for="Books">Books</label>
                                         </div>
                                         <div class="form-check form-check-inline" id="lang_check">
-                                            <input class="form-check-input" type="checkbox" id="TranslationInput" value="Translation" name="userSelection">
+                                            <input class="form-check-input" type="checkbox" id="TranslationInput" value="Translation" name="userSelection" onclick="totalAmount()">
                                             <label class="form-check-label" for="Translation">Translation</label>
                                         </div>
                                         <div class="form-check form-check-inline" id="rewrite_check">
-                                            <input class="form-check-input" type="checkbox" id="ReWrite" value="Exam Re-write" name="userSelection">
+                                            <input class="form-check-input" type="checkbox" id="ReWrite" value="Exam Re-write" name="userSelection" onclick="totalAmount()">
                                             <label class="form-check-label" for="ReWrite">Exam Re-write</label>
                                         </div>
                                         <div class="form-group mt-2" id="mnthBox">
@@ -208,6 +208,10 @@ require 'parts/head.php';
                                         </div>
                                     </div>
                                 </div>
+                                <div class="col-12 text-center">
+                                        <h3>Total Amount : <span id="charges">0</span></h3>
+                                </div>
+                                <br>
                                 <div class="col-12">
                                     <div class="col-md-10 mx-auto">
                                         <button class="btn btn-primary bg-appColor w-100" type="submit" name="add_payment">
@@ -218,6 +222,26 @@ require 'parts/head.php';
                             </form>
                         </div>
                     </div>
+                    <script>
+                        function totalAmount(){
+                            var selection = $('input[name=userSelection]:checked', '#myForm').val();
+                            if(selection === "Registration fee"){
+                                $("#charges").text("1600");
+                            }
+                            if(selection === "Monthly fee"){
+
+                            }
+                            if(selection === "Books"){
+
+                            }
+                            if(selection === "Translation"){
+
+                            }
+                            if(selection === "Exam Re-write"){
+
+                            }
+                        }
+                    </script>
                     <?php
                     if(isset($_POST["add_payment"])){
 //                        print_r($_POST); exit(); die();
