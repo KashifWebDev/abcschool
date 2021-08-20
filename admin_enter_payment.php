@@ -268,7 +268,7 @@ require 'parts/head.php';
                         $desc = $_POST["desc"] ?? '';
                         $pay = $_POST["pay"];
 //                        $eft_date = isset($_POST["eft_date"]) ?? null;
-                        $eft_date = $_POST["eft_date"]=='' ? 'NULL' ? $_POST["eft_date"];
+                        $eft_date = $_POST["eft_date"]=="" ? "NULL" : $_POST["eft_date"];
                         $eft_reference = $_POST["eft_reference"] ?? null;
                         $userSelection = $_POST["userSelection"];
                         $month = $_POST["month"] ?? null;
