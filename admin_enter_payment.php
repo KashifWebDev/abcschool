@@ -311,7 +311,7 @@ require 'parts/head.php';
                                 VALUES ('$name', '$date', '$pay', '$eft_date', '$eft_reference', '$receipt', '$desc', $amount, '$bookBox', '$teacher', $numOfPages, '$month', '$langBox',
                                         '$userSelection', '$email', $balance)";
 
-//                        echo $sql; exit(); die();
+                        echo $sql;
 
                         require 'parts/db.php';
                         if(mysqli_query($con, $sql)){
