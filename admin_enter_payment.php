@@ -144,7 +144,7 @@ require 'parts/head.php';
                                         </div>
                                         <div class="form-group mt-2" id="mnthBox">
                                             <label for="sel1">Select Month:</label>
-                                            <select class="form-control" name="month">
+                                            <select class="form-control" name="month" onchange="totalAmount()">
                                                 <option value="">-- SELECT --</option>
                                                 <option value="January">January</option>
                                                 <option value="February">February</option>
@@ -163,7 +163,7 @@ require 'parts/head.php';
                                         <div  id="bookBox">
                                             <div class="form-group mt-2">
                                                 <label for="sel1">Select Course:</label>
-                                                <select class="form-control" name="course">
+                                                <select class="form-control" name="course" onchange="totalAmount()">
                                                     <option value="">-- SELECT --</option>
                                                     <?php
                                                     $s = "SELECT * FROM courses";
@@ -171,7 +171,7 @@ require 'parts/head.php';
                                                     if(mysqli_num_rows($r)){
                                                         while($roww = mysqli_fetch_array($r)){
                                                             ?>
-                                                            <option value="<?php echo $roww["id"]; ?>"><?php echo $roww["course_name"]; ?></option>
+                                                            <option value="<?php echo $roww["course_name"]; ?>"><?php echo $roww["course_name"]; ?></option>
                                                             <?php
                                                         }
                                                     }
@@ -190,7 +190,7 @@ require 'parts/head.php';
                                             </div>
                                             <div class="form-group">
                                                 <label for="sel1">Select Language:</label>
-                                                <select class="form-control" name="lang">
+                                                <select class="form-control" name="lang" id="langSelect">
                                                     <option value="">-- SELECT --</option>
                                                     <option value="French">French</option>
                                                     <option value="Portuguese">Portuguese</option>
@@ -198,7 +198,8 @@ require 'parts/head.php';
                                             </div>
                                             <div class="row">
                                                 <div class="col">
-                                                    <input type="number" class="form-control" placeholder="No. Of Pages" name="numOfPages">
+                                                    <input type="number" class="form-control" placeholder="No. Of Pages"
+                                                           name="numOfPages" onchange="totalAmount()" id="pagesCount">
                                                 </div>
                                             </div>
                                         </div>
@@ -208,8 +209,10 @@ require 'parts/head.php';
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-12 text-center">
+                                <div class="col-12">
+                                    <div class="container text-right">
                                         <h3>Total Amount : <span id="charges">0</span></h3>
+                                    </div>
                                 </div>
                                 <br>
                                 <div class="col-12">
@@ -229,16 +232,27 @@ require 'parts/head.php';
                                 $("#charges").text("1600");
                             }
                             if(selection === "Monthly fee"){
-
+                                $("#charges").text("2500");
                             }
                             if(selection === "Books"){
-
+                                $("#charges").text("600");
                             }
                             if(selection === "Translation"){
-
+                                var amount = 0;
+                                var lang = $('#langSelect').find(":selected").text();
+                                var pagesCount = parseInt($("#pagesCount").val());
+                                console.log("count: "+pagesCount);
+                                $("#pagesCount").change(function(){
+                                    if(lang==="French"){
+                                        amount = 150 * pagesCount;
+                                    }else{
+                                        amount = 200 * pagesCount;
+                                    }
+                                    $("#charges").text(amount);
+                                });
                             }
                             if(selection === "Exam Re-write"){
-
+                                $("#charges").text("300");
                             }
                         }
                     </script>
@@ -301,8 +315,8 @@ require 'parts/head.php';
                         require 'parts/db.php';
                         if(mysqli_query($con, $sql)){
                             $last_id = mysqli_insert_id($con);
-                            echo "DONE ID: ".$last_id;
-//                            js_redirect("admin_enter_payment.php?success=1&last_id=$last_id");
+//                            echo "DONE ID: ".$last_id;
+                            js_redirect("admin_enter_payment.php?success=1&last_id=$last_id");
                         }else{
                             echo mysqli_error($con); exit(); die();
                         }
