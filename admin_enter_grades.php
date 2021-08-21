@@ -4,6 +4,32 @@ $id = $_GET["id"];
 $sql = "SELECT * FROM master_registration_list WHERE id=$id";
 $res = mysqli_query($con, $sql);
 $row = $mainRow = mysqli_fetch_array($res);
+
+
+if(isset($_GET["sendMail"])){
+    $id = $_GET["id"];
+    $path = "https://www.18jorissen.co.za/abc/permit.php?id=$id";
+
+    $sql = "SELECT * FROM master_registration_list WHERE id = '$id'";
+    $res = mysqli_query($con, $sql);
+    $row = mysqli_fetch_array($res);
+
+    $to = $row["email"];
+    $subject = "Student Permit Letter";
+    $txt = "Please <a href='$path'>CLICK HERE</a> to get your permit letter.";
+
+    $headers  = 'MIME-Version: 1.0' . "\r\n";
+    $headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
+    $headers .= 'X-Mailer: PHP/' . phpversion();
+
+
+    if(mail($to,$subject,$txt,$headers)){
+        js_redirect("admin_enter_grades.php?mailSent=1&id=$id");
+    }else{
+        echo "============= MAIL WAS NOT SENT =============";
+        exit(); die();
+    }
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -39,6 +65,25 @@ require 'parts/head.php';
                             <div class="card-body text-success">
                                 <strong>Success! </strong> Marks Entered!
                             </div>
+                        </div>
+                        <div class="d-flex mb-2">
+                            <a target="_blank" href="admin_marks.php?student_id=<?php echo $_GET["id"]; ?>&course_id=<?php echo $_GET["course_id"]; ?>" class="btn btn-success">Print Report</a>
+                            <a href="admin_enter_grades.php?sendMail=1&id=<?php echo $_GET["id"]; ?>" class="btn btn-danger ml-2">Email Report</a>
+                        </div>
+                    <?php
+                    }
+                    ?>
+                    <?php
+                    if(isset($_GET["mailSent"]) && $_GET["mailSent"]){
+                        ?>
+                        <div class="card mb-4 py-3 border-left-success">
+                            <div class="card-body text-success">
+                                <strong>Success! </strong> Mail Sent!
+                            </div>
+                        </div>
+                        <div class="d-flex mb-2">
+                            <a target="_blank" href="admin_marks.php?student_id=<?php echo $_GET["id"]; ?>&course_id=<?php echo $_GET["course_id"]; ?>" class="btn btn-success">Print Report</a>
+                            <a href="admin_enter_grades.php?sendMail=1&id=<?php echo $_GET["id"]; ?>" class="btn btn-danger ml-2">Email Report</a>
                         </div>
                     <?php
                     }
@@ -251,7 +296,7 @@ require 'parts/head.php';
                                 ($student_id, '$month', $course_id, $instructor_id, $sub1, $sub2, $sub3, $sub4, $sub5, $sub6, $sub7, $sub8, $sub9, $sub10, $sub11)";
 
                         if(phpRunSingleQuery($sql)){
-                            js_redirect("admin_enter_grades.php?id=$student_id&success=1");
+                            js_redirect("admin_enter_grades.php?id=$student_id&success=1&course_id=$course_id");
                         }else{
 //
                         }

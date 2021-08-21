@@ -369,7 +369,7 @@ require 'parts/head.php';
                                                 $student_name = $ro["student_name"];
                                             }
                                             $paid = false;
-                                            $s = "SELECT * FROM payments WHERE Customer='$student_name' && (ProductService_Description='$page_month fees' OR mnth='$page_month')";
+                                            $s = "SELECT * FROM payments WHERE Customer='$student_name' && (ProductService_Description LIKE '%$page_month%' OR mnth='$page_month')";
                                             $r = mysqli_query($con, $s);
                                             if(mysqli_num_rows($r)){
                                                 $paid = true;
@@ -391,7 +391,7 @@ require 'parts/head.php';
                                                     <button class="btn btn-danger" onclick="delUser('<?php echo $student_real_id; ?>')">
                                                         Delete
                                                     </button>
-                                                    <a class="btn btn-primary" href="admin_enter_grades.php?id=<?php echo $row["id"]; ?>">
+                                                    <a class="btn btn-primary" href="admin_enter_grades.php?id=<?php echo $student_real_id; ?>">
                                                         <span class="text">Enter Grades</span>
                                                     </a>
                                                 </td>
