@@ -38,14 +38,14 @@ require 'parts/head.php';
                 ?>
 
                 <!-- Page Heading -->
-                <div class="card shadow mb-4 container">
+                <div class="card shadow mb-4 container-fluid ">
                     <div class="card-header py-3">
                         <h6 class="m-0 font-weight-bold text-primary">Instructor Registration</h6>
                     </div>
                     <div class="card-body">
                         <form action="" method="POST">
                             <div class="row">
-                                <div class="col-md-8 mx-auto">
+                                <div class="col-md-3">
                                     <div class="form-group">
                                         <label for="email">Hire Date:</label>
                                         <input type="date" name="registration_date" class="form-control" placeholder="Registration Date" id="email">
@@ -71,7 +71,98 @@ require 'parts/head.php';
                                         <input type="text" name="phone_num" class="form-control" placeholder="Phone Number" id="pwd">
                                     </div>
                                 </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label for="email">Pay Frequency</label>
+                                        <input type="date" name="frequency" class="form-control" placeholder="frequency" id="text">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="email">Date of Birth</label>
+                                        <input type="date" name="dob" class="form-control">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="pwd">Resign Date:</label>
+                                        <input type="date" name="resign" class="form-control">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="pwd">Identification:</label>
+                                        <input type="text" name="identification" class="form-control" placeholder="Identity">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="pwd">ID Number:</label>
+                                        <input type="number" name="idNumber" class="form-control" placeholder="0123456789">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="pwd">Payment Method</label>
+                                        <input type="text" name="paymentMethod" class="form-control" placeholder="Cash/EFT or any other" id="pwd">
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label for="email">Bank Name</label>
+                                        <input type="text" name="BankName" class="form-control" placeholder="Name of Bank">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="email">Bank Code:</label>
+                                        <input type="number" name="BankCode" class="form-control" placeholder="123456">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="pwd">Account Number:</label>
+                                        <input type="number" name="AccountNumber" class="form-control" placeholder="2285851249">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="pwd">Account Type:</label>
+                                        <input type="text" name="AccountType" class="form-control" placeholder="Saving/Current or other" id="pwd">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="pwd">Unit Number:</label>
+                                        <input type="number" name="unitNumber" class="form-control" placeholder="1521" id="pwd">
+                                    </div>
+                                </div>
                             </div>
+                            <hr>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label for="email">Street Number</label>
+                                        <input type="text" name="Street" class="form-control" placeholder="Street #">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="email">Town</label>
+                                        <input type="text" name="town" class="form-control" placeholder="Town">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="pwd">Zip Code:</label>
+                                        <input type="number" name="zipCode" class="form-control" placeholder="54100">
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label for="email">Job Title</label>
+                                        <input type="text" name="JobTitle" class="form-control" placeholder="Professor">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="email">Income Text #</label>
+                                        <input type="number" name="incomeTaxNumber" class="form-control" placeholder="51564165465">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="pwd">Contact Number:</label>
+                                        <input type="text" name="ContactNum" class="form-control" placeholder="Contact Number">
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label for="email">Emergency Contact 1</label>
+                                        <input type="text" name="EmergencyContact1" class="form-control" placeholder="Emergency Contact 1">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="email">Emergency Contact 2</label>
+                                        <input type="text" name="EmergencyContact2" class="form-control" placeholder="Emergency Contact 2">
+                                    </div>
+                                </div>
+                            </div>
+
+
                             <div class="row">
                                 <div class="col-md-8 mx-auto">
                                     <button class="btn btn-primary bg-appColor w-100" type="submit" name="add_student">
