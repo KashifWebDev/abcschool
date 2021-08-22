@@ -182,14 +182,35 @@ require 'parts/head.php';
                     $instructor_id = $_POST["instructor_id"];
                     $email = $_POST["email"];
                     $phone_num = $_POST["phone_num"];
+                    $frequency = $_POST["frequency"];
+                    $dob = $_POST["dob"];
+                    $resign = $_POST["resign"];
+                    $identification = $_POST["identification"];
+                    $idNumber = $_POST["idNumber"];
+                    $paymentMethod = $_POST["paymentMethod"];
+                    $BankName = $_POST["BankName"];
+                    $BankCode = $_POST["BankCode"];
+                    $AccountNumber = $_POST["AccountNumber"];
+                    $AccountType = $_POST["AccountType"];
+                    $unitNumber = $_POST["unitNumber"];
+                    $Street = $_POST["Street"];
+                    $town = $_POST["town"];
+                    $zipCode = $_POST["zipCode"];
+                    $JobTitle = $_POST["JobTitle"];
+                    $incomeTaxNumber = $_POST["incomeTaxNumber"];
+                    $ContactNum = $_POST["ContactNum"];
+                    $EmergencyContact1 = $_POST["EmergencyContact1"];
+                    $EmergencyContact2 = $_POST["EmergencyContact2"];
 
-                    $sql = "INSERT INTO instructors (instructor_id, name, hire_date, phone, email, common_name) VALUES 
-                                ('$instructor_id', '$name', '$registration_date', '$phone_num', '$email', '$common_name')";
+                    $sql = "INSERT INTO instructors (instructor_id, name, hire_date, phone, email, common_name,frequency, dob, resign_date, identification, idNumber, paymentMethod, BankName,
+                         BankCode, AccountNumber, AccountType, unitNumber, Street, town, zipCode, JobTitle, incomeTaxNumber, ContactNum, EmergencyContact1, EmergencyContact2) VALUES 
+                                ('$instructor_id', '$name', '$registration_date', '$phone_num', '$email', '$common_name', '$frequency', '$dob', '$resign', '$identification', $idNumber, '$paymentMethod', '$BankName',
+                                 $BankCode, $AccountType, '$AccountType', $unitNumber, '$Street', '$town', $zipCode, '$JobTitle', $incomeTaxNumber, '$ContactNum', '$EmergencyContact1', '$EmergencyContact2')";
 
                     if(phpRunSingleQuery($sql)){
                         js_redirect("admin_add_instructor.php?success=1");
                     }else{
-//
+                        echo "ERROR: ".mysqli_error($con);
                     }
 
                 }
