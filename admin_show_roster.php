@@ -394,6 +394,9 @@ require 'parts/head.php';
                                                     <a class="btn btn-primary" href="admin_enter_grades.php?id=<?php echo $student_real_id; ?>">
                                                         <span class="text">Enter Grades</span>
                                                     </a>
+                                                    <a class="btn btn-info" href="admin_marks.php?course_id=<?php echo $courseID; ?>&student_id=<?php echo $student_real_id; ?>">
+                                                        <span class="text">View Grades</span>
+                                                    </a>
                                                 </td>
                                             </tr>
                                     <?php
