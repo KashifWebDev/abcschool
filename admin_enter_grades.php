@@ -5,6 +5,9 @@ $sql = "SELECT * FROM master_registration_list WHERE id=$id";
 $res = mysqli_query($con, $sql);
 $row = $mainRow = mysqli_fetch_array($res);
 
+$course_id_page= $_GET["courseID"] ?? '';
+$mnth_page= $_GET["mnth"] ?? '';
+
 
 if(isset($_GET["sendMail"])){
     $id = $_GET["id"];
@@ -124,41 +127,54 @@ require 'parts/head.php';
                                                 ?>
                                             </select>
                                         </div>
-                                        <div class="form-group">
-                                            <label for="sel1">Select Course:</label>
-                                            <select class="form-control" name="course_id">
-                                                <option>-- SELECT --</option>
-                                                <?php
-                                                $s = "SELECT * FROM courses";
-                                                $r = mysqli_query($con, $s);
-                                                if(mysqli_num_rows($r)){
-                                                    while($roww = mysqli_fetch_array($r)){
-                                                        ?>
-                                                        <option value="<?php echo $roww["id"]; ?>"><?php echo $roww["course_name"]; ?></option>
-                                                        <?php
+                                        <?php
+                                        if(isset($_GET["courseID"])){
+                                            ?>
+                                            <input type="hidden" name="course_id" value="<?php echo $course_id_page; ?>">
+                                            <input type="hidden" name="month" value="<?php echo $mnth_page; ?>">
+                                        <?php
+                                        }else{
+                                            ?>
+                                            <div class="form-group">
+                                                <label for="sel1">Select Course:</label>
+                                                <select class="form-control" name="course_id">
+                                                    <option>-- SELECT --</option>
+                                                    <?php
+                                                    $s = "SELECT * FROM courses";
+                                                    $r = mysqli_query($con, $s);
+                                                    if(mysqli_num_rows($r)){
+                                                        while($roww = mysqli_fetch_array($r)){
+                                                            ?>
+                                                            <option value="<?php echo $roww["id"]; ?>"><?php echo $roww["course_name"]; ?></option>
+                                                            <?php
+                                                        }
                                                     }
-                                                }
-                                                ?>
-                                            </select>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="sel1">Select Month:</label>
-                                            <select class="form-control" name="month">
-                                                <option>-- SELECT --</option>
-                                                <option value="January">January</option>
-                                                <option value="February">February</option>
-                                                <option value="March">March</option>
-                                                <option value="April">April</option>
-                                                <option value="May">May</option>
-                                                <option value="June">June</option>
-                                                <option value="July">July</option>
-                                                <option value="August">August</option>
-                                                <option value="September">September</option>
-                                                <option value="October">October</option>
-                                                <option value="November">November</option>
-                                                <option value="December">December</option>
-                                            </select>
-                                        </div>
+                                                    ?>
+                                                </select>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="sel1">Select Month:</label>
+                                                <select class="form-control" name="month">
+                                                    <option>-- SELECT --</option>
+                                                    <option value="January">January</option>
+                                                    <option value="February">February</option>
+                                                    <option value="March">March</option>
+                                                    <option value="April">April</option>
+                                                    <option value="May">May</option>
+                                                    <option value="June">June</option>
+                                                    <option value="July">July</option>
+                                                    <option value="August">August</option>
+                                                    <option value="September">September</option>
+                                                    <option value="October">October</option>
+                                                    <option value="November">November</option>
+                                                    <option value="December">December</option>
+                                                </select>
+                                            </div>
+                                        <?php
+                                        }
+                                        ?>
+
+
                                     </div>
                                     <div class="col-md-6">
                                         <label for="sel1">Enter Marks:</label>

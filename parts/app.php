@@ -58,6 +58,7 @@ $GLOBALS["appAddress"] = "https://www.18jorissen.co.za/abc/";
              <div class="card mb-4 py-3 border-left-danger">
                  <div class="card-body text-danger">
                      <strong>Error! </strong> <?php echo mysqli_error($GLOBALS["con"]); ?>
+                     <strong><?php echo $sql; ?></strong>
                  </div>
              </div>
             <?php

@@ -391,7 +391,7 @@ require 'parts/head.php';
                                                     <button class="btn btn-danger" onclick="delUser('<?php echo $student_real_id; ?>')">
                                                         Delete
                                                     </button>
-                                                    <a class="btn btn-primary" href="admin_enter_grades.php?id=<?php echo $student_real_id; ?>">
+                                                    <a class="btn btn-primary" href="admin_enter_grades.php?id=<?php echo $student_real_id; ?>&courseID=<?php echo $courseID; ?>&mnth=<?php echo $mnth; ?>">
                                                         <span class="text">Enter Grades</span>
                                                     </a>
                                                     <a class="btn btn-info" href="admin_marks.php?course_id=<?php echo $courseID; ?>&student_id=<?php echo $student_real_id; ?>">
