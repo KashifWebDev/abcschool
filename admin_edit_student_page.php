@@ -79,7 +79,7 @@ require 'parts/head.php';
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="email">Date of Commencement</label>
-                                            <input type="date" name="start_date" class="form-control" placeholder="Commencement Date" value="<?php echo $row["start_date"]; ?>">
+                                            <input type="date" name="start_date" class="form-control" placeholder="Commencement Date" value="<?php echo $row["start_date"]; ?>" required>
                                         </div>
                                         <div class="form-group">
                                             <label for="pwd">Country:</label>
