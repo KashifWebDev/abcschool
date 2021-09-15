@@ -42,19 +42,19 @@ $row = mysqli_fetch_array($r);
         .ft13{font: 13px 'Calibri';color: #424242;line-height: 16px;}
         .ft14{font: 15px 'Calibri';color: #424242;line-height: 18px;}
         .ft15{font: bold 13px 'Calibri';text-decoration: underline;color: #1155cc;line-height: 15px;}
-
+        p{margin: 0px;}
         .p0{text-align: left;padding-left: 134px;margin-top: 15px;margin-bottom: 0px;}
         .p1{text-align: left;padding-left: 2px;margin-top: 0px;margin-bottom: 0px;white-space: nowrap;}
         .p2{text-align: left;margin-top: 0px;margin-bottom: 0px;white-space: nowrap;}
-        .p3{text-align: left;padding-left: 4px;margin-top: 26px;margin-bottom: 0px;}
+        .p3{text-align: left;padding-left: 4px;margin-top: 10px;margin-bottom: 0px;}
         .p4{text-align: right;padding-right: 81px;margin-top: 0px;margin-bottom: 0px;white-space: nowrap;}
-        .p5{text-align: left;padding-left: 1px;margin-top: 31px;margin-bottom: 0px;}
+        .p5{text-align: left;padding-left: 1px;}
         .p6{text-align: left;padding-left: 1px;margin-top: 4px;margin-bottom: 0px;}
-        .p7{text-align: left;padding-left: 1px;margin-top: 21px;margin-bottom: 0px;}
-        .p8{text-align: left;padding-left: 1px;margin-top: 20px;margin-bottom: 0px;}
+        .p7{text-align: left;padding-left: 1px;margin-top: 10px;margin-bottom: 0px;}
+        .p8{text-align: left;padding-left: 1px;margin-top: 5px;margin-bottom: 0px;}
         .p9{text-align: left;padding-left: 1px;margin-top: 3px;margin-bottom: 0px;}
         .p10{text-align: left;padding-left: 239px;margin-top: 3px;margin-bottom: 0px;}
-        .p11{text-align: left;padding-left: 1px;margin-top: 23px;margin-bottom: 0px;}
+        .p11{text-align: left;padding-left: 1px;margin-top: 13px;margin-bottom: 0px;}
         .p12{text-align: left;padding-left: 2px;margin-top: 27px;margin-bottom: 0px;}
         .p13{text-align: left;padding-left: 26px;margin-top: 22px;margin-bottom: 0px;}
         .p14{text-align: left;padding-left: 50px;padding-right: 92px;margin-top: 3px;margin-bottom: 0px;text-indent: -24px;}
