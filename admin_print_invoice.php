@@ -83,7 +83,7 @@
                             <?php if($row["userSelection"]=="Books") { ?>
                                 <tr class="w-100">
                                     <td class="w-50">Course</td>
-                                    <td class="w-50"><?php echo $row["course"]; ?></td>
+                                    <td class="w-50"><?php echo $row["Course"]; ?></td>
                                 </tr>
                             <?php } ?>
                             <?php if($row["userSelection"]=="Registration fee") { ?>
@@ -112,7 +112,7 @@
                             <?php } ?>
                             <tr class="w-100">
                                 <td class="w-50">Balance</td>
-                                <td class="w-50"><?php echo $row["balance"]; ?></td>
+                                <td class="w-50"><?php echo $row["Balance"]; ?></td>
                             </tr>
                             <tr class="w-100">
                                 <td class="w-50">&nbsp</td>

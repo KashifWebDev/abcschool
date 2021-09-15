@@ -1,3 +1,0 @@
-1. In payments, add 'email' after customer: varchar 200
-
-2.

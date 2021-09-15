@@ -153,8 +153,8 @@ require 'parts/head.php';
                                     <tr>
                                         <th>#</th>
                                         <th>Course Name</th>
-                                        <th>Month</th>
                                         <th>Instructor</th>
+                                        <th>Month</th>
                                         <th>Actions</th>
                                     </tr>
                                     </thead>
@@ -162,8 +162,8 @@ require 'parts/head.php';
                                     <tr>
                                         <th>#</th>
                                         <th>Course Name</th>
-                                        <th>Month</th>
                                         <th>Instructor</th>
+                                        <th>Month</th>
                                         <th>Actions</th>
                                     </tr>
                                     </tfoot>

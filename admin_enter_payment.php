@@ -65,9 +65,24 @@ require 'parts/head.php';
                                             <label for="email">Date</label>
                                             <input type="date" name="date" class="form-control" placeholder="Registration Date" id="email" required>
                                         </div>
+<!--                                        <div class="form-group">-->
+<!--                                            <label for="pwd">Teacher:</label>-->
+<!--                                            <input type="text" name="teacher" placeholder="Teacher Name" class="form-control" value="">-->
+<!--                                        </div>-->
                                         <div class="form-group">
                                             <label for="pwd">Teacher:</label>
-                                            <input type="text" name="teacher" placeholder="Teacher Name" class="form-control" value="">
+<!--                                            <input type="text" name="name" placeholder="Student/Customer Name" class="form-control" value="" required>-->
+                                            <select class="songs form-select form-control" name="teacher">
+                                                <?php
+                                                $s = "SELECT * FROM instructors";
+                                                $qry = mysqli_query($con, $s);
+                                                while($row = mysqli_fetch_array($qry)){
+                                                    ?>
+                                                    <option value="<?php echo $row["name"]; ?>"><?php echo $row["name"]; ?></option>
+                                                    <?php
+                                                }
+                                                ?>
+                                            </select>
                                         </div>
                                         <div class="form-group">
                                             <label for="pwd">Student/Customer Name:</label>
@@ -86,7 +101,7 @@ require 'parts/head.php';
                                         </div>
                                         <div class="form-group">
                                             <label for="pwd">ABC Receipt #:</label>
-                                            <input type="text" name="receipt" class="form-control" placeholder="Passport Number" id="pwd" required>
+                                            <input type="text" name="receipt" class="form-control" placeholder="ABC Internal Receipt Number" id="pwd" required>
                                         </div>
                                         <div class="form-group">
                                             <label for="pwd">Notes #:</label>
@@ -163,8 +178,9 @@ require 'parts/head.php';
                                         <div  id="bookBox">
                                             <div class="form-group mt-2">
                                                 <label for="sel1">Select Course:</label>
-                                                <select class="form-control" name="course" onchange="totalAmount()">
+                                                <select class="form-control" name="course" id="bookChange" onchange="totalAmount()">
                                                     <option value="">-- SELECT --</option>
+                                                    <option value="Reader">English Reader</option>
                                                     <?php
                                                     $s = "SELECT * FROM courses";
                                                     $r = mysqli_query($con, $s);
@@ -207,6 +223,10 @@ require 'parts/head.php';
                                             <label for="pwd">Balance (<b>If Any</b>):</label>
                                             <input type="number" min="0" name="balance" class="form-control" placeholder="Enter balance, IF ANY" id="pwd" value="0">
                                         </div>
+                                        <div class="form-group mt-5">
+                                            <label for="pwd">Amount Paid:</label>
+                                            <input type="number" min="0" name="amount_paid" class="form-control" placeholder="Amount Received" id="pwd" value="0">
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="col-12">
@@ -238,7 +258,6 @@ require 'parts/head.php';
                                 $("#charges").text("600");
                             }
                             if(selection === "Translation"){
-                                var amount = 0;
                                 var lang = $('#langSelect').find(":selected").text();
                                 var pagesCount = parseInt($("#pagesCount").val());
                                 console.log("count: "+pagesCount);
@@ -255,6 +274,7 @@ require 'parts/head.php';
                                 $("#charges").text("300");
                             }
                         }
+
                     </script>
                     <?php
                     if(isset($_POST["add_payment"])){
@@ -277,6 +297,7 @@ require 'parts/head.php';
                         $numOfPages = !empty($_POST["numOfPages"]) ? $_POST["numOfPages"] : 0;
                         $balance = !empty($_POST["balance"]) ? $_POST["balance"] : 0;
                         $amount = 0;
+                        $amount_paid = $_POST["amount_paid"];
 
                         $s="SELECT * FROM master_registration_list WHERE student_name='$name'";
                         $s1 = mysqli_query($con, $s);
@@ -308,7 +329,7 @@ require 'parts/head.php';
 
                         $sql = "INSERT INTO payments (Customer, Invoice_Date, Terms_of_Payment, eft_date, eft_reference, ABC_Receipt_book, ProductService_Description, Amount, Course, Teacher,
                                                     Tranlations_no_of_pages, mnth, lang, userSelection, email, balance)
-                                VALUES ('$name', '$date', '$pay', '$eft_date', '$eft_reference', '$receipt', '$desc', $amount, '$bookBox', '$teacher', $numOfPages, '$month', '$langBox',
+                                VALUES ('$name', '$date', '$pay', '$eft_date', '$eft_reference', '$receipt', '$desc', $amount_paid, '$bookBox', '$teacher', $numOfPages, '$month', '$langBox',
                                         '$userSelection', '$email', $balance)";
 
 //                        echo $sql;
@@ -453,6 +474,18 @@ require 'parts/head.php';
                     $("#langBox").hide();
                 }
             });
+        });
+
+        var amount = 0;
+        $("#bookChange").change(function(){
+            console.log("Books change");
+            var bookValue = $('#bookChange').find(":selected").text();
+            if(bookValue==="English Reader"){
+                amount = 30;
+            }else{
+                amount = 600;
+            }
+            $("#charges").text(amount);
         });
     </script>
 </body>

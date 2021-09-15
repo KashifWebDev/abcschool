@@ -3,7 +3,8 @@ require 'parts/app.php';
 if(isset($_POST["add_balance"])){
     $pageID = $_POST["pageID"];
     $amount = $_POST["amount"];
-    $s = "UPDATE payments SET balance=$amount WHERE Database_Invoice_No =$pageID";
+    $amount_paid = $_POST["amount_paid"];
+    $s = "UPDATE payments SET balance=$amount, Amount='$amount_paid' WHERE Database_Invoice_No =$pageID";
     require_once 'parts/db.php';
     if(mysqli_query($con, $s)){
         js_redirect("admin_edit_invoice.php?id=$pageID&success=1");
@@ -15,6 +16,7 @@ $pageID = isset($_GET["id"]) ? $_GET["id"] : 0;
 $sql = "SELECT * FROM payments WHERE Database_Invoice_No  = $pageID";
 $res = mysqli_query($con, $sql);
 $pageRow = mysqli_fetch_array($res);
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -64,7 +66,11 @@ require 'parts/head.php';
                                             <input type="hidden" name="pageID" value="<?php echo $pageID; ?>">
                                             <div class="form-group">
                                                 <label for="exampleInputEmail1">Current balance</label>
-                                                <input type="number" min="0" class="form-control" name="amount" value="<?php echo $pageRow["balance"]; ?>">
+                                                <input type="number" min="0" class="form-control" name="amount" value="<?php echo $pageRow["Balance"]; ?>">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="exampleInputEmail1">Amount Paid</label>
+                                                <input type="number" min="0" class="form-control" name="amount_paid" value="<?php echo $pageRow["Amount"]; ?>">
                                             </div>
                                             <hr>
                                             <button type="submit" class="btn btn-primary w-100" name="add_balance">
