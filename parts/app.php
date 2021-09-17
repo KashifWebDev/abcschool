@@ -4,7 +4,7 @@ session_start();
 require 'db.php';
 //checkIfUserLoggedIn();
 
-$GLOBALS["appAddress"] = "https://www.18jorissen.co.za/abc/";
+$GLOBALS["appAddress"] = "http://abcdatabase.online/";
 
 //error_reporting(0);
 

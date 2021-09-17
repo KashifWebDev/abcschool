@@ -369,12 +369,18 @@ require 'parts/head.php';
                                                 $student_name = $ro["student_name"];
                                             }
                                             $paid = false;
-                                            $s = "SELECT * FROM payments WHERE Customer='$student_name' && (ProductService_Description LIKE '%$page_month%' OR mnth='$page_month')";
+                                            $s = "SELECT * FROM payments WHERE 
+                                                    Customer='$student_name' && (ProductService_Description LIKE '%$page_month%' OR mnth='$page_month')
+                                                    order by Database_Invoice_No DESC";
                                             $r = mysqli_query($con, $s);
                                             if(mysqli_num_rows($r)){
-                                                $paid = true;
+                                                $paid = "paid";
                                                 $x = mysqli_fetch_array($r);
-//                                                print_r($x);
+                                                if($x["Balance"]!=0){
+                                                    $paid="pending";
+                                                }
+                                            }else{
+                                                $paid = "unpaid";
                                             }
                                             ?>
                                             <tr>
@@ -382,9 +388,9 @@ require 'parts/head.php';
                                                 <td><?php echo $student_name; ?></td>
                                                 <td>
                                                     <?php
-                                                        echo $paid ?
-                                                            '<span class="bg-success text-white px-2 py-1" style="border-radius: 10px;">Paid</span>' :
-                                                            '<span class="bg-danger text-white px-2 py-1" style="border-radius: 10px;">Un Paid</span>';
+                                                    if($paid=="paid") echo '<span class="bg-success text-white px-2 py-1" style="border-radius: 10px;">Paid</span>';
+                                                    if($paid=="unpaid") echo  '<span class="bg-danger text-white px-2 py-1" style="border-radius: 10px;">Un Paid</span>';
+                                                    if($paid == "pending") echo  '<span class="bg-warning text-white px-2 py-1" style="border-radius: 10px;">Pending</span>';
                                                     ?>
                                                 </td>
                                                 <td>
