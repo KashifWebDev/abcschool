@@ -138,23 +138,23 @@ require 'parts/head.php';
                                             <label for="email" class="font-weight-bold">Select Services</label>
                                         </div>
                                         <div class="form-check form-check-inline" id="registration_check">
-                                            <input class="form-check-input" type="checkbox" id="" value="Registration fee" name="userSelection" onclick="totalAmount()">
+                                            <input class="form-check-input userSelection" type="checkbox" id="" value="Registration fee" name="userSelection[]" onclick="totalAmount()">
                                             <label class="form-check-label" for="Registration">Registration</label>
                                         </div>
                                         <div class="form-check form-check-inline" id="registration_check">
-                                            <input class="form-check-input" type="checkbox" id="RegistrationInputCheck" value="Monthly fee" name="userSelection" onclick="totalAmount()">
+                                            <input class="form-check-input userSelection" type="checkbox" id="RegistrationInputCheck" value="Monthly fee" name="userSelection[]" onclick="totalAmount()">
                                             <label class="form-check-label" for="Registration">Monthly Fee</label>
                                         </div>
                                         <div class="form-check form-check-inline" id="book_check">
-                                            <input class="form-check-input" type="checkbox" id="BooksInput" value="Books" name="userSelection" onclick="totalAmount()">
+                                            <input class="form-check-input userSelection" type="checkbox" id="BooksInput" value="Books" name="userSelection[]" onclick="totalAmount()">
                                             <label class="form-check-label" for="Books">Books</label>
                                         </div>
                                         <div class="form-check form-check-inline" id="lang_check">
-                                            <input class="form-check-input" type="checkbox" id="TranslationInput" value="Translation" name="userSelection" onclick="totalAmount()">
+                                            <input class="form-check-input userSelection" type="checkbox" id="TranslationInput" value="Translation" name="userSelection[]" onclick="totalAmount()">
                                             <label class="form-check-label" for="Translation">Translation</label>
                                         </div>
                                         <div class="form-check form-check-inline" id="rewrite_check">
-                                            <input class="form-check-input" type="checkbox" id="ReWrite" value="Exam Re-write" name="userSelection" onclick="totalAmount()">
+                                            <input class="form-check-input userSelection" type="checkbox" id="ReWrite" value="Exam Re-write" name="userSelection[]" onclick="totalAmount()">
                                             <label class="form-check-label" for="ReWrite">Exam Re-write</label>
                                         </div>
                                         <div class="form-group mt-2" id="mnthBox">
@@ -215,7 +215,7 @@ require 'parts/head.php';
                                             <div class="row">
                                                 <div class="col">
                                                     <input type="number" class="form-control" placeholder="No. Of Pages"
-                                                           name="numOfPages" onchange="totalAmount()" id="pagesCount">
+                                                           name="numOfPages" id="pagesCount">
                                                 </div>
                                             </div>
                                         </div>
@@ -231,7 +231,7 @@ require 'parts/head.php';
                                 </div>
                                 <div class="col-12">
                                     <div class="container text-right">
-                                        <h3>Total Amount : <span id="charges">0</span></h3>
+                                        <h3>Total Payable : <span id="charges">0</span></h3>
                                     </div>
                                 </div>
                                 <br>
@@ -245,37 +245,6 @@ require 'parts/head.php';
                             </form>
                         </div>
                     </div>
-                    <script>
-                        function totalAmount(){
-                            var selection = $('input[name=userSelection]:checked', '#myForm').val();
-                            if(selection === "Registration fee"){
-                                $("#charges").text("1600");
-                            }
-                            if(selection === "Monthly fee"){
-                                $("#charges").text("2500");
-                            }
-                            if(selection === "Books"){
-                                $("#charges").text("600");
-                            }
-                            if(selection === "Translation"){
-                                var lang = $('#langSelect').find(":selected").text();
-                                var pagesCount = parseInt($("#pagesCount").val());
-                                console.log("count: "+pagesCount);
-                                $("#pagesCount").change(function(){
-                                    if(lang==="French"){
-                                        amount = 150 * pagesCount;
-                                    }else{
-                                        amount = 200 * pagesCount;
-                                    }
-                                    $("#charges").text(amount);
-                                });
-                            }
-                            if(selection === "Exam Re-write"){
-                                $("#charges").text("300");
-                            }
-                        }
-
-                    </script>
                     <?php
                     if(isset($_POST["add_payment"])){
 //                        print_r($_POST); exit(); die();
@@ -427,7 +396,7 @@ require 'parts/head.php';
                     $("#cash3").is(':checked')
                 ){
                     $("#payment_method").show();
-                    console.log("in");
+                    // console.log("in");
                 }
                 else{
                     console.log("out");
@@ -437,7 +406,6 @@ require 'parts/head.php';
             $('#RegistrationInputCheck').click(function() {
                 if($("#RegistrationInputCheck").is(':checked')){
                     $("#mnthBox").show();
-                    console.log("in");
                 }
                 else{
                     console.log("out");
@@ -447,45 +415,116 @@ require 'parts/head.php';
             $('#rewrite_check').click(function() {
                 if($("#ReWrite").is(':checked')){
                     $("#bookBox").show();
-                    console.log("in");
                 }
                 else{
-                    console.log("out");
                     $("#bookBox").hide();
                 }
             });
             $('#BooksInput').click(function() {
                 if($("#BooksInput").is(':checked')){
                     $("#bookBox").show();
-                    console.log("in");
                 }
                 else{
-                    console.log("out");
                     $("#bookBox").hide();
                 }
             });
             $('#TranslationInput').click(function() {
                 if($("#TranslationInput").is(':checked')){
                     $("#langBox").show();
-                    console.log("in");
                 }
                 else{
-                    console.log("out");
                     $("#langBox").hide();
                 }
             });
         });
 
+    </script>
+
+    <script>
         var amount = 0;
-        $("#bookChange").change(function(){
-            console.log("Books change");
-            var bookValue = $('#bookChange').find(":selected").text();
-            if(bookValue==="English Reader"){
-                amount = 30;
-            }else{
-                amount = 600;
+        var selection;
+        var cboxes = document.getElementsByName('userSelection[]');
+        var lang = $('#langSelect').find(":selected").text();
+        var pagesCount = parseInt($("#pagesCount").val());
+        var booksChanged = false;
+        var monthlyFeesChanged = false;
+        var registrationFeesChanged = false;
+        var translationChanged = false;
+        var reWriteChanged = false;
+        function totalAmount(){
+            var len = cboxes.length;
+            for (var i=0; i<len; i++) {
+                // if(cboxes[i].checked) cboxes[i].value;
+                // console.log(i + (cboxes[i].checked?' checked ':' unchecked ') + cboxes[i].value);
+                // var selection = $('input[name=userSelection]:checked', '#myForm').val();
+                selection = cboxes[i].value;
+                if(selection === "Registration fee" && cboxes[i].checked && registrationFeesChanged===false){
+                    registrationFeesChanged = true;
+                    amount = amount + 1600;
+                    console.log(amount + selection);
+                }
+                if(selection === "Monthly fee" && cboxes[i].checked && monthlyFeesChanged===false){
+                    monthlyFeesChanged = true;
+                    amount = amount + 2500;
+                    console.log(amount + selection);
+                }
+                if(selection === "Books" && cboxes[i].checked){
+                    var bookValue = $('#bookChange').find(":selected").text();
+                    console.log(bookValue+" -- "+booksChanged);
+                    if(bookValue==="English Reader" && booksChanged===false){
+                        booksChanged = true;
+                        amount = amount + 30;
+                    }
+                    if(bookValue!=="English Reader" && bookValue !=="-- SELECT --" && booksChanged===false){
+                        booksChanged = true;
+                        amount = amount + 600;
+                    }
+                    // if(bookValue ==="-- SELECT --") isChanged = false;
+                    console.log("Books change   "+booksChanged);
+                    $("#charges").text(amount);
+                    console.log(amount + selection);
+                }
+                if(selection === "Translation" && cboxes[i].checked){
+                    pagesCount = parseInt($("#pagesCount").val());
+                    lang = $('#langSelect').find(":selected").text();
+                    console.log("HERE IN TRANSLATION");
+                    console.log(pagesCount);
+                    lang = $('#langSelect').find(":selected").text();
+                    pagesCount = parseInt($("#pagesCount").val());
+                    console.log("pages: "+pagesCount+" Lang: "+lang);
+                    if(Number.isFinite(pagesCount) && translationChanged===false){
+                        if(lang==="French"){
+                            amount  = amount + (150 * pagesCount);
+                        }else{
+                            amount = amount + (200 * pagesCount);
+                        }
+                        console.log(amount + selection);
+                        // $("#charges").text(amount);
+                    }
+                }
+                if(selection === "Exam Re-write" && cboxes[i].checked && reWriteChanged==false){
+                    reWriteChanged = true;
+                    amount = amount + 300;
+                    console.log(amount + selection);
+                }
+            }
+
+            $("#charges").text(amount);
+        }
+        $("#langSelect").change(function (){
+            totalAmount();
+        });
+        $("#pagesCount").change(function (){
+            if(translationChanged===false && Number.isFinite(pagesCount)){
+                if(lang==="French"){
+                    amount  = amount + (150 * pagesCount);
+                }else{
+                    amount = amount + (200 * pagesCount);
+                }
+                translationChanged = true;
             }
             $("#charges").text(amount);
+            totalAmount();
         });
     </script>
 </body>
