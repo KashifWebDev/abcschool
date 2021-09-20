@@ -45,7 +45,8 @@ require 'parts/head.php';
                         ?>
                         <div class="card mb-4 py-3 border-left-success">
                             <div class="card-body text-success">
-                                <strong>Success! </strong> Payment Inserted! ID: <?php echo $_GET["last_id"]; ?>
+                                <?php $newID = $_GET["last_id"]; ?>
+                                <strong>Success! </strong> Payment Inserted! <a target="_blank" href="admin_print_invoice.php?id=<?php echo $newID; ?>">CLICK HERE</a> for details.
                             </div>
                         </div>
                     <?php
