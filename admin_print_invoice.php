@@ -4,6 +4,14 @@
     $sql = "SELECT * FROM payments WHERE Database_Invoice_No  =$id";
     $res = mysqli_query($con,$sql);
     $row = mysqli_fetch_array($res);
+
+    $selection = array();
+
+    if (strpos($row["userSelection"], '|') !== false) {
+        $selection = explode('|', $row["userSelection"]);
+    }else{
+        array_push($selection, $row["userSelection"]);
+    }
 ?>
 <html>
     <head>
@@ -80,31 +88,31 @@
                                     <td class="w-50"><?php echo $row["eft_date"].' / '.$row["eft_reference"]; ?></td>
                                 </tr>
                             <?php } ?>
-                            <?php if($row["userSelection"]=="Books") { ?>
+                            <?php if(in_array( "Books" ,$selection )) { ?>
                                 <tr class="w-100">
                                     <td class="w-50">Course</td>
                                     <td class="w-50"><?php echo $row["Course"]; ?></td>
                                 </tr>
                             <?php } ?>
-                            <?php if($row["userSelection"]=="Registration fee") { ?>
+                            <?php if(in_array( "Registration fee" ,$selection )) { ?>
                                 <tr class="w-100">
                                     <td class="w-50">Registration Fee</td>
                                     <td class="w-50"><?php echo 1600; ?></td>
                                 </tr>
                             <?php } ?>
-                            <?php if($row["userSelection"]=="Monthly fee") { ?>
+                            <?php if(in_array( "Monthly fee" ,$selection )) { ?>
                                 <tr class="w-100">
                                     <td class="w-50">Monthly Fee for Month</td>
                                     <td class="w-50"><?php echo $row["mnth"]; ?></td>
                                 </tr>
                             <?php } ?>
-                            <?php if($row["userSelection"]=="Exam Re-write") { ?>
+                            <?php if(in_array( "Exam Re-write" ,$selection )) { ?>
                                 <tr class="w-100">
                                     <td class="w-50">ReWrite Fee for course</td>
                                     <td class="w-50"><?php echo $row["Course"]; ?></td>
                                 </tr>
                             <?php } ?>
-                            <?php if($row["userSelection"]=="Translation") { ?>
+                            <?php if(in_array( "Translation" ,$selection )) { ?>
                                 <tr class="w-100">
                                     <td class="w-50">Translation Languages / Pages</td>
                                     <td class="w-50"><?php echo $row["lang"].' / '.$row["Tranlations_no_of_pages"]; ?></td>
