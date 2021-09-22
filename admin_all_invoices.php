@@ -84,6 +84,8 @@ require 'parts/head.php';
                                         <th>Service Description</th>
                                         <th>Notes</th>
                                         <th>Amount</th>
+                                        <th>Balance</th>
+                                        <th>Services</th>
                                         <th>Course</th>
                                         <th>Teacher</th>
                                         <th>No of Pages</th>
@@ -104,6 +106,8 @@ require 'parts/head.php';
                                         <th>Service Description</th>
                                         <th>Notes</th>
                                         <th>Amount</th>
+                                        <th>Balance</th>
+                                        <th>Services</th>
                                         <th>Course</th>
                                         <th>Teacher</th>
                                         <th>No of Pages</th>
@@ -132,6 +136,8 @@ require 'parts/head.php';
                                                 <td><?php echo $row["ProductService_Description"]; ?></td>
                                                 <td><?php echo $row["Notes"]; ?></td>
                                                 <td><?php echo $row["Amount"]; ?></td>
+                                                <td><?php echo $row["Balance"]; ?></td>
+                                                <td><?php echo str_replace("|",", ",$row["userSelection"]); ?></td>
                                                 <td><?php echo $row["Course"]; ?></td>
                                                 <td><?php echo $row["Teacher"]; ?></td>
                                                 <td><?php echo $row["Tranlations_no_of_pages"]; ?></td>

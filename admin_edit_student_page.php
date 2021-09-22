@@ -13,6 +13,10 @@ $title = "Update Student Record";
 require 'parts/head.php';
 ?>
 
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+
 <body id="page-top">
     <!-- Page Wrapper -->
     <div id="wrapper">
@@ -82,8 +86,21 @@ require 'parts/head.php';
                                             <input type="date" name="start_date" class="form-control" placeholder="Commencement Date" value="<?php echo $row["start_date"]; ?>" required>
                                         </div>
                                         <div class="form-group">
-                                            <label for="pwd">Country:</label>
-                                            <input type="text" name="country" class="form-control" placeholder="Country" id="pwd" value="<?php echo $row["country"]; ?>">
+                                            <label for="exampleFormControlSelect1" class="mr-3">Select Country</label>
+                                            <select class="songs form-select w-100" name="country">
+                                                <?php
+                                                $s = "SELECT * FROM countries";
+                                                $qry = mysqli_query($con, $s);
+                                                while($row1 = mysqli_fetch_array($qry)){
+                                                    ?>
+                                                    <option value="<?php echo $row1["country_name"]; ?>"
+                                                        <?php echo $row["country"]==$row1["country_name"] ? "selected" : "" ; ?>>
+                                                        <?php echo $row1["country_name"]; ?>
+                                                    </option>
+                                                    <?php
+                                                }
+                                                ?>
+                                            </select>
                                         </div>
                                         <div class="form-group">
                                             <label for="email">Email</label>
@@ -213,6 +230,46 @@ require 'parts/head.php';
 
     <!-- Custom scripts for all pages-->
     <script src="js/sb-admin-2.min.js"></script>
+
+
+    <!--COuntry-->
+    <script src="js/select.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('.songs').select2();
+        });
+
+        $('body').on('click', '.add-data', function (event) {
+            event.preventDefault();
+            var name = $('input[name=name]').val();
+            var songs = $('.songs').val();
+            console.log(songs);
+            // $.ajax({
+            //     method: 'POST',
+            //     url: './database/db.php',
+            //     data: {
+            //         name: name,
+            //         songs: songs,
+            //     },
+            //     success: function (data) {
+            //         console.log(data);
+            //         $('.res-msg').css('display', 'block');
+            //         $('.alert-success').text(data).show();
+            //         $('input[name=name]').val('');
+            //         $(".songs").val('').trigger('change');
+            //
+            //         setTimeout(function () {
+            //             $('.alert-success').hide();
+            //         }, 3500);
+            //     }
+            // });
+        });
+
+        // $("#myModal > div > div > div.modal-body > form > div > span").addClass("w-100");
+        $("#myModal > div > div > div.modal-body > form > div > span").css("width", "100% !important");
+        $("#myModal > div > div > div.modal-body > form > div > span").attr('style','width: 100% !important');
+        // $("#myModal > div > div > div.modal-body > form > div > span").addClass(".w-100");
+    </script>
 
 </body>
 

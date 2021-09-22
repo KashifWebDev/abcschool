@@ -134,7 +134,9 @@ require 'parts/head.php';
                         <tr>
                             <th scope="col"> <i class="fas fa-calender"></i> Date</th>
                             <th scope="col"> <i class="fas fa-money-bill-alt"></i> Amount</th>
+                            <th scope="col"> <i class="fas fa-money-bill-alt"></i> Balance</th>
                             <th scope="col"> <i class="fas fa-money-bill-list"></i> Notes</th>
+                            <th scope="col"> <i class="fas fa-money-bill-list"></i> Services</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -147,7 +149,9 @@ require 'parts/head.php';
                                     <tr>
                                         <td><?php echo $row["Invoice_Date"]; ?></td>
                                         <td><?php echo $row["Amount"]; ?></td>
+                                        <td><?php echo $row["Balance"]; ?></td>
                                         <td><?php echo $row["ProductService_Description"].' '.$row["Notes"].' '.$row["mnth"]; ?></td>
+                                        <td><?php echo str_replace("|",", ",$row["userSelection"]); ?></td>
                                     </tr>
                         <?php
                                 }

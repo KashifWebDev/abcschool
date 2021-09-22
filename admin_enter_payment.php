@@ -181,18 +181,11 @@ require 'parts/head.php';
                                                 <label for="sel1">Select Course:</label>
                                                 <select class="form-control" name="course" id="bookChange" onchange="totalAmount()">
                                                     <option value="">-- SELECT --</option>
+                                                    <option value="Foundation">Foundation</option>
+                                                    <option value="Intermediate">Intermediate</option>
+                                                    <option value="Basic">Basic</option>
+                                                    <option value="Advance">Advance</option>
                                                     <option value="Reader">English Reader</option>
-                                                    <?php
-                                                    $s = "SELECT * FROM courses";
-                                                    $r = mysqli_query($con, $s);
-                                                    if(mysqli_num_rows($r)){
-                                                        while($roww = mysqli_fetch_array($r)){
-                                                            ?>
-                                                            <option value="<?php echo $roww["course_name"]; ?>"><?php echo $roww["course_name"]; ?></option>
-                                                            <?php
-                                                        }
-                                                    }
-                                                    ?>
                                                 </select>
                                             </div>
                                         </div>

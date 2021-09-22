@@ -315,7 +315,7 @@ require 'parts/head.php';
                                 <div class="card-body">
                                     <div class="d-flex">
                                         <p class="m-0 font-weight-bold text-primary" style="font-size: large;">Instructors:</p>
-                                        <p class="ml-2" style="font-size: large;">
+                                        <p class="ml-2" style="font-size: large;font-weight: bold;">
                                             <?php
                                                 $s = "SELECT * FROM courses_and_instructors WHERE roster_id=$page_id ORDER BY id DESC LIMIT 1";
                                                 $q = mysqli_query($con, $s);
@@ -327,6 +327,16 @@ require 'parts/head.php';
                                                     $r = mysqli_fetch_array($q);
                                                     echo $r["name"];
                                                 }
+                                            ?>
+                                        </p>
+                                    </div>
+                                    <div class="d-flex">
+                                        <p class="m-0 font-weight-bold text-primary" style="font-size: large;">Total Students:</p>
+                                        <p class="ml-2" style="font-size: large;font-weight: bold;">
+                                            <?php
+                                                $s = "SELECT * FROM courses_and_students WHERE roster_id=$page_id group by student_id";
+                                                $q = mysqli_query($con, $s);
+                                                echo mysqli_num_rows($q);
                                             ?>
                                         </p>
                                     </div>
@@ -373,6 +383,7 @@ require 'parts/head.php';
                                                     Customer='$student_name' && (ProductService_Description LIKE '%$page_month%' OR mnth='$page_month')
                                                     order by Database_Invoice_No DESC";
                                             $r = mysqli_query($con, $s);
+                                            $x["Database_Invoice_No"] = 0;
                                             if(mysqli_num_rows($r)){
                                                 $paid = "paid";
                                                 $x = mysqli_fetch_array($r);
@@ -382,16 +393,19 @@ require 'parts/head.php';
                                             }else{
                                                 $paid = "unpaid";
                                             }
+                                            $invoiceID = $x["Database_Invoice_No"];
                                             ?>
                                             <tr>
                                                 <td><?php echo $student_id; ?></td>
                                                 <td><?php echo $student_name; ?></td>
                                                 <td>
+                                                    <a href=admin_print_invoice.php?id=<?php echo $invoiceID; ?> style="text-decoration: none;">
                                                     <?php
                                                     if($paid=="paid") echo '<span class="bg-success text-white px-2 py-1" style="border-radius: 10px;">Paid</span>';
                                                     if($paid=="unpaid") echo  '<span class="bg-danger text-white px-2 py-1" style="border-radius: 10px;">Un Paid</span>';
                                                     if($paid == "pending") echo  '<span class="bg-warning text-white px-2 py-1" style="border-radius: 10px;">Pending</span>';
                                                     ?>
+                                                    </a>
                                                 </td>
                                                 <td>
                                                     <button class="btn btn-danger" onclick="delUser('<?php echo $student_real_id; ?>')">
