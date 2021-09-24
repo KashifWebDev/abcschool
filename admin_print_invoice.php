@@ -91,36 +91,40 @@
                             <?php if(in_array( "Books" ,$selection )) { ?>
                                 <tr class="w-100">
                                     <td class="w-50">Course</td>
-                                    <td class="w-50"><?php echo $row["Course"]; ?></td>
+                                    <td class="w-50"><?php echo $row["Course"]; ?>  (R<?php echo $row["Course"]==="English Reader" ? 30 : 600 ?>)</td>
                                 </tr>
                             <?php } ?>
                             <?php if(in_array( "Registration fee" ,$selection )) { ?>
                                 <tr class="w-100">
                                     <td class="w-50">Registration Fee</td>
-                                    <td class="w-50"><?php echo 1600; ?></td>
+                                    <td class="w-50">R<?php echo 1600; ?></td>
                                 </tr>
                             <?php } ?>
                             <?php if(in_array( "Monthly fee" ,$selection )) { ?>
                                 <tr class="w-100">
                                     <td class="w-50">Monthly Fee for Month</td>
-                                    <td class="w-50"><?php echo $row["mnth"]; ?></td>
+                                    <td class="w-50"><?php echo $row["mnth"]; ?> (R2500)</td>
                                 </tr>
                             <?php } ?>
                             <?php if(in_array( "Exam Re-write" ,$selection )) { ?>
                                 <tr class="w-100">
                                     <td class="w-50">ReWrite Fee for course</td>
-                                    <td class="w-50"><?php echo $row["Course"]; ?></td>
+                                    <td class="w-50"><?php echo $row["Course"]; ?> (R600)</td>
                                 </tr>
                             <?php } ?>
                             <?php if(in_array( "Translation" ,$selection )) { ?>
                                 <tr class="w-100">
                                     <td class="w-50">Translation Languages / Pages</td>
-                                    <td class="w-50"><?php echo $row["lang"].' / '.$row["Tranlations_no_of_pages"]; ?></td>
+                                    <td class="w-50"><?php echo $row["lang"].' / '.$row["Tranlations_no_of_pages"]; ?> (R<?php echo $row["lang"]=="French" ? 150*$row["Tranlations_no_of_pages"] : 200*$row["Tranlations_no_of_pages"]; ?>)</td>
                                 </tr>
                             <?php } ?>
                             <tr class="w-100">
                                 <td class="w-50">Balance</td>
                                 <td class="w-50"><?php echo $row["Balance"]; ?></td>
+                            </tr>
+                            <tr class="w-100">
+                                <td class="w-50">Paid</td>
+                                <td class="w-50"><?php echo $row["Amount"]-$row["Balance"]; ?></td>
                             </tr>
                             <tr class="w-100">
                                 <td class="w-50">&nbsp</td>
