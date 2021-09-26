@@ -156,6 +156,18 @@
                     <i class="fas fa-fw fa-address-book"></i>
                     <span>Translations Report</span>
                 </a>
+                <a class="collapse-item" href="admin_reports_paid.php">
+                    <i class="fas fa-fw fa-address-book"></i>
+                    <span>Paid Report</span>
+                </a>
+                <a class="collapse-item" href="admin_reports_unpaid.php">
+                    <i class="fas fa-fw fa-address-book"></i>
+                    <span>Unpaid Report</span>
+                </a>
+                <a class="collapse-item" href="admin_reports_pending.php">
+                    <i class="fas fa-fw fa-address-book"></i>
+                    <span>Pending Report</span>
+                </a>
             </div>
         </div>
     </li>

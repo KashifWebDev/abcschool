@@ -5,7 +5,7 @@ require 'parts/app.php';
 <html lang="en">
 
 <?php
-$title = "Translations Report";
+$title = "Pending Report";
 require 'parts/head.php';
 ?>
 
@@ -57,7 +57,7 @@ require 'parts/head.php';
                         if(isset($_GET["start"]) && $_GET["start"]){
                             $start =  $_GET["start"];
                             $end =  $_GET["end"];
-                            $sql = "SELECT * FROM payments WHERE userSelection LIKE '%Translation%' AND (DATE(date_time) BETWEEN '$start' AND '$end')";
+                            $sql = "SELECT * FROM payments WHERE Balance != 0 AND (DATE(date_time) BETWEEN '$start' AND '$end')";
                             $res = mysqli_query($con, $sql);
                             $totalRows = mysqli_num_rows($res);
                             ?>
