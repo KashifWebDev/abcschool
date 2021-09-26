@@ -141,15 +141,34 @@
         </div>
     </li>
 
-    <!-- Administration -->
+    <!-- Reports -->
     <hr class="sidebar-divider">
     <li class="nav-item">
         <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapse4" aria-expanded="true"
            aria-controls="collapse4">
             <i class="fas fa-fw fa-cog"></i>
-            <span>Administration</span>
+            <span>Reports</span>
         </a>
         <div id="collapse4" class="collapse" aria-labelledby="heading4"
+             data-parent="#accordionSidebar">
+            <div class="bg-gradient-light py-2 collapse-inner rounded">
+                <a class="collapse-item" href="admin_reports_translation.php">
+                    <i class="fas fa-fw fa-address-book"></i>
+                    <span>Translations Report</span>
+                </a>
+            </div>
+        </div>
+    </li>
+
+    <!-- Administration -->
+    <hr class="sidebar-divider">
+    <li class="nav-item">
+        <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapse5" aria-expanded="true"
+           aria-controls="collapse5">
+            <i class="fas fa-fw fa-cog"></i>
+            <span>Administration</span>
+        </a>
+        <div id="collapse5" class="collapse" aria-labelledby="heading4"
              data-parent="#accordionSidebar">
             <div class="bg-gradient-light py-2 collapse-inner rounded">
                 <a class="collapse-item" href="admin_users.php">

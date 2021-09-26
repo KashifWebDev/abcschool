@@ -273,10 +273,14 @@ require 'parts/head.php';
 
 //                        echo $amount; exit(); die();
 
+
+                        date_default_timezone_set('Africa/Johannesburg');
+                        $timestamp =  date('Y-m-d H:i:s', time());
+
                         $sql = "INSERT INTO payments (Customer, Invoice_Date, Terms_of_Payment, eft_date, eft_reference, ABC_Receipt_book, ProductService_Description,
-                                Amount, Course, Teacher, Tranlations_no_of_pages, mnth, lang, userSelection, email, balance)
+                                Amount, Course, Teacher, Tranlations_no_of_pages, mnth, lang, userSelection, email, balance, date_time)
                                 VALUES ('$name', '$date', '$pay', '$eft_date', '$eft_reference', '$receipt', '$desc', $amount_paid, '$bookBox', '$teacher', $numOfPages,
-                                        '$month', '$langBox', '$userSelection', '$email', $balance)";
+                                        '$month', '$langBox', '$userSelection', '$email', $balance, '$timestamp')";
 
 //                        echo $sql; exit(); die();
 

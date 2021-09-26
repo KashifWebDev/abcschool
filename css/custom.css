@@ -10,3 +10,9 @@
 #dropdown_a a{
     margin-bottom: 4px;
 }
+.filter_heading{
+    margin: 10px;
+    color: black;
+    font-size: 22px;
+    font-weight: 600;
+}
