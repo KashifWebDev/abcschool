@@ -98,7 +98,7 @@ require 'parts/head.php';
                                         <th>ABC Receipt</th>
                                         <th>Service Description</th>
                                         <th>Notes</th>
-                                        <th>Amount</th>
+                                        <th>Total</th>
                                         <th>Balance</th>
                                         <th>Services</th>
                                         <th>Course</th>
@@ -120,7 +120,7 @@ require 'parts/head.php';
                                         <th>ABC Receipt</th>
                                         <th>Service Description</th>
                                         <th>Notes</th>
-                                        <th>Amount</th>
+                                        <th>Total</th>
                                         <th>Balance</th>
                                         <th>Services</th>
                                         <th>Course</th>

@@ -57,7 +57,9 @@ require 'parts/head.php';
                         if(isset($_GET["start"]) && $_GET["start"]){
                             $start =  $_GET["start"];
                             $end =  $_GET["end"];
-                            $sql = "SELECT * FROM payments WHERE Balance = 0 AND (DATE(date_time) BETWEEN '$start' AND '$end')";
+                            $month = date('F');
+                            $sql = "SELECT * FROM payments WHERE Balance = 0 AND (DATE(date_time) BETWEEN '$start' AND '$end')
+                                    AND (ProductService_Description LIKE '%$month%' OR mnth='$month')";
                             $res = mysqli_query($con, $sql);
                             $totalRows = mysqli_num_rows($res);
                             ?>
@@ -87,7 +89,7 @@ require 'parts/head.php';
                                         <th>ABC Receipt</th>
                                         <th>Service Description</th>
                                         <th>Notes</th>
-                                        <th>Amount</th>
+                                        <th>Total</th>
                                         <th>Balance</th>
                                         <th>Services</th>
                                         <th>Course</th>
@@ -109,7 +111,7 @@ require 'parts/head.php';
                                         <th>ABC Receipt</th>
                                         <th>Service Description</th>
                                         <th>Notes</th>
-                                        <th>Amount</th>
+                                        <th>Total</th>
                                         <th>Balance</th>
                                         <th>Services</th>
                                         <th>Course</th>
