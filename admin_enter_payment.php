@@ -112,15 +112,15 @@ require 'parts/head.php';
                                             <label for="pwd">Payment Method:</label>
                                             <span class="ml-2" id="payment_methods_list">
                                                 <div class="form-check form-check-inline">
-                                                    <input class="form-check-input" type="radio" id="cash1" value="Cash" name="pay">
+                                                    <input class="form-check-input" type="radio" id="cash1" value="Cash" name="pay" required>
                                                     <label class="form-check-label" for="Registration">Cash</label>
                                                 </div>
                                                 <div class="form-check form-check-inline">
-                                                    <input class="form-check-input" type="radio" id="cash2" value="Card" name="pay">
+                                                    <input class="form-check-input" type="radio" id="cash2" value="Card" name="pay" required>
                                                     <label class="form-check-label" for="Books">Card</label>
                                                 </div>
                                                 <div class="form-check form-check-inline">
-                                                    <input class="form-check-input" type="radio" id="cash3" value="EFT" name="pay">
+                                                    <input class="form-check-input" type="radio" id="cash3" value="EFT" name="pay" required>
                                                     <label class="form-check-label" for="Translation">EFT</label>
                                                 </div>
                                             </span>
