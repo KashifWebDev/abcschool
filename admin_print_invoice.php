@@ -48,9 +48,10 @@
                 <div class="col-12">
                     <table class="table table-striped text-center">
                         <tbody>
+
                             <tr class="w-100">
                                 <td class="w-50">Name</td>
-                                <td class="w-50"><?php echo $row["Customer"]; ?></td>
+                                <td class="w-50"><?php echo in_array( "Translation" ,$selection ) ?  $row["c_name"] : $row["Customer"]; ?></td>
                             </tr>
                             <tr class="w-100">
                                 <td class="w-50">Terms Of payment</td>

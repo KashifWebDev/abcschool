@@ -60,14 +60,20 @@ require 'parts/head.php';
                             $sql = "SELECT * FROM payments WHERE userSelection LIKE '%Translation%' AND (DATE(date_time) BETWEEN '$start' AND '$end')";
                             $res = mysqli_query($con, $sql);
                             $totalRows = mysqli_num_rows($res);
+                            $paid = 0;
+                            while($row = mysqli_fetch_array($res)){
+//                                echo $row["Amount"];
+                                $paid += $row["Amount"];
+                            }
                             ?>
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <div class="text-center">
-                                            <h3 class="filter_heading">Total Records: <?php echo $totalRows; ?></h3>
-                                        </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="text-center d-flex justify-content-center">
+                                        <h3 class="filter_heading">Total Records: <?php echo $totalRows; ?></h3>
+                                        <h3 class="filter_heading">Total Paid: <?php echo $paid; ?></h3>
                                     </div>
                                 </div>
+                            </div>
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
                             <h6 class="m-0 font-weight-bold text-primary">Search Details</h6>
@@ -122,6 +128,8 @@ require 'parts/head.php';
                                     </tfoot>
                                     <tbody>
                                     <?php
+                                    $sql = "SELECT * FROM payments WHERE userSelection LIKE '%Translation%' AND (DATE(date_time) BETWEEN '$start' AND '$end')";
+                                    $res = mysqli_query($con, $sql);
                                     if(mysqli_num_rows($res)){
                                         while($row = mysqli_fetch_array($res)){
 //                                            $student_primary_id = $row["id"];
@@ -129,7 +137,7 @@ require 'parts/head.php';
                                             ?>
                                             <tr>
                                                 <td><?php echo $row["Database_Invoice_No"]; ?></td>
-                                                <td><?php echo $row["Customer"]; ?></td>
+                                                <td><?php echo $row["c_name"]; ?></td>
                                                 <td><?php echo $row["Invoice_Date"]; ?></td>
                                                 <td><?php echo $row["Terms_of_Payment"]; ?></td>
                                                 <td><?php echo $row["eft_date"]; ?></td>

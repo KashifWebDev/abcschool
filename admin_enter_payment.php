@@ -196,7 +196,7 @@ require 'parts/head.php';
                                             </div>
                                             <div class="form-group">
                                                 <label for="pwd">Customer Email</label>
-                                                <input type="email" name="email" class="form-control" placeholder="Customer@email.com" id="pwd">
+                                                <input type="email" name="c_email" class="form-control" placeholder="Customer@email.com" id="pwd">
                                             </div>
                                             <div class="form-group">
                                                 <label for="sel1">Select Language:</label>
@@ -248,9 +248,10 @@ require 'parts/head.php';
                         $teacher = $_POST["teacher"] ?? '';
                         $name = $_POST["name"];
                         $receipt = $_POST["receipt"];
-                        $email = $_POST["email"] ?? '';
+                        $c_email = $_POST["c_email"] ?? '';
                         $desc = $_POST["desc"] ?? '';
                         $pay = $_POST["pay"];
+                        $c_name = $_POST["c_name"];
 //                        $eft_date = isset($_POST["eft_date"]) ?? null;
                         $eft_date = $_POST["eft_date"]=="" ? "0000-00-00" : $_POST["eft_date"];
                         $eft_reference = $_POST["eft_reference"] ?? null;
@@ -277,9 +278,9 @@ require 'parts/head.php';
                         date_default_timezone_set('Africa/Johannesburg');
                         $timestamp =  date('Y-m-d H:i:s', time());
 
-                        $sql = "INSERT INTO payments (Customer, Invoice_Date, Terms_of_Payment, eft_date, eft_reference, ABC_Receipt_book, ProductService_Description,
+                        $sql = "INSERT INTO payments (Customer, Invoice_Date, Terms_of_Payment, eft_date, eft_reference, ABC_Receipt_book, ProductService_Description, c_name, c_email,
                                 Amount, Course, Teacher, Tranlations_no_of_pages, mnth, lang, userSelection, email, balance, date_time)
-                                VALUES ('$name', '$date', '$pay', '$eft_date', '$eft_reference', '$receipt', '$desc', $amount_paid, '$bookBox', '$teacher', $numOfPages,
+                                VALUES ('$name', '$date', '$pay', '$eft_date', '$eft_reference', '$receipt', '$desc', '$c_name', '$c_email', $amount_paid, '$bookBox', '$teacher', $numOfPages,
                                         '$month', '$langBox', '$userSelection', '$email', $balance, '$timestamp')";
 
 //                        echo $sql; exit(); die();

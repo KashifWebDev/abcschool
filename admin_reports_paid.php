@@ -62,11 +62,17 @@ require 'parts/head.php';
                                     AND (ProductService_Description LIKE '%$month%' OR mnth='$month')";
                             $res = mysqli_query($con, $sql);
                             $totalRows = mysqli_num_rows($res);
+                            $paid = 0;
+                            while($row = mysqli_fetch_array($res)){
+//                                echo $row["Amount"];
+                                $paid += $row["Amount"];
+                            }
                             ?>
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <div class="text-center">
+                                        <div class="text-center d-flex justify-content-center">
                                             <h3 class="filter_heading">Total Records: <?php echo $totalRows; ?></h3>
+                                            <h3 class="filter_heading">Total Paid: <?php echo $paid; ?></h3>
                                         </div>
                                     </div>
                                 </div>
