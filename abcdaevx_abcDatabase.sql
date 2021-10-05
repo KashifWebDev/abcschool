@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Oct 03, 2021 at 05:16 AM
+-- Generation Time: Oct 04, 2021 at 12:19 PM
 -- Server version: 10.2.40-MariaDB
 -- PHP Version: 7.3.30
 
@@ -1621,7 +1621,7 @@ INSERT INTO `grades` (`id`, `student_id`, `month`, `course_id`, `instructor_id`,
 (127, 384, 'April', 4, 14, NULL, 85, 95, 83, 85, 80, 69, 72, 85, 96, 95, 100),
 (128, 182, 'April', 4, 14, NULL, 89, 88, 93, 68, 70, 79, 78, 73, 91, 70, 93),
 (129, 266, 'April', 4, 14, NULL, 77, 84, 95, 68, 70, 79, 67, 70, 92, 65, 100),
-(130, 326, 'April', 4, 14, NULL, 62, 80, 83, 73, 72, 71, 66, 78, 91, 75, 71),
+(130, 326, 'April', 4, 14, '2021-10-04', 75, 80, 83, 73, 72, 71, 66, 78, 91, 75, 71),
 (131, 191, 'April', 4, 14, NULL, 67, 80, 83, 70, 73, 71, 68, 75, 95, 75, 77),
 (132, 21, 'April', 4, 14, NULL, 81, 77, 83, 73, 75, 72, 85, 78, 95, 95, 93),
 (133, 206, 'April', 4, 14, '2021-05-08', 79, 80, 93, 65, 85, 70, 70, 70, 95, 86, 70),
@@ -2069,7 +2069,7 @@ INSERT INTO `grades` (`id`, `student_id`, `month`, `course_id`, `instructor_id`,
 (575, 451, 'September', 3, 11, NULL, 83, 94, 95, 80, 90, 72, 90, 88, 100, 94, 75),
 (576, 10, 'September', 4, 20, NULL, 88, 0, 0, 90, 80, 70, 97, 89, 89, 90, 0),
 (577, 516, 'September', 4, 20, NULL, 19, 86, 50, 75, 74, 0, 84, 68, 70, 90, 86),
-(578, 524, 'September', 4, 20, '2021-10-01', 60, 93, 75, 85, 76, 68, 88, 70, 74, 73, 69),
+(578, 524, 'September', 4, 20, '2021-10-02', 76, 93, 75, 85, 76, 68, 88, 70, 74, 73, 69),
 (579, 484, 'September', 4, 20, NULL, 45, 93, 65, 80, 80, 69, 74, 73, 80, 75, 88),
 (580, 30, 'September', 4, 20, NULL, 65, 95, 60, 80, 90, 70, 78, 79, 74, 83, 90),
 (581, 63, 'September', 4, 20, NULL, 87, 100, 85, 85, 88, 80, 90, 86, 92, 79, 74),
@@ -2082,9 +2082,9 @@ INSERT INTO `grades` (`id`, `student_id`, `month`, `course_id`, `instructor_id`,
 (588, 498, 'September', 4, 20, NULL, 61, 83, 70, 75, 86, 66, 83, 79, 93, 78, 93),
 (589, 384, 'September', 8, 9, NULL, 60, 81, 90, 66, 75, 70, 70, 80, 88, 70, 95),
 (590, 296, 'September', 8, 9, NULL, 61, 90, 45, 68, 70, 69, 77, 70, 78, 90, 92),
-(591, 142, 'September', 8, 9, '2021-09-27', 75, 72, 65, 66, 80, 75, 77, 70, 86, 80, 88),
+(591, 142, 'September', 8, 9, '2021-10-04', 75, 72, 65, 66, 80, 75, 77, 70, 86, 80, 94),
 (592, 182, 'September', 8, 9, NULL, 60, 66, 65, 72, 70, 73, 80, 75, 65, 75, 90),
-(593, 266, 'September', 8, 9, NULL, 56, 90, 55, 70, 75, 70, 70, 70, 53, 65, 0),
+(593, 266, 'September', 8, 9, '2021-10-02', 57, 90, 75, 70, 75, 70, 70, 70, 74, 65, 100),
 (594, 178, 'September', 8, 9, NULL, 82, 88, 85, 82, 75, 74, 88, 75, 93, 80, 91),
 (595, 506, 'September', 8, 9, NULL, 75, 83, 65, 74, 80, 70, 80, 80, 73, 75, 71),
 (596, 248, 'September', 8, 20, NULL, 78, 80, 70, 82, 70, 78, 75, 75, 97, 80, 93),
@@ -2144,9 +2144,9 @@ INSERT INTO `grades` (`id`, `student_id`, `month`, `course_id`, `instructor_id`,
 (650, 350, 'September', 6, 19, NULL, 100, 100, 95, 90, 85, 85, 89, 90, 98, 100, 80),
 (651, 365, 'September', 6, 19, NULL, 65, 65, 68, 65, 71, 66, 78, 72, 77, 72, 65),
 (652, 372, 'September', 6, 19, NULL, 96, 100, 90, 85, 80, 70, 78, 83, 97, 100, 92),
-(653, 378, 'September', 6, 19, NULL, 83, 88, 75, 78, 81, 68, 82, 85, 83, 100, 80),
-(654, 406, 'September', 6, 19, NULL, 96, 95, 100, 83, 82, 69, 81, 84, 93, 80, 80);
+(653, 378, 'September', 6, 19, NULL, 83, 88, 75, 78, 81, 68, 82, 85, 83, 100, 80);
 INSERT INTO `grades` (`id`, `student_id`, `month`, `course_id`, `instructor_id`, `rewrite_date`, `sub1`, `sub2`, `sub3`, `sub4`, `sub5`, `sub6`, `sub7`, `sub8`, `sub9`, `sub10`, `sub11`) VALUES
+(654, 406, 'September', 6, 19, NULL, 96, 95, 100, 83, 82, 69, 81, 84, 93, 80, 80),
 (655, 440, 'September', 6, 19, NULL, 86, 90, 90, 88, 81, 71, 86, 80, 92, 100, 67),
 (656, 444, 'September', 6, 19, NULL, 87, 92, 100, 65, 71, 69, 70, 70, 71, 100, 95),
 (657, 439, 'September', 5, 6, NULL, 74, 77, 75, 80, 78, 80, 80, 78, 95, 74, 84),
@@ -5123,7 +5123,9 @@ INSERT INTO `payments` (`Database_Invoice_No`, `Customer`, `email`, `Invoice_Dat
 (3243, 'Aaron Ilunga Kaumbo', 'alfkalunga5@outlook.com', '2021-09-30', '', '0000-00-00', '', 20211226, 'Translation', NULL, 150, '', '', '', 'Daphne Maqungo', '1', '', 'French', 'Translation', 0, '2021-09-30 09:05:24'),
 (3244, 'Helene Mbe Ella', 'samyand2@gmail.com', '2021-09-30', 'EFT', '2021-09-30', 'Mbe Ella Helene', 20211228, 'Registration fee, Month fees,', NULL, 4100, '', '', '', 'Daphne Maqungo', '0', 'November', '', 'Registration fee|Monthly fee', 0, '2021-09-30 13:06:56'),
 (3245, 'Saidi Nkonyane Ziadi', 'ziyadsaid933@gmail.com   saidnkongane@gmail.com', '2021-09-30', 'EFT', '2021-09-30', 'Nkonyane', 20211227, 'October fees', NULL, 2500, '', '', '', 'Juan Souw', '0', 'October', '', 'Monthly fee', 0, '2021-09-30 13:13:43'),
-(3246, 'Aaron Ilunga Kaumbo', 'alfkalunga5@outlook.com', '2021-10-18', 'Cash', '0000-00-00', '', 32, 'dsd', NULL, 600, '', '', '', 'Lee-Ann Megan Moodley', '4', '', 'French', 'Translation', 0, '2021-10-03 02:56:01');
+(3246, 'Aaron Ilunga Kaumbo', 'alfkalunga5@outlook.com', '2021-10-18', 'Cash', '0000-00-00', '', 32, 'dsd', NULL, 600, '', '', '', 'Lee-Ann Megan Moodley', '4', '', 'French', 'Translation', 0, '2021-10-03 02:56:01'),
+(3247, 'Lauriane Kayenda Ngomba', 'muambaye@yahoo.fr', '2021-10-27', 'Cash', '0000-00-00', '', 20211167, 'Basic Books', NULL, 600, '', '', 'Basic', 'Ashley Brandon Price', '0', '', '', 'Books', 0, '2021-10-04 09:48:40'),
+(3248, 'Yannick Bolisomi Bolenge', 'bolengebombula@gmail.com', '2021-09-27', 'Card', '0000-00-00', '', 20211168, 'October fees, Basic  Books', NULL, 3100, '', '', 'Basic', 'Ashley ', '0', 'October', '', 'Monthly fee|Books', 0, '2021-10-04 09:52:59');
 
 -- --------------------------------------------------------
 
@@ -5312,7 +5314,7 @@ ALTER TABLE `master_registration_list`
 -- AUTO_INCREMENT for table `payments`
 --
 ALTER TABLE `payments`
-  MODIFY `Database_Invoice_No` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3247;
+  MODIFY `Database_Invoice_No` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3249;
 
 --
 -- AUTO_INCREMENT for table `roster`

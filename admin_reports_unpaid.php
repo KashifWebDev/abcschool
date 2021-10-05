@@ -74,8 +74,9 @@ require 'parts/head.php';
                             ?>
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <div class="text-center">
+                                        <div class="text-center d-flex justify-content-center  mb-4 border-bottom">
                                             <h3 class="filter_heading">Total Records: <?php echo $count; ?></h3>
+                                            <h3 class="filter_heading"><?php echo $_GET["start"]; ?> - <?php echo $_GET["end"]; ?></h3>
                                         </div>
                                     </div>
                                 </div>

@@ -60,6 +60,7 @@ require 'parts/head.php';
                             $month = date('F');
                             $sql = "SELECT * FROM payments WHERE Balance = 0 AND (DATE(date_time) BETWEEN '$start' AND '$end')
                                     AND (ProductService_Description LIKE '%$month%' OR mnth='$month')";
+                            $sql = "SELECT * FROM payments WHERE Balance = 0 AND (DATE(date_time) BETWEEN '$start' AND '$end')";
                             $res = mysqli_query($con, $sql);
                             $totalRows = mysqli_num_rows($res);
                             $paid = 0;
@@ -70,15 +71,26 @@ require 'parts/head.php';
                             ?>
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <div class="text-center d-flex justify-content-center">
+                                        <div class="text-center d-flex justify-content-center  mb-4 border-bottom">
                                             <h3 class="filter_heading">Total Records: <?php echo $totalRows; ?></h3>
                                             <h3 class="filter_heading">Total Paid: <?php echo $paid; ?></h3>
+                                            <h3 class="filter_heading"><?php echo $_GET["start"]; ?> - <?php echo $_GET["end"]; ?></h3>
                                         </div>
                                     </div>
                                 </div>
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">EFT Payments</h6>
+                            <?php
+                            $sql = "SELECT * FROM payments WHERE Balance = 0 AND (DATE(date_time) BETWEEN '$start' AND '$end') AND Terms_of_Payment='EFT'";
+                            $res = mysqli_query($con, $sql);
+                            $totalRows = mysqli_num_rows($res);
+                            $paid = 0;
+                            while($row = mysqli_fetch_array($res)){
+//                                echo $row["Amount"];
+                                $paid += $row["Amount"];
+                            }
+                            ?>
+                            <h6 class="m-0 font-weight-bold text-primary">EFT Payments (Income: <?php echo $paid; ?>)</h6>
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
@@ -123,8 +135,7 @@ require 'parts/head.php';
                                     </tfoot>
                                     <tbody>
                                     <?php
-                                    $sql = "SELECT * FROM payments WHERE Balance = 0 AND (DATE(date_time) BETWEEN '$start' AND '$end')
-                                    AND (ProductService_Description LIKE '%$month%' OR mnth='$month') AND Terms_of_Payment='EFT'";
+                                    $sql = "SELECT * FROM payments WHERE Balance = 0 AND (DATE(date_time) BETWEEN '$start' AND '$end') AND Terms_of_Payment='EFT'";
                                     $res = mysqli_query($con, $sql);
                                     if(mysqli_num_rows($res)){
                                         while($row = mysqli_fetch_array($res)){
@@ -178,7 +189,17 @@ require 'parts/head.php';
 
                             <div class="card shadow mb-4">
                                 <div class="card-header py-3">
-                                    <h6 class="m-0 font-weight-bold text-primary">Cash Payments</h6>
+                                    <?php
+                                    $sql = "SELECT * FROM payments WHERE Balance = 0 AND (DATE(date_time) BETWEEN '$start' AND '$end')  AND Terms_of_Payment='Cash'";
+                                    $res = mysqli_query($con, $sql);
+                                    $totalRows = mysqli_num_rows($res);
+                                    $paid = 0;
+                                    while($row = mysqli_fetch_array($res)){
+//                                echo $row["Amount"];
+                                        $paid += $row["Amount"];
+                                    }
+                                    ?>
+                                    <h6 class="m-0 font-weight-bold text-primary">Cash Payments (Income: <?php echo $paid; ?>)</h6>
                                 </div>
                                 <div class="card-body">
                                     <div class="table-responsive">
@@ -223,8 +244,7 @@ require 'parts/head.php';
                                             </tfoot>
                                             <tbody>
                                             <?php
-                                            $sql = "SELECT * FROM payments WHERE Balance = 0 AND (DATE(date_time) BETWEEN '$start' AND '$end')
-                                    AND (ProductService_Description LIKE '%$month%' OR mnth='$month') AND Terms_of_Payment='Cash'";
+                                            $sql = "SELECT * FROM payments WHERE Balance = 0 AND (DATE(date_time) BETWEEN '$start' AND '$end')  AND Terms_of_Payment='Cash'";
                                             $res = mysqli_query($con, $sql);
                                             if(mysqli_num_rows($res)){
                                                 while($row = mysqli_fetch_array($res)){
@@ -277,7 +297,17 @@ require 'parts/head.php';
 
                             <div class="card shadow mb-4">
                                 <div class="card-header py-3">
-                                    <h6 class="m-0 font-weight-bold text-primary">Card Payments</h6>
+                                    <?php
+                                    $sql = "SELECT * FROM payments WHERE Balance = 0 AND (DATE(date_time) BETWEEN '$start' AND '$end')  AND Terms_of_Payment='Card'";
+                                    $res = mysqli_query($con, $sql);
+                                    $totalRows = mysqli_num_rows($res);
+                                    $paid = 0;
+                                    while($row = mysqli_fetch_array($res)){
+//                                echo $row["Amount"];
+                                        $paid += $row["Amount"];
+                                    }
+                                    ?>
+                                    <h6 class="m-0 font-weight-bold text-primary">Card Payments (Income: <?php echo $paid; ?>)</h6>
                                 </div>
                                 <div class="card-body">
                                     <div class="table-responsive">
@@ -322,8 +352,7 @@ require 'parts/head.php';
                                             </tfoot>
                                             <tbody>
                                             <?php
-                                            $sql = "SELECT * FROM payments WHERE Balance = 0 AND (DATE(date_time) BETWEEN '$start' AND '$end')
-                                    AND (ProductService_Description LIKE '%$month%' OR mnth='$month') AND Terms_of_Payment='Card'";
+                                            $sql = "SELECT * FROM payments WHERE Balance = 0 AND (DATE(date_time) BETWEEN '$start' AND '$end')  AND Terms_of_Payment='Card'";
                                             $res = mysqli_query($con, $sql);
                                             if(mysqli_num_rows($res)){
                                                 while($row = mysqli_fetch_array($res)){
