@@ -125,11 +125,11 @@
                             </tr>
                             <tr class="w-100">
                                 <td class="w-50">Paid</td>
-                                <td class="w-50"><?php echo $row["Amount"]-$row["Balance"]; ?></td>
+                                <td class="w-50"><?php echo $row["Amount"]; ?></td>
                             </tr>
                             <tr class="w-100">
                                 <td class="w-50">&nbsp</td>
-                                <td class="w-50"><b>Total &nbsp;</b><?php echo $row["Amount"]; ?></td>
+                                <td class="w-50"><b>Total &nbsp;</b><?php echo $row["Amount"]+$row["Balance"]; ?></td>
                             </tr>
                         </tbody>
                     </table>
