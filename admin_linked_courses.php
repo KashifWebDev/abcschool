@@ -180,7 +180,7 @@ require 'parts/head.php';
                                             $r = mysqli_query($con, $s);
                                             $ro = mysqli_fetch_array($r);
                                             $course_name = $ro["course_name"];
-                                            $s = "SELECT * FROM courses_and_instructors WHERE roster_id=$linkID";
+                                            $s = "SELECT * FROM courses_and_instructors WHERE roster_id=$linkID order by id DESC";
                                             $r = mysqli_query($con, $s);
                                             $ro = mysqli_fetch_array($r);
                                             $instID = $ro["instructor"];
