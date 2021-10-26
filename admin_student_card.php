@@ -11,15 +11,12 @@ if(isset($_GET["mail"])){
     $to = $row["email"];
     $name = $row["student_name"];
     $subject = "Student Permit Letter";
-    $txt = "Dear $name\n";
-    $txt .= "Please <a href='$path'>CLICK HERE</a> to get your permit letter.\n";
-    $txt .="ok";
-
-
+    $txt = "Dear $name,<br>";
     $txt .= "Please find your report for (level) in the attached document.
-     Kindly note that Rewrites (all subjects below 65%) are compulsory to complete if you are to move to the next level. \n\n";
-    $txt .= "Should you need any help or support, please do not hesitate to reach out.\n\n";
-    $txt .= "Kind Regards,\n";
+     Kindly note that Rewrites (all subjects below 65%) are compulsory to complete if you are to move to the next level. <br><br>";
+    $txt .= "<br><a href='' style='text-decoration: none;background: #202a5b;color: white;padding: 5px 10px;border-radius: 10px;font-size: 20px;'>Get Permit Letter</a><br><br><br>";
+    $txt .= "Should you need any help or support, please do not hesitate to reach out.<br><br>";
+    $txt .= "Kind Regards,<br>";
     $txt .= "ABC International Admin Team";
 
 
@@ -28,6 +25,7 @@ if(isset($_GET["mail"])){
     $headers  = 'MIME-Version: 1.0' . "\r\n";
     $headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
     $headers .= 'X-Mailer: PHP/' . phpversion();
+
 
 
     if(mail($to,$subject,$txt,$headers)){
