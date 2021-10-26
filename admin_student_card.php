@@ -12,14 +12,18 @@ if(isset($_GET["mail"])){
     $name = $row["student_name"];
     $subject = "Student Permit Letter";
     $txt = "Dear $name\n";
-    $txt .= "Please <a href='$path'>CLICK HERE</a> to get your permit letter.";
-    $txt = "Please find your report for (level) in the attached document.
+    $txt .= "Please <a href='$path'>CLICK HERE</a> to get your permit letter.\n";
+    $txt .="ok";
+
+
+    $txt .= "Please find your report for (level) in the attached document.
      Kindly note that Rewrites (all subjects below 65%) are compulsory to complete if you are to move to the next level. \n\n";
     $txt .= "Should you need any help or support, please do not hesitate to reach out.\n\n";
     $txt .= "Kind Regards,\n";
     $txt .= "ABC International Admin Team";
 
 
+//    echo $txt; exit(); die();
 
     $headers  = 'MIME-Version: 1.0' . "\r\n";
     $headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
