@@ -2,7 +2,7 @@
 require 'parts/app.php';
 if(isset($_GET["mail"])){
     $id = $_GET["id"];
-    $path = "https://www.18jorissen.co.za/abc/permit.php?id=$id";
+    $path = "https://abcdatabase.online/permit.php?id=$id";
 
     $sql = "SELECT * FROM master_registration_list WHERE id = '$id'";
     $res = mysqli_query($con, $sql);
@@ -39,7 +39,7 @@ if(isset($_GET["send_grades"])){
 //    $month = $_GET["month"];
 
 
-    $path = "https://www.18jorissen.co.za/abc/admin_marks.php?student_id=$student_id&course_id=$course_id";
+    $path = "https://abcdatabase.online/admin_marks.php?student_id=$student_id&course_id=$course_id";
 
     $sql = "SELECT * FROM master_registration_list WHERE id = '$student_id'";
     $res = mysqli_query($con, $sql);
