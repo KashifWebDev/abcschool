@@ -181,9 +181,12 @@ require 'parts/head.php';
                                                 <label for="sel1">Select Course:</label>
                                                 <select class="form-control" name="course" id="bookChange" onchange="totalAmount()">
                                                     <option value="">-- SELECT --</option>
-                                                    <option value="Foundation">Foundation</option>
-                                                    <option value="Intermediate">Intermediate</option>
-                                                    <option value="Basic">Basic</option>
+                                                    <option value="Foundation 1">Foundation 1</option>
+                                                    <option value="Foundation 2">Foundation 2</option>
+                                                    <option value="Intermediate 1">Intermediate 1</option>
+                                                    <option value="Intermediate 2">Intermediate 2</option>
+                                                    <option value="Basic 1">Basic 1</option>
+                                                    <option value="Basic 2">Basic 2</option>
                                                     <option value="Advance">Advance</option>
                                                     <option value="Reader">English Reader</option>
                                                 </select>
