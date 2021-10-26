@@ -191,6 +191,25 @@
         </div>
     </li>
 
+    <!-- backup -->
+    <hr class="sidebar-divider">
+    <li class="nav-item">
+        <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapse6" aria-expanded="true"
+           aria-controls="collapse5">
+            <i class="fas fa-fw fa-cog"></i>
+            <span>Backup</span>
+        </a>
+        <div id="collapse6" class="collapse" aria-labelledby="heading4"
+             data-parent="#accordionSidebar">
+            <div class="bg-gradient-light py-2 collapse-inner rounded">
+                <a class="collapse-item" href="backup_database.php">
+                    <i class="fas fa-fw fa-address-book"></i>
+                    <span>Database</span>
+                </a>
+            </div>
+        </div>
+    </li>
+
 
     <!-- Divider -->
     <hr class="sidebar-divider d-none d-md-block">
