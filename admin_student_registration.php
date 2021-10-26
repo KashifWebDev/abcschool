@@ -109,6 +109,10 @@ require 'parts/head.php';
                                             <input type="text" class="form-control" name="email" placeholder="Email" id="email">
                                         </div>
                                         <div class="form-group">
+                                            <label for="email">Secondary Email</label>
+                                            <input type="text" class="form-control" name="email2" placeholder="Secondary Email" id="email">
+                                        </div>
+                                        <div class="form-group">
                                             <label for="pwd">Guardian Contact Number:</label>
                                             <input type="text" name="gardian_contact" class="form-control" placeholder="Contact Number" id="pwd">
                                         </div>
@@ -167,6 +171,7 @@ require 'parts/head.php';
                         $fb = $_POST["fb"];
                         $insta = $_POST["insta"];
                         $email = $_POST["email"];
+                        $email2 = $_POST["email2"];
                         $pic = "default.jpg";
 
                         if (!empty($_FILES["image"]["name"])) {
@@ -192,9 +197,9 @@ require 'parts/head.php';
                             }
                         }
                         $pic = strtolower($pic);
-                        $sql = "INSERT INTO master_registration_list (email, student_id, registration_invoice_no, registration_date, student_name, start_date,
+                        $sql = "INSERT INTO master_registration_list (email, email2, student_id, registration_invoice_no, registration_date, student_name, start_date,
                                       country, passport_no, dob, phone_no, guardian_contact, address_S_A, facebook, insta, pic) VALUES 
-                                ('$email', '$student_id', '$invoice_num', '$registration_date', '$name', '$start_date', '$country', '$passport',
+                                ('$email', '$email2', '$student_id', '$invoice_num', '$registration_date', '$name', '$start_date', '$country', '$passport',
                                  '$dob', '$phone_num', '$gardian_contact', '$SA_address', '$fb', '$insta', '$pic')";
 
 

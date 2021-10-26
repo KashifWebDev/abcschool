@@ -107,6 +107,10 @@ require 'parts/head.php';
                                             <input type="text" name="email" class="form-control" placeholder="Email" id="email" value="<?php echo $row["email"]; ?>">
                                         </div>
                                         <div class="form-group">
+                                            <label for="email">Secondary Email</label>
+                                            <input type="text" name="email" class="form-control" placeholder="Secondary Email" id="email" value="<?php echo $row["email2"]; ?>">
+                                        </div>
+                                        <div class="form-group">
                                             <label for="pwd">Guardian Contact Number:</label>
                                             <input type="text" name="gardian_contact" class="form-control" placeholder="Contact Number" id="pwd" value="<?php echo $row["guardian_contact"]; ?>">
                                         </div>
