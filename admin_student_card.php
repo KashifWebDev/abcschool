@@ -14,7 +14,7 @@ if(isset($_GET["mail"])){
     $txt = "Dear $name,<br>";
     $txt .= "Please find your report for (level) in the attached document.
      Kindly note that Rewrites (all subjects below 65%) are compulsory to complete if you are to move to the next level. <br><br>";
-    $txt .= "<br><a href='$path' style='text-decoration: none;background: #202a5b;color: white;padding: 5px 10px;border-radius: 10px;font-size: 20px;'>Get Permit Letter</a><br><br><br>";
+    $txt .= "<br><a href='$path' style='text-decoration: none;background: #202a5b;color: white;padding: 5px 10px;border-radius: 10px;font-size: 20px;'>click here to receive your letter</a><br><br><br>";
     $txt .= "Should you need any help or support, please do not hesitate to reach out.<br><br>";
     $txt .= "Kind Regards,<br>";
     $txt .= "ABC International Admin Team";
