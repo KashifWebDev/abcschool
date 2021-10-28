@@ -183,9 +183,6 @@ $row = mysqli_fetch_array($r);
            <P class="p19 ft4">Principal</P>
            <P class="p20 ft15"><A href="mailto:kim@abcinternational.co.za">info@abcinternational.co.za</A></P>
        </div>
-        <div>
-            <img style="height: 100px;margin-top: 8px;margin-left: 100px;" src="img/stamp.png" alt="">
-        </div>
     </div>
 </DIV>
 </BODY>
