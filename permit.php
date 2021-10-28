@@ -177,15 +177,15 @@ body {margin-top: 0px;margin-left: 0px;}
 <P class="p15 ft13"><SPAN class="ft5">3.</SPAN><SPAN class="ft12">Within 30 days of </SPAN><NOBR>de-registration,</NOBR> notify the <NOBR>Director-General</NOBR> that the applicant is no longer registered with such institution; and</P>
 <P class="p16 ft13"><SPAN class="ft5">4.</SPAN><SPAN class="ft12">Within 30 days of completion of studies, notify the </SPAN><NOBR>Director-General</NOBR> when the applicant has completed his or her studies or requires to extend such period of study.</P>
 <P class="p17 ft4">Should you have any queries, please contact the administrator or principal.</P>
-    <div style="display: flex; position: relative; height: 200px;">
+    <div style="display: flex; position: relative; height: 145px;">
         <div>
             <P class="p18 ft5">Sincerely,</P>
-            <P class="p17 ft14">ABC International Administration Team</P>
+            <P class="p17 ft14" style="font-weight: bold;">ABC International Administration Team</P>
 <!--            <P class="p19 ft4">Principal</P>-->
             <P class="p20 ft15"><A href="mailto:info@abcinternational.co.za">info@abcinternational.co.za</A></P>
         </div>
         <div>
-            <img style="height: 149px;position: absolute;left: 62px;top: 2px;" src="img/stamp.png" alt="">
+            <img style="height: 149px;position: absolute;left: 280px;top: -3px;" src="img/stamp.png" alt="">
         </div>
     </div>
 </DIV>
