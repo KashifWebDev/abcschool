@@ -180,9 +180,9 @@ body {margin-top: 0px;margin-left: 0px;}
     <div style="display: flex; position: relative; height: 200px;">
         <div>
             <P class="p18 ft5">Sincerely,</P>
-            <P class="p17 ft14">Kim Wetzl</P>
-            <P class="p19 ft4">Principal</P>
-            <P class="p20 ft15"><A href="mailto:kim@abcinternational.co.za">info@abcinternational.co.za</A></P>
+            <P class="p17 ft14">ABC International Administration Team</P>
+<!--            <P class="p19 ft4">Principal</P>-->
+            <P class="p20 ft15"><A href="mailto:info@abcinternational.co.za">info@abcinternational.co.za</A></P>
         </div>
         <div>
             <img style="height: 149px;position: absolute;left: 62px;top: 2px;" src="img/stamp.png" alt="">
