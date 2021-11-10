@@ -127,7 +127,8 @@ require 'parts/head.php';
                                             ?>
                                             <tr>
                                                 <td><?php echo $row["Database_Invoice_No"]; ?></td>
-                                                <td><?php echo $row["Customer"]; ?></td>
+<!--                                                <td>--><?php //echo $row["Customer"]; ?><!--</td>-->
+                                                <td><?php echo $row["userSelection"]=="Translation" ? $row["c_name"] : $row["Customer"]; ?></td>
                                                 <td><?php echo $row["Invoice_Date"]; ?></td>
                                                 <td><?php echo $row["Terms_of_Payment"]; ?></td>
                                                 <td><?php echo $row["eft_date"]; ?></td>
