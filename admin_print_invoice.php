@@ -25,7 +25,7 @@
                 <div class="col-12 text-center">
                     <div class="row">
                         <div class="col-md-3">
-                            <img src="img/logo.jpg" alt="" style="width: 150px;">
+                            <img src="img/logo1.png" alt="" style="width: 150px;">
                         </div>
                         <div class="col-md-9">
                             <b>KBW House, 122 De Korte street</b>
