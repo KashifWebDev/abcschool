@@ -4,7 +4,7 @@ require 'parts/app.php';
 if(isset($_GET["delUser"])){
     $stdID = $_GET["student_id_Input"];
     $rosterID = $_GET["page_id"];
-    $s = "DELETE FROM courses_and_students WHERE student_id='$stdID'";
+    $s = "DELETE FROM courses_and_students WHERE student_id='$stdID' AND roster_id=$rosterID";
 //    echo $s; exit(); die();
     if(mysqli_query($con, $s)){
         js_redirect("admin_show_roster.php?id=$rosterID");
