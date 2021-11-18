@@ -43,8 +43,7 @@ foreach ($tables as $table) {
 }
 
 
-if(!empty($sqlScript))
-{
+if(!empty($sqlScript)) {
     // Save the SQL script to a backup file
     $backup_file_name = 'backup/ABC_backup_' . time() . '.sql';
     $fileHandler = fopen($backup_file_name, 'w+');
