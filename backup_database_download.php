@@ -39,10 +39,10 @@ foreach ($tables as $table) {
             $sqlScript .= ");\n";
         }
     }
-    echo $sqlScript; exit(); die();
-
     $sqlScript .= "\n";
 }
+echo $sqlScript; exit(); die();
+
 
 if(!empty($sqlScript))
 {
