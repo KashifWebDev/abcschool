@@ -38,8 +38,8 @@ foreach ($tables as $table) {
             }
             $sqlScript .= ");\n";
         }
-        echo $sqlScript; exit(); die();
     }
+    echo $sqlScript; exit(); die();
 
     $sqlScript .= "\n";
 }
