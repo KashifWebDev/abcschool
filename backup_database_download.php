@@ -41,7 +41,6 @@ foreach ($tables as $table) {
     }
     $sqlScript .= "\n";
 }
-echo $sqlScript; exit(); die();
 
 
 if(!empty($sqlScript))
@@ -64,5 +63,5 @@ if(!empty($sqlScript))
     flush();
     readfile($backup_file_name);
     exec('rm ' . $backup_file_name);
-    exec('del" ' . $backup_file_name.'"');
+//    exec('del" ' . $backup_file_name.'"');
 }
