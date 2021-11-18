@@ -9,6 +9,10 @@ $result = mysqli_query($con, $sql);
 while ($row = mysqli_fetch_row($result)) {
     $tables[] = $row[0];
 }
+print_r($tables);
+
+
+exit(); die();
 $sqlScript = "";
 foreach ($tables as $table) {
     // Prepare SQLscript for creating table structure
