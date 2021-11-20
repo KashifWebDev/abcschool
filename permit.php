@@ -155,7 +155,7 @@ body {margin-top: 0px;margin-left: 0px;}
     $newDate = date("M, Y", strtotime($row["registration_date"]));
     $lastMnth = date('M, Y', strtotime('+11 months', strtotime($row["registration_date"])));
     ?>
-<P class="p10 ft8"><SPAN class="ft4">Duration: </SPAN><?php echo $newDate; ?>, 2021 to <?php echo $lastMnth; ?>, 2022</P>
+<P class="p10 ft8"><SPAN class="ft4">Duration: </SPAN><?php echo $newDate; ?>, to <?php echo $lastMnth; ?></P>
 <P class="p11 ft5">The above registration is based on the following criteria:</P>
 <TABLE cellpadding=0 cellspacing=0 class="t2">
 <TR>
