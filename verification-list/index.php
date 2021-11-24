@@ -81,6 +81,7 @@
                                 $cn = mysqli_fetch_array($se);
                                 $f = $cn["country_code"];
                                 $cntry_flag = '<img src="https://www.countryflags.io/'.$f.'/shiny/48.png">';
+                                $cntry_flag = '<img style="height: 37px;" src="https://flagicons.lipis.dev/flags/4x3/'.strtolower($f).'.svg">';
                             }else{
 //                                                echo $s1;
                             }
