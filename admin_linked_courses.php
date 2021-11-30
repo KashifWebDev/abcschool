@@ -1,5 +1,47 @@
 <?php
 require 'parts/app.php';
+if(isset($_GET["sendMail"])){
+    $msg = "Dear Student<br><br>
+        It is with great pleasure to invite you to ABC International 2021 Graduation Ceremony and Celebration. <br>
+        Date: Tuesday the 14th of December 2021<br>
+        Time: 8:30am – 3pm<br>
+        Address: 122 De Korte Street Braamfontein<br><br>
+        Lunch will be served.<br><br>
+        All students who have completed Intermediate 2 will receive an award. <br><br>
+        Please reserve your place (RSVP) and send an email to<br>
+        info@abcinternational.co.za<br>
+        Call / WatsApp Nono: 0788610102<br>
+        Veronica: 082 572 3987<br>
+        Or call the ABC office 011 403 2171<br><br>
+        This will be an event never to forget and your presence will be honoured. <br><br>
+        Kind regards<br><br>
+        Kim Wetzl<br>
+        Principal<br>
+        ABC International<br>";
+
+    $headers  = 'MIME-Version: 1.0' . "\r\n";
+    $headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
+    $headers .= 'X-Mailer: PHP/' . phpversion();
+
+
+    $rosterID = $_GET["sendMail"];
+    $sql = "SELECT * FROM courses_and_students WHERE roster_id=$rosterID GROUP BY student_id";
+    $res = mysqli_query($con, $sql);
+    if(mysqli_num_rows($res)){
+        while($row = mysqli_fetch_array($res)){
+            $studentID = $row["student_id"];
+            $s = "SELECT * FROM master_registration_list WHERE id=$studentID";
+            $qry = mysqli_query($con, $s);
+            if(mysqli_num_rows($qry)){
+                while($r = mysqli_fetch_array($qry)){
+                    $email = $r["email"];
+                    mail($email,"Rewards Distribution Ceremony",$msg,$headers);
+                }
+                js_redirect("admin_linked_courses.php?rewardsMailSent=1");
+            }
+        }
+    }
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -30,6 +72,15 @@ require 'parts/head.php';
                         <div class="card mb-4 py-3 border-left-success">
                             <div class="card-body text-success">
                                 <strong>Success! </strong> Instructor linked successfully!
+                            </div>
+                        </div>
+                        <?php
+                    }
+                    if(isset($_GET["rewardsMailSent"]) && $_GET["rewardsMailSent"]){
+                        ?>
+                        <div class="card mb-4 py-3 border-left-success">
+                            <div class="card-body text-success">
+                                <strong>Success! </strong> Rewards E-mail was send to the selected roster!
                             </div>
                         </div>
                         <?php
@@ -195,17 +246,17 @@ require 'parts/head.php';
                                                 <td><?php echo $instName; ?></td>
                                                 <td><?php echo $mnth; ?></td>
                                                 <td>
-<!--                                                    <a href="admin_linked_courses.php?unlink=--><?php //echo $linkID; ?><!--" class="btn btn-danger btn-icon-split">-->
-<!--                                                        <span class="icon text-white-50">-->
-<!--                                                            <i class="fas fa-trash"></i>-->
-<!--                                                        </span>-->
-<!--                                                        <span class="text">Remove</span>-->
-<!--                                                    </a>-->
                                                     <a href="admin_show_roster.php?id=<?php echo $linkID; ?>" class="btn btn-info btn-icon-split">
                                                         <span class="icon text-white-50">
                                                             <i class="fas fa-calendar-check"></i>
                                                         </span>
                                                         <span class="text">Monthly Roster</span>
+                                                    </a>
+                                                    <a href="admin_linked_courses.php?sendMail=<?php echo $linkID; ?>" class="btn btn-success btn-icon-split">
+                                                        <span class="icon text-white-50">
+                                                            <i class="fas fa-envelope"></i>
+                                                        </span>
+                                                        <span class="text">Rewards Mail</span>
                                                     </a>
                                                 </td>
                                             </tr>
