@@ -316,6 +316,7 @@ body {margin-top: 0px;margin-left: 0px;}
 	<TD class="tr7 td25"><P class="p4 ft18">IEB Centre : <SPAN class="ft17">9584</SPAN></P></TD>
 </TR>
 </TABLE>
+    <img src="img/stamp.png" alt="" style="height: 135px; margin-left: 450px; margin-top: -121px;">
 </DIV>
 </DIV>
 </BODY>
