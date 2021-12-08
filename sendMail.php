@@ -36,7 +36,7 @@ $headers .= 'X-Mailer: PHP/' . phpversion();
 
 
 require_once "parts/db.php";
-$sql = "SELECT * FROM master_registration_list";
+$sql = "SELECT * FROM master_registration_list WHERE id>380";
 $res = mysqli_query($con, $sql);
 $sent = 0;
 $errors = 0;
