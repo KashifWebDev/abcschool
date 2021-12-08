@@ -35,7 +35,7 @@ $headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
 $headers .= 'X-Mailer: PHP/' . phpversion();
 
 
-
+require_once "parts/db.php"
 $sql = "SELECT * FROM master_registration_list";
 $res = mysqli_query($con, $sql);
 $sent = 0;
