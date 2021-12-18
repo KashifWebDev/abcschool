@@ -61,6 +61,12 @@ require 'parts/head.php';
                             $res = mysqli_query($con, $sql);
                             $totalRows = mysqli_num_rows($res);
                             $paid = 0;
+
+
+                            $sql = "SELECT SUM(Tranlations_no_of_pages) as totalPages FROM payments WHERE userSelection LIKE '%Translation%' AND (DATE(date_time) BETWEEN '$start' AND '$end')";
+                            $r1 = mysqli_query($con, $sql);
+                            $r2 = mysqli_fetch_array($r1);
+                            $totalPages = $r2["totalPages"];
                             while($row = mysqli_fetch_array($res)){
 //                                echo $row["Amount"];
                                 $paid += $row["Amount"];
@@ -71,6 +77,7 @@ require 'parts/head.php';
                                     <div class="text-center d-flex justify-content-center  mb-4 border-bottom">
                                         <h3 class="filter_heading">Total Records: <?php echo $totalRows; ?></h3>
                                         <h3 class="filter_heading">Total Paid: <?php echo $paid; ?></h3>
+                                        <h3 class="filter_heading">Pages: <?php echo $totalPages; ?></h3>
                                         <h3 class="filter_heading"><?php echo $_GET["start"]; ?> - <?php echo $_GET["end"]; ?></h3>
                                     </div>
                                 </div>
