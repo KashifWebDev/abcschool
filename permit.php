@@ -152,8 +152,8 @@ body {margin-top: 0px;margin-left: 0px;}
 <P class="p9 ft4">ENGLISH BASIC COURSE (LEVEL 7 - 15)</P>
 <P class="p9 ft4">ENGLISH INTERMEDIATE COURSE (LEVEL 16 - 23)</P>
     <?php
-    $newDate = date("M, Y", strtotime($row["registration_date"]));
-    $lastMnth = date('M, Y', strtotime('+11 months', strtotime($row["registration_date"])));
+    $newDate = date("M, Y", strtotime($row["start_date"]));
+    $lastMnth = date('M, Y', strtotime('+11 months', strtotime($row["start_date"])));
     ?>
 <P class="p10 ft8"><SPAN class="ft4">Duration: </SPAN><?php echo $newDate; ?>, to <?php echo $lastMnth; ?></P>
 <P class="p11 ft5">The above registration is based on the following criteria:</P>
