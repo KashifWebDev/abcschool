@@ -108,7 +108,7 @@ require 'parts/head.php';
                                         </div>
                                         <div class="form-group">
                                             <label for="email">Secondary Email</label>
-                                            <input type="text" name="email" class="form-control" placeholder="Secondary Email" id="email" value="<?php echo $row["email2"]; ?>">
+                                            <input type="text" name="email1" class="form-control" placeholder="Secondary Email" id="email" value="<?php echo $row["email2"]; ?>">
                                         </div>
                                         <div class="form-group">
                                             <label for="pwd">Guardian Contact Number:</label>
@@ -165,6 +165,7 @@ require 'parts/head.php';
                         $insta = $_POST["insta"];
                         $start_date = $_POST["start_date"];
                         $email = $_POST["email"];
+                        $email1 = $_POST["email1"];
                         $pic = "default.jpg";
 
                         if (!empty($_FILES["image"]["name"])) {
@@ -192,7 +193,7 @@ require 'parts/head.php';
 
                         $pic = strtolower($pic);
 
-                        $sql = "UPDATE master_registration_list SET email='$email', registration_date='$registration_date', registration_invoice_no='$invoice_num',
+                        $sql = "UPDATE master_registration_list SET email='$email', email2='$email1', registration_date='$registration_date', registration_invoice_no='$invoice_num',
                                 student_name='$name', country='$country', passport_no='$passport',dob='$dob', phone_no='$phone_num', guardian_contact='$gardian_contact',
                                 address_S_A='$SA_address', facebook='$fb', insta='$insta', pic='$pic', start_date='$start_date'
                                 WHERE id=$id";
