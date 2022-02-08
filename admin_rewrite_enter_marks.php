@@ -215,9 +215,18 @@ require 'parts/head.php';
                                         </div>
                                         <div class="input-group mb-3">
                                             <div class="input-group-prepend">
-                                                <span class="input-group-text">Online Grammar</span>
+                                                <span class="input-group-text">Online Learning Management System</span>
                                             </div>
                                             <input type="number" class="form-control" name="sub11" value="<?php echo $marksRow["sub11"]; ?>">
+                                            <div class="input-group-append">
+                                                <span class="input-group-text">%</span>
+                                            </div>
+                                        </div>
+                                        <div class="input-group mb-3">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text">Number OF Compositions</span>
+                                            </div>
+                                            <input type="number" class="form-control" name="sub12" value="<?php echo $marksRow["sub12"]; ?>">
                                             <div class="input-group-append">
                                                 <span class="input-group-text">%</span>
                                             </div>
@@ -251,13 +260,14 @@ require 'parts/head.php';
                             $sub9 = $_POST["sub9"];
                             $sub10 = $_POST["sub10"];
                             $sub11 = $_POST["sub11"];
+                            $sub12 = $_POST["sub11"];
 
 
 //                        $sql = "INSERT INTO grades (student_id, month, course_id, instructor_id, sub1, sub2, sub3, sub4, sub5, sub6, sub7, sub8, sub9, sub10, sub11) VALUES
 //                                ($student_id, '$month', $course_id, $instructor_id, $sub1, $sub2, $sub3, $sub4, $sub5, $sub6, $sub7, $sub8, $sub9, $sub10, $sub11)";
 
                         $sql = "UPDATE grades SET sub1=$sub1, sub2=$sub2, sub3=$sub3, sub4=$sub4, sub5=$sub5, sub6=$sub6, sub7=$sub7, sub8=$sub8, sub9=$sub9,
-                                sub10=$sub10, sub11=$sub11, rewrite_date='$rewrite_date' WHERE student_id=$student_id AND month='$month' AND course_id=$course_id";
+                                sub10=$sub10, sub11=$sub11, sub12=$sub12, rewrite_date='$rewrite_date' WHERE student_id=$student_id AND month='$month' AND course_id=$course_id";
 
 //                        echo $sql; exit(); die();
 

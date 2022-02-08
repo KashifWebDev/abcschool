@@ -301,6 +301,11 @@ body {margin-top: 0px;margin-left: 0px;}
 	<TD class="tr5 td17"><P class="p11 ft12"><?php echo $row["sub11"]; ?>% </P></TD>
     <?php if($row["sub11"]<65){ ?>  <TD class="tr5 td17" style="background: white; border: none;font-weight: bold;color: red;">( Re-Write )</TD> <?php } ?>
 </TR>
+<TR <?php if($row["sub12"]<65){?>  style="background-color: #ff00005e;" <?php } ?>>
+	<TD colspan=2 class="tr5 td22"><P class="p9 ft12">12. Number OF Compositions</P></TD>
+	<TD class="tr5 td17"><P class="p11 ft12"><?php echo $row["sub12"]; ?>% </P></TD>
+    <?php if($row["sub12"]<65){ ?>  <TD class="tr5 td17" style="background: white; border: none;font-weight: bold;color: red;">( Re-Write )</TD> <?php } ?>
+</TR>
 <TR>
 	<TD class="tr6 td18"><P class="p4 ft14">&nbsp;</P></TD>
 	<TD class="tr6 td19"><P class="p4 ft14">&nbsp;</P></TD>

@@ -270,9 +270,18 @@ require 'parts/head.php';
                                         </div>
                                         <div class="input-group mb-3">
                                             <div class="input-group-prepend">
-                                                <span class="input-group-text">Online Grammar</span>
+                                                <span class="input-group-text">Online Learning Management System</span>
                                             </div>
                                             <input type="number" class="form-control" name="sub11" value="0">
+                                            <div class="input-group-append">
+                                                <span class="input-group-text">%</span>
+                                            </div>
+                                        </div>
+                                        <div class="input-group mb-3">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text">Number OF Compositions</span>
+                                            </div>
+                                            <input type="number" class="form-control" name="sub12" value="0">
                                             <div class="input-group-append">
                                                 <span class="input-group-text">%</span>
                                             </div>
@@ -306,10 +315,11 @@ require 'parts/head.php';
                             $sub9 = isset($_POST["sub9"]) ? $_POST["sub9"] : 0;
                             $sub10 = isset($_POST["sub10"]) ? $_POST["sub10"] : 0;
                             $sub11 = isset($_POST["sub11"]) ? $_POST["sub11"] : 0;
+                            $sub12 = isset($_POST["sub12"]) ? $_POST["sub12"] : 0;
 
 
-                        $sql = "INSERT INTO grades (student_id, month, course_id, instructor_id, sub1, sub2, sub3, sub4, sub5, sub6, sub7, sub8, sub9, sub10, sub11) VALUES 
-                                ($student_id, '$month', $course_id, $instructor_id, $sub1, $sub2, $sub3, $sub4, $sub5, $sub6, $sub7, $sub8, $sub9, $sub10, $sub11)";
+                        $sql = "INSERT INTO grades (student_id, month, course_id, instructor_id, sub1, sub2, sub3, sub4, sub5, sub6, sub7, sub8, sub9, sub10, sub11, sub12) VALUES 
+                                ($student_id, '$month', $course_id, $instructor_id, $sub1, $sub2, $sub3, $sub4, $sub5, $sub6, $sub7, $sub8, $sub9, $sub10, $sub11, $sub12)";
 
                         if(phpRunSingleQuery($sql)){
                             js_redirect("admin_enter_grades.php?id=$student_id&success=1&course_id=$course_id");
