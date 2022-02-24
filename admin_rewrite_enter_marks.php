@@ -260,7 +260,7 @@ require 'parts/head.php';
                             $sub9 = $_POST["sub9"];
                             $sub10 = $_POST["sub10"];
                             $sub11 = $_POST["sub11"];
-                            $sub12 = $_POST["sub11"];
+                            $sub12 = $_POST["sub12"];
 
 
 //                        $sql = "INSERT INTO grades (student_id, month, course_id, instructor_id, sub1, sub2, sub3, sub4, sub5, sub6, sub7, sub8, sub9, sub10, sub11) VALUES
@@ -274,7 +274,7 @@ require 'parts/head.php';
                         if(mysqli_query($GLOBALS["con"], $sql)){
                             js_redirect("admin_rewrite_enter_marks.php?student_id=$student_id&success=1&month=$mnth&course_id=$courseID");
                         }else{
-                            echo mysqli_error($GLOBALS["con"]); exit(); die();
+                            echo "YES";echo mysqli_error($GLOBALS["con"]); exit(); die();
                         }
 
                     }
