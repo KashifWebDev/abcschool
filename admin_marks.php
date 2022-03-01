@@ -172,7 +172,7 @@ body {margin-top: 0px;margin-left: 0px;}
 </TR>
 <TR>
 	<TD class="tr1"><P class="p4 ft4">Course Session :</P></TD>
-	<TD colspan=2 class="tr1"><P class="p4 ft5"><?php echo $row["month"]; ?> - 2021</P></TD>
+	<TD colspan=2 class="tr1"><P class="p4 ft5"><?php echo $row["month"]; ?> - 2022</P></TD>
     <TD class="tr2"><P class="p4 ft6">&nbsp;</P></TD>
     <TD colspan=2 class="tr2 "><P class="p6 ft8"><SPAN class="ft7">Rewrite Date: </SPAN><?php echo $row["rewrite_date"]; ?></P></TD>
 </TR>
