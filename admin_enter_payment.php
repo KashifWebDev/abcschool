@@ -450,7 +450,7 @@ require 'parts/head.php';
                 }
                 if(selection === "Monthly fee" && cboxes[i].checked && monthlyFeesChanged===false){
                     monthlyFeesChanged = true;
-                    amount = amount + 2500;
+                    amount = amount + 2800;
                     console.log(amount + selection);
                 }
                 if(selection === "Books" && cboxes[i].checked){
