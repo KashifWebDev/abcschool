@@ -53,7 +53,7 @@ require 'parts/head.php';
                                 <div class="row bg-appColor">
                                     <div class="col-md-5"></div>
                                     <div class="col-md-7 text-center text-white py-2" style="font-size: large">
-                                        Expiry Date: <b>Dec 2021</b>
+                                        Expiry Date: <b>Dec <?php echo date("Y"); ?></b>
                                     </div>
                                 </div>
                             </div>

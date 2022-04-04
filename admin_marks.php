@@ -3,8 +3,15 @@ require 'parts/app.php';
 
 $student_id = $_GET["student_id"];
 $course_id = $_GET["course_id"];
+$year = $_GET["year"];
 
-$sql = "SELECT * FROM grades WHERE student_id=$student_id AND course_id='$course_id'";
+if(isset($_GET["month"])){
+    $month = $_GET["month"];
+    $sql = "SELECT * FROM grades WHERE student_id=$student_id AND month='$month' AND course_id='$course_id'";
+}else{
+    $sql = "SELECT * FROM grades WHERE student_id=$student_id AND course_id='$course_id'";
+}
+
 $res = mysqli_query($con, $sql);
 
 if(!mysqli_num_rows($res)){
@@ -172,7 +179,7 @@ body {margin-top: 0px;margin-left: 0px;}
 </TR>
 <TR>
 	<TD class="tr1"><P class="p4 ft4">Course Session :</P></TD>
-	<TD colspan=2 class="tr1"><P class="p4 ft5"><?php echo $row["month"]; ?> - 2022</P></TD>
+	<TD colspan=2 class="tr1"><P class="p4 ft5"><?php echo $row["month"]; ?> - <?=$year?></P></TD>
     <TD class="tr2"><P class="p4 ft6">&nbsp;</P></TD>
     <TD colspan=2 class="tr2 "><P class="p6 ft8"><SPAN class="ft7">Rewrite Date: </SPAN><?php echo $row["rewrite_date"]; ?></P></TD>
 </TR>
