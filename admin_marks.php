@@ -7,9 +7,9 @@ $year = $_GET["year"];
 
 if(isset($_GET["month"])){
     $month = $_GET["month"];
-    $sql = "SELECT * FROM grades WHERE student_id=$student_id AND month='$month' AND course_id='$course_id'";
+    $sql = "SELECT * FROM grades WHERE student_id=$student_id AND month='$month' AND course_id='$course_id' ORDER BY id DESC";
 }else{
-    $sql = "SELECT * FROM grades WHERE student_id=$student_id AND course_id='$course_id'";
+    $sql = "SELECT * FROM grades WHERE student_id=$student_id AND course_id='$course_id' ORDER BY id DESC";
 }
 
 $res = mysqli_query($con, $sql);
