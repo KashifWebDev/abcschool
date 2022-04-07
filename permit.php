@@ -186,6 +186,7 @@ body {margin-top: 0px;margin-left: 0px;}
         </div>
         <div>
             <img style="height: 149px;position: absolute;left: 280px;top: -3px;" src="img/stamp.png" alt="">
+            <img style="height: 149px;position: absolute;left: 280px;top: -3px;" src="img/sign.png" alt="">
         </div>
     </div>
 </DIV>
