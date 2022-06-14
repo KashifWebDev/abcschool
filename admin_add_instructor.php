@@ -176,31 +176,31 @@ require 'parts/head.php';
                 <?php
                 if(isset($_POST["add_student"])){
                     require 'parts/db.php';
-                    $registration_date = $_POST["registration_date"];
-                    $name = $_POST["name"];
-                    $common_name = $_POST["common_name"];
-                    $instructor_id = $_POST["instructor_id"];
-                    $email = $_POST["email"];
-                    $phone_num = $_POST["phone_num"];
-                    $frequency = $_POST["frequency"];
-                    $dob = $_POST["dob"];
-                    $resign = $_POST["resign"];
-                    $identification = $_POST["identification"];
-                    $idNumber = $_POST["idNumber"];
-                    $paymentMethod = $_POST["paymentMethod"];
-                    $BankName = $_POST["BankName"];
-                    $BankCode = $_POST["BankCode"];
-                    $AccountNumber = $_POST["AccountNumber"];
-                    $AccountType = $_POST["AccountType"];
-                    $unitNumber = $_POST["unitNumber"];
-                    $Street = $_POST["Street"];
-                    $town = $_POST["town"];
-                    $zipCode = $_POST["zipCode"];
-                    $JobTitle = $_POST["JobTitle"];
-                    $incomeTaxNumber = $_POST["incomeTaxNumber"];
-                    $ContactNum = $_POST["ContactNum"];
-                    $EmergencyContact1 = $_POST["EmergencyContact1"];
-                    $EmergencyContact2 = $_POST["EmergencyContact2"];
+                    $registration_date = isset($_POST["registration_date"]) ? $_POST["registration_date"] : '';
+                    $name = isset($_POST["name"]) ? $_POST["name"] : '';
+                    $common_name = isset($_POST["common_name"]) ? $_POST["common_name"] : '';
+                    $instructor_id = isset($_POST["instructor_id"]) ? $_POST["instructor_id"] : '';
+                    $email = isset($_POST["email"]) ? $_POST["email"] : '';
+                    $phone_num = isset($_POST["phone_num"]) ? $_POST["phone_num"] : '';
+                    $frequency = isset($_POST["frequency"]) ? $_POST["frequency"] : '';
+                    $dob = isset($_POST["dob"]) ? $_POST["dob"] : '';
+                    $resign = isset($_POST["resign"]) ? $_POST["resign"] : '';
+                    $identification = isset($_POST["identification"]) ? $_POST["identification"] : '';
+                    $idNumber = isset($_POST["idNumber"]) ? $_POST["idNumber"] : '';
+                    $paymentMethod = isset($_POST["paymentMethod"]) ? $_POST["paymentMethod"] : '';
+                    $BankName = isset($_POST["BankName"]) ? $_POST["BankName"] : '';
+                    $BankCode = isset($_POST["BankCode"]) ? $_POST["BankCode"] : '';
+                    $AccountNumber = isset($_POST["AccountNumber"]) ? $_POST["AccountNumber"] : '';
+                    $AccountType = isset($_POST["AccountType"]) ? $_POST["AccountType"] : '';
+                    $unitNumber = isset($_POST["unitNumber"]) ? $_POST["unitNumber"] : '';
+                    $Street = isset($_POST["Street"]) ? $_POST["Street"] : '';
+                    $town = isset($_POST["town"]) ? $_POST["town"] : '';
+                    $zipCode = isset($_POST["zipCode"]) ? $_POST["zipCode"] : '';
+                    $JobTitle = isset($_POST["JobTitle"]) ? $_POST["JobTitle"] : '';
+                    $incomeTaxNumber = isset($_POST["incomeTaxNumber"]) ? $_POST["incomeTaxNumber"] : '';
+                    $ContactNum = isset($_POST["ContactNum"]) ? $_POST["ContactNum"] : '';
+                    $EmergencyContact1 = isset($_POST["EmergencyContact1"]) ? $_POST["EmergencyContact1"] : '';
+                    $EmergencyContact2 = isset($_POST["EmergencyContact2"]) ? $_POST["EmergencyContact2"] : '';
 
                     $sql = "INSERT INTO instructors (instructor_id, name, hire_date, phone, email, common_name,frequency, dob, resign_date, identification, idNumber, paymentMethod, BankName,
                          BankCode, AccountNumber, AccountType, unitNumber, Street, town, zipCode, JobTitle, incomeTaxNumber, ContactNum, EmergencyContact1, EmergencyContact2) VALUES 
