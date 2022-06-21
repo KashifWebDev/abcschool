@@ -204,7 +204,7 @@ require 'parts/head.php';
 
                     $sql = "INSERT INTO instructors (instructor_id, name, hire_date, phone, email, common_name,frequency, dob, resign_date, identification, idNumber, paymentMethod, BankName,
                          BankCode, AccountNumber, AccountType, unitNumber, Street, town, zipCode, JobTitle, incomeTaxNumber, ContactNum, EmergencyContact1, EmergencyContact2) VALUES 
-                                ('$instructor_id', '$name', '$registration_date', '$phone_num', '$email', '$common_name', '$frequency', '$dob', '$resign', '$identification', $idNumber, '$paymentMethod', '$BankName',
+                                ('$instructor_id', '$name', '$registration_date', '$phone_num', '$email', '$common_name', '$frequency', '$dob', '$resign', '$identification', '$idNumber', '$paymentMethod', '$BankName',
                                  $BankCode, $AccountNumber, '$AccountType', $unitNumber, '$Street', '$town', $zipCode, '$JobTitle', $incomeTaxNumber, '$ContactNum', '$EmergencyContact1', '$EmergencyContact2')";
 
                     if(phpRunSingleQuery($sql)){
