@@ -180,7 +180,7 @@ body {margin-top: 0px;margin-left: 0px;}
 <TR>
 	<TD class="tr1"><P class="p4 ft4">Course Session :</P></TD>
 	<TD colspan=2 class="tr1"><P class="p4 ft5"><?php echo $row["month"]; ?> - <?=$year?></P></TD>
-    <TD class="tr2"><P class="p4 ft6">&nbsp;</P></TD>
+    <TD colspan=2 class="tr2 "><P class="p6 ft8" style="text-align: left"><SPAN class="ft7">Number of days Absent: </SPAN><?php echo $row["attendance"]; ?></P></TD>
     <TD colspan=2 class="tr2 "><P class="p6 ft8"><SPAN class="ft7">Rewrite Date: </SPAN><?php echo $row["rewrite_date"]; ?></P></TD>
 </TR>
 </TABLE>
@@ -319,7 +319,7 @@ body {margin-top: 0px;margin-left: 0px;}
 	<TD class="tr6 td20"><P class="p4 ft14">&nbsp;</P></TD>
 </TR>
 </TABLE>
-<P class="p12 ft15">Comments: <span style="font-weight: normal">Number of days absent: <span style="font-weight: bold"><?php echo $row["attendance"]; ?></span></span></P>
+<P class="p12 ft15">Comments: </P>
 <P class="p13 ft16">ABC International (PTY) Ltd</P>
 <TABLE cellpadding=0 cellspacing=0 class="t2">
 <TR>
