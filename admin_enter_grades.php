@@ -127,6 +127,10 @@ require 'parts/head.php';
                                                 ?>
                                             </select>
                                         </div>
+                                        <div class="form-group">
+                                            <label for="email">Attendance (Number of Days Absent)</label>
+                                            <input type="number" name="attendance" class="form-control" id="email" value="0">
+                                        </div>
                                         <?php
                                         if(isset($_GET["courseID"])){
                                             ?>
@@ -316,10 +320,11 @@ require 'parts/head.php';
                             $sub10 = isset($_POST["sub10"]) ? $_POST["sub10"] : 0;
                             $sub11 = isset($_POST["sub11"]) ? $_POST["sub11"] : 0;
                             $sub12 = isset($_POST["sub12"]) ? $_POST["sub12"] : 0;
+                            $attendance = $_POST["attendance"];
 
 
-                        $sql = "INSERT INTO grades (student_id, month, course_id, instructor_id, sub1, sub2, sub3, sub4, sub5, sub6, sub7, sub8, sub9, sub10, sub11, sub12) VALUES 
-                                ($student_id, '$month', $course_id, $instructor_id, $sub1, $sub2, $sub3, $sub4, $sub5, $sub6, $sub7, $sub8, $sub9, $sub10, $sub11, $sub12)";
+                        $sql = "INSERT INTO grades (student_id, month, course_id, instructor_id, sub1, sub2, sub3, sub4, sub5, sub6, sub7, sub8, sub9, sub10, sub11, sub12,attendance) VALUES 
+                                ($student_id, '$month', $course_id, $instructor_id, $sub1, $sub2, $sub3, $sub4, $sub5, $sub6, $sub7, $sub8, $sub9, $sub10, $sub11, $sub12, $attendance)";
 
                         if(phpRunSingleQuery($sql)){
                             js_redirect("admin_enter_grades.php?id=$student_id&success=1&course_id=$course_id");
