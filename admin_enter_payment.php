@@ -479,7 +479,7 @@ require 'parts/head.php';
                     console.log("pages: "+pagesCount+" Lang: "+lang);
                     if(Number.isFinite(pagesCount) && translationChanged===false){
                         if(lang==="French"){
-                            amount  = amount + (150 * pagesCount);
+                            amount  = amount + (250 * pagesCount);
                         }else{
                             amount = amount + (200 * pagesCount);
                         }
@@ -502,7 +502,7 @@ require 'parts/head.php';
         $("#pagesCount").change(function (){
             if(translationChanged===false && Number.isFinite(pagesCount)){
                 if(lang==="French"){
-                    amount  = amount + (150 * pagesCount);
+                    amount  = amount + (250 * pagesCount);
                 }else{
                     amount = amount + (200 * pagesCount);
                 }
