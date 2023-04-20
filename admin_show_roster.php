@@ -363,7 +363,8 @@ require 'parts/head.php';
                                     </tfoot>
                                     <tbody>
                                     <?php
-                                    $sql = "SELECT * FROM courses_and_students WHERE roster_id=$page_id group by student_id";
+                                    $sql = "SELECT student_id FROM courses_and_students WHERE roster_id=$page_id group by student_id";
+                                    //echo $sql;
                                     $res = mysqli_query($con, $sql);
                                     if(mysqli_num_rows($res)){
                                         while($row = mysqli_fetch_array($res)){

@@ -168,7 +168,7 @@ require 'parts/head.php';
                                                             <a target="_blank" href="admin_show_card.php?id=<?php echo $row["id"]; ?>" class="btn btn-primary">
                                                                 <span class="text">Student Card</span>
                                                             </a>
-                                                            <a href="permit1.php?id=<?php echo $row["id"]; ?>" target="_blank" class="btn btn-info">
+                                                            <a href="permit.php?id=<?php echo $row["id"]; ?>" target="_blank" class="btn btn-info">
                                                                 <span class="text">View Permit</span>
                                                             </a>
                                                             <a href="admin_student_card.php?id=<?php echo $row["id"]; ?>&mail=sent" class="btn btn-success">

@@ -245,6 +245,7 @@ require 'parts/head.php';
                     </div>
                     <?php
                     if(isset($_POST["add_payment"])){
+                        date_default_timezone_set('Africa/Johannesburg');
 //                        print_r($_POST); exit(); die();
                         require 'parts/db.php';
                         $date = $_POST["date"];
@@ -256,7 +257,7 @@ require 'parts/head.php';
                         $pay = $_POST["pay"];
                         $c_name = $_POST["c_name"];
 //                        $eft_date = isset($_POST["eft_date"]) ?? null;
-                        $eft_date = $_POST["eft_date"]=="" ? "0000-00-00" : $_POST["eft_date"];
+                        $eft_date = $_POST["eft_date"]=="" ? date('Y-m-d') : $_POST["eft_date"];
                         $eft_reference = $_POST["eft_reference"] ?? null;
                         $userSelection = implode("|",$_POST["userSelection"]);
                         $month = $_POST["month"] ?? null;
@@ -275,10 +276,9 @@ require 'parts/head.php';
                         }
 
 
-//                        echo $amount; exit(); die();
+                        //echo $amount; exit(); die();
 
 
-                        date_default_timezone_set('Africa/Johannesburg');
                         $timestamp =  date('Y-m-d H:i:s', time());
 
                         $sql = "INSERT INTO payments (Customer, Invoice_Date, Terms_of_Payment, eft_date, eft_reference, ABC_Receipt_book, ProductService_Description, c_name, c_email,
@@ -286,7 +286,7 @@ require 'parts/head.php';
                                 VALUES ('$name', '$date', '$pay', '$eft_date', '$eft_reference', '$receipt', '$desc', '$c_name', '$c_email', $amount_paid, '$bookBox', '$teacher', $numOfPages,
                                         '$month', '$langBox', '$userSelection', '$email', $balance, '$timestamp')";
 
-//                        echo $sql; exit(); die();
+                        //echo $sql; exit(); die();
 
                         require 'parts/db.php';
                         if(mysqli_query($con, $sql)){
@@ -445,12 +445,12 @@ require 'parts/head.php';
                 selection = cboxes[i].value;
                 if(selection === "Registration fee" && cboxes[i].checked && registrationFeesChanged===false){
                     registrationFeesChanged = true;
-                    amount = amount + 1600;
+                    amount = amount + 2000;
                     console.log(amount + selection);
                 }
                 if(selection === "Monthly fee" && cboxes[i].checked && monthlyFeesChanged===false){
                     monthlyFeesChanged = true;
-                    amount = amount + 2800;
+                    amount = amount + 3000;
                     console.log(amount + selection);
                 }
                 if(selection === "Books" && cboxes[i].checked){
@@ -462,7 +462,7 @@ require 'parts/head.php';
                     }
                     if(bookValue!=="English Reader" && bookValue !=="-- SELECT --" && booksChanged===false){
                         booksChanged = true;
-                        amount = amount + 600;
+                        amount = amount + 700;
                     }
                     // if(bookValue ==="-- SELECT --") isChanged = false;
                     console.log("Books change   "+booksChanged);

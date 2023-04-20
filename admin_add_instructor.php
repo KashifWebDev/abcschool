@@ -184,7 +184,7 @@ require 'parts/head.php';
                     $phone_num = isset($_POST["phone_num"]) ? $_POST["phone_num"] : '';
                     $frequency = isset($_POST["frequency"]) ? $_POST["frequency"] : '';
                     $dob = isset($_POST["dob"]) ? $_POST["dob"] : '';
-                    $resign = isset($_POST["resign"]) ? $_POST["resign"] : '';
+                    $resign = $_POST["resign"]=="" ? date('Y-m-d') : $_POST["resign"];
                     $identification = isset($_POST["identification"]) ? $_POST["identification"] : '';
                     $idNumber = isset($_POST["idNumber"]) ? $_POST["idNumber"] : '';
                     $paymentMethod = isset($_POST["paymentMethod"]) ? $_POST["paymentMethod"] : '';

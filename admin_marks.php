@@ -50,7 +50,7 @@ body {margin-top: 0px;margin-left: 0px;}
 #page_1 #id1_2 {border:none;margin: 74px 0px 0px 3px;padding: 0px;border:none;width: 680px;overflow: hidden;}
 #page_1 #id1_2 #id1_2_1 {float:left;border:none;margin: 0px 0px 0px 0px;padding: 0px;border:none;width: 453px;overflow: hidden;}
 #page_1 #id1_2 #id1_2_2 {float:left;border:none;margin: 1px 0px 0px 2px;padding: 0px;border:none;width: 225px;overflow: hidden;}
-#page_1 #id1_3 {border:none;margin: 29px 0px 0px 4px;padding: 0px;border:none;width: 747px;overflow: hidden;}
+#page_1 #id1_3 {border:none;margin: 8px 0px 0px 4px;padding: 0px;border:none;width: 747px;overflow: hidden;}
 
 #page_1 #p1dimg1 {position:absolute;top:0px;left:0px;z-index:-1;width:683px;height:946px;}
 #page_1 #p1dimg1 #p1img1 {width:683px;height:946px;}
@@ -93,7 +93,7 @@ body {margin-top: 0px;margin-left: 0px;}
 .p10{text-align: left;padding-left: 2px;margin-top: 0px;margin-bottom: 0px;white-space: nowrap;}
 .p11{text-align: right;padding-right: 3px;margin-top: 0px;margin-bottom: 0px;white-space: nowrap;}
 .p12{text-align: left;padding-left: 37px;margin-top: 17px;margin-bottom: 0px;}
-.p13{text-align: left;padding-left: 3px;margin-top: 154px;margin-bottom: 0px;}
+.p13{text-align: left;padding-left: 3px;margin-top: 39px;margin-bottom: 0px;}
 
 .td0{padding: 0px;margin: 0px;width: 365px;vertical-align: bottom;}
 .td1{padding: 0px;margin: 0px;width: 60px;vertical-align: bottom;}
@@ -124,7 +124,7 @@ body {margin-top: 0px;margin-left: 0px;}
 
 .tr0{height: 21px;}
 .tr1{height: 28px;}
-.tr2{height: 50px;}
+.tr2{height: 24px;}
 .tr3{height: 31px;}
 .tr4{height: 2px;}
 .tr5{height: 23px;}
@@ -132,7 +132,7 @@ body {margin-top: 0px;margin-left: 0px;}
 .tr7{height: 18px;}
 
 .t0{width: 644px;font: 15px 'Calibri';}
-.t1{width: 493px;margin-left: 35px;margin-top: 43px;font: 16px 'Calibri';}
+.t1{width: 493px;margin-left: 35px;margin-top: 21px;font: 16px 'Calibri';}
 .t2{width: 655px;margin-left: 3px;margin-top: 9px;font: bold 15px 'Calibri';color: #666666;}
 /*TR:nth-child(3) { text-align: center; }*/
 </STYLE>
