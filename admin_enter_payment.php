@@ -446,6 +446,7 @@ require 'parts/head.php';
         var reWriteChanged = false;
         var OnlineCourseChanged = false;
         function totalAmount(){
+            console.log(selection);
             var len = cboxes.length;
             for (var i=0; i<len; i++) {
                 // if(cboxes[i].checked) cboxes[i].value;

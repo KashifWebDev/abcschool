@@ -181,7 +181,9 @@ body {margin-top: 0px;margin-left: 0px;}
 	<TD class="tr1"><P class="p4 ft4">Course Session :</P></TD>
 	<TD colspan=2 class="tr1"><P class="p4 ft5"><?php echo $row["month"]; ?> - <?=$year?></P></TD>
     <TD colspan=2 class="tr2 "><P class="p6 ft8" style="text-align: left"><SPAN class="ft7">Number of days Absent: </SPAN><?php echo $row["attendance"]; ?></P></TD>
-    <TD colspan=2 class="tr2 "><P class="p6 ft8"><SPAN class="ft7">Rewrite Date: </SPAN><?php echo $row["rewrite_date"]; ?></P></TD>
+</TR>
+<TR>
+    <TD colspan=2 class="tr2 "><P class="p6 ft8" style="text-align: initial !important;"><SPAN class="ft7">Rewrite Date: </SPAN><?php echo $row["rewrite_date"]; ?></P></TD>
 </TR>
 </TABLE>
 <TABLE cellpadding=0 cellspacing=0 class="t1">
