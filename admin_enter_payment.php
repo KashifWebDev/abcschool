@@ -123,6 +123,10 @@ require 'parts/head.php';
                                                     <input class="form-check-input" type="radio" id="cash3" value="EFT" name="pay" required>
                                                     <label class="form-check-label" for="Translation">EFT</label>
                                                 </div>
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input" type="radio" id="cash4" value="PayGate" name="pay" required>
+                                                    <label class="form-check-label" for="Translation">PayGate</label>
+                                                </div>
                                             </span>
                                         </div>
                                         <div class="row mb-3" id="payment_method">
@@ -157,6 +161,10 @@ require 'parts/head.php';
                                         <div class="form-check form-check-inline" id="rewrite_check">
                                             <input class="form-check-input userSelection" type="checkbox" id="ReWrite" value="Exam Re-write" name="userSelection[]" onclick="totalAmount()">
                                             <label class="form-check-label" for="ReWrite">Exam Re-write</label>
+                                        </div>
+                                        <div class="form-check form-check-inline" id="OnlineCourse_check">
+                                            <input class="form-check-input userSelection" type="checkbox" id="OnlineCourse" value="Online Course" name="userSelection[]" onclick="totalAmount()">
+                                            <label class="form-check-label" for="OnlineCourse">Online Course</label>
                                         </div>
                                         <div class="form-group mt-2" id="mnthBox">
                                             <label for="sel1">Select Month:</label>
@@ -436,6 +444,7 @@ require 'parts/head.php';
         var registrationFeesChanged = false;
         var translationChanged = false;
         var reWriteChanged = false;
+        var OnlineCourseChanged = false;
         function totalAmount(){
             var len = cboxes.length;
             for (var i=0; i<len; i++) {
@@ -451,6 +460,11 @@ require 'parts/head.php';
                 if(selection === "Monthly fee" && cboxes[i].checked && monthlyFeesChanged===false){
                     monthlyFeesChanged = true;
                     amount = amount + 3000;
+                    console.log(amount + selection);
+                }
+                if(selection === "Online Course" && cboxes[i].checked && monthlyFeesChanged===false){
+                    monthlyFeesChanged = true;
+                    amount = amount + 2000;
                     console.log(amount + selection);
                 }
                 if(selection === "Books" && cboxes[i].checked){
