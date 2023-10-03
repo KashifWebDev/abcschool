@@ -126,18 +126,18 @@ require 'parts/head.php';
                         echo mysqli_error($con);
                     }
                 }
-                if(isset($_GET["del_course"])){
-                    require 'parts/db.php';
-                    $id = $_GET["del_course"];
-
-                    $sql = "DELETE FROM  courses WHERE id = $id";
-
-                    if(phpRunSingleQuery($sql)){
-                        js_redirect("admin_courses.php");
-                    }else{
-                        echo mysqli_error($con);
-                    }
-                }
+//                if(isset($_GET["del_course"])){
+//                    require 'parts/db.php';
+//                    $id = $_GET["del_course"];
+//
+//                    $sql = "DELETE FROM  courses WHERE id = $id";
+//
+//                    if(phpRunSingleQuery($sql)){
+//                        js_redirect("admin_courses.php");
+//                    }else{
+//                        echo mysqli_error($con);
+//                    }
+//                }
                 ?>
 
             </div>
