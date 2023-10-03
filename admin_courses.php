@@ -60,14 +60,14 @@ require 'parts/head.php';
                                     <tr>
                                         <th>#</th>
                                         <th>Course Name</th>
-                                        <th>Actions</th>
+<!--                                        <th>Actions</th>-->
                                     </tr>
                                     </thead>
                                     <tfoot>
                                     <tr>
                                         <th>#</th>
                                         <th>Course Name</th>
-                                        <th>Actions</th>
+<!--                                        <th>Actions</th>-->
                                     </tr>
                                     </tfoot>
                                     <tbody>
@@ -80,14 +80,14 @@ require 'parts/head.php';
                                             <tr>
                                                 <td><?php echo $row["id"]; ?></td>
                                                 <td><?php echo $row["course_name"]; ?></td>
-                                                <td>
-                                                    <a href="admin_courses.php?del_course=<?php echo $row["id"]; ?>" class="btn btn-danger btn-icon-split">
-                                                        <span class="icon text-white-50">
-                                                            <i class="fas fa-trash"></i>
-                                                        </span>
-                                                        <span class="text">Delete</span>
-                                                    </a>
-                                                </td>
+<!--                                                <td>-->
+<!--                                                    <a href="admin_courses.php?del_course=--><?php //echo $row["id"]; ?><!--" class="btn btn-danger btn-icon-split">-->
+<!--                                                        <span class="icon text-white-50">-->
+<!--                                                            <i class="fas fa-trash"></i>-->
+<!--                                                        </span>-->
+<!--                                                        <span class="text">Delete</span>-->
+<!--                                                    </a>-->
+<!--                                                </td>-->
                                             </tr>
                                     <?php
                                         }
