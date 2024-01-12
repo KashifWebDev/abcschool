@@ -267,6 +267,7 @@ require 'parts/head.php';
                                             <option value="2021">2021</option>
                                             <option value="2022">2022</option>
                                             <option value="2023">2023</option>
+                                            <option value="2023">2024</option>
                                         </select>
                                     </div>
                                     <div class="row">
