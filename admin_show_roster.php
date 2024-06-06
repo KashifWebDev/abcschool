@@ -124,6 +124,15 @@ require 'parts/head.php';
                         </div>
                         <?php
                     }
+                    if(isset($_GET["marks"]) && $_GET["marks"]){
+                        ?>
+                        <div class="card mb-4 py-3 border-left-success">
+                            <div class="card-body text-success">
+                                <strong>Success! </strong> Marks entered successfully.
+                            </div>
+                        </div>
+                        <?php
+                    }
                     ?>
 
                     <div class="container-fluid">
@@ -414,6 +423,9 @@ require 'parts/head.php';
                                                     </button>
                                                     <a class="btn btn-primary" href="admin_enter_grades.php?id=<?php echo $student_real_id; ?>&courseID=<?php echo $courseID; ?>&mnth=<?php echo $mnth; ?>">
                                                         <span class="text">Enter Grades</span>
+                                                    </a>
+                                                    <a class="btn btn-warning" href="admin_roaster_edit_grades.php?rid=<?=$_GET["id"]?>&id=<?php echo $student_real_id; ?>&courseID=<?php echo $courseID; ?>&mnth=<?php echo $mnth; ?>">
+                                                        <span class="text">Edit Grades</span>
                                                     </a>
                                                     <a class="btn btn-info" href="admin_marks.php?course_id=<?php echo $courseID; ?>&student_id=<?php echo $student_real_id; ?>">
                                                         <span class="text">View Grades</span>
