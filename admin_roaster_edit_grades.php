@@ -59,7 +59,11 @@ require 'parts/head.php';
                                 <strong>Success! </strong> Marks Entered!
                             </div>
                         </div>
-                    <?php
+                        <div class="d-flex mb-2">
+                            <a target="_blank" href="admin_marks.php?student_id=<?php echo $_GET["id"]; ?>&course_id=<?php echo $_GET["courseID"]; ?>" class="btn btn-success">Print Report</a>
+                            <a href="admin_enter_grades.php?sendMail=1&id=<?php echo $_GET["id"]; ?>" class="btn btn-danger ml-2">Email Report</a>
+                        </div>
+                        <?php
                     }
                     ?>
 
@@ -70,7 +74,6 @@ require 'parts/head.php';
                         </div>
                         <div class="card-body">
                             <form action="" method="POST">
-                                <input type="hidden" name="rid" value="<?php echo $_GET["rid"]; ?>">
                                 <input type="hidden" name="student_id" value="<?php echo $mainRow["id"]; ?>">
                                 <div class="row">
                                     <div class="col-md-6">
@@ -116,6 +119,10 @@ require 'parts/head.php';
                                                 <option value="November" <?php if($marksRow["month"]=="November") echo "selected"; ?>>November</option>
                                                 <option value="December" <?php if($marksRow["month"]=="December") echo "selected"; ?>>December</option>
                                             </select>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="email">Attendance (Number of Days Absent)</label>
+                                            <input type="number" name="attendance" class="form-control" id="email" value="<?php echo $marksRow["attendance"]; ?>">
                                         </div>
                                     </div>
                                     <div class="col-md-6">
@@ -270,9 +277,12 @@ require 'parts/head.php';
 //                        echo $sql; exit(); die();
 
                         if(mysqli_query($GLOBALS["con"], $sql)){
-                            js_redirect("admin_show_roster.php?marks=1&id=$rid");
+                            $actual_link = "https://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]&success=true";
+
+//                            js_redirect("admin_show_roster.php?marks=1&id=$rid");
+                            js_redirect($actual_link);
                         }else{
-                            echo "YES";echo mysqli_error($GLOBALS["con"]); exit(); die();
+                            echo "ERROR ";echo mysqli_error($GLOBALS["con"]); exit(); die();
                         }
 
                     }

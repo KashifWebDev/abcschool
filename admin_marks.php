@@ -3,7 +3,7 @@ require 'parts/app.php';
 
 $student_id = $_GET["student_id"];
 $course_id = $_GET["course_id"];
-$year = $_GET["year"];
+$year = $_GET["year"] ?? '2024';
 
 if(isset($_GET["month"])){
     $month = $_GET["month"];
